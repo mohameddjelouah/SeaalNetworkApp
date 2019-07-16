@@ -15,7 +15,7 @@ namespace NetworkApi.Controllers
         {
             //var l = User.Identity.Name;  // to get who is logged in in windows and returning his username
             
-            return new string[] { "value1", "value2" ,User.Identity.Name};
+            return new string[] { "value1", "value2" ,""+User.Identity.Name};
         }
 
         // GET api/values/5
