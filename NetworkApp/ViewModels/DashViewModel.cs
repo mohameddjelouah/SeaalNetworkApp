@@ -37,7 +37,7 @@ namespace NetworkApp.ViewModels
 
         public async Task  getinfo()
         {
-            //User = WindowsIdentity.GetCurrent().IsAuthenticated.ToString();
+           // User = WindowsIdentity.GetCurrent().Name;
             User = await _apiHelper.authe(1);
         }
 

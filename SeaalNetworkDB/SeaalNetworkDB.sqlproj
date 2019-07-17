@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Incidents.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllIncidents.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />
