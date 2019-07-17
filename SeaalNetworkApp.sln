@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApi", "NetworkApi\Ne
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SeaalNetworkDB", "SeaalNetworkDB\SeaalNetworkDB.sqlproj", "{C11D11A8-2758-44A5-A28F-93C1CEF90728}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApp", "NetworkApp\NetworkApp.csproj", "{9E0445D2-24C4-461D-9CF4-032C5623BABC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{C11D11A8-2758-44A5-A28F-93C1CEF90728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C11D11A8-2758-44A5-A28F-93C1CEF90728}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C11D11A8-2758-44A5-A28F-93C1CEF90728}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9E0445D2-24C4-461D-9CF4-032C5623BABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0445D2-24C4-461D-9CF4-032C5623BABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0445D2-24C4-461D-9CF4-032C5623BABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0445D2-24C4-461D-9CF4-032C5623BABC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
