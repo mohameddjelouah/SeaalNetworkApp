@@ -37,9 +37,13 @@ namespace NetworkApi.Controllers
 
 
         // GET: api/Incident/5
-        public string Get(int id)
+        public IncidentModel Get(int id)
         {
-            return "value";
+            IncidentData data = new IncidentData();
+
+            return data.GetIncidentById(id);
+
+            
         }
 
       

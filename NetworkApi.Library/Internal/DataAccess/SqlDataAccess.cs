@@ -18,7 +18,7 @@ namespace NetworkApi.Library.Internal.DataAccess
         }
 
         //load data with parameters like id or something
-        /*  public List<T> LoadData<T, U>(string storedProcedure, U parametres,string connectionStringName)
+          public List<T> LoadData<T, U>(string storedProcedure, U parametres,string connectionStringName)
           {
               string connectionString = GetConnectionString(connectionStringName);
 
@@ -28,7 +28,7 @@ namespace NetworkApi.Library.Internal.DataAccess
 
                   return rows;
               }
-          }*/
+          }
 
         public List<T> LoadData<T>(string storedProcedure, string connectionStringName)
         {

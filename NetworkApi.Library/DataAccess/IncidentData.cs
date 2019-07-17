@@ -19,6 +19,15 @@ namespace NetworkApi.Library.DataAccess
             return output;
         }
 
+        public IncidentModel GetIncidentById(int id)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var p = new { Id = id };
+            var output = sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB").First();
+
+            return output;
+        }
+
        
     }
 }

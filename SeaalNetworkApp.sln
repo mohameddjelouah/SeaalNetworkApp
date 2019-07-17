@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApp", "NetworkApp\Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApi.Library", "NetworkApi.Library\NetworkApi.Library.csproj", "{7E6AB4A8-CB53-4212-82F2-ED3D94B615EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApp.Library", "NetworkApp.Library\NetworkApp.Library.csproj", "{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{7E6AB4A8-CB53-4212-82F2-ED3D94B615EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E6AB4A8-CB53-4212-82F2-ED3D94B615EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E6AB4A8-CB53-4212-82F2-ED3D94B615EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
