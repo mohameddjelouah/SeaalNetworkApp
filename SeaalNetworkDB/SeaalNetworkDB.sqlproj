@@ -65,4 +65,7 @@
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Incidents.sql" />
+  </ItemGroup>
 </Project>
