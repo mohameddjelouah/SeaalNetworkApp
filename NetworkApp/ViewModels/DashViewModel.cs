@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using NetworkApp.helpers;
+using NetworkApp.Library.Api;
 
 namespace NetworkApp.ViewModels
 {
@@ -37,8 +37,13 @@ namespace NetworkApp.ViewModels
 
         public async Task  getinfo()
         {
-           // User = WindowsIdentity.GetCurrent().Name;
-            User = await _apiHelper.authe(1);
+            // User = WindowsIdentity.GetCurrent().Name;
+            var v = await _apiHelper.GetIncident(2);
+
+            User = v.Site;
+
+           
+            
         }
 
 

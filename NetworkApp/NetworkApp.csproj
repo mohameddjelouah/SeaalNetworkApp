@@ -75,8 +75,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="helpers\APIHelper.cs" />
-    <Compile Include="helpers\IAPIHelper.cs" />
     <Compile Include="ViewModels\DashViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\DashView.xaml.cs">
@@ -127,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetworkApp.Library\NetworkApp.Library.csproj">
+      <Project>{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}</Project>
+      <Name>NetworkApp.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

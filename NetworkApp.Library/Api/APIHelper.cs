@@ -6,8 +6,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using NetworkApp.Library.Models;
 
-namespace NetworkApp.helpers
+namespace NetworkApp.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
@@ -40,6 +41,26 @@ namespace NetworkApp.helpers
                 {
                     return new Exception(response.ReasonPhrase).ToString();
                     
+                }
+            }
+
+
+        }
+
+        public async Task<UIIncidentModel> GetIncident(int id)
+        {
+
+            using (HttpResponseMessage response = await apiClient.GetAsync($"api/Incident/{id}"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<UIIncidentModel>();
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+
                 }
             }
 
