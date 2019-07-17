@@ -41,5 +41,20 @@ namespace NetworkApi.Library.Internal.DataAccess
                 return rows;
             }
         }
+
+        public void SaveData<T>(string storedProcedure, T parametres, string connectionStringName)
+        {
+            string connectionString = GetConnectionString(connectionStringName);
+
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(storedProcedure, parametres, commandType: CommandType.StoredProcedure);
+   
+            }
+        }
+
+
+
+
     }
 }
