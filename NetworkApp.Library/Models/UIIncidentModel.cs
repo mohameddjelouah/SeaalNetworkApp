@@ -15,7 +15,7 @@ namespace NetworkApp.Library.Models
         public string Site { get; set; }
         public string Nature { get; set; }
         public string Operateur { get; set; }
-        public int isClotured { get; set; }
+        public bool isClotured { get; set; }
         public string Solution { get; set; }
         public DateTime ClotureDate { get; set; }
         public string AddBy { get; set; }

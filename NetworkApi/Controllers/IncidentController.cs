@@ -35,6 +35,12 @@ namespace NetworkApi.Controllers
             
         }
 
-      
+        // POST api/Incident
+        public void Post([FromBody]string value)
+        {
+
+        }
+
+
     }
 }
