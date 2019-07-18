@@ -12,25 +12,35 @@ namespace NetworkApp.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
-        private HttpClient apiClient;
+        private HttpClient _apiClient;
 
         public APIHelper()
         {
             InitializeClient();
         }
-        private void InitializeClient()
+
+        public HttpClient ApiClient
         {
-            apiClient = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true });
-            apiClient.BaseAddress = new Uri(ConfigurationManager.AppSettings["api"]);
-            apiClient.DefaultRequestHeaders.Accept.Clear();
-            apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            get
+            {
+                return _apiClient;
+            }
             
         }
 
+        private void InitializeClient()
+        {
+            _apiClient = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true });
+            _apiClient.BaseAddress = new Uri(ConfigurationManager.AppSettings["api"]);
+            _apiClient.DefaultRequestHeaders.Accept.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
+        }
+        //this is a test methode to talk to the api
         public async Task<string> authe(int id)
         {
 
-            using (HttpResponseMessage response = await apiClient.GetAsync($"api/Values/{id}"))
+            using (HttpResponseMessage response = await _apiClient.GetAsync($"api/Values/{id}"))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -47,46 +57,7 @@ namespace NetworkApp.Library.Api
 
         }
 
-        public async Task<UIIncidentModel> GetIncident(int id)
-        {
-
-            using (HttpResponseMessage response = await apiClient.GetAsync($"api/Incident/{id}"))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<UIIncidentModel>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-
-                }
-            }
-
-
-        }
-
-
-        public async Task<List<UIIncidentModel>> GetAllIncident()
-        {
-
-            using (HttpResponseMessage response = await apiClient.GetAsync($"api/Incident"))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsAsync<List<UIIncidentModel>>();
-                    return result;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-
-                }
-            }
-
-
-        }
+      
     }
 
 }

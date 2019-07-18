@@ -30,7 +30,7 @@ namespace NetworkApi.Library.Internal.DataAccess
               }
           }
         //load date without parametres like get all 
-        public List<T> LoadData<T>(string storedProcedure, string connectionStringName)
+      /*  public List<T> LoadData<T>(string storedProcedure, string connectionStringName)
         {
             string connectionString = GetConnectionString(connectionStringName); 
 
@@ -40,7 +40,7 @@ namespace NetworkApi.Library.Internal.DataAccess
 
                 return rows;
             }
-        }
+        }*/
 
 
         // save data in the data base

@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="loadincident"  Grid.Column="0" Grid.Row="1">load inciiiident</Button>
+        
         <DataGrid x:Name="dataincident" Grid.Column="1" Grid.Row="2">
             
         </DataGrid>

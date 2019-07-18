@@ -12,11 +12,11 @@ namespace NetworkApp.ViewModels
     public class DashViewModel : Screen
     {
         private string _auth;
-        private IAPIHelper _apiHelper;
+        private IIncidentEndPoint _incidentEndPoint;
 
-        public DashViewModel(IAPIHelper apiHelper)
+        public DashViewModel(IIncidentEndPoint incidentEndPoint)
         {
-            _apiHelper = apiHelper;
+            _incidentEndPoint = incidentEndPoint;
         }
         public string Auth
         {
@@ -38,9 +38,9 @@ namespace NetworkApp.ViewModels
         public async Task  getinfo()
         {
             // User = WindowsIdentity.GetCurrent().Name;
-            var incidentbyid = await _apiHelper.GetIncident(2);
+            var incidentbyid = await _incidentEndPoint.GetIncident(2);
 
-            var listofincidents = await _apiHelper.GetAllIncident();
+            var listofincidents = await _incidentEndPoint.GetAllIncident();
 
             User = listofincidents.Count().ToString();
 

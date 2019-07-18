@@ -14,7 +14,7 @@ namespace NetworkApi.Library.DataAccess
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var output = sql.LoadData<IncidentModel>("dbo.spGetAllIncidents", "SeaalNetworkDB");
+            var output = sql.LoadData<IncidentModel, dynamic>("dbo.spGetAllIncidents", new { }, "SeaalNetworkDB");
 
             return output;
         }

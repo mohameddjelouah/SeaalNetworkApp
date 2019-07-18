@@ -16,46 +16,39 @@ namespace NetworkApp.ViewModels
        
 
 
-        private IAPIHelper _apiHelper;
+        
+        private IIncidentEndPoint _incidentEndPoint;
 
-
-        public IncidentViewModel(IAPIHelper apiHelper)
+        public IncidentViewModel(IIncidentEndPoint incidentEndPoint)
         {
-            _apiHelper = apiHelper;
-            data();
+            _incidentEndPoint = incidentEndPoint;
+
+           
 
         }
-        
+
+        protected override async void OnViewLoaded(object view)
+        {
+            base.OnViewLoaded(view);
+            await LoadIncidents();
+        }
 
 
-        public async Task  data ()
+        private async Task  LoadIncidents ()
         {
             
-            var listofincidents = await _apiHelper.GetAllIncident();
+            var listofincidents = await _incidentEndPoint.GetAllIncident();
             dataincident =new BindableCollection<UIIncidentModel>(listofincidents);
             NotifyOfPropertyChange(() => dataincident);
             
         }
-        public async Task loadincident()
-        {
-            await data();
-        }
+       
 
 
 
 
 
-       /* async public Task<IncidentViewModel> BuildViewModelAsync()
-        {
-            BindableCollection<UIIncidentModel> tmpData = await data();
-            return new IncidentViewModel(tmpData);
-        }
-
-        // private constructor called by the async method
-        private IncidentViewModel(BindableCollection<UIIncidentModel> Data)
-        {
-            this.dataincident = Data;
-        }*/
+      
     }
 }
 

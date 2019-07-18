@@ -10,7 +10,8 @@ namespace NetworkApp.Library.Api
         
 
         Task<string> authe(int id);
-        Task<UIIncidentModel> GetIncident(int id);
-        Task<List<UIIncidentModel>> GetAllIncident();
+        
+
+        HttpClient ApiClient { get; }
     }
 }
