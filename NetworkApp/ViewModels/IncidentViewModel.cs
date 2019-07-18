@@ -22,8 +22,8 @@ namespace NetworkApp.ViewModels
         public IncidentViewModel(IAPIHelper apiHelper)
         {
             _apiHelper = apiHelper;
+            data();
 
-            
         }
         
 

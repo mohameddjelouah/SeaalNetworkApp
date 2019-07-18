@@ -10,15 +10,16 @@ namespace NetworkApp.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-        private DashViewModel _dashvm;
-        private IncidentViewModel _inciVM;
-        public ShellViewModel(DashViewModel dashvm, IncidentViewModel InciVM)
+       
+        private SimpleContainer _container;
+        public ShellViewModel(SimpleContainer container)
         {
             // i should put here a check code for auth users in the domain if they aren't auth
             // i will show a box plz auth ur not auth to the domain and close the application
-                _dashvm = dashvm;
-                _inciVM = InciVM;
-            ActivateItem(_dashvm);
+            _container = container;
+
+
+            ActivateItem(_container.GetInstance<DashViewModel>());
           
             
            
@@ -26,13 +27,14 @@ namespace NetworkApp.ViewModels
 
         public void dash()
         {
-            ActivateItem(_dashvm);
+            // when i click it give me a new instance of dashboared 
+            ActivateItem(_container.GetInstance<DashViewModel>());
             
         }
         public void inci()
         {
-            
-            ActivateItem(_inciVM);
+            // when i click it give me a new instance of incident datagridview 
+            ActivateItem(_container.GetInstance<IncidentViewModel>());
         }
     }
 }
