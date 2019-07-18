@@ -17,6 +17,8 @@ namespace NetworkApi.Library.Models
         public int isClotured { get; set; }
         public string Solution { get; set; }
         public DateTime ClotureDate { get; set; }
+        public string AddBy { get; set; }
+
 
     }
 }

@@ -38,9 +38,11 @@ namespace NetworkApp.ViewModels
         public async Task  getinfo()
         {
             // User = WindowsIdentity.GetCurrent().Name;
-            var v = await _apiHelper.GetIncident(2);
+            var incidentbyid = await _apiHelper.GetIncident(2);
 
-            User = v.Site;
+            var listofincidents = await _apiHelper.GetAllIncident();
+
+            User = listofincidents.Count().ToString();
 
            
             

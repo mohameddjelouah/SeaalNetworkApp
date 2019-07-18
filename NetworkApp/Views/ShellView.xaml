@@ -16,6 +16,10 @@
 
             </MenuItem>
         </Menu>
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="dash">dash</Button>
+            <Button x:Name="inci">incident</Button>
+        </StackPanel>
         <Grid>
             <ContentControl x:Name="ActiveItem" Margin="10"/>
         </Grid>

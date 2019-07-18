@@ -66,6 +66,27 @@ namespace NetworkApp.Library.Api
 
 
         }
+
+
+        public async Task<List<UIIncidentModel>> GetAllIncident()
+        {
+
+            using (HttpResponseMessage response = await apiClient.GetAsync($"api/Incident"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<List<UIIncidentModel>>();
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+
+                }
+            }
+
+
+        }
     }
 
 }

@@ -16,10 +16,6 @@ namespace NetworkApi.Controllers
 
 
 
-
-
-
-
         // GET: api/Incident
         public List<IncidentModel> Get()
         {
@@ -27,13 +23,6 @@ namespace NetworkApi.Controllers
 
             return data.GetAllIncidents();
         }
-
-
-
-
-
-
-
 
 
         // GET: api/Incident/5

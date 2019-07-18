@@ -9,5 +9,6 @@
 	[isClotured] INT NOT NULL,
     [Solution] NVARCHAR(MAX) NULL, 
     [ClotureDate] DATETIME2 NULL, 
+    [AddBy] NVARCHAR(200) NOT NULL, 
     
 )
