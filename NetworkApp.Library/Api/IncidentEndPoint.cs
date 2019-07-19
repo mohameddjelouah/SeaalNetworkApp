@@ -55,5 +55,28 @@ namespace NetworkApp.Library.Api
 
 
         }
+
+        //*********************************************************************************************************************
+
+        public async Task AddIncident(UIIncidentModel incident)
+        {
+
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync($"api/Incident",incident))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+
+                }
+            }
+
+
+        }
+
+
     }
 }

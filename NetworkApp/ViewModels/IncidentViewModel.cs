@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,7 @@ namespace NetworkApp.ViewModels
         {
             base.OnViewLoaded(view);
             await LoadIncidents();
+            await PostIncidents();
         }
 
 
@@ -42,13 +44,33 @@ namespace NetworkApp.ViewModels
             NotifyOfPropertyChange(() => dataincident);
             
         }
-       
+
+        private async Task PostIncidents()
+        {
+
+            await _incidentEndPoint.AddIncident(new UIIncidentModel {
+
+               IncidentDate = DateTime.Now,
+                Direction = "add the incident",
+                Site = "add the incident",
+                Nature = "add the incident",
+                Operateur = "add the incident",
+                isClotured = true,
+                Solution = "add the incident",
+                ClotureDate = DateTime.Now,
+                AddBy = WindowsIdentity.GetCurrent().Name,
+
+
+            } );
+           
+
+        }
 
 
 
 
 
-      
+
     }
 }
 

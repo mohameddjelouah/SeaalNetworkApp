@@ -1,10 +1,13 @@
 ﻿using NetworkApi.Library.Internal.DataAccess;
 using NetworkApi.Library.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace NetworkApi.Library.DataAccess
 {
@@ -23,9 +26,18 @@ namespace NetworkApi.Library.DataAccess
         {
             SqlDataAccess sql = new SqlDataAccess();
             var p = new { Id = id };
-            var output = sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB").First();
+            var output = sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB").FirstOrDefault();
 
             return output;
+        }
+
+        //add incident to the database
+
+        public void AddIncident(IncidentModel incident)
+        {
+            //add the incident to the database
+            SqlDataAccess sql = new SqlDataAccess();
+            sql.SaveData("dbo.spInsertIncident", incident, "SeaalNetworkDB");
         }
 
        

@@ -66,6 +66,7 @@
     <Build Include="dbo\Tables\Incidents.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllIncidents.sql" />
     <Build Include="dbo\Stored Procedures\spGetIncidentById.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertIncident.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

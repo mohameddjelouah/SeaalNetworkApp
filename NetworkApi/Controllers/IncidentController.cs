@@ -36,8 +36,13 @@ namespace NetworkApi.Controllers
         }
 
         // POST api/Incident
-        public void Post([FromBody]string value)
+        public void Post([FromBody] IncidentModel incident)
         {
+            // we have to use auto mapper to use it with mapping IncidentModel in the library with the post incident model in the âpi
+            IncidentData data = new IncidentData();
+
+            data.AddIncident(incident);
+
 
         }
 

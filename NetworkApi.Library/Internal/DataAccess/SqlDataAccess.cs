@@ -29,18 +29,7 @@ namespace NetworkApi.Library.Internal.DataAccess
                   return rows;
               }
           }
-        //load date without parametres like get all 
-      /*  public List<T> LoadData<T>(string storedProcedure, string connectionStringName)
-        {
-            string connectionString = GetConnectionString(connectionStringName); 
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                List<T> rows = connection.Query<T>(storedProcedure, commandType: CommandType.StoredProcedure).ToList();
-
-                return rows;
-            }
-        }*/
 
 
         // save data in the data base

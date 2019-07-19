@@ -8,5 +8,6 @@ namespace NetworkApp.Library.Api
     {
         Task<List<UIIncidentModel>> GetAllIncident();
         Task<UIIncidentModel> GetIncident(int id);
+        Task AddIncident(UIIncidentModel incident);
     }
 }
