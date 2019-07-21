@@ -8,28 +8,37 @@
         mc:Ignorable="d"
         Title="ShellView" Height="600" Width="1000">
     <DockPanel>
-        <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+        
         <StackPanel>
-            <Expander
-                    HorizontalAlignment="Stretch"
-                    Header="dashboard">
-                <StackPanel
-                         Orientation="Vertical"
-                         TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
-                         Margin="24,8,24,16">
-                    <Button x:Name="dash">dash</Button>
-                    <Button x:Name="inci">incident</Button>
-                </StackPanel>
-            </Expander>
+            <ListBox Padding="37 14" FontSize="15" >
+                <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
+                    <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-            <Expander
-                    HorizontalAlignment="Stretch"
-                    Header="Incident">
-                <StackPanel  Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}"  Margin="24,8,24,16">
-                    <Button>dash</Button>
-                    <Button >incident</Button>
-                </StackPanel>
-            </Expander>
+                        <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                        <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                        <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+
+                    </ListView>
+                </Expander>
+
+                <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
+                    <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                     
+                        <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                        <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                        <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+                        <Button x:Name="dash">dash</Button>
+                        <Button x:Name="inci">incident</Button>
+
+                    </ListView>
+                </Expander>
+
+                <TextBlock    HorizontalAlignment="Stretch" 
+                      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                         Margin="24,8,24,16"
+                    Text="Incident"/>
+
+            </ListBox>
         </StackPanel>
         
         <Grid>
