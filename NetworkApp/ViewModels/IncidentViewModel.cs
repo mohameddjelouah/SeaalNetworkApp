@@ -32,7 +32,7 @@ namespace NetworkApp.ViewModels
         {
             base.OnViewLoaded(view);
             await LoadIncidents();
-            await PostIncidents();
+            //await PostIncidents();
         }
 
 
@@ -45,10 +45,10 @@ namespace NetworkApp.ViewModels
             
         }
 
-        private async Task PostIncidents()
+       private async Task PostIncidents()
         {
 
-            await _incidentEndPoint.AddIncident(new UIIncidentModel {
+           await _incidentEndPoint.AddIncident(new UIIncidentModel {
 
                IncidentDate = DateTime.Now,
                 Direction = "add the incident",
@@ -62,7 +62,7 @@ namespace NetworkApp.ViewModels
 
 
             } );
-           
+
 
         }
 
@@ -72,5 +72,5 @@ namespace NetworkApp.ViewModels
 
 
     }
-}
+    }
 

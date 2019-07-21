@@ -4,24 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkApp.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ShellView" Height="600" Width="1000">
     <DockPanel>
-        <Menu DockPanel.Dock="Left" Background="Red">
-            <MenuItem Header="_FILE" Margin="10">
-                
-            </MenuItem>
+        <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+        <StackPanel>
+            <Expander
+                    HorizontalAlignment="Stretch"
+                    Header="dashboard">
+                <StackPanel
+                         Orientation="Vertical"
+                         TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                         Margin="24,8,24,16">
+                    <Button x:Name="dash">dash</Button>
+                    <Button x:Name="inci">incident</Button>
+                </StackPanel>
+            </Expander>
 
-            <MenuItem Header="_account" Margin="10">
-
-            </MenuItem>
-        </Menu>
-        <StackPanel Orientation="Vertical">
-            <Button x:Name="dash">dash</Button>
-            <Button x:Name="inci">incident</Button>
+            <Expander
+                    HorizontalAlignment="Stretch"
+                    Header="Incident">
+                <StackPanel  Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}"  Margin="24,8,24,16">
+                    <Button>dash</Button>
+                    <Button >incident</Button>
+                </StackPanel>
+            </Expander>
         </StackPanel>
+        
         <Grid>
             <ContentControl x:Name="ActiveItem" Margin="10"/>
         </Grid>
+
+
+
+
+
+
+
+
+
+
+
+       
+            
+            
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </DockPanel>
 </Window>
