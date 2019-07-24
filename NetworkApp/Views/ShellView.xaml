@@ -7,45 +7,129 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ShellView" Height="600" Width="1000">
-    <DockPanel>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+           
+        </Storyboard>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="menu">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="menu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
         
-        <StackPanel>
+        <Grid HorizontalAlignment="Right">
+            <StackPanel>
+
+                <ToggleButton x:Name="menu" Style="{StaticResource MaterialDesignActionToggleButton}">
+
+                    <ToggleButton.Content>
+                        <materialDesign:PackIcon Kind="Menu" />
+                    </ToggleButton.Content>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon Kind="CloseBox" />
+                    </materialDesign:ToggleButtonAssist.OnContent>
+
+                    
+                </ToggleButton>            
+               
+
+            </StackPanel>
+            
+
+        </Grid>
+        <!--<StackPanel>
+           
             <ListBox Padding="37 14" FontSize="15" >
-                <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
-                    <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBoxItem>
+                    <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
+                        <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                        <TextBlock   Margin="24,8,24,16" Text="Incident"/>
-                        <TextBlock   Margin="24,8,24,16" Text="add incident"/>
-                        <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+                            <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                            <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                            <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+                            <Button x:Name="dash">dash</Button>
+                            <Button x:Name="inci">incident</Button>
 
-                    </ListView>
-                </Expander>
+                        </ListView>
+                    </Expander>
 
-                <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
-                    <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                     
-                        <TextBlock   Margin="24,8,24,16" Text="Incident"/>
-                        <TextBlock   Margin="24,8,24,16" Text="add incident"/>
-                        <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
-                        <Button x:Name="dash">dash</Button>
-                        <Button x:Name="inci">incident</Button>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
+                        <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                    </ListView>
-                </Expander>
+                            <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                            <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                            <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
 
-                <TextBlock    HorizontalAlignment="Stretch" 
+                        </ListView>
+                    </Expander>
+                </ListBoxItem>
+               
+                <ListBoxItem>
+
+                    <TextBlock    HorizontalAlignment="Stretch" 
                       TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                          Margin="24,8,24,16"
                     Text="Incident"/>
 
+                </ListBoxItem>
+
+
+
+                
+
             </ListBox>
-        </StackPanel>
+        </StackPanel>-->
         
-        <Grid>
-            <ContentControl x:Name="ActiveItem" Margin="10"/>
+        <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+               
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Recycle" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+           
         </Grid>
 
 
+        <!--<Grid>
+            <ContentControl x:Name="ActiveItem" Margin="10"/>
+        </Grid>-->
+
+
 
 
 
@@ -68,5 +152,5 @@
         
         
         
-    </DockPanel>
+    </Grid>
 </Window>
