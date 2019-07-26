@@ -6,22 +6,20 @@
              xmlns:local="clr-namespace:NetworkApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="1020">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            
             
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
            
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+           
         </Grid.RowDefinitions>
         
-        <DataGrid x:Name="dataincident" Grid.Column="1" Grid.Row="2">
+        <DataGrid x:Name="dataincident" Grid.Column="0" Grid.Row="0">
             
         </DataGrid>
             
