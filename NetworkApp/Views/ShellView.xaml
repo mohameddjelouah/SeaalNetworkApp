@@ -5,31 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkApp.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Background="white"
         Title="ShellView" Height="720" Width="1280">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
             
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="menu">
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="menu">
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="menu">
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="menu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
     </Window.Triggers>
@@ -44,43 +44,51 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <!--end of page structure and definitions-->
 
         <!--banner on the top with menu button and exit minimize and maximaze -->
-        <materialDesign:ColorZone  materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
+        <materialDesign:ColorZone Background="#5c6bc0" Padding="10" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
             <Grid>
                 <!--<materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10"/>-->
-                <ToggleButton x:Name="menu" Width="35" Height="35" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
+                <ToggleButton Background="{x:Null}" x:Name="menu" Width="35" Height="35" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
 
                     <ToggleButton.Content>
-                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" />
+                        <materialDesign:PackIcon Kind="MenuOpen" Width="30" Height="30" />
                     </ToggleButton.Content>
                     <materialDesign:ToggleButtonAssist.OnContent>
-                        <materialDesign:PackIcon Kind="MenuOpen" Width="30" Height="30"/>
+                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30"/>
                     </materialDesign:ToggleButtonAssist.OnContent>
                  </ToggleButton>
             </Grid>
         </materialDesign:ColorZone>
         <!--end of banner on the top with menu button and exit minimize and maximaze-->
 
+
+        <!--displaying user control-->
+        <Grid Grid.Row="1"  Grid.Column="1">
+            <ContentControl x:Name="ActiveItem" Margin="10"/>
+        </Grid>
+        <!--end of displaying user control-->
+
         <!--the menu-->
-        <Grid x:Name="GridMenu" Width="250" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
+        
+        <Grid  Margin="5 10 0 10" Background="{StaticResource PrimaryHueMidBrush}" x:Name="GridMenu" Width="200" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+           
             <StackPanel>
-                <ListBox Padding="37 14" FontSize="15" >
-                    <ListBoxItem>
-                        <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
-                            <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox FontSize="15">
+
+                    <ListBoxItem Foreground="White" >
+
+                        <TextBlock    HorizontalAlignment="Stretch" Margin="24,8,24,16" Text="Dashboared" />
+
+                    </ListBoxItem>
+
+                    <ListBoxItem >
+                        <Expander  Foreground="White" Header="Incident" Background="{x:Null}">
+                            <ListView Foreground="White" HorizontalAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 
                                 <TextBlock   Margin="24,8,24,16" Text="Incident"/>
                                 <TextBlock   Margin="24,8,24,16" Text="add incident"/>
@@ -90,59 +98,10 @@
 
                             </ListView>
                         </Expander>
-
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Expander  HorizontalAlignment="Stretch"  Header="dashboard">
-                            <ListView HorizontalAlignment="Right"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-                                <TextBlock   Margin="24,8,24,16" Text="Incident"/>
-                                <TextBlock   Margin="24,8,24,16" Text="add incident"/>
-                                <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
-
-                            </ListView>
-                        </Expander>
-                    </ListBoxItem>
-
-                    <ListBoxItem>
-
-                        <TextBlock    HorizontalAlignment="Stretch" 
-                      TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
-                         Margin="24,8,24,16"
-                    Text="Incident"/>
-
                     </ListBoxItem>
                 </ListBox>
             </StackPanel>
         </Grid>
         <!--end of menu-->
-        <!--displaying user control-->
-        <Grid Grid.Row="1" Grid.Column="1">
-            <ContentControl x:Name="ActiveItem" Margin="10"/>
-        </Grid>
-        <!--end of displaying user control-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </Grid>
 </Window>

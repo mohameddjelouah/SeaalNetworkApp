@@ -23,5 +23,10 @@ namespace NetworkApp.Views
         {
             InitializeComponent();
         }
+
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
