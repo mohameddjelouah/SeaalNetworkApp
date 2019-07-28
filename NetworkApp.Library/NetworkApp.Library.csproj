@@ -49,8 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\APIHelper.cs" />
-    <Compile Include="Api\IAPIHelper.cs" />
-    <Compile Include="Api\IIncidentEndPoint.cs" />
+    <Compile Include="Api\Interfaces\IAPIHelper.cs" />
+    <Compile Include="Api\Interfaces\IIncidentEndPoint.cs" />
     <Compile Include="Api\IncidentEndPoint.cs" />
     <Compile Include="Models\UIIncidentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

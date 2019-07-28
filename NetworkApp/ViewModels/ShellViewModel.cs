@@ -10,8 +10,20 @@ namespace NetworkApp.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
+        private bool _resizeApp;
 
-       
+        public bool ResizeApp
+        {
+            get { return _resizeApp; }
+            set {
+
+                _resizeApp = value;
+                NotifyOfPropertyChange(() => ResizeApp);
+
+            }
+        }
+
+
         public ShellViewModel()
         {
             // i should put here a check code for auth users in the domain if they aren't auth
@@ -37,5 +49,26 @@ namespace NetworkApp.ViewModels
             ActivateItem(IoC.Get<IncidentViewModel>());
         }
        
+        public void ExitApplication()
+        {
+            TryClose();
+           
+        }
+        public void MinApplication()
+        {
+            App.Current.MainWindow.WindowState = System.Windows.WindowState.Minimized;
+        }
+        public void MaxApplication()
+        {
+            if (ResizeApp == true)
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Maximized;
+            }
+            else
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
+            }
+            
+        }
     }
 }

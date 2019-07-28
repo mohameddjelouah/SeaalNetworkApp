@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using NetworkApp.Library.Models;
 
-namespace NetworkApp.Library.Api
+namespace NetworkApp.Library.Api.Interfaces
 {
     public interface IIncidentEndPoint
     {

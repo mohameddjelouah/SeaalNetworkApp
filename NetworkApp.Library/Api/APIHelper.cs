@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using NetworkApp.Library.Models;
+using NetworkApp.Library.Api.Interfaces;
 
 namespace NetworkApp.Library.Api
 {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using NetworkApp.Library.Api;
+using NetworkApp.Library.Api.Interfaces;
 
 namespace NetworkApp.ViewModels
 {

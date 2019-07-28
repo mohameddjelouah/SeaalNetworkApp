@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace NetworkApp.Library.Api
+namespace NetworkApp.Library.Api.Interfaces
 {
     public interface IAPIHelper
     {

@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using NetworkApp.Library.Api;
+using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.ViewModels;
 using System;
 using System.Collections.Generic;

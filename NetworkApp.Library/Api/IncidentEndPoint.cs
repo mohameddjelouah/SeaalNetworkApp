@@ -1,4 +1,5 @@
-﻿using NetworkApp.Library.Models;
+﻿using NetworkApp.Library.Api.Interfaces;
+using NetworkApp.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

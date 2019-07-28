@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NetworkApp.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Background="white"
-        Title="ShellView" Height="720" Width="1280">
+        Title="ShellView" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -50,10 +50,35 @@
         <!--end of page structure and definitions-->
 
         <!--banner on the top with menu button and exit minimize and maximaze -->
-        <materialDesign:ColorZone Background="#5c6bc0" Padding="10" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
+        <materialDesign:ColorZone Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
             <Grid>
-                <!--<materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10"/>-->
-                <ToggleButton Background="{x:Null}" x:Name="menu" Width="35" Height="35" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
+                <!--exit minimize and maximaze -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="MinApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                       
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                    <!--<Button x:Name="MaxApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                        <materialDesign:PackIcon Kind="WindowMaximize" />
+                    </Button>-->
+                    <ToggleButton  x:Name="MaxApplication" IsChecked="{Binding ResizeApp}" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Style="{StaticResource MaterialDesignActionToggleButton}">
+
+                        <ToggleButton.Content>
+                            <materialDesign:PackIcon Kind="WindowMaximize" />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon Kind="WindowRestore"/>
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+                  
+                    <Button x:Name="ExitApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                        <materialDesign:PackIcon Kind="WindowClose" />
+                    </Button>
+                </StackPanel>
+                <!--end of exit minimize and maximaze -->
+
+                <!--menu buton-->
+                <ToggleButton  Margin="5 0 0 0" Background="{x:Null}" x:Name="menu" Width="30" Height="30" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
 
                     <ToggleButton.Content>
                         <materialDesign:PackIcon Kind="MenuOpen" Width="30" Height="30" />
@@ -62,6 +87,7 @@
                         <materialDesign:PackIcon Kind="Menu" Width="30" Height="30"/>
                     </materialDesign:ToggleButtonAssist.OnContent>
                  </ToggleButton>
+                <!--end of menu buton-->
             </Grid>
         </materialDesign:ColorZone>
         <!--end of banner on the top with menu button and exit minimize and maximaze-->
