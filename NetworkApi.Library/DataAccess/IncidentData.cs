@@ -40,6 +40,13 @@ namespace NetworkApi.Library.DataAccess
             sql.SaveData("dbo.spInsertIncident", incident, "SeaalNetworkDB");
         }
 
+        public void DeleteIncident(int id)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var p = new { Id = id };
+            sql.DeleteData("dbo.spDeleteIncident", p, "SeaalNetworkDB");
+        }
+
        
     }
 }

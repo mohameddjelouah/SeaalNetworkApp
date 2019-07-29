@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using NetworkApp.Helper;
 using NetworkApp.Library.Api;
 using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.Library.Models;
@@ -10,37 +9,23 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+
 
 namespace NetworkApp.ViewModels
 {
     public class IncidentViewModel : Screen
     {
         public BindableCollection<UIIncidentModel> dataincident { get; set; }
-
-        private UIIncidentModel _selectedIncident;
-        
-        private RelayCommand<dynamic> _commandStart;
-
-        public UIIncidentModel SelectedIncident
-        {
-            get { return _selectedIncident; }
-            set {
-                _selectedIncident = value;
-
-            }
-        }
-
-
-
+        IWindowManager _window;
 
         private IIncidentEndPoint _incidentEndPoint;
 
-        public IncidentViewModel(IIncidentEndPoint incidentEndPoint)
+        public IncidentViewModel(IIncidentEndPoint incidentEndPoint, IWindowManager window)
         {
             _incidentEndPoint = incidentEndPoint;
+            _window = window;
 
-           
+
 
         }
 
@@ -60,31 +45,25 @@ namespace NetworkApp.ViewModels
             NotifyOfPropertyChange(() => dataincident);
             
         }
-        public ICommand deleteIncident
+        
+        public void Delete(UIIncidentModel incident)
         {
-
-
-            get
-                 {
-                if (_commandStart == null)
-                {
-
-                    _commandStart = new RelayCommand<dynamic>(param => delete());
-                }
-                return _commandStart;
-            }
-
-        }
-        public void delete()
-        {
-            
-            Console.WriteLine(SelectedIncident.Id.ToString());
+            //delete incident
+            var u = IoC.Get<EditIncidentViewModel>();
+            u.ID = incident.Id;
+            _window.ShowDialog(u ,null, null);
+            dataincident.Remove(incident);
         }
 
-        public void edit()
+        
+        
+        public void Edit(UIIncidentModel incident)
         {
-            Console.WriteLine(SelectedIncident.Id.ToString());
+           //edit incident
+
         }
+
+
 
         private async Task PostIncidents()
         {

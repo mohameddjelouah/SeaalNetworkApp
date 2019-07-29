@@ -34,6 +34,7 @@ namespace NetworkApp
                 .Where(type => type.Name.EndsWith("ViewModel"))
                 .ToList()
                 .ForEach(ViewModelType => _container.RegisterPerRequest(ViewModelType, ViewModelType.ToString(), ViewModelType));
+            
                 
         }
         protected override void OnStartup(object sender, StartupEventArgs e)

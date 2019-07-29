@@ -78,6 +78,49 @@ namespace NetworkApp.Library.Api
 
         }
 
+        //*********************************************************************************************************************
+
+        public async Task DeleteIncident(int id)
+        {
+
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.DeleteAsync($"api/Incident/{id}"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+
+                }
+            }
+
+
+        }
+
+
+        //*********************************************************************************************************************
+
+        public async Task EditIncident(UIIncidentModel incident)
+        {
+
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PutAsJsonAsync($"api/Incident/{incident.Id}", incident))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+
+                }
+            }
+
+
+        }
+
 
     }
 }

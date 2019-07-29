@@ -45,6 +45,18 @@ namespace NetworkApi.Library.Internal.DataAccess
         }
 
 
+        public void DeleteData<T>(string storedProcedure, T parametres, string connectionStringName)
+        {
+            string connectionString = GetConnectionString(connectionStringName);
+
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Execute(storedProcedure, parametres, commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
+
 
 
     }

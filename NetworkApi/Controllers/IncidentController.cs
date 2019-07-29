@@ -46,6 +46,18 @@ namespace NetworkApi.Controllers
 
         }
 
+        // DELETE api/Incident/5
+        public void Delete(int id)
+        {
+            IncidentData data = new IncidentData();
+            data.DeleteIncident(id);
+
+        }
+        // PUT api/Incident/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
 
     }
 }
