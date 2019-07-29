@@ -9,6 +9,7 @@
         Title="ShellView" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
+       
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
