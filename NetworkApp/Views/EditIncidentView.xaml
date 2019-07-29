@@ -5,10 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkApp.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         xmlns:cal="http://www.caliburnproject.org"
+        cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
         mc:Ignorable="d"
-        Title="EditIncidentView" Height="450" Width="800">
+        Title="EditIncidentView" Height="150" Width="300" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
-        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}">
+        <StackPanel>
+        <materialDesign:ColorZone BorderThickness="1" CornerRadius="5" BorderBrush="{DynamicResource MaterialDesignDivider}">
+               
+            <StackPanel Orientation="Horizontal" Margin="15">
+                <materialDesign:PackIcon Kind="Dangerous" Foreground="DarkRed" Width="50" Height="50"/>
+                <TextBlock Foreground="Gray" Width="200" Margin="15 20" TextWrapping="Wrap">
+                           vous etes sur de supprimer l incident
+                </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <materialDesign:ColorZone BorderBrush="{DynamicResource MaterialDesignDivider}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                    <Button cal:Message.Attach="delete"  Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center">
+                        delete
+                    </Button>
+
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </StackPanel>
+        <!--<materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent>
                 <Grid Width="300" Height="150" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="15">
@@ -18,13 +39,34 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
-                        <Button x:Name="delete" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center">
+                        <Button cal:Message.Attach="delete" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center">
                             delete
                         </Button>
 
                     </StackPanel>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>
+
+            <Grid>
+                <StackPanel Width="200" HorizontalAlignment="Left" Background="#FF472076">
+                    <Grid Height="150" Background="White">
+
+                    </Grid>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <materialDesign:PackIcon Kind="PhotoAlbum" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Photos" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                        <StackPanel Orientation="Horizontal" Height="30">
+                            <materialDesign:PackIcon Kind="Music" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Music" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost>-->
+        
     </Grid>
 </Window>
