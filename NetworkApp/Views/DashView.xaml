@@ -5,9 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Background="WhiteSmoke"
-             d:DesignHeight="650" d:DesignWidth="1020">
-    <Grid>
+             mc:Ignorable="d"  Background="Transparent"
+             d:DesignHeight="650" d:DesignWidth="1020" >
+
+    <Border Background="WhiteSmoke" CornerRadius="20" BorderThickness="1" >   
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
@@ -30,4 +32,6 @@
             
         </Button>
     </Grid>
+    </Border>
+
 </UserControl>

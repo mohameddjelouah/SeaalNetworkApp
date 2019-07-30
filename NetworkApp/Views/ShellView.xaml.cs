@@ -24,8 +24,23 @@ namespace NetworkApp.Views
             InitializeComponent();
         }
 
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            DragMove();
+        }
+
+        private void ColorZone_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (App.Current.MainWindow.WindowState == System.Windows.WindowState.Normal)
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Maximized;
+            }
+            else
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
+            }
 
         }
     }

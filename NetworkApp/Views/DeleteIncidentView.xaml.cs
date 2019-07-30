@@ -17,9 +17,9 @@ namespace NetworkApp.Views
     /// <summary>
     /// Interaction logic for EditIncidentView.xaml
     /// </summary>
-    public partial class EditIncidentView : Window
+    public partial class DeleteIncidentView : Window
     {
-        public EditIncidentView()
+        public DeleteIncidentView()
         {
             InitializeComponent();
         }

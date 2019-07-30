@@ -54,6 +54,7 @@ namespace NetworkApp.ViewModels
             TryClose();
            
         }
+         
         public void MinApplication()
         {
             App.Current.MainWindow.WindowState = System.Windows.WindowState.Minimized;

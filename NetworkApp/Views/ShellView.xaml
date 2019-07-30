@@ -7,20 +7,20 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        
         mc:Ignorable="d" Background="white"
-        Title="ShellView" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="ShellView" MouseDown="Window_MouseDown" Height="720" Width="1280" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
 
     <Window.Resources>
        
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="GridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
@@ -52,7 +52,7 @@
         <!--end of page structure and definitions-->
 
         <!--banner on the top with menu button and exit minimize and maximaze -->
-        <materialDesign:ColorZone Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
+        <materialDesign:ColorZone MouseDoubleClick="ColorZone_MouseDoubleClick"  Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
             <Grid>
                 <!--exit minimize and maximaze -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -96,18 +96,18 @@
 
 
         <!--displaying user control-->
-        
-            <Grid  Grid.Row="1"  Grid.Column="1">
+
+        <Grid  Grid.Row="1"  Grid.Column="1" >
             
                 <ContentControl x:Name="ActiveItem" Margin="10"/>
-           
+            
         </Grid>
         
         <!--end of displaying user control-->
 
         <!--the menu-->
-        
-        <Grid  Margin="5 10 0 10" Background="{StaticResource PrimaryHueMidBrush}" x:Name="GridMenu" Width="200" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+        <Border x:Name="GridMenu" RenderTransformOrigin="0.5,0.5" Margin="5 10 0 10" Width="200" Background="#263238" CornerRadius="18" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
+        <Grid>
            
             <StackPanel>
                 <ListBox FontSize="15">
@@ -135,6 +135,7 @@
                 </ListBox>
             </StackPanel>
         </Grid>
+        </Border>
         <!--end of menu-->
     </Grid>
 </Window>

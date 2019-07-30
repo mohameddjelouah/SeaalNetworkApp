@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NetworkApp.ViewModels
 {
-    public class EditIncidentViewModel : Screen
+    public class DeleteIncidentViewModel : Screen
     {
 
         private IIncidentEndPoint _incidentEndPoint;
@@ -39,7 +39,7 @@ namespace NetworkApp.ViewModels
         //}
 
        
-        public EditIncidentViewModel(IIncidentEndPoint incidentEndPoint)
+        public DeleteIncidentViewModel(IIncidentEndPoint incidentEndPoint)
         {
             //Console.WriteLine(oincident.Id.ToString());
             _incidentEndPoint = incidentEndPoint;
@@ -48,7 +48,12 @@ namespace NetworkApp.ViewModels
         public async Task delete()
         {
            await _incidentEndPoint.DeleteIncident(ID);
-            TryClose();
+            TryClose(true);
+        }
+
+        public void cancele()
+        {
+            TryClose(false);
         }
     }
 }

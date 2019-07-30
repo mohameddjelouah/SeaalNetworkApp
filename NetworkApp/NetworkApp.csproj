@@ -82,14 +82,14 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ViewModels\DashViewModel.cs" />
-    <Compile Include="ViewModels\EditIncidentViewModel.cs" />
+    <Compile Include="ViewModels\DeleteIncidentViewModel.cs" />
     <Compile Include="ViewModels\IncidentViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\DashView.xaml.cs">
       <DependentUpon>DashView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditIncidentView.xaml.cs">
-      <DependentUpon>EditIncidentView.xaml</DependentUpon>
+    <Compile Include="Views\DeleteIncidentView.xaml.cs">
+      <DependentUpon>DeleteIncidentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IncidentView.xaml.cs">
       <DependentUpon>IncidentView.xaml</DependentUpon>
@@ -105,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditIncidentView.xaml">
+    <Page Include="Views\DeleteIncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

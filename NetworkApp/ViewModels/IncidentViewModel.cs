@@ -49,10 +49,14 @@ namespace NetworkApp.ViewModels
         public void Delete(UIIncidentModel incident)
         {
             //delete incident
-            var u = IoC.Get<EditIncidentViewModel>();
+            var u = IoC.Get<DeleteIncidentViewModel>();
             u.ID = incident.Id;
-            _window.ShowDialog(u ,null, null);
-            dataincident.Remove(incident);
+            var result = _window.ShowDialog(u ,null, null);
+            if (result.HasValue && result.Value)
+            {
+                dataincident.Remove(incident);
+            }
+            
         }
 
         
