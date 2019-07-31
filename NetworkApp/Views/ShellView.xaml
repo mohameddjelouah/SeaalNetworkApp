@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkApp.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         xmlns:cal="http://www.caliburnproject.org"
+             cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
        
         mc:Ignorable="d" Background="white"
         Title="ShellView" MouseDown="Window_MouseDown" Height="720" Width="1280" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
@@ -13,14 +15,14 @@
        
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Width)" Storyboard.TargetName="GridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Width)" Storyboard.TargetName="GridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
@@ -106,36 +108,59 @@
         <!--end of displaying user control-->
 
         <!--the menu-->
-        <Border x:Name="GridMenu" RenderTransformOrigin="0.5,0.5" Margin="5 10 0 10" Width="200" Background="#263238" CornerRadius="18" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left">
-        <Grid>
-           
-            <StackPanel>
-                <ListBox FontSize="15">
+        
+        
+            <!--<materialDesign:Card x:Name="GridMenu" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="200" Background="#263238" RenderTransformOrigin="0.5,0.5" Margin="5 10 0 10" UniformCornerRadius="7" materialDesign:ShadowAssist.ShadowDepth="Depth1" >-->
+        <ScrollViewer x:Name="GridMenu" Background="green" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Margin="10">
 
-                    <ListBoxItem Foreground="White" >
+                <Grid >
+                    <Button x:Name="inci" Background="{x:Null}"   BorderBrush="{x:Null}"  FontSize="15" Foreground="White">
 
-                        <TextBlock    HorizontalAlignment="Stretch" Margin="24,8,24,16" Text="Dashboared" />
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Kind="ViewDashboard" Width="15" Height="15" Margin="0 0 20 0"  Foreground="White"/>
+                            <TextBlock  VerticalAlignment="Center"  Text="Dashboard" ></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Grid>
 
-                    </ListBoxItem>
+                <Grid>
+                    <materialDesign:PackIcon Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                    <ListBoxItem Content="Incident"  FontSize="15" Foreground="White"/>
+                    <Expander  IsExpanded="False" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                        <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <TextBlock   Text="Afficher les Incident" Padding="20 5"></TextBlock>
+                            <TextBlock Text="Cloturer les Incident" Padding="20 5"/>
+                            <TextBlock Text="Ajouter Incident" Padding="20 5"/>
+                           
+                            <!--<Button x:Name="dash" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">dash</Button>
+                            <Button x:Name="inci" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">inci</Button>-->
+                        </ListView>
+                    </Expander>
+                </Grid>
+                    <!--<ListBox FontSize="15">
+                        <ListBoxItem Foreground="White" >
 
-                    <ListBoxItem >
+                            <TextBlock    HorizontalAlignment="Stretch" Margin="24,8,24,16" Text="Dashboared" />
+
+                        </ListBoxItem>
+                        <ListBoxItem >
                         <Expander  Foreground="White" Header="Incident" Background="{x:Null}">
                             <ListView Foreground="White" HorizontalAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 
-                                <TextBlock   Margin="24,8,24,16" Text="Incident"/>
-                                <TextBlock   Margin="24,8,24,16" Text="add incident"/>
-                                <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
-                                <Button x:Name="dash">dash</Button>
-                                <Button x:Name="inci">incident</Button>
-                               
-
+                                 <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                                 <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                                 <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+                                 <Button x:Name="dash">dash</Button>
+                                 <Button x:Name="inci">incident</Button>
                             </ListView>
                         </Expander>
                     </ListBoxItem>
-                </ListBox>
-            </StackPanel>
-        </Grid>
-        </Border>
+                </ListBox>-->
+              </StackPanel>
+            </ScrollViewer>
+        <!--</materialDesign:Card>-->
+        
         <!--end of menu-->
     </Grid>
 </Window>
