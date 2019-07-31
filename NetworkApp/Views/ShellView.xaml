@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:NetworkApp.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          xmlns:cal="http://www.caliburnproject.org"
+         xmlns:cm="http://www.caliburnproject.org"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
        
         mc:Ignorable="d" Background="white"
@@ -125,11 +126,12 @@
                 </Grid>
 
                 <Grid>
+                    <!--we manage to get the text block clicking--> 
                     <materialDesign:PackIcon Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
                     <ListBoxItem Content="Incident"  FontSize="15" Foreground="White"/>
                     <Expander  IsExpanded="False" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
                         <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <TextBlock   Text="Afficher les Incident" Padding="20 5"></TextBlock>
+                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Afficher les Incident" Padding="20 5"></TextBlock>
                             <TextBlock Text="Cloturer les Incident" Padding="20 5"/>
                             <TextBlock Text="Ajouter Incident" Padding="20 5"/>
                            
