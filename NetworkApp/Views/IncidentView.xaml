@@ -6,11 +6,16 @@
              xmlns:local="clr-namespace:NetworkApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:cal="http://www.caliburnproject.org"
+             
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" Background="White"
              d:DesignHeight="650" d:DesignWidth="1020">
 
+
+
+
    
+
     <Grid>
         
         
@@ -27,8 +32,9 @@
             
 
         </Grid.RowDefinitions>
-
-        <DataGrid x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0">
+        <ProgressBar  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+       
+        <DataGrid  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
                 <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}"/>

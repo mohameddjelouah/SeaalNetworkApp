@@ -15,6 +15,31 @@ namespace NetworkApp.ViewModels
 {
     public class IncidentViewModel : Screen
     {
+        private bool _load = false;
+
+        public bool Load
+        {
+            get { return _load; }
+            set
+            {
+                _load = value;
+                NotifyOfPropertyChange(() => Load);
+
+            }
+        }
+
+        private bool _prog = true;
+
+        public bool Prog
+        {
+            get { return _prog; }
+            set
+            {
+                _prog = value;
+                NotifyOfPropertyChange(() => Prog);
+
+            }
+        }
         public BindableCollection<UIIncidentModel> dataincident { get; set; }
         IWindowManager _window;
 
@@ -24,16 +49,19 @@ namespace NetworkApp.ViewModels
         {
             _incidentEndPoint = incidentEndPoint;
             _window = window;
-
+          
 
 
         }
 
         protected override async void OnViewLoaded(object view)
-        {
+        { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
             await LoadIncidents();
             //await PostIncidents();
+            Prog = false;
+            Load = true;
+
         }
 
 

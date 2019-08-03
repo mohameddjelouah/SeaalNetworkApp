@@ -7,14 +7,16 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          xmlns:cal="http://www.caliburnproject.org"
          xmlns:cm="http://www.caliburnproject.org"
-             cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
+        
+        cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
        
         mc:Ignorable="d" Background="white"
         Title="ShellView" MouseDown="Window_MouseDown" Height="720" Width="1280" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
 
     <Window.Resources>
+
+        
        
-        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
@@ -66,16 +68,17 @@
                     <!--<Button x:Name="MaxApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
                         <materialDesign:PackIcon Kind="WindowMaximize" />
                     </Button>-->
-                    <ToggleButton  x:Name="MaxApplication" IsChecked="{Binding ResizeApp}" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Style="{StaticResource MaterialDesignActionToggleButton}">
+                    <ToggleButton   x:Name="MaxApplication" IsChecked="{Binding ResizeApp}" Background="Transparent" BorderBrush="{x:Null}" Width="30" Height="30" Style="{StaticResource MaterialDesignActionAccentToggleButton}">
 
                         <ToggleButton.Content>
+                            
                             <materialDesign:PackIcon Kind="WindowMaximize" />
                         </ToggleButton.Content>
                         <materialDesign:ToggleButtonAssist.OnContent>
                             <materialDesign:PackIcon Kind="WindowRestore"/>
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>
-                  
+                    
                     <Button x:Name="ExitApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
                         <materialDesign:PackIcon Kind="WindowClose" />
                     </Button>
@@ -83,7 +86,7 @@
                 <!--end of exit minimize and maximaze -->
 
                 <!--menu buton-->
-                <ToggleButton  Margin="5 0 0 0" Background="{x:Null}" x:Name="menu" Width="30" Height="30" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
+                <ToggleButton   Margin="5 0 0 0" Background="Transparent" x:Name="menu" Width="30" Height="30" Style="{StaticResource MaterialDesignActionToggleButton}" HorizontalAlignment="Left">
 
                     <ToggleButton.Content>
                         <materialDesign:PackIcon Kind="MenuOpen" Width="30" Height="30" />
@@ -109,14 +112,16 @@
         <!--end of displaying user control-->
 
         <!--the menu-->
-        
-        
-            <!--<materialDesign:Card x:Name="GridMenu" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="200" Background="#263238" RenderTransformOrigin="0.5,0.5" Margin="5 10 0 10" UniformCornerRadius="7" materialDesign:ShadowAssist.ShadowDepth="Depth1" >-->
-        <ScrollViewer x:Name="GridMenu" Background="green" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
-                <StackPanel Margin="10">
 
-                <Grid >
-                    <Button x:Name="inci" Background="{x:Null}"   BorderBrush="{x:Null}"  FontSize="15" Foreground="White">
+        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+
+            <StackPanel >
+                <Separator Height="15"   Background="#ffebee" Style="{StaticResource MaterialDesignLightSeparator}" Margin="5 -12 5 0" ></Separator>
+                <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+                <StackPanel Margin="10">
+                  
+                    <Grid >
+                            <Button x:Name="inci" Background="{x:Null}"   BorderBrush="{x:Null}"  FontSize="15" Foreground="White">
 
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Kind="ViewDashboard" Width="15" Height="15" Margin="0 0 20 0"  Foreground="White"/>
@@ -128,11 +133,11 @@
                 <Grid>
                     <!--we manage to get the text block clicking--> 
                     <materialDesign:PackIcon Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-                    <ListBoxItem Content="Incident"  FontSize="15" Foreground="White"/>
+                    <ListBoxItem  Content="Incident"  FontSize="15" Foreground="White"/>
                     <Expander  IsExpanded="False" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
                         <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Afficher les Incident" Padding="20 5"></TextBlock>
-                            <TextBlock Text="Cloturer les Incident" Padding="20 5"/>
+                            <TextBlock  Text="Cloturer les Incident" Padding="20 5"/>
                             <TextBlock Text="Ajouter Incident" Padding="20 5"/>
                            
                             <!--<Button x:Name="dash" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">dash</Button>
@@ -161,6 +166,8 @@
                 </ListBox>-->
               </StackPanel>
             </ScrollViewer>
+            </StackPanel>
+        </materialDesign:ColorZone>
         <!--</materialDesign:Card>-->
         
         <!--end of menu-->
