@@ -19,7 +19,7 @@
        
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="230"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
@@ -27,7 +27,7 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="230"/>
             </DoubleAnimationUsingKeyFrames>
             
         </Storyboard>
@@ -113,59 +113,114 @@
 
         <!--the menu-->
 
-        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+        <materialDesign:ColorZone Width="230" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
 
             <StackPanel >
+               
                 <Separator Height="15"   Background="#ffebee" Style="{StaticResource MaterialDesignLightSeparator}" Margin="5 -12 5 0" ></Separator>
+              
+                
+                <!--start menu-->
                 <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-                <StackPanel Margin="10">
-                  
-                    <Grid >
-                            <Button x:Name="inci" Background="{x:Null}"   BorderBrush="{x:Null}"  FontSize="15" Foreground="White">
 
-                        <StackPanel Orientation="Horizontal" >
-                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Kind="ViewDashboard" Width="15" Height="15" Margin="0 0 20 0"  Foreground="White"/>
-                            <TextBlock  VerticalAlignment="Center"  Text="Dashboard" ></TextBlock>
-                        </StackPanel>
-                    </Button>
-                </Grid>
 
-                <Grid>
-                    <!--we manage to get the text block clicking--> 
-                    <materialDesign:PackIcon Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-                    <ListBoxItem  Content="Incident"  FontSize="15" Foreground="White"/>
-                    <Expander  IsExpanded="False" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                        <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Afficher les Incident" Padding="20 5"></TextBlock>
-                            <TextBlock  Text="Cloturer les Incident" Padding="20 5"/>
-                            <TextBlock Text="Ajouter Incident" Padding="20 5"/>
+                    <StackPanel>
+
+                        <Grid>
+                            <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                            <ListBoxItem  Content="Gere les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
                            
-                            <!--<Button x:Name="dash" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">dash</Button>
-                            <Button x:Name="inci" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">inci</Button>-->
-                        </ListView>
-                    </Expander>
-                </Grid>
-                    <!--<ListBox FontSize="15">
-                        <ListBoxItem Foreground="White" >
+                        </Grid>
 
-                            <TextBlock    HorizontalAlignment="Stretch" Margin="24,8,24,16" Text="Dashboared" />
 
-                        </ListBoxItem>
-                        <ListBoxItem >
-                        <Expander  Foreground="White" Header="Incident" Background="{x:Null}">
-                            <ListView Foreground="White" HorizontalAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                        <Grid>
+                            <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                            <ListBoxItem  Content="Gere les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
+                            <Expander  Header="{Binding Path=Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                                <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    
+                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Afficher les Incidents" Padding="20 5"/>
+                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Cloturer les Incidents" Padding="20 5"/>
+                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Ajouter les Incidents" Padding="20 5"/>
+                                       
+                                </ListView>
+                            </Expander>
+                        </Grid>
 
-                                 <TextBlock   Margin="24,8,24,16" Text="Incident"/>
-                                 <TextBlock   Margin="24,8,24,16" Text="add incident"/>
-                                 <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
-                                 <Button x:Name="dash">dash</Button>
-                                 <Button x:Name="inci">incident</Button>
+
+
+
+
+
+                        <!--<Grid HorizontalAlignment="Stretch">
+                            <materialDesign:PackIcon   Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                            <ListBoxItem   Content="Gerer les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
+                            
+                        </Grid>
+
+
+
+
+                        <Grid HorizontalAlignment="Stretch">
+                        <materialDesign:PackIcon   Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                        <ListBoxItem   Content="Gerer les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
+                        <Expander     IsExpanded="False" HorizontalAlignment="Stretch" Background="{x:Null}" Foreground="White">
+                            <ListView Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock Margin="5 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"    >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Margin="0 0 5 0"  Kind="AddNetworkOutline" Width="15" Height="15"  Foreground="White"/>
+                                        <TextBlock Text="Afficher les Incident"/>
+                                    </StackPanel>
+                                </TextBlock>
+                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Ajouter Incident"  />
+                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Cloturer les Incident"  />
                             </ListView>
                         </Expander>
-                    </ListBoxItem>
-                </ListBox>-->
-              </StackPanel>
-            </ScrollViewer>
+                    </Grid>-->
+
+
+             
+                        <!--<StackPanel Margin="3 3 3 3">
+                        
+                       
+                        --><!--<Grid>
+                            --><!--we manage to get the text block clicking--><!--
+                            <materialDesign:PackIcon Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                            <ListBoxItem  Content="Gérer lesIncident" Padding="37 14" FontSize="16" Foreground="White"/>
+                            <Expander  FontSize="16"  Padding="30 0" IsExpanded="False" HorizontalAlignment="Stretch" Background="{x:Null}" Foreground="White">
+                                <ListView  FontSize="14" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <TextBlock  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Afficher les Incident"  ></TextBlock>
+                                    <TextBlock  Text="Cloturer les Incident" />
+                                    <TextBlock Text="Ajouter Incident" />
+
+                                    --><!--<Button x:Name="dash" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">dash</Button>
+                                <Button x:Name="inci" Padding="20 5" Background="{x:Null}" BorderBrush="{x:Null}"  Width="200">inci</Button>--><!--
+                                </ListView>
+                            </Expander>
+                        </Grid>-->
+                        <!--<ListBox FontSize="15">
+                            <ListBoxItem Foreground="White" >
+
+                                <TextBlock    HorizontalAlignment="Stretch" Margin="24,8,24,16" Text="Dashboared" />
+
+                            </ListBoxItem>
+                            <ListBoxItem >
+                            <Expander  Foreground="White" Header="Incident" Background="{x:Null}">
+                                <ListView Foreground="White" HorizontalAlignment="Stretch"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+                                     <TextBlock   Margin="24,8,24,16" Text="Incident"/>
+                                     <TextBlock   Margin="24,8,24,16" Text="add incident"/>
+                                     <TextBlock   Margin="24,8,24,16" Text="delete incident"/>
+                                     <Button x:Name="dash">dash</Button>
+                                     <Button x:Name="inci">incident</Button>
+                                </ListView>
+                            </Expander>
+                           </ListBoxItem>
+                         </ListBox>--><!--
+                    </StackPanel>-->
+                    </StackPanel>
+                </ScrollViewer>
+                <!--end of start menu-->
             </StackPanel>
         </materialDesign:ColorZone>
         <!--</materialDesign:Card>-->
