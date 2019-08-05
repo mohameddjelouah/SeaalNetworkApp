@@ -13,52 +13,34 @@
 
 
 
+    <UserControl.Resources>
+        <Style x:Key="wrapp" TargetType="TextBlock">
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+        </Style>
+       
 
-   
+    </UserControl.Resources>
 
     <Grid>
         
         
-        <Grid.ColumnDefinitions>
-            
-            <ColumnDefinition Width="*"/>
-           
-
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-           
-           
-            <RowDefinition Height="*"/>
-            
-
-        </Grid.RowDefinitions>
+        
         <ProgressBar  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
        
-        <DataGrid  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0">
+        <DataGrid  HorizontalAlignment="Stretch"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
-                <DataGridTextColumn Header="Direction" Binding="{Binding Path=Direction}"/>
-                <DataGridTextColumn Header="Site" Binding="{Binding Path=Site}"/>
-                <DataGridTextColumn Header="Nature" Binding="{Binding Path=Nature}"/>
-                <DataGridTextColumn Header="Operateur" Binding="{Binding Path=Operateur}"/>
-                <DataGridCheckBoxColumn Header="Cloture d'incident" Binding="{Binding Path=isClotured}"/>
-
-
-                <materialDesign:MaterialDataGridTextColumn MaxWidth="300" Header="Solution" Binding="{Binding Path=Solution}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </materialDesign:MaterialDataGridTextColumn>
-
-
-
-                <materialDesign:MaterialDataGridTextColumn Header="Date Cloture" Binding="{Binding Path=ClotureDate,StringFormat=d}"/>
-                <materialDesign:MaterialDataGridTextColumn Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
+                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
+                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction}"/>
+                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site}"/>
+                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature}"/>
+                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur}"/>
+                <!--<DataGridCheckBoxColumn Header="Cloture d'incident" Binding="{Binding Path=isClotured}"/>-->
+                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2.5*" Header="Solution" Binding="{Binding Path=Solution}"/>
+                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat=d}"/>
+                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
                
                 <!--edit button-->
-                <DataGridTemplateColumn Header="EDIT">
+                <DataGridTemplateColumn Width="auto" Header="EDIT">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button cal:Message.Attach="Edit(dataincident.SelectedItem)" Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Height="auto">
@@ -70,7 +52,7 @@
                 <!--end of edit button-->
 
                 <!--delete button-->
-                <DataGridTemplateColumn Header="DELETE">
+                <DataGridTemplateColumn Width="auto" Header="DELETE">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button cal:Message.Attach="Delete(dataincident.SelectedItem)"  Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Height="auto"  >

@@ -10,13 +10,15 @@
         
         cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
        
-        mc:Ignorable="d" Background="white"
+        mc:Ignorable="d" Background="#9e9e9e"
         Title="ShellView" MouseDown="Window_MouseDown" Height="720" Width="1280" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
 
     <Window.Resources>
 
-        
-       
+
+        <ControlTemplate x:Key="NoScroll">
+            <ItemsPresenter></ItemsPresenter>
+        </ControlTemplate>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="230"/>
@@ -57,7 +59,7 @@
         <!--end of page structure and definitions-->
 
         <!--banner on the top with menu button and exit minimize and maximaze -->
-        <materialDesign:ColorZone MouseDoubleClick="ColorZone_MouseDoubleClick"  Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
+        <materialDesign:ColorZone cm:Message.Attach="[Event MouseDoubleClick] = [Action MinMax()]"   Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
             <Grid>
                 <!--exit minimize and maximaze -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -68,7 +70,7 @@
                     <!--<Button x:Name="MaxApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
                         <materialDesign:PackIcon Kind="WindowMaximize" />
                     </Button>-->
-                    <ToggleButton   x:Name="MaxApplication" IsChecked="{Binding ResizeApp}" Background="Transparent" BorderBrush="{x:Null}" Width="30" Height="30" Style="{StaticResource MaterialDesignActionAccentToggleButton}">
+                    <ToggleButton   x:Name="MaxResApplication" IsChecked="{Binding ResizeApp}" Background="Transparent" BorderBrush="{x:Null}" Width="30" Height="30" Style="{StaticResource MaterialDesignActionAccentToggleButton}">
 
                         <ToggleButton.Content>
                             
@@ -105,7 +107,7 @@
 
         <Grid  Grid.Row="1"  Grid.Column="1" >
             
-                <ContentControl x:Name="ActiveItem" Margin="10"/>
+                <ContentControl x:Name="ActiveItem" />
             
         </Grid>
         
@@ -113,45 +115,48 @@
 
         <!--the menu-->
 
-        <materialDesign:ColorZone Width="230" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+        <materialDesign:ColorZone Width="230" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
 
-            <StackPanel >
+           
                
-                <Separator Height="15"   Background="#ffebee" Style="{StaticResource MaterialDesignLightSeparator}" Margin="5 -12 5 0" ></Separator>
+               
               
                 
                 <!--start menu-->
-                <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+            <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
 
 
                     <StackPanel>
+                    <Grid Margin="10 -2 10 0">
+                        <Separator Height="15"  Background="#ffebee" Style="{StaticResource MaterialDesignLightSeparator}"  ></Separator>
+                    </Grid>
 
-                        <Grid>
-                            <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-                            <ListBoxItem  Content="Gere les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
+                    <Grid  >
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                        <ListBoxItem VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"  Padding="37 14" FontSize="15" Foreground="White">
+
+                            <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Dashboard"/>
+                        </ListBoxItem>
                            
                         </Grid>
 
 
-                        <Grid>
-                            <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-                            <ListBoxItem  Content="Gere les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
-                            <Expander  Header="{Binding Path=Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                                <ListView  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    
-                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Afficher les Incidents" Padding="20 5"/>
-                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Cloturer les Incidents" Padding="20 5"/>
-                                            <TextBlock cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]" Text="Ajouter les Incidents" Padding="20 5"/>
+                        <Grid >
+                            <materialDesign:PackIcon Kind="Walker" Width="15" Height="15" Margin="10 16" Foreground="White"/>
+                        <ListBoxItem   Content="Gere les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
+                            <Expander  IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                                <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                                <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" Padding="20 5"/>
+                                <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Cloturer les Incidents" Padding="20 5"/>
+                                <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Ajouter les Incidents" Padding="20 5"/>
                                        
                                 </ListView>
                             </Expander>
                         </Grid>
+                       
 
-
-
-
-
-
+                       
                         <!--<Grid HorizontalAlignment="Stretch">
                             <materialDesign:PackIcon   Kind="Wifi" Width="15" Height="15" Margin="10 16" Foreground="White"/>
                             <ListBoxItem   Content="Gerer les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
@@ -166,14 +171,14 @@
                         <ListBoxItem   Content="Gerer les Incident" Padding="37 14" FontSize="15" Foreground="White"/>
                         <Expander     IsExpanded="False" HorizontalAlignment="Stretch" Background="{x:Null}" Foreground="White">
                             <ListView Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <TextBlock Margin="5 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"    >
+                                <TextBlock Margin="5 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]"    >
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Margin="0 0 5 0"  Kind="AddNetworkOutline" Width="15" Height="15"  Foreground="White"/>
                                         <TextBlock Text="Afficher les Incident"/>
                                     </StackPanel>
                                 </TextBlock>
-                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Ajouter Incident"  />
-                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Cloturer les Incident"  />
+                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]"   Text="Ajouter Incident"  />
+                                <TextBlock Margin="20 0 0 0" Padding="20 5" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]"   Text="Cloturer les Incident"  />
                             </ListView>
                         </Expander>
                     </Grid>-->
@@ -189,7 +194,7 @@
                             <ListBoxItem  Content="Gérer lesIncident" Padding="37 14" FontSize="16" Foreground="White"/>
                             <Expander  FontSize="16"  Padding="30 0" IsExpanded="False" HorizontalAlignment="Stretch" Background="{x:Null}" Foreground="White">
                                 <ListView  FontSize="14" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <TextBlock  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action inci()]"   Text="Afficher les Incident"  ></TextBlock>
+                                    <TextBlock  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]"   Text="Afficher les Incident"  ></TextBlock>
                                     <TextBlock  Text="Cloturer les Incident" />
                                     <TextBlock Text="Ajouter Incident" />
 
@@ -221,7 +226,7 @@
                     </StackPanel>
                 </ScrollViewer>
                 <!--end of start menu-->
-            </StackPanel>
+           
         </materialDesign:ColorZone>
         <!--</materialDesign:Card>-->
         

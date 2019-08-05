@@ -37,13 +37,13 @@ namespace NetworkApp.ViewModels
            
         }
 
-        public void dash()
+        public void DisplayDashboard()
         {
             // when i click it give me a new instance of dashboared 
             ActivateItem(IoC.Get<DashViewModel>());
             
         }
-        public void inci()
+        public void DisplayAllIncidents()
         {
             // when i click it give me a new instance of incident datagridview 
             ActivateItem(IoC.Get<IncidentViewModel>());
@@ -59,7 +59,7 @@ namespace NetworkApp.ViewModels
         {
             App.Current.MainWindow.WindowState = System.Windows.WindowState.Minimized;
         }
-        public void MaxApplication()
+        public void MaxResApplication()
         {
             if (ResizeApp == true)
             {
@@ -71,5 +71,20 @@ namespace NetworkApp.ViewModels
             }
             
         }
+        public void MinMax()
+        {
+            if (App.Current.MainWindow.WindowState == System.Windows.WindowState.Normal)
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Maximized;
+                ResizeApp = true;
+            }
+            else
+            {
+                App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
+                ResizeApp = false;
+               
+            }
+        }
+        
     }
 }

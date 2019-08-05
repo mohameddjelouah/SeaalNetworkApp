@@ -31,17 +31,6 @@ namespace NetworkApp.Views
             DragMove();
         }
 
-        private void ColorZone_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (App.Current.MainWindow.WindowState == System.Windows.WindowState.Normal)
-            {
-                App.Current.MainWindow.WindowState = System.Windows.WindowState.Maximized;
-            }
-            else
-            {
-                App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
-            }
-
-        }
+        
     }
 }
