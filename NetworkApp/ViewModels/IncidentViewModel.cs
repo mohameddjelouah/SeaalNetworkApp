@@ -2,9 +2,11 @@
 using NetworkApp.Library.Api;
 using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.Library.Models;
+using NetworkApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -58,7 +60,7 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
             await LoadIncidents();
-            //await PostIncidents();
+            
             Prog = false;
             Load = true;
 
@@ -79,6 +81,7 @@ namespace NetworkApp.ViewModels
             //delete incident
             var u = IoC.Get<DeleteIncidentViewModel>();
             u.ID = incident.Id;
+            
             var result = _window.ShowDialog(u ,null, null);
             if (result.HasValue && result.Value)
             {
