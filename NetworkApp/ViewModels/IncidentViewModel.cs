@@ -101,7 +101,7 @@ namespace NetworkApp.ViewModels
             {
                 _search = value;
 
-                var list = listofincidents.Where(x => (x.Direction.Contains(value) || x.AddBy.Contains(value) || x.Site.Contains(value))).ToList();
+                var list = listofincidents.Where(x => x.Direction.Contains(value) || x.AddBy.Contains(value) || x.Site.Contains(value)).ToList();
               
                 dataincident = new BindableCollection<UIIncidentModel>(list);
 
