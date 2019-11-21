@@ -17,6 +17,9 @@ namespace NetworkApp.ViewModels
 {
     public class IncidentViewModel : Screen
     {
+
+        public List<UIIncidentModel> listofincidents { get; set; }
+       
         private bool _load = false;
 
         public bool Load
@@ -42,7 +45,20 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        public BindableCollection<UIIncidentModel> dataincident { get; set; }
+        
+
+        private BindableCollection<UIIncidentModel> _dataincident;
+
+        public BindableCollection<UIIncidentModel> dataincident
+        {
+            get { return _dataincident; }
+            set {
+                _dataincident = value;
+                NotifyOfPropertyChange(() => dataincident);
+            
+            }
+        }
+
         IWindowManager _window;
 
         private IIncidentEndPoint _incidentEndPoint;
@@ -59,6 +75,7 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
+
             await LoadIncidents();
             
             Prog = false;
@@ -70,21 +87,35 @@ namespace NetworkApp.ViewModels
         private async Task  LoadIncidents ()
         {
             
-            var listofincidents = await _incidentEndPoint.GetAllIncident();
+             listofincidents = await _incidentEndPoint.GetAllIncident();
             dataincident =new BindableCollection<UIIncidentModel>(listofincidents);
-            NotifyOfPropertyChange(() => dataincident);
+            
             
         }
-        
-        public void Delete(UIIncidentModel incident)
+
+        private string _search;
+        public string search
+        {
+            get { return _search; }
+            set
+            {
+                _search = value;
+
+                var list = listofincidents.Where(x => (x.Direction.Contains(value) || x.AddBy.Contains(value) || x.Site.Contains(value))).ToList();
+              
+                dataincident = new BindableCollection<UIIncidentModel>(list);
+
+            }
+        }
+
+        public async Task Delete(UIIncidentModel incident)
         {
             //delete incident
             var u = IoC.Get<DeleteIncidentViewModel>();
-            u.ID = incident.Id;
-            
             var result = _window.ShowDialog(u ,null, null);
             if (result.HasValue && result.Value)
             {
+                await _incidentEndPoint.DeleteIncident(incident.Id);
                 dataincident.Remove(incident);
             }
             
@@ -100,13 +131,13 @@ namespace NetworkApp.ViewModels
 
 
 
-        private async Task PostIncidents()
+        private async Task PostIncidents(int i)
         {
 
            await _incidentEndPoint.AddIncident(new UIIncidentModel {
 
                IncidentDate = DateTime.Now,
-                Direction = "add the incident",
+                Direction = $"add the incident {i}",
                 Site = "add the incident",
                 Nature = "add the incident",
                 Operateur = "add the incident",

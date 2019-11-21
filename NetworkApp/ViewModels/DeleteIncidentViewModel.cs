@@ -12,42 +12,20 @@ namespace NetworkApp.ViewModels
     public class DeleteIncidentViewModel : Screen
     {
 
-        private IIncidentEndPoint _incidentEndPoint;
+        
 
-        private int Id;
-
-        public int ID
-        {
-            get { return Id; }
-            set { Id = value;
-
-                NotifyOfPropertyChange(() => ID);
-            }
-        }
-
-
-        //private UIIncidentModel _incident;
-        //public UIIncidentModel incident
-        //{
-        //    get { return _incident; }
-        //    set {
-        //        _incident = value;
-                
-        //        NotifyOfPropertyChange(() => incident);
-        //        ;
-        //    }
-        //}
 
        
-        public DeleteIncidentViewModel(IIncidentEndPoint incidentEndPoint)
+       
+        public DeleteIncidentViewModel()
         {
-            //Console.WriteLine(oincident.Id.ToString());
-            _incidentEndPoint = incidentEndPoint;
+            
+            
         }
 
-        public async Task delete()
+        public void delete()
         {
-           await _incidentEndPoint.DeleteIncident(ID);
+           
             TryClose(true);
         }
 

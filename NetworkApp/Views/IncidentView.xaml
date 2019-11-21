@@ -22,18 +22,36 @@
     </UserControl.Resources>
 
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <ProgressBar Grid.RowSpan="2"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+
+        <DockPanel Background="#222f3e" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
+
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Width="40" Height="40" Margin="10 3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Kind="PersonSearch" Foreground="{Binding ElementName=search, Path=Foreground}" />
+                <TextBox  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" materialDesign:TextFieldAssist.UnderlineBrush="White"    Foreground="White" DockPanel.Dock="Left"  Margin="10 3"  x:Name="search" Width="300" materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Malade......"/>
+            </StackPanel>
+
+
+            <Button x:Name="AddMalade" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="AddCircle" Height="auto" Width="auto" />
+            </Button>
+        </DockPanel>
         
         
-        
-        <ProgressBar  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
-       
-        <DataGrid  HorizontalAlignment="Stretch"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
-                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction}"/>
-                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site}"/>
-                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature}"/>
-                <DataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur}"/>
                 <!--<DataGridCheckBoxColumn Header="Cloture d'incident" Binding="{Binding Path=isClotured}"/>-->
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2.5*" Header="Solution" Binding="{Binding Path=Solution}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat=d}"/>
