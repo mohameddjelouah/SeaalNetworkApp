@@ -19,15 +19,14 @@ namespace NetworkApp.ViewModels
 
                 _resizeApp = value;
                 NotifyOfPropertyChange(() => ResizeApp);
-
+                
             }
         }
 
 
         public ShellViewModel()
         {
-            // i should put here a check code for auth users in the domain if they aren't auth
-            // i will show a box plz auth ur not auth to the domain and close the application
+           
             
 
 

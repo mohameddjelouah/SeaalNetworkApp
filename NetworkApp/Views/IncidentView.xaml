@@ -8,7 +8,7 @@
              xmlns:cal="http://www.caliburnproject.org"
              
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
-             mc:Ignorable="d" Background="White"
+             mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1020">
 
 
