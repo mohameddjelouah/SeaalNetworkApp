@@ -47,7 +47,13 @@ namespace NetworkApp.ViewModels
             // when i click it give me a new instance of incident datagridview 
             ActivateItem(IoC.Get<IncidentViewModel>());
         }
-       
+
+        public void AddIncidents()
+        {
+            ActivateItem(IoC.Get<AddIncidentViewModel>());
+        }
+
+
         public void ExitApplication()
         {
             TryClose();

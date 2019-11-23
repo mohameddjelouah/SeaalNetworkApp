@@ -7,16 +7,120 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:cal="http://www.caliburnproject.org"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Background="White"
               d:DesignHeight="650" d:DesignWidth="1020">
 
     
                  <Grid>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition  Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                   
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                     
+                    <StackPanel Grid.Column="0" >
+
+                        <StackPanel  Orientation="Horizontal">
+                           <Label Content="Date d'Incident :"/>
+                           <DatePicker  Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                         </StackPanel>
+                        <StackPanel  Orientation="Horizontal">
+                           <Label Content="Direction :"/>
+                           <ComboBox
+                                materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding ElementName=DisplaySelectedItemCheckBox, Path=IsChecked}"
+                                Margin="0 8 0 8"
+                                HorizontalAlignment="Left">
+                                                <ComboBoxItem
+                                  IsSelected="True">
+                                                    Cliental
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>
+                                                    assinissement
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>
+                                                    Production
+                                                </ComboBoxItem>
+                                                <ComboBoxItem>
+                                                    Step
+                                                </ComboBoxItem>
+                           </ComboBox>
+
+                        </StackPanel>
+           
+                        
+                        <StackPanel  Orientation="Horizontal">
+                            <Label Content="Site"/>
+                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal">
+                            <Label Content="Nature d'incident"/>
+                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal">
+                            <Label Content="Operateur"/>
+                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+
+        <Separator Height="15"  Background="Black"   Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
+
+
+
+
+        <StackPanel   Grid.Column="2">
+
+
+                        <StackPanel  Orientation="Horizontal">
+                            <Label Content="Solution : "/>
+                            <TextBox 
+                                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                Margin="32,0,0,0"
+                                VerticalAlignment="Top"
+                                Height="100"
+                                AcceptsReturn="True"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto"
+                                materialDesign:HintAssist.Hint="This is a text area"
+                                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+                               
+
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal">
+                            <Label Content="Date de cloture :"/>
+                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                        </StackPanel>
+
+                       
+                            <CheckBox x:Name="DisplaySelectedItemCheckBox" IsThreeState="False" Margin="0 8 0 0">
+                                incident pas encore cloturer
+                            </CheckBox>
+                            <Button Width="100" VerticalAlignment="Bottom" />
+
+                        
+
+
+
+        </StackPanel>
+                     
 
                  </Grid> 
 </UserControl>
