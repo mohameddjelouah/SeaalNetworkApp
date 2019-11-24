@@ -38,13 +38,13 @@
                         
                         <DockPanel Grid.Row="1" Margin="20" >
                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Direction :"/>
-                             <ComboBox x:Name="Direction" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5">
-                                   <ComboBoxItem >
-                                         Cliental
-                                   </ComboBoxItem>
-                                   <ComboBoxItem>
-                                         assinissement
-                                   </ComboBoxItem>                                             
+                             <ComboBox x:Name="Directions" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedDirection}">
+                                      <ComboBox.ItemTemplate> 
+                                           <DataTemplate > 
+                                               <TextBlock Text="{Binding Direction}" /> 
+                                           </DataTemplate > 
+                                      </ComboBox.ItemTemplate > 
+                                          
                              </ComboBox>
 
                         </DockPanel>
@@ -52,30 +52,14 @@
 
                         <DockPanel Grid.Row="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Site"/>
-                             <ComboBox x:Name="Site"  Width="Auto" MaxWidth="400" IsEditable="True" materialDesign:HintAssist.Hint="-- Choissier la Site --" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                                  <ComboBoxItem  >
-                                                        bachdjerrah
-                                                  </ComboBoxItem>
-                                                  <ComboBoxItem>
-                                                        ruisseau
-                                                  </ComboBoxItem>
-                                                    <ComboBoxItem>
-                                                        heussinday
-                                                    </ComboBoxItem>
-                                                    <ComboBoxItem>
-                                                        rv2000
-                                                    </ComboBoxItem>
-                                                    <ComboBoxItem>
-                                                        ainbenian
-                                                    </ComboBoxItem>
-                                                    <ComboBoxItem>
-                                                        reghia
-                                                    </ComboBoxItem>
-                                                    <ComboBoxItem>
-                                                        prise deau
-                                                    </ComboBoxItem>
+                             <ComboBox x:Name="SelectedDirection_Sites"  Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la Site --" SelectedItem="{Binding SelectedSite}">
 
-                              </ComboBox>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate >
+                                        <TextBlock Text="{Binding Site}" />
+                                    </DataTemplate >
+                                </ComboBox.ItemTemplate >
+                            </ComboBox>
                         </DockPanel>
 
                         <DockPanel Grid.Row="3" Margin="20" >

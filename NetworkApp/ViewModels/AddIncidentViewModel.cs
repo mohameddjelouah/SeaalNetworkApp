@@ -16,7 +16,45 @@ namespace NetworkApp.ViewModels
 {
     public class AddIncidentViewModel : Screen
     {
-        List<DirectionModel> l = new List<DirectionModel>();
+        private BindableCollection<DirectionModel> _directions;
+        public BindableCollection<DirectionModel> Directions
+        {
+            get { return _directions; }
+            set {
+                _directions = value;
+                NotifyOfPropertyChange(() => Directions);
+
+            }
+        }
+
+        
+
+        private DirectionModel _selectedDirection;
+
+        public DirectionModel SelectedDirection
+        {
+            get { return _selectedDirection; }
+            set {
+                _selectedDirection = value;
+                NotifyOfPropertyChange(() => SelectedDirection);
+               
+            }
+        }
+
+        private SiteModel _selectedSite;
+        public SiteModel SelectedSite
+        {
+            get { return _selectedSite; }
+            set
+            {
+                _selectedSite = value;
+                NotifyOfPropertyChange(() => SelectedSite);
+
+            }
+        }
+
+
+       
         private IIncidentDataEndPoint _incidentDataEndPoint;
         public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint)
         {
@@ -29,9 +67,9 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            
 
-            l = await LoadData(); 
+
+            Directions = new BindableCollection<DirectionModel>(await LoadData()) ; 
 
 
 

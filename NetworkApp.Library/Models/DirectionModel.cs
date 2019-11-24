@@ -10,7 +10,7 @@ namespace NetworkApp.Library.Models
     {
         public int Id { get; set; }
         public string Direction { get; set; }
-        public List<SiteModel> Sites { get; set; }
+        public List<SiteModel> Sites { get; set; } 
 
     }
 }
