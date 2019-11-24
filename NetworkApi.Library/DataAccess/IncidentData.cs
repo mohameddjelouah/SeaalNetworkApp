@@ -22,6 +22,23 @@ namespace NetworkApi.Library.DataAccess
             return output;
         }
 
+
+        public List<DirectionModel> GetAllDirections()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var Directions = sql.LoadData<DirectionModel, dynamic>("dbo.spGettAllDirections", new { }, "SeaalNetworkDB");
+
+            foreach (var item in Directions)
+            {
+                var directionID = new { directionID = item.Id };
+                var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID , "SeaalNetworkDB");
+                item.Sites = Sites;
+            }
+
+            return Directions;
+        }
+
         public IncidentModel GetIncidentById(int id)
         {
             SqlDataAccess sql = new SqlDataAccess();

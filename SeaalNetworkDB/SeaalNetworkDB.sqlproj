@@ -72,6 +72,8 @@
     <Build Include="dbo\Tables\Site.sql" />
     <Build Include="dbo\Tables\Nature.sql" />
     <Build Include="dbo\Tables\Operateur.sql" />
+    <Build Include="dbo\Stored Procedures\spGettAllDirections.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSitesByDirectionId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

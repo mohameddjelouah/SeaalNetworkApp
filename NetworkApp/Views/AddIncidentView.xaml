@@ -32,13 +32,13 @@
 
                         <DockPanel Grid.Row="0" Margin="20">
                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Date d'Incident :"/>
-                           <DatePicker Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier une Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                           <DatePicker x:Name="IncidentDate" Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier une Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         </DockPanel>
                         
                         
                         <DockPanel Grid.Row="1" Margin="20" >
                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Direction :"/>
-                             <ComboBox Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5">
+                             <ComboBox x:Name="Direction" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5">
                                    <ComboBoxItem >
                                          Cliental
                                    </ComboBoxItem>
@@ -52,7 +52,7 @@
 
                         <DockPanel Grid.Row="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Site"/>
-                             <ComboBox  Width="Auto" MaxWidth="400" IsEditable="True" materialDesign:HintAssist.Hint="-- Choissier la Site --" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                             <ComboBox x:Name="Site"  Width="Auto" MaxWidth="400" IsEditable="True" materialDesign:HintAssist.Hint="-- Choissier la Site --" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                                   <ComboBoxItem  >
                                                         bachdjerrah
                                                   </ComboBoxItem>
@@ -80,7 +80,7 @@
 
                         <DockPanel Grid.Row="3" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'incident"/>
-                            <ComboBox Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --">
+                            <ComboBox x:Name="Nature" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --">
                                 <ComboBoxItem  >
                                     deconnexion
                                 </ComboBoxItem>
@@ -95,7 +95,7 @@
 
                         <DockPanel Grid.Row="4" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="origin"/>
-                            <ComboBox  Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --">
+                            <ComboBox x:Name="Origin" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --">
                                 <ComboBoxItem >
                                     interne
                                 </ComboBoxItem>
@@ -109,7 +109,7 @@
 
                         <DockPanel Grid.Row="5" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Operateur"/>
-                            <ComboBox materialDesign:HintAssist.Hint="-- Choissier l'operateur --" Width="Auto" MaxWidth="400">
+                            <ComboBox x:Name="Operateur" materialDesign:HintAssist.Hint="-- Choissier l'operateur --" Width="Auto" MaxWidth="400">
                                 <ComboBoxItem >
                                     AT
                                 </ComboBoxItem>
@@ -126,7 +126,7 @@
                     <!--</Grid>-->
 
 
-                    <Separator Height="5"  Background="Black" Margin="0 20" Grid.RowSpan="6"  Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
+                    <Separator Height="5"  Background="Black" Margin="0 20 0 40" Grid.RowSpan="6"  Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
                         <Separator.LayoutTransform>
                             <RotateTransform Angle="90" />
                         </Separator.LayoutTransform>
@@ -140,7 +140,7 @@
 
                                     <DockPanel Margin="20,20,20,0" Grid.Row="0" Grid.Column="2" >
                                         <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Solution : "/>
-                                        <TextBox 
+                                        <TextBox x:Name="Solution"
                                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                                             Height="Auto"
                                             MaxHeight="150"
@@ -153,15 +153,15 @@
 
                                     <DockPanel Margin="20" Grid.Row="1" Grid.Column="2">
                                         <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Date de cloture :"/>
-                                        <DatePicker  Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <DatePicker x:Name="ClotureDate" Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
                                     </DockPanel>
 
                        
-                                        <CheckBox Margin="90,35,0,35" Grid.Row="2"  Grid.Column="2" x:Name="DisplaySelectedItemCheckBox" IsThreeState="False">
+                                        <CheckBox x:Name="isCloture" Margin="90,35,0,35" Grid.Row="2"  Grid.Column="2" IsThreeState="False">
                                             incident pas encore cloturer
                                         </CheckBox>
-                                        <Button Content="Ajouter" FontSize="22" Margin="0 20 40 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="150" MaxWidth="200" Height="Auto" MinHeight="40" MaxHeight="50"   />
+                                        <Button x:Name="AddIncident" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
 
                         
 

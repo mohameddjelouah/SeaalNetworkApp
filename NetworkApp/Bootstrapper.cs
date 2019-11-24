@@ -22,7 +22,8 @@ namespace NetworkApp
         protected override void Configure()
         {
             _container.Instance(_container)
-                .PerRequest<IIncidentEndPoint,IncidentEndPoint>();
+                .PerRequest<IIncidentEndPoint,IncidentEndPoint>()
+                .PerRequest<IIncidentDataEndPoint, IncidentDataEndPoint>();
 
             _container
                 .Singleton<IWindowManager, WindowManager>()

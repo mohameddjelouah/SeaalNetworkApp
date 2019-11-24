@@ -16,23 +16,29 @@ namespace NetworkApp.ViewModels
 {
     public class AddIncidentViewModel : Screen
     {
-        public AddIncidentViewModel()
+        List<DirectionModel> l = new List<DirectionModel>();
+        private IIncidentDataEndPoint _incidentDataEndPoint;
+        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint)
         {
+            _incidentDataEndPoint = incidentDataEndPoint;
 
+            
         }
 
         protected override async void OnViewLoaded(object view)
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            await LoadData();
-
             
 
-        }
-        private async Task LoadData()
-        {
+            l = await LoadData(); 
 
+
+
+        }
+        private async Task<List<DirectionModel>> LoadData()
+        {
+            return await _incidentDataEndPoint.GetDirections();
         }
     }
 }
