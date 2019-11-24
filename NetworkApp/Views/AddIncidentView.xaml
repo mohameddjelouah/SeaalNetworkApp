@@ -7,13 +7,20 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:cal="http://www.caliburnproject.org"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
-             mc:Ignorable="d" Background="White"
+             mc:Ignorable="d" Background="White" FontSize="15"
               d:DesignHeight="650" d:DesignWidth="1020">
 
     
                  <Grid>
 
-                   
+                    <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
@@ -21,105 +28,146 @@
                     </Grid.ColumnDefinitions>
 
                      
-                    <StackPanel Grid.Column="0" >
+                    <!--<Grid Grid.Column="0" Margin="25 20 25 20">-->
 
-                        <StackPanel  Orientation="Horizontal">
-                           <Label Content="Date d'Incident :"/>
-                           <DatePicker  Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                         </StackPanel>
-                        <StackPanel  Orientation="Horizontal">
-                           <Label Content="Direction :"/>
-                           <ComboBox
-                                materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding ElementName=DisplaySelectedItemCheckBox, Path=IsChecked}"
-                                Margin="0 8 0 8"
-                                HorizontalAlignment="Left">
-                                                <ComboBoxItem
-                                  IsSelected="True">
-                                                    Cliental
-                                                </ComboBoxItem>
-                                                <ComboBoxItem>
-                                                    assinissement
-                                                </ComboBoxItem>
-                                                <ComboBoxItem>
-                                                    Production
-                                                </ComboBoxItem>
-                                                <ComboBoxItem>
-                                                    Step
-                                                </ComboBoxItem>
-                           </ComboBox>
-
-                        </StackPanel>
-           
+                        <DockPanel Grid.Row="0" Margin="20">
+                           <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Date d'Incident :"/>
+                           <DatePicker Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier une Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        </DockPanel>
                         
-                        <StackPanel  Orientation="Horizontal">
-                            <Label Content="Site"/>
-                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        
+                        <DockPanel Grid.Row="1" Margin="20" >
+                           <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Direction :"/>
+                             <ComboBox Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5">
+                                   <ComboBoxItem >
+                                         Cliental
+                                   </ComboBoxItem>
+                                   <ComboBoxItem>
+                                         assinissement
+                                   </ComboBoxItem>                                             
+                             </ComboBox>
 
-                        </StackPanel>
-
-                        <StackPanel  Orientation="Horizontal">
-                            <Label Content="Nature d'incident"/>
-                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                        </StackPanel>
-
-
-                        <StackPanel  Orientation="Horizontal">
-                            <Label Content="Operateur"/>
-                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                        </StackPanel>
+                        </DockPanel>
 
 
-                    </StackPanel>
+                        <DockPanel Grid.Row="2" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Site"/>
+                             <ComboBox  Width="Auto" MaxWidth="400" IsEditable="True" materialDesign:HintAssist.Hint="-- Choissier la Site --" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                                  <ComboBoxItem  >
+                                                        bachdjerrah
+                                                  </ComboBoxItem>
+                                                  <ComboBoxItem>
+                                                        ruisseau
+                                                  </ComboBoxItem>
+                                                    <ComboBoxItem>
+                                                        heussinday
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem>
+                                                        rv2000
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem>
+                                                        ainbenian
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem>
+                                                        reghia
+                                                    </ComboBoxItem>
+                                                    <ComboBoxItem>
+                                                        prise deau
+                                                    </ComboBoxItem>
+
+                              </ComboBox>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="3" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'incident"/>
+                            <ComboBox Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --">
+                                <ComboBoxItem  >
+                                    deconnexion
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    perturbation
+                                </ComboBoxItem>
+
+                            </ComboBox>
+
+                        </DockPanel>
 
 
-        <Separator Height="15"  Background="Black"   Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
-            <Separator.LayoutTransform>
-                <RotateTransform Angle="90" />
-            </Separator.LayoutTransform>
-        </Separator>
+                        <DockPanel Grid.Row="4" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="origin"/>
+                            <ComboBox  Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --">
+                                <ComboBoxItem >
+                                    interne
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    externe
+                                </ComboBoxItem>
+
+                            </ComboBox>
+
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="5" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Operateur"/>
+                            <ComboBox materialDesign:HintAssist.Hint="-- Choissier l'operateur --" Width="Auto" MaxWidth="400">
+                                <ComboBoxItem >
+                                    AT
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    SLC
+                                </ComboBoxItem>
+
+                            </ComboBox>
+
+                        </DockPanel>
+
+
+
+                    <!--</Grid>-->
+
+
+                    <Separator Height="5"  Background="Black" Margin="0 20" Grid.RowSpan="6"  Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
 
 
 
 
-        <StackPanel   Grid.Column="2">
+                   
 
 
-                        <StackPanel  Orientation="Horizontal">
-                            <Label Content="Solution : "/>
-                            <TextBox 
-                                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                                Margin="32,0,0,0"
-                                VerticalAlignment="Top"
-                                Height="100"
-                                AcceptsReturn="True"
-                                TextWrapping="Wrap"
-                                VerticalScrollBarVisibility="Auto"
-                                materialDesign:HintAssist.Hint="This is a text area"
-                                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+                                    <DockPanel Margin="20,20,20,0" Grid.Row="0" Grid.Column="2" >
+                                        <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Solution : "/>
+                                        <TextBox 
+                                            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                            Height="Auto"
+                                            MaxHeight="150"
+                                            TextWrapping="Wrap"
+                                            VerticalScrollBarVisibility="Auto"
+                                            materialDesign:HintAssist.Hint="Solution de l'incident" />
                                
 
-                        </StackPanel>
+                                    </DockPanel>
 
-                        <StackPanel  Orientation="Horizontal">
-                            <Label Content="Date de cloture :"/>
-                            <DatePicker Width="100" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    <DockPanel Margin="20" Grid.Row="1" Grid.Column="2">
+                                        <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Date de cloture :"/>
+                                        <DatePicker  Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
-                        </StackPanel>
+                                    </DockPanel>
 
                        
-                            <CheckBox x:Name="DisplaySelectedItemCheckBox" IsThreeState="False" Margin="0 8 0 0">
-                                incident pas encore cloturer
-                            </CheckBox>
-                            <Button Width="100" VerticalAlignment="Bottom" />
+                                        <CheckBox Margin="90,35,0,35" Grid.Row="2"  Grid.Column="2" x:Name="DisplaySelectedItemCheckBox" IsThreeState="False">
+                                            incident pas encore cloturer
+                                        </CheckBox>
+                                        <Button Content="Ajouter" FontSize="22" Margin="0 20 40 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="150" MaxWidth="200" Height="Auto" MinHeight="40" MaxHeight="50"   />
 
                         
 
 
 
-        </StackPanel>
+                   
                      
 
                  </Grid> 

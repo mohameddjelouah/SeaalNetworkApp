@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Direction]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [direction] NVARCHAR(MAX) NOT NULL
+)

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Operateur]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [operteur] NVARCHAR(MAX) NOT NULL
+)

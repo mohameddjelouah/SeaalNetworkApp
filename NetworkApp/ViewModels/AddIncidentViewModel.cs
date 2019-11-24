@@ -20,5 +20,19 @@ namespace NetworkApp.ViewModels
         {
 
         }
+
+        protected override async void OnViewLoaded(object view)
+        { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
+            base.OnViewLoaded(view);
+
+            await LoadData();
+
+            
+
+        }
+        private async Task LoadData()
+        {
+
+        }
     }
 }
