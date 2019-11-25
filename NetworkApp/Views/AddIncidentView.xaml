@@ -64,7 +64,7 @@
 
                         <DockPanel Grid.Row="3" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'incident"/>
-                            <ComboBox x:Name="Nature" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --">
+                            <ComboBox x:Name="Nature" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --" SelectedItem="{Binding SelectedNature}">
                                  <ComboBox.ItemTemplate>
                                     <DataTemplate >
                                         <TextBlock Text="{Binding Nature}" />
@@ -78,7 +78,7 @@
 
                         <DockPanel Grid.Row="4" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="origin"/>
-                            <ComboBox x:Name="Origin" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --">
+                            <ComboBox x:Name="Origin" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedOrigin}">
                                <ComboBox.ItemTemplate>
                                     <DataTemplate >
                                         <TextBlock Text="{Binding Origin}" />
@@ -89,9 +89,9 @@
 
                         </DockPanel>
 
-                        <DockPanel Grid.Row="5" Margin="20" >
+                        <DockPanel Visibility="{Binding Path=Externe,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="5" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Operateur"/>
-                            <ComboBox x:Name="Operateur" materialDesign:HintAssist.Hint="-- Choissier l'operateur --" Width="Auto" MaxWidth="400">
+                            <ComboBox x:Name="Operateur" materialDesign:HintAssist.Hint="-- Choissier l'operateur --" SelectedItem="{Binding SelectedOperateur}" Width="Auto" MaxWidth="400">
                                <ComboBox.ItemTemplate>
                                     <DataTemplate >
                                         <TextBlock Text="{Binding Operateur}" />
@@ -122,6 +122,7 @@
                                     <DockPanel Margin="20,20,20,0" Grid.Row="0" Grid.Column="2" >
                                         <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Solution : "/>
                                         <TextBox x:Name="Solution"
+                                            IsEnabled="{Binding CanSolution}"
                                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                                             Height="Auto"
                                             MaxHeight="150"
@@ -134,7 +135,7 @@
 
                                     <DockPanel Margin="20" Grid.Row="1" Grid.Column="2">
                                         <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Date de cloture :"/>
-                                        <DatePicker x:Name="ClotureDate" Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                        <DatePicker x:Name="ClotureDate" IsEnabled="{Binding CanSolution}" Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
                                     </DockPanel>
 

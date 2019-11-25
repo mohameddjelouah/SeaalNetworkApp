@@ -17,7 +17,7 @@ namespace NetworkApp.ViewModels
     public class AddIncidentViewModel : Screen
     {
 
-
+//**********************************************************************************
         private AddIncidentModel _data;
 
         public AddIncidentModel Data
@@ -28,8 +28,20 @@ namespace NetworkApp.ViewModels
                 NotifyOfPropertyChange(() => Data);
             }
         }
+ //*************************************************************************************
+        private DateTime? _IncidentDate = null;
 
+        public DateTime? IncidentDate
+        {
+            get { return _IncidentDate; }
+            set
+            {
 
+                _IncidentDate = value;
+                NotifyOfPropertyChange(() => IncidentDate);
+            }
+        }
+//*******************************************************************************************
         private BindableCollection<DirectionModel> _directions;
         public BindableCollection<DirectionModel> Directions
         {
@@ -66,7 +78,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-
+//**************************************************************************************************
         private BindableCollection<NatureModel> _Nature;
 
         public BindableCollection<NatureModel> Nature
@@ -80,6 +92,23 @@ namespace NetworkApp.ViewModels
 
             }
         }
+
+        private NatureModel _SelectedNature;
+
+        public NatureModel SelectedNature
+        {
+            get { return _SelectedNature; }
+            set
+            {
+                _SelectedNature = value;
+
+
+                NotifyOfPropertyChange(() => SelectedNature);
+
+
+            }
+        }
+//*******************************************************************************************************
 
         private BindableCollection<OriginModel> _Origin;
 
@@ -98,6 +127,27 @@ namespace NetworkApp.ViewModels
         }
 
 
+        private OriginModel _SelectedOrigin;
+
+        public  OriginModel SelectedOrigin
+        {
+            get { return _SelectedOrigin; }
+            set
+            {
+                _SelectedOrigin = value;
+
+                if (_SelectedOrigin.Origin == "externe")
+                {
+                    Externe = true;
+                }
+                else Externe = false;
+
+                NotifyOfPropertyChange(() => SelectedOrigin);
+
+
+            }
+        }
+//*****************************************************************************************************
         private BindableCollection<OperateurModel> _Operateur;
 
         public BindableCollection<OperateurModel> Operateur
@@ -114,6 +164,93 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private OperateurModel _SelectedOperateur;
+
+        public  OperateurModel SelectedOperateur
+        {
+            get { return _SelectedOperateur; }
+            set
+            {
+                _SelectedOperateur = value;
+
+
+                NotifyOfPropertyChange(() => SelectedOperateur);
+
+
+            }
+        }
+//**********************************************************************************************************
+
+        private bool _CanSolution = true;
+
+        public bool CanSolution
+        {
+            get { return _CanSolution; }
+            set {
+                
+                _CanSolution = value;
+                NotifyOfPropertyChange(() => CanSolution);
+            }
+        }
+
+        private string _Solution;
+
+        public string Solution
+        {
+            get { return _Solution; }
+            set {
+                _Solution = value;
+                NotifyOfPropertyChange(() => Solution);
+            }
+        }
+
+        private DateTime? _ClotureDate = null;
+
+        public DateTime? ClotureDate
+        {
+            get { return _ClotureDate; }
+            set {
+                
+                _ClotureDate = value;
+                NotifyOfPropertyChange(() => ClotureDate);
+            }
+        }
+
+
+//**************************************************************************************************************
+
+        private bool _isCloture = false;
+
+        public bool isCloture
+        {
+            get { return _isCloture; }
+            set {
+
+                _isCloture = value;
+                CanSolution = !value;
+                NotifyOfPropertyChange(() => isCloture);
+
+            }
+        }
+
+
+ //**************************************************************************************************************
+
+        private bool _Externe = false;
+
+        public bool Externe
+        {
+            get { return _Externe; }
+            set
+            {
+                _Externe = value;
+                NotifyOfPropertyChange(() => Externe);
+
+            }
+        }
+
+        //**************************************************************************************************************
+
         private IIncidentDataEndPoint _incidentDataEndPoint;
         public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint)
         {
@@ -126,19 +263,49 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            Data = await LoadData();
+            await LoadData();
 
-            Directions = new BindableCollection<DirectionModel>(Data.Directions) ;
-            Nature = new BindableCollection<NatureModel>(Data.Natures) ;
-            Origin = new BindableCollection<OriginModel>(Data.Origins) ;
-            Operateur = new BindableCollection<OperateurModel>(Data.Operateurs) ;
 
             
 
         }
-        private async Task<AddIncidentModel> LoadData()
+        private async Task LoadData()
         {
-            return await _incidentDataEndPoint.GetDirections();
+
+            Data = await _incidentDataEndPoint.GetDirections();
+            Directions = new BindableCollection<DirectionModel>(Data.Directions);
+            Nature = new BindableCollection<NatureModel>(Data.Natures);
+            Origin = new BindableCollection<OriginModel>(Data.Origins);
+            Operateur = new BindableCollection<OperateurModel>(Data.Operateurs);
+             
         }
+
+
+        public bool CanAddIncident
+        {
+            get
+            {
+
+                //bool output = false;
+
+                //if ()
+                //{
+                //    output = true;
+                //}
+                return false;
+
+
+            }
+
+        }
+
+        public void AddIncident()
+        {
+
+        }
+        //**************************************************************************************************************
+
+
+
     }
 }
