@@ -17,13 +17,13 @@ namespace NetworkApp.Library.Api
         {
             _apiHelper = apiHelper;
         }
-        public async Task<List<DirectionModel>> GetDirections()
+        public async Task<AddIncidentModel> GetDirections()
         {
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Directions"))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<List<DirectionModel>>();
+                    var result = await response.Content.ReadAsAsync<AddIncidentModel>();
                     return result;
                 }
                 else

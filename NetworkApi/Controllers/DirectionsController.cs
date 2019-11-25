@@ -12,11 +12,18 @@ namespace NetworkApi.Controllers
     public class DirectionsController : ApiController
     {
         // GET: api/Directions
-        public List<DirectionModel> Get()
+        public AddIncidentModel Get()
         {
             IncidentData data = new IncidentData();
+            AddIncidentModel IncidentData = new AddIncidentModel
+            {
 
-            return data.GetAllDirections();
+                Directions = data.GetAllDirections(),
+                Natures = data.GetNature(),
+                Origins = data.GetOrigin(),
+                Operateurs = data.GetOperateur()
+            };
+            return IncidentData;
         }
 
         // GET: api/Directions/5

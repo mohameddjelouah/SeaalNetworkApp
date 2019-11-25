@@ -65,12 +65,11 @@
                         <DockPanel Grid.Row="3" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'incident"/>
                             <ComboBox x:Name="Nature" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --">
-                                <ComboBoxItem  >
-                                    deconnexion
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    perturbation
-                                </ComboBoxItem>
+                                 <ComboBox.ItemTemplate>
+                                    <DataTemplate >
+                                        <TextBlock Text="{Binding Nature}" />
+                                    </DataTemplate >
+                                </ComboBox.ItemTemplate >
 
                             </ComboBox>
 
@@ -80,12 +79,11 @@
                         <DockPanel Grid.Row="4" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="origin"/>
                             <ComboBox x:Name="Origin" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --">
-                                <ComboBoxItem >
-                                    interne
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    externe
-                                </ComboBoxItem>
+                               <ComboBox.ItemTemplate>
+                                    <DataTemplate >
+                                        <TextBlock Text="{Binding Origin}" />
+                                    </DataTemplate >
+                                </ComboBox.ItemTemplate >
 
                             </ComboBox>
 
@@ -94,12 +92,11 @@
                         <DockPanel Grid.Row="5" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Operateur"/>
                             <ComboBox x:Name="Operateur" materialDesign:HintAssist.Hint="-- Choissier l'operateur --" Width="Auto" MaxWidth="400">
-                                <ComboBoxItem >
-                                    AT
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    SLC
-                                </ComboBoxItem>
+                               <ComboBox.ItemTemplate>
+                                    <DataTemplate >
+                                        <TextBlock Text="{Binding Operateur}" />
+                                    </DataTemplate >
+                                </ComboBox.ItemTemplate >
 
                             </ComboBox>
 

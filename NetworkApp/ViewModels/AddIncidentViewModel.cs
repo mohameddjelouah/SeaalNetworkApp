@@ -16,6 +16,20 @@ namespace NetworkApp.ViewModels
 {
     public class AddIncidentViewModel : Screen
     {
+
+
+        private AddIncidentModel _data;
+
+        public AddIncidentModel Data
+        {
+            get { return _data; }
+            set {
+                _data = value;
+                NotifyOfPropertyChange(() => Data);
+            }
+        }
+
+
         private BindableCollection<DirectionModel> _directions;
         public BindableCollection<DirectionModel> Directions
         {
@@ -53,8 +67,53 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private BindableCollection<NatureModel> _Nature;
 
-       
+        public BindableCollection<NatureModel> Nature
+        {
+            get { return _Nature; }
+            set { _Nature = value;
+
+
+                NotifyOfPropertyChange(() => Nature);
+
+
+            }
+        }
+
+        private BindableCollection<OriginModel> _Origin;
+
+        public BindableCollection<OriginModel> Origin
+        {
+            get { return _Origin; }
+            set
+            {
+                _Origin = value;
+
+
+                NotifyOfPropertyChange(() => Origin);
+
+
+            }
+        }
+
+
+        private BindableCollection<OperateurModel> _Operateur;
+
+        public BindableCollection<OperateurModel> Operateur
+        {
+            get { return _Operateur; }
+            set
+            {
+                _Operateur = value;
+
+
+                NotifyOfPropertyChange(() => Operateur);
+
+
+            }
+        }
+
         private IIncidentDataEndPoint _incidentDataEndPoint;
         public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint)
         {
@@ -67,14 +126,17 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
+            Data = await LoadData();
 
+            Directions = new BindableCollection<DirectionModel>(Data.Directions) ;
+            Nature = new BindableCollection<NatureModel>(Data.Natures) ;
+            Origin = new BindableCollection<OriginModel>(Data.Origins) ;
+            Operateur = new BindableCollection<OperateurModel>(Data.Operateurs) ;
 
-            Directions = new BindableCollection<DirectionModel>(await LoadData()) ; 
-
-
+            
 
         }
-        private async Task<List<DirectionModel>> LoadData()
+        private async Task<AddIncidentModel> LoadData()
         {
             return await _incidentDataEndPoint.GetDirections();
         }

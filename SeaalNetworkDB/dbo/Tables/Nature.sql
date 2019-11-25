@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Nature]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [nature] NVARCHAR(MAX) NOT NULL
+    [Nature] NVARCHAR(MAX) NOT NULL
 )

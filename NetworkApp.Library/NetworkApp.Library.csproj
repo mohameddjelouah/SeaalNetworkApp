@@ -54,7 +54,11 @@
     <Compile Include="Api\Interfaces\IIncidentDataEndPoint.cs" />
     <Compile Include="Api\Interfaces\IIncidentEndPoint.cs" />
     <Compile Include="Api\IncidentEndPoint.cs" />
+    <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
+    <Compile Include="Models\NatureModel.cs" />
+    <Compile Include="Models\OperateurModel.cs" />
+    <Compile Include="Models\OriginModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\UIIncidentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

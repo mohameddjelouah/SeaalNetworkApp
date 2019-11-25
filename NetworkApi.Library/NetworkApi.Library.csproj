@@ -46,8 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\IncidentData.cs" />
+    <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
+    <Compile Include="Models\NatureModel.cs" />
+    <Compile Include="Models\OperateurModel.cs" />
+    <Compile Include="Models\OriginModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />

@@ -23,6 +23,17 @@ namespace NetworkApi.Library.DataAccess
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
         public List<DirectionModel> GetAllDirections()
         {
             SqlDataAccess sql = new SqlDataAccess();
@@ -38,6 +49,43 @@ namespace NetworkApi.Library.DataAccess
 
             return Directions;
         }
+
+
+
+        public List<NatureModel> GetNature()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var Nature = sql.LoadData<NatureModel, dynamic>("dbo.spGetNature", new { }, "SeaalNetworkDB");
+
+           
+
+            return Nature;
+        }
+
+        public List<OriginModel> GetOrigin()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var Origin = sql.LoadData<OriginModel, dynamic>("dbo.spGetOrigin", new { }, "SeaalNetworkDB");
+
+
+
+            return Origin;
+        }
+
+        public List<OperateurModel> GetOperateur()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var Operateur = sql.LoadData<OperateurModel, dynamic>("dbo.spGetOperateur", new { }, "SeaalNetworkDB");
+
+
+
+            return Operateur;
+        }
+
+
 
         public IncidentModel GetIncidentById(int id)
         {
