@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 
 
 namespace NetworkApi.Library.DataAccess
@@ -26,31 +26,64 @@ namespace NetworkApi.Library.DataAccess
 
 
 
+        //public List<DirectionModel> GetAllDirections()
+        //{
+        //    SqlDataAccess sql = new SqlDataAccess();
 
+        //    var Directions = sql.LoadData<DirectionModel, dynamic>("dbo.spGettAllDirections", new { }, "SeaalNetworkDB");
 
+        //    foreach (var item in Directions)
+        //    {
+        //        var directionID = new { directionID = item.Id };
+        //        var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID , "SeaalNetworkDB");
+        //        item.Sites = Sites;
+        //    }
 
-
-
-
-
+        //    return Directions;
+        //}
 
         public List<DirectionModel> GetAllDirections()
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var Directions = sql.LoadData<DirectionModel, dynamic>("dbo.spGettAllDirections", new { }, "SeaalNetworkDB");
+            var lookup = new Dictionary<int, DirectionModel>();
+             var Directions = sql.LoadMultiData<DirectionModel,SiteModel, dynamic>("dbo.spGettAllDirections",
+                                                                                  (d,s) => { DirectionModel dm;
 
+                                                                                      if (!lookup.TryGetValue(d.Id,out dm))
+                                                                                      {
+                                                                                          lookup.Add(d.Id, dm = d);
+                                                                                      }
+
+                                                                                      if (dm.Sites == null)
+                                                                                      {
+                                                                                          dm.Sites = new List<SiteModel>();
+                                                                                      }
+
+                                                                                      dm.Sites.Add(s);
+                                                                                      return dm;
+                                                                                      
+                                                                                      
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  } ,
+                                                                                  new { },
+                                                                                  "SeaalNetworkDB"
+                                                                                  );
+            
+            
+
+            //(d, s) => { DirectionModel dm; d.Sites = d.Sites ?? new List<SiteModel>(); d.Sites.Add(s); return d; }
             foreach (var item in Directions)
             {
                 var directionID = new { directionID = item.Id };
-                var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID , "SeaalNetworkDB");
+                var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID, "SeaalNetworkDB");
                 item.Sites = Sites;
             }
 
             return Directions;
         }
-
-
 
         public List<NatureModel> GetNature()
         {
