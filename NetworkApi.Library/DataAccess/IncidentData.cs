@@ -7,20 +7,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-
+using Newtonsoft.Json;
 
 namespace NetworkApi.Library.DataAccess
 {
     public class IncidentData
     {
-        public List<IncidentModel>  GetAllIncidents()
+        public async Task<List<PostIncidentModel>>   GetAllIncidents()
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var output = sql.LoadData<IncidentModel, dynamic>("dbo.spGetAllIncidents", new { }, "SeaalNetworkDB");
+            List<IncidentModel> output = await sql.LoadData<IncidentModel, dynamic>("dbo.spGetAllIncidents", new { }, "SeaalNetworkDB");
+            List<PostIncidentModel> listofIncidents = new List<PostIncidentModel>();
+            foreach (IncidentModel item in output)
+            {
 
-            return output;
+                listofIncidents.Add(new PostIncidentModel()
+                {
+                    Id = item.Id,
+                    IncidentDate = item.IncidentDate,
+                    Direction = JsonConvert.DeserializeObject<DirectionModel>(item.Direction),
+                    Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
+                    Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
+                    Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
+                    Operateur = JsonConvert.DeserializeObject<OperateurModel>(item.Operateur),
+                    isClotured = item.isClotured,
+                    Solution = item.Solution,
+                    ClotureDate = item.ClotureDate,
+                    AddBy = item.AddBy
+
+                });
+                
+
+
+
+            }
+            
+            
+            
+
+            return listofIncidents;
         }
+
+
+
+
+
+        public async Task<List<DirectionModel>>  GetAllDirections()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var Directions = await sql.LoadData<DirectionModel, dynamic>("dbo.spGettAllDirections", new { }, "SeaalNetworkDB");
+
+            foreach (var item in Directions)
+            {
+                var directionID = new { directionID = item.Id };
+                var Sites = await sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID, "SeaalNetworkDB");
+                item.Sites = Sites;
+            }
+
+            return Directions;
+        }
+
+
+       
+
+
 
 
 
@@ -30,88 +82,72 @@ namespace NetworkApi.Library.DataAccess
         //{
         //    SqlDataAccess sql = new SqlDataAccess();
 
-        //    var Directions = sql.LoadData<DirectionModel, dynamic>("dbo.spGettAllDirections", new { }, "SeaalNetworkDB");
+        //    var lookup = new Dictionary<int, DirectionModel>();
+        //    var Directions = sql.LoadMultiData<DirectionModel,SiteModel, dynamic>("dbo.spGettAllDirections",
+        //                                                                          (d,s) => { DirectionModel dm;
 
+        //                                                                              if (!lookup.TryGetValue(d.Id,out dm))
+        //                                                                              {
+        //                                                                                  lookup.Add(d.Id, dm = d);
+        //                                                                              }
+
+        //                                                                              if (dm.Sites == null)
+        //                                                                              {
+        //                                                                                  dm.Sites = new List<SiteModel>();
+        //                                                                              }
+
+        //                                                                              dm.Sites.Add(s);
+        //                                                                              return dm;
+
+
+
+
+
+        //                                                                          } ,
+        //                                                                          new { },
+        //                                                                          "SeaalNetworkDB"
+        //                                                                          );
+
+
+
+        //    //(d, s) => { DirectionModel dm; d.Sites = d.Sites ?? new List<SiteModel>(); d.Sites.Add(s); return d; }
         //    foreach (var item in Directions)
         //    {
         //        var directionID = new { directionID = item.Id };
-        //        var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID , "SeaalNetworkDB");
+        //        var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID, "SeaalNetworkDB");
         //        item.Sites = Sites;
         //    }
 
         //    return Directions;
         //}
 
-        public List<DirectionModel> GetAllDirections()
+        public async Task<List<NatureModel>>  GetNature()
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var lookup = new Dictionary<int, DirectionModel>();
-             var Directions = sql.LoadMultiData<DirectionModel,SiteModel, dynamic>("dbo.spGettAllDirections",
-                                                                                  (d,s) => { DirectionModel dm;
-
-                                                                                      if (!lookup.TryGetValue(d.Id,out dm))
-                                                                                      {
-                                                                                          lookup.Add(d.Id, dm = d);
-                                                                                      }
-
-                                                                                      if (dm.Sites == null)
-                                                                                      {
-                                                                                          dm.Sites = new List<SiteModel>();
-                                                                                      }
-
-                                                                                      dm.Sites.Add(s);
-                                                                                      return dm;
-                                                                                      
-                                                                                      
-                                                                                  
-                                                                                  
-                                                                                  
-                                                                                  } ,
-                                                                                  new { },
-                                                                                  "SeaalNetworkDB"
-                                                                                  );
-            
-            
-
-            //(d, s) => { DirectionModel dm; d.Sites = d.Sites ?? new List<SiteModel>(); d.Sites.Add(s); return d; }
-            foreach (var item in Directions)
-            {
-                var directionID = new { directionID = item.Id };
-                var Sites = sql.LoadData<SiteModel, dynamic>("dbo.spGetSitesByDirectionId", directionID, "SeaalNetworkDB");
-                item.Sites = Sites;
-            }
-
-            return Directions;
-        }
-
-        public List<NatureModel> GetNature()
-        {
-            SqlDataAccess sql = new SqlDataAccess();
-
-            var Nature = sql.LoadData<NatureModel, dynamic>("dbo.spGetNature", new { }, "SeaalNetworkDB");
+            var Nature =await sql.LoadData<NatureModel, dynamic>("dbo.spGetNature", new { }, "SeaalNetworkDB");
 
            
 
             return Nature;
         }
 
-        public List<OriginModel> GetOrigin()
+        public async Task<List<OriginModel>>  GetOrigin()
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var Origin = sql.LoadData<OriginModel, dynamic>("dbo.spGetOrigin", new { }, "SeaalNetworkDB");
+            var Origin = await sql.LoadData<OriginModel, dynamic>("dbo.spGetOrigin", new { }, "SeaalNetworkDB");
 
 
 
             return Origin;
         }
 
-        public List<OperateurModel> GetOperateur()
+        public async Task<List<OperateurModel>>  GetOperateur()
         {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var Operateur = sql.LoadData<OperateurModel, dynamic>("dbo.spGetOperateur", new { }, "SeaalNetworkDB");
+            var Operateur = await sql.LoadData<OperateurModel, dynamic>("dbo.spGetOperateur", new { }, "SeaalNetworkDB");
 
 
 
@@ -120,29 +156,66 @@ namespace NetworkApi.Library.DataAccess
 
 
 
-        public IncidentModel GetIncidentById(int id)
+        public async Task<PostIncidentModel>  GetIncidentById(int id)
         {
             SqlDataAccess sql = new SqlDataAccess();
             var p = new { Id = id };
-            var output = sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB").FirstOrDefault();
+            var item = (await  sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB")).FirstOrDefault();
 
-            return output;
+            PostIncidentModel incident = new PostIncidentModel() 
+           
+                {
+
+                    Id = item.Id,
+                    IncidentDate = item.IncidentDate,
+                    Direction = JsonConvert.DeserializeObject<DirectionModel>(item.Direction),
+                    Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
+                    Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
+                    Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
+                    Operateur = JsonConvert.DeserializeObject<OperateurModel>(item.Operateur),
+                    isClotured = item.isClotured,
+                    Solution = item.Solution,
+                    ClotureDate = item.ClotureDate,
+                    AddBy = item.AddBy
+
+                };
+
+
+
+
+            
+
+            return incident;
         }
 
         //add incident to the database
 
-        public void AddIncident(IncidentModel incident)
+        public async Task AddIncident(PostIncidentModel incident)
         {
+
+            IncidentModel inci = new IncidentModel()
+            {
+                IncidentDate = incident.IncidentDate,
+                Direction = JsonConvert.SerializeObject(incident.Direction),
+                Site = JsonConvert.SerializeObject(incident.Site),
+                Nature = JsonConvert.SerializeObject(incident.Nature),
+                Origin = JsonConvert.SerializeObject(incident.Origin),
+                Operateur = JsonConvert.SerializeObject(incident.Operateur),
+                isClotured = incident.isClotured,
+                Solution = incident.Solution,
+                ClotureDate = incident.ClotureDate,
+                AddBy = incident.AddBy,
+            };
             //add the incident to the database
             SqlDataAccess sql = new SqlDataAccess();
-            sql.SaveData("dbo.spInsertIncident", incident, "SeaalNetworkDB");
+            await sql.SaveData("dbo.spInsertIncident", inci, "SeaalNetworkDB");
         }
 
-        public void DeleteIncident(int id)
+        public async Task DeleteIncident(int id)
         {
             SqlDataAccess sql = new SqlDataAccess();
             var p = new { Id = id };
-            sql.DeleteData("dbo.spDeleteIncident", p, "SeaalNetworkDB");
+            await sql.DeleteData("dbo.spDeleteIncident", p, "SeaalNetworkDB");
         }
 
        

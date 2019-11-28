@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace NetworkApi.Controllers
@@ -12,16 +13,17 @@ namespace NetworkApi.Controllers
     public class DirectionsController : ApiController
     {
         // GET: api/Directions
-        public AddIncidentModel Get()
+        public async Task<AddIncidentModel>  Get()
         {
             IncidentData data = new IncidentData();
+           
             AddIncidentModel IncidentData = new AddIncidentModel
             {
 
-                Directions = data.GetAllDirections(),
-                Natures = data.GetNature(),
-                Origins = data.GetOrigin(),
-                Operateurs = data.GetOperateur()
+                Directions = await data.GetAllDirections(),
+                Natures =await     data.GetNature(),
+                Origins =await     data.GetOrigin(),
+                Operateurs =await  data.GetOperateur()
             };
             return IncidentData;
         }

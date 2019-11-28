@@ -249,12 +249,14 @@ namespace NetworkApp.ViewModels
             }
         }
 
-        //**************************************************************************************************************
+ //**************************************************************************************************************
 
         private IIncidentDataEndPoint _incidentDataEndPoint;
-        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint)
+        private IIncidentEndPoint _incidentEndPoint;
+        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint,IIncidentEndPoint incidentEndPoint)
         {
             _incidentDataEndPoint = incidentDataEndPoint;
+            _incidentEndPoint = incidentEndPoint;
 
             
         }
@@ -301,6 +303,22 @@ namespace NetworkApp.ViewModels
 
         public void AddIncident()
         {
+            IncidentModel incident = new IncidentModel()
+            {
+                IncidentDate = IncidentDate,
+                Direction = SelectedDirection,
+                Site = SelectedSite,
+                Nature = SelectedNature,
+                Origin = SelectedOrigin,
+                Operateur = SelectedOperateur,
+                isClotured = isCloture,
+                Solution = Solution,
+                ClotureDate = ClotureDate,
+                AddBy = WindowsIdentity.GetCurrent().Name
+
+            };
+
+            _incidentEndPoint.AddIncident(incident);
 
         }
         //**************************************************************************************************************

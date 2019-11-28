@@ -17,14 +17,14 @@ namespace NetworkApp.Library.Api
             _apiHelper = apiHelper;
         }
 
-        public async Task<List<UIIncidentModel>> GetAllIncident()
+        public async Task<List<IncidentModel>> GetAllIncident()
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Incident"))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<List<UIIncidentModel>>();
+                    var result = await response.Content.ReadAsAsync<List<IncidentModel>>();
                     return result;
                 }
                 else
@@ -37,14 +37,14 @@ namespace NetworkApp.Library.Api
 
         }
         //***********************************************************************************************************
-        public async Task<UIIncidentModel> GetIncident(int id)
+        public async Task<IncidentModel> GetIncident(int id)
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Incident/{id}"))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<UIIncidentModel>();
+                    var result = await response.Content.ReadAsAsync<IncidentModel>();
                     return result;
                 }
                 else
@@ -62,7 +62,7 @@ namespace NetworkApp.Library.Api
         
         //----------------------------------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------------
-        public async Task AddIncident(UIIncidentModel incident)
+        public async Task AddIncident(IncidentModel incident)
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync($"api/Incident",incident))

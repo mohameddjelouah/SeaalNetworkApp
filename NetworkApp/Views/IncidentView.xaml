@@ -48,10 +48,10 @@
         <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction}"/>
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site}"/>
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature}"/>
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site.Site}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature.Nature}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur.Operateur}"/>
                 <!--<DataGridCheckBoxColumn Header="Cloture d'incident" Binding="{Binding Path=isClotured}"/>-->
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2.5*" Header="Solution" Binding="{Binding Path=Solution}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat=d}"/>

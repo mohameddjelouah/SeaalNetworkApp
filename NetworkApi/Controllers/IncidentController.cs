@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace NetworkApi.Controllers
@@ -17,44 +18,44 @@ namespace NetworkApi.Controllers
 
 
         // GET: api/Incident
-        public List<IncidentModel> Get()
+        public async Task<List<PostIncidentModel>>  Get()
         {
             IncidentData data = new IncidentData();
 
-            return data.GetAllIncidents();
+            return await data.GetAllIncidents();
         }
 
 
         // GET: api/Incident/5
-        public IncidentModel Get(int id)
+        public async Task<PostIncidentModel>  Get(int id)
         {
             IncidentData data = new IncidentData();
 
-            return data.GetIncidentById(id);
+            return await data.GetIncidentById(id);
 
             
         }
 
         // POST api/Incident
-        public void Post([FromBody] IncidentModel incident)
+        public async Task Post([FromBody] PostIncidentModel incident)
         {
-            // we have to use auto mapper to use it with mapping IncidentModel in the library with the post incident model in the âpi
+            
             IncidentData data = new IncidentData();
 
-            data.AddIncident(incident);
+            await data.AddIncident(incident);
 
 
         }
 
         // DELETE api/Incident/5
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             IncidentData data = new IncidentData();
-            data.DeleteIncident(id);
+            await data.DeleteIncident(id);
 
         }
         // PUT api/Incident/5
-        public void Put(int id, [FromBody]string value)
+        public async Task Put(int id, [FromBody]string value)
         {
         }
 

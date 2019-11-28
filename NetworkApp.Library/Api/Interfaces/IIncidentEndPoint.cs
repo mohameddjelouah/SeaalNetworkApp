@@ -6,12 +6,12 @@ namespace NetworkApp.Library.Api.Interfaces
 {
     public interface IIncidentEndPoint
     {
-        Task<List<UIIncidentModel>> GetAllIncident();
+        Task<List<IncidentModel>> GetAllIncident();
 
-        Task<UIIncidentModel> GetIncident(int id);
+        Task<IncidentModel> GetIncident(int id);
 
 
-        Task AddIncident(UIIncidentModel incident);
+        Task AddIncident(IncidentModel incident);
 
         Task DeleteIncident(int id);
     }

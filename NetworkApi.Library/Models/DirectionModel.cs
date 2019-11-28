@@ -10,6 +10,6 @@ namespace NetworkApi.Library.Models
     {
         public int Id { get; set; }
         public string direction { get; set; }
-        public IList<SiteModel> Sites { get; set; }
+        public List<SiteModel> Sites { get; set; }
     }
 }

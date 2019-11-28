@@ -18,7 +18,7 @@ namespace NetworkApp.ViewModels
     public class IncidentViewModel : Screen
     {
 
-        public List<UIIncidentModel> listofincidents { get; set; }
+        public List<IncidentModel> listofincidents { get; set; }
        
         private bool _load = false;
 
@@ -47,9 +47,9 @@ namespace NetworkApp.ViewModels
         }
         
 
-        private BindableCollection<UIIncidentModel> _dataincident;
+        private BindableCollection<IncidentModel> _dataincident;
 
-        public BindableCollection<UIIncidentModel> dataincident
+        public BindableCollection<IncidentModel> dataincident
         {
             get { return _dataincident; }
             set {
@@ -87,8 +87,8 @@ namespace NetworkApp.ViewModels
         private async Task  LoadIncidents ()
         {
             
-             listofincidents = await _incidentEndPoint.GetAllIncident();
-            dataincident =new BindableCollection<UIIncidentModel>(listofincidents);
+             listofincidents = (await _incidentEndPoint.GetAllIncident());
+            dataincident =new BindableCollection<IncidentModel>(listofincidents);
             
             
         }
@@ -101,14 +101,14 @@ namespace NetworkApp.ViewModels
             {
                 _search = value;
 
-                var list = listofincidents.Where(x => x.Direction.Contains(value) || x.AddBy.ToLower().Contains(value.ToLower()) || x.Site.Contains(value)).ToList();
+                var list = listofincidents.Where(x => x.Direction.Direction.Contains(value) || x.AddBy.ToLower().Contains(value.ToLower()) || x.Site.Site.Contains(value)).ToList();
               
-                dataincident = new BindableCollection<UIIncidentModel>(list);
+                dataincident = new BindableCollection<IncidentModel>(list);
 
             }
         }
 
-        public async Task Delete(UIIncidentModel incident)
+        public async Task Delete(IncidentModel incident)
         {
             //delete incident
             var u = IoC.Get<DeleteIncidentViewModel>();
@@ -123,7 +123,7 @@ namespace NetworkApp.ViewModels
 
         
         
-        public void Edit(UIIncidentModel incident)
+        public void Edit(IncidentModel incident)
         {
            //edit incident
 
@@ -131,26 +131,7 @@ namespace NetworkApp.ViewModels
 
 
 
-        private async Task PostIncidents(int i)
-        {
-
-           await _incidentEndPoint.AddIncident(new UIIncidentModel {
-
-               IncidentDate = DateTime.Now,
-                Direction = $"add the incident {i}",
-                Site = "add the incident",
-                Nature = "add the incident",
-                Operateur = "add the incident",
-                isClotured = true,
-                Solution = "add the incident",
-                ClotureDate = DateTime.Now,
-                AddBy = WindowsIdentity.GetCurrent().Name,
-
-
-            } );
-
-
-        }
+        
 
 
 
