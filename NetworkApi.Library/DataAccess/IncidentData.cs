@@ -21,7 +21,7 @@ namespace NetworkApi.Library.DataAccess
             List<PostIncidentModel> listofIncidents = new List<PostIncidentModel>();
             foreach (IncidentModel item in output)
             {
-
+                
                 listofIncidents.Add(new PostIncidentModel()
                 {
                     Id = item.Id,
@@ -179,11 +179,6 @@ namespace NetworkApi.Library.DataAccess
                     AddBy = item.AddBy
 
                 };
-
-
-
-
-            
 
             return incident;
         }
