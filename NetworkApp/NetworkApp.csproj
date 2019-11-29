@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EventModels\AddIncidentEvent.cs" />
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />
     <Compile Include="ViewModels\DashViewModel.cs" />

@@ -5,10 +5,11 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using NetworkApp.EventModels;
 
 namespace NetworkApp.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IHandle<AddIncidentEvent>
     {
         private bool _resizeApp;
 
@@ -23,11 +24,12 @@ namespace NetworkApp.ViewModels
             }
         }
 
-
-        public ShellViewModel()
+        private IEventAggregator _events;
+        public ShellViewModel(IEventAggregator events)
         {
-           
-            
+
+            _events = events;
+            _events.Subscribe(this);
 
 
             ActivateItem(IoC.Get<DashViewModel>());
@@ -35,6 +37,74 @@ namespace NetworkApp.ViewModels
             
            
         }
+
+
+        private bool _isDashSelected = true;
+
+        public bool isDashSelected
+        {
+            get { return _isDashSelected; }
+            set {
+
+               
+
+                _isDashSelected = value;
+                NotifyOfPropertyChange(() => isDashSelected);
+
+            }
+        }
+
+
+        private bool _isIncidentSelected = false;
+
+        public bool isIncidentSelected
+        {
+            get { return _isIncidentSelected; }
+            set
+            {
+
+               
+                _isIncidentSelected = value;
+                NotifyOfPropertyChange(() => isIncidentSelected);
+
+            }
+        }
+
+        private bool _isInterventionSelected = false;
+
+        public bool isInterventionSelected
+        {
+            get { return _isInterventionSelected; }
+            set
+            {
+               
+                _isInterventionSelected = value;
+                NotifyOfPropertyChange(() => isInterventionSelected);
+
+            }
+        }
+
+        private bool _isStatSelected = false;
+
+        public bool isStatSelected
+        {
+            get { return _isStatSelected; }
+            set
+            {
+                
+                _isStatSelected = value;
+                NotifyOfPropertyChange(() => isStatSelected);
+
+            }
+        }
+
+
+
+        public void Handle(AddIncidentEvent message)
+        {
+            ActivateItem(IoC.Get<AddIncidentViewModel>());
+        }
+
 
         public void DisplayDashboard()
         {
@@ -44,12 +114,17 @@ namespace NetworkApp.ViewModels
         }
         public void DisplayAllIncidents()
         {
+
+            ResetSelected();
+            isIncidentSelected = true;
             // when i click it give me a new instance of incident datagridview 
             ActivateItem(IoC.Get<IncidentViewModel>());
         }
 
         public void AddIncidents()
         {
+            ResetSelected();
+            isIncidentSelected = true;
             ActivateItem(IoC.Get<AddIncidentViewModel>());
         }
 
@@ -89,6 +164,35 @@ namespace NetworkApp.ViewModels
                 ResizeApp = false;
                
             }
+        }
+        public void DisplayAllInterventions()
+        {
+            ResetSelected();
+            isInterventionSelected = true;
+
+        }
+
+
+        public void AddInterventions()
+        {
+            ResetSelected();
+            isInterventionSelected = true;
+
+        }
+
+
+
+        public void Stats()
+        {
+
+        }
+        public void ResetSelected()
+        {
+            isDashSelected = false;
+            isIncidentSelected = false;
+            isInterventionSelected = false;
+            isStatSelected = false;
+           
         }
         
     }

@@ -227,6 +227,11 @@ namespace NetworkApp.ViewModels
             set {
 
                 _isCloture = value;
+                if (_isCloture)
+                {
+                    Solution = null;
+                    ClotureDate = null;
+                }
                 CanSolution = !value;
                 NotifyOfPropertyChange(() => isCloture);
 

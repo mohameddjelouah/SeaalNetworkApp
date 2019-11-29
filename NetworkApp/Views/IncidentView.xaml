@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:NetworkApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:cal="http://www.caliburnproject.org"
-             
+             Background="WhiteSmoke"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1020">
@@ -31,6 +31,10 @@
 
         <ProgressBar Grid.RowSpan="2"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
 
+        <Border Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5">
+            <Border Background="Black"/>
+        </Border>
+        
         <DockPanel Background="#222f3e" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
 
             <StackPanel Orientation="Horizontal">
@@ -39,7 +43,7 @@
             </StackPanel>
 
 
-            <Button x:Name="AddMalade" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+            <Button x:Name="AddIncident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
                 <materialDesign:PackIcon Kind="AddCircle" Height="auto" Width="auto" />
             </Button>
         </DockPanel>

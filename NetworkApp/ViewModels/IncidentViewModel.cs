@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using NetworkApp.EventModels;
 using NetworkApp.Library.Api;
 using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.Library.Models;
@@ -33,6 +34,19 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
+
         private bool _prog = true;
 
         public bool Prog
@@ -62,12 +76,12 @@ namespace NetworkApp.ViewModels
         IWindowManager _window;
 
         private IIncidentEndPoint _incidentEndPoint;
-
-        public IncidentViewModel(IIncidentEndPoint incidentEndPoint, IWindowManager window)
+        private IEventAggregator _events;
+        public IncidentViewModel(IIncidentEndPoint incidentEndPoint, IWindowManager window, IEventAggregator events)
         {
             _incidentEndPoint = incidentEndPoint;
             _window = window;
-          
+            _events = events;
 
 
         }
@@ -99,9 +113,19 @@ namespace NetworkApp.ViewModels
             get { return _search; }
             set
             {
-                _search = value;
+                _search = value.ToLower();
 
-                var list = listofincidents.Where(x => x.Direction.Direction.Contains(value) || x.AddBy.ToLower().Contains(value.ToLower()) || x.Site.Site.Contains(value)).ToList();
+                var list = listofincidents.Where(x => 
+                                                    x.Direction.Direction.ToLower().Contains(_search) || 
+                                                    x.AddBy.ToLower().Contains(_search) || 
+                                                    x.Site.Site.ToLower().Contains(_search) ||
+                                                    x.Nature.Nature.ToLower().Contains(_search) ||
+                                                    x.Origin.Origin.ToLower().Contains(_search) ||
+                                                    x.IncidentDate.ToString().Contains(_search)
+
+
+                                                ).ToList();
+               
               
                 dataincident = new BindableCollection<IncidentModel>(list);
 
@@ -111,11 +135,14 @@ namespace NetworkApp.ViewModels
         public async Task Delete(IncidentModel incident)
         {
             //delete incident
-            var u = IoC.Get<DeleteIncidentViewModel>();
-            var result = _window.ShowDialog(u ,null, null);
+            var Delete = IoC.Get<DeleteIncidentViewModel>();
+            Transition = true;
+            var result = _window.ShowDialog(Delete, null, null);
+            Transition = false;
             if (result.HasValue && result.Value)
             {
                 await _incidentEndPoint.DeleteIncident(incident.Id);
+                listofincidents.Remove(incident);
                 dataincident.Remove(incident);
             }
             
@@ -130,8 +157,12 @@ namespace NetworkApp.ViewModels
         }
 
 
+        public void AddIncident()
+        {
+            _events.PublishOnUIThread(new AddIncidentEvent());
+        }
 
-        
+
 
 
 
