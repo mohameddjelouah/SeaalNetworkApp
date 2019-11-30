@@ -140,7 +140,10 @@ namespace NetworkApp.ViewModels
                 {
                     Externe = true;
                 }
-                else Externe = false;
+                else {
+                    Externe = false;
+                    SelectedOperateur = null;
+                }
 
                 NotifyOfPropertyChange(() => SelectedOrigin);
 
