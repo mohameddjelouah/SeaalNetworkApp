@@ -8,8 +8,8 @@
          xmlns:cal="http://www.caliburnproject.org" 
         cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
         mc:Ignorable="d" 
-        Title="DeleteIncidentView" Height="180" Width="380" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="Transparent">
-
+        Title="DeleteIncidentView" Height="180" Width="380" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"  AllowsTransparency="True" Background="Transparent">
+    
     <Border  CornerRadius="10"  Background="#2f3542"  >
        
 

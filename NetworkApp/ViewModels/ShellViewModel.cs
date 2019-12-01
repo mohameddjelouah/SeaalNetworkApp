@@ -98,6 +98,28 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private bool _expendIncident =false;
+
+        public bool ExpendIncident
+        {
+            get { return _expendIncident; }
+            set { 
+                _expendIncident = value;
+                NotifyOfPropertyChange(() => ExpendIncident);
+            }
+        }
+
+        private bool _expendIntervention =false;
+
+        public bool ExpendIntervention
+        {
+            get { return _expendIntervention; }
+            set
+            {
+                _expendIntervention = value;
+                NotifyOfPropertyChange(() => ExpendIntervention);
+            }
+        }
 
 
         public void Handle(AddIncidentEvent message)
@@ -110,13 +132,17 @@ namespace NetworkApp.ViewModels
         {
             // when i click it give me a new instance of dashboared 
             ActivateItem(IoC.Get<DashViewModel>());
-            
+            ExpendIntervention = false;
+            ExpendIncident = false;
+
+
         }
         public void DisplayAllIncidents()
         {
 
             ResetSelected();
             isIncidentSelected = true;
+            ExpendIntervention = false;
             // when i click it give me a new instance of incident datagridview 
             ActivateItem(IoC.Get<IncidentViewModel>());
         }
@@ -125,6 +151,7 @@ namespace NetworkApp.ViewModels
         {
             ResetSelected();
             isIncidentSelected = true;
+            ExpendIntervention = false;
             ActivateItem(IoC.Get<AddIncidentViewModel>());
         }
 
@@ -169,6 +196,7 @@ namespace NetworkApp.ViewModels
         {
             ResetSelected();
             isInterventionSelected = true;
+            ExpendIncident = false;
 
         }
 
@@ -177,6 +205,7 @@ namespace NetworkApp.ViewModels
         {
             ResetSelected();
             isInterventionSelected = true;
+            ExpendIncident = false;
 
         }
 
@@ -184,7 +213,8 @@ namespace NetworkApp.ViewModels
 
         public void Stats()
         {
-
+            ExpendIncident = false;
+            ExpendIntervention = false;
         }
         public void ResetSelected()
         {
