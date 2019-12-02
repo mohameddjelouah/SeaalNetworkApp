@@ -46,7 +46,7 @@
 
         <DockPanel Grid.Row="2" Margin="20" >
             <Label HorizontalContentAlignment="Left" Height="40" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Direction :"/>
-            <ComboBox x:Name="Directions" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedDirection}">
+            <ComboBox x:Name="Directions" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5"  SelectedItem="{Binding SelectedDirection, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate >
                         <TextBlock Text="{Binding Direction}" />
@@ -149,7 +149,7 @@
 
 
         
-        <Button x:Name="AddIncident" Content="Modifier" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
+        <Button x:Name="EditIncident" Content="Modifier" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
 
 
 

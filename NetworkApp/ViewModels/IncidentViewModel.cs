@@ -153,15 +153,7 @@ namespace NetworkApp.ViewModels
         public async Task Edit(IncidentModel incident)
         {
             var Edit = IoC.Get<EditIncidentViewModel>();
-            //Edit.IncidentDate = incident.IncidentDate;
-            //Edit.SelectedDirection = incident.Direction;
-            //Edit.SelectedSite = incident.Site;
-            //Edit.SelectedNature = incident.Nature;
-            //Edit.SelectedOrigin = incident.Origin;
-            //Edit.SelectedOperateur = incident.Operateur;
-            //Edit.Solution = incident.Solution;
-            //Edit.ClotureDate = incident.ClotureDate;
-            
+            Edit.Incident = incident;
             Transition = true;
             var result = _window.ShowDialog(Edit, null, null);
             Transition = false;

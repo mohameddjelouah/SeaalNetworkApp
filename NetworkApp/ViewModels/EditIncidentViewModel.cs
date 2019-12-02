@@ -12,20 +12,22 @@ namespace NetworkApp.ViewModels
     public class EditIncidentViewModel : Screen
     {
 
-        //private IncidentModel _incident = new IncidentModel();
+        private IncidentModel _incident = new IncidentModel();
 
-        //public IncidentModel Incident
-        //{
-        //    get { return _incident; }
-        //    set
-        //    {
-        //        _incident = value;
-        //        NotifyOfPropertyChange(() => Incident);
-        //    }
-        //}
+        public IncidentModel Incident
+        {
+            get { return _incident; }
+            set
+            {
+                _incident = value;
+                
+                NotifyOfPropertyChange(() => Incident);
+                
+            }
+        }
 
 
-        //**********************************************************************************
+//**********************************************************************************
         private AddIncidentModel _data;
 
         public AddIncidentModel Data
@@ -37,7 +39,7 @@ namespace NetworkApp.ViewModels
                 NotifyOfPropertyChange(() => Data);
             }
         }
-        //*************************************************************************************
+//*************************************************************************************
         private DateTime? _IncidentDate = null;
 
         public DateTime? IncidentDate
@@ -50,7 +52,7 @@ namespace NetworkApp.ViewModels
                 NotifyOfPropertyChange(() => IncidentDate);
             }
         }
-        //*******************************************************************************************
+//*******************************************************************************************
         private BindableCollection<DirectionModel> _directions;
         public BindableCollection<DirectionModel> Directions
         {
@@ -65,7 +67,7 @@ namespace NetworkApp.ViewModels
 
 
 
-        private DirectionModel _selectedDirection ;
+        private DirectionModel _selectedDirection;
 
         public DirectionModel SelectedDirection
         {
@@ -89,7 +91,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        //**************************************************************************************************
+//**************************************************************************************************
         private BindableCollection<NatureModel> _Nature;
 
         public BindableCollection<NatureModel> Nature
@@ -121,7 +123,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        //*******************************************************************************************************
+//*******************************************************************************************************
 
         private BindableCollection<OriginModel> _Origin;
 
@@ -164,7 +166,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        //*****************************************************************************************************
+//*****************************************************************************************************
         private BindableCollection<OperateurModel> _Operateur;
 
         public BindableCollection<OperateurModel> Operateur
@@ -196,7 +198,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        //**********************************************************************************************************
+//**********************************************************************************************************
 
         
 
@@ -251,7 +253,7 @@ namespace NetworkApp.ViewModels
         {
             _incidentDataEndPoint = incidentDataEndPoint;
             _incidentEndPoint = incidentEndPoint;
-            SelectedDirection = Incident.Direction;
+           
         }
 
 
@@ -274,6 +276,21 @@ namespace NetworkApp.ViewModels
             Nature = new BindableCollection<NatureModel>(Data.Natures);
             Origin = new BindableCollection<OriginModel>(Data.Origins);
             Operateur = new BindableCollection<OperateurModel>(Data.Operateurs);
+            
+            IncidentDate = Incident.IncidentDate;
+            SelectedDirection = Directions.SingleOrDefault(x => (x.Id == Incident.Direction.Id));
+            SelectedSite = SelectedDirection.Sites.SingleOrDefault(x => x.Id == Incident.Site.Id);
+            SelectedNature = Nature.SingleOrDefault(x => (x.Id == Incident.Nature.Id));
+            SelectedOrigin = Origin.SingleOrDefault(x => (x.Id == Incident.Origin.Id));
+            SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
+            Solution = Incident.Solution;
+            ClotureDate = Incident.ClotureDate;
+
+        }
+
+
+        public async Task EditIncident()
+        {
 
         }
 
