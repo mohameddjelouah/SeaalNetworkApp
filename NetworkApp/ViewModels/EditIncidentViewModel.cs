@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -11,7 +12,7 @@ namespace NetworkApp.ViewModels
 {
     public class EditIncidentViewModel : Screen
     {
-
+        public IncidentModel checkIncident { get; set; }
         private IncidentModel _incident = new IncidentModel();
 
         public IncidentModel Incident
@@ -246,14 +247,43 @@ namespace NetworkApp.ViewModels
 
             }
         }
+
+        //*************************************************************************************************
+
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
         //************************************************************************************************
+        private bool _isEdit = false;
+
+        public bool isEdit
+        {
+            get { return _isEdit ; }
+            set {
+                _isEdit  = value;
+                NotifyOfPropertyChange(() => Transition);
+            }
+        }
+
+        //************************************************************************************************
+        private IWindowManager _window;
         private IIncidentDataEndPoint _incidentDataEndPoint;
         private IIncidentEndPoint _incidentEndPoint;
-        public EditIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint, IIncidentEndPoint incidentEndPoint)
+        public EditIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint, IWindowManager window, IIncidentEndPoint incidentEndPoint)
         {
             _incidentDataEndPoint = incidentDataEndPoint;
             _incidentEndPoint = incidentEndPoint;
-           
+            _window = window;
+
         }
 
 
@@ -285,13 +315,40 @@ namespace NetworkApp.ViewModels
             SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
             Solution = Incident.Solution;
             ClotureDate = Incident.ClotureDate;
+            checkIncident = Incident;
 
         }
 
 
         public async Task EditIncident()
         {
+            var Confirme = IoC.Get<DeleteIncidentViewModel>();
+            Transition = true;
+            var result = _window.ShowDialog(Confirme, null, null);
+            Transition = false;
+            if (result.HasValue && result.Value)
+            {
+                Incident = new IncidentModel()
+                {
+                    Id = checkIncident.Id,
+                    IncidentDate = IncidentDate,
+                    Direction = SelectedDirection,
+                    Site = SelectedSite,
+                    Nature = SelectedNature,
+                    Origin = SelectedOrigin,
+                    Operateur = SelectedOperateur,
+                    AddBy = WindowsIdentity.GetCurrent().Name,
+                    ClotureDate = ClotureDate,
+                    Solution = Solution,
+                    isClotured = checkIncident.isClotured
 
+                };
+                //try catch
+                     await _incidentEndPoint.EditIncident(Incident);
+                     isEdit = true;
+
+            }
+            
         }
 
         public void ExitApplication()

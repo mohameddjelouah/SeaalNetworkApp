@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using NetworkApp.EventModels;
+using NetworkApp.Helper;
 using NetworkApp.Library.Api;
 using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.Library.Models;
@@ -101,7 +102,7 @@ namespace NetworkApp.ViewModels
         private async Task  LoadIncidents ()
         {
             
-             listofincidents = (await _incidentEndPoint.GetAllIncident());
+            listofincidents = (await _incidentEndPoint.GetAllIncident());
             dataincident =new BindableCollection<IncidentModel>(listofincidents);
             
             
@@ -121,6 +122,7 @@ namespace NetworkApp.ViewModels
                                                     x.Site.Site.ToLower().Contains(_search) ||
                                                     x.Nature.Nature.ToLower().Contains(_search) ||
                                                     x.Origin.Origin.ToLower().Contains(_search) ||
+                                                    
                                                     x.IncidentDate.ToString().Contains(_search)
 
 
@@ -150,16 +152,21 @@ namespace NetworkApp.ViewModels
 
         
         
-        public async Task Edit(IncidentModel incident)
+        public void Edit(IncidentModel incident)
         {
             var Edit = IoC.Get<EditIncidentViewModel>();
             Edit.Incident = incident;
             Transition = true;
             var result = _window.ShowDialog(Edit, null, null);
             Transition = false;
-            if (result.HasValue && result.Value)
+            if (Edit.isEdit)
             {
-               
+
+                Replace.ReplaceItem(listofincidents, incident, Edit.Incident);
+
+
+                dataincident = new BindableCollection<IncidentModel>(listofincidents);
+
             }
 
         }

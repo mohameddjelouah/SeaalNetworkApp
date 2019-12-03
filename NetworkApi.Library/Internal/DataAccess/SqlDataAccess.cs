@@ -33,41 +33,6 @@ namespace NetworkApi.Library.Internal.DataAccess
 
        
 
-        //public List<T> LoadMultiData<T,O, U>(string storedProcedure, Func<T,O,T> map, U parametres, string connectionStringName)
-        //{
-        //    string connectionString = GetConnectionString(connectionStringName);
-
-        //    using (IDbConnection connection = new SqlConnection(connectionString))
-        //    {
-        //       var rows =   connection.Query<T,O,T>(storedProcedure, map ,parametres, commandType: CommandType.StoredProcedure).AsQueryable().ToList();
-
-        //        return rows;
-        //    }
-        //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // save data in the data base

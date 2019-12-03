@@ -105,7 +105,7 @@ namespace NetworkApp.Library.Api
 
         //*********************************************************************************************************************
 
-        public async Task EditIncident(UIIncidentModel incident)
+        public async Task EditIncident(IncidentModel incident)
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.PutAsJsonAsync($"api/Incident/{incident.Id}", incident))

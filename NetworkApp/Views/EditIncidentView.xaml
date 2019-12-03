@@ -32,7 +32,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
+        <Border Grid.ColumnSpan="3" Grid.RowSpan="7" Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
+            <Border Background="Black"/>
+        </Border>
         <!--<Grid Grid.Column="0" Margin="25 20 25 20">-->
 
         <Button Grid.Column="2" HorizontalAlignment="Right" x:Name="ExitApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="35" Height="35" Padding="0">

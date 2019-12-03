@@ -13,6 +13,8 @@ namespace NetworkApp.Library.Api.Interfaces
 
         Task AddIncident(IncidentModel incident);
 
+        Task EditIncident(IncidentModel incident);
+
         Task DeleteIncident(int id);
     }
 }

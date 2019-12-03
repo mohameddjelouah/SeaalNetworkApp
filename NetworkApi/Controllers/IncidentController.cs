@@ -55,8 +55,13 @@ namespace NetworkApi.Controllers
 
         }
         // PUT api/Incident/5
-        public async Task Put(int id, [FromBody]string value)
+        public async Task Put(int id, [FromBody]PostIncidentModel incident)
         {
+
+            IncidentData data = new IncidentData();
+            await data.EditIncident(incident);
+
+
         }
 
 

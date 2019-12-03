@@ -10,6 +10,6 @@
 	[isClotured] BIT NOT NULL DEFAULT 1,
     [Solution] NVARCHAR(MAX) NULL, 
     [ClotureDate] DATETIME2 NULL, 
-    [AddBy] NVARCHAR(200) NOT NULL, 
+    [AddBy] NVARCHAR(MAX) NOT NULL, 
     
 )

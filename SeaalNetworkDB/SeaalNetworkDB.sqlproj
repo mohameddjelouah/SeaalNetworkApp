@@ -78,6 +78,7 @@
     <Build Include="dbo\Stored Procedures\spGetNature.sql" />
     <Build Include="dbo\Stored Procedures\spGetOperateur.sql" />
     <Build Include="dbo\Stored Procedures\spGetOrigin.sql" />
+    <Build Include="dbo\Stored Procedures\spEditIncident.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

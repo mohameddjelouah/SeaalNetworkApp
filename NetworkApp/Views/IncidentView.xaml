@@ -31,7 +31,7 @@
 
         <ProgressBar Grid.RowSpan="2"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
 
-        <Border Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5">
+        <Border  Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5">
             <Border Background="Black"/>
         </Border>
         
