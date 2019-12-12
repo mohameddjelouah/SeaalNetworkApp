@@ -136,7 +136,7 @@ namespace NetworkApp.ViewModels
             set
             {
                 _search = value.ToLower();
-
+                
                 var list = listofincidents.Where(x =>
                                                     x.IncidentDate.ToString().Contains(_search) ||
                                                     x.Direction.Direction.ToLower().Contains(_search) || 
@@ -147,13 +147,6 @@ namespace NetworkApp.ViewModels
                                                    (x.Operateur !=null && x.Operateur.Operateur.ToLower().Contains(_search)) ||
                                                     x.Solution.ToLower().Contains(_search) ||
                                                     x.ClotureDate.ToString().ToLower().Contains(_search) 
-
-
-
-
-
-
-
                                                 ).ToList();
                
               
@@ -256,13 +249,19 @@ namespace NetworkApp.ViewModels
             workbook.AddWorksheet("Incidents");
             var ws = workbook.Worksheet("Incidents");
             
-            ws.ColumnWidth = 25;
-           
-           
+            ws.ColumnWidth = 30;
 
+            var solutionrange = ws.Range("D3:H3");
+
+            ws.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+            ws.Style.Alignment.WrapText = true;
+            //ws.SetShowRowColHeaders();
+            //ws.ShowRowColHeaders = true;
+            
             int row = 1;
             foreach (var c in dataincident)
             {
+                ws.Range($"G{row}:H{row}").Merge();
                 //Escribrie en Excel en cada celda
                 ws.Cell(row, "A").SetValue<string>(Convert.ToString(c.IncidentDate.Value.ToString("dd/MM/yyyy")));
                 ws.Cell("B" + row.ToString()).Value = c.Direction.Direction;
@@ -271,12 +270,13 @@ namespace NetworkApp.ViewModels
                 ws.Cell("E" + row.ToString()).Value = c.Origin.Origin;
                 ws.Cell("F" + row.ToString()).Value = c.Operateur?.Operateur;
                 ws.Cell("G" + row.ToString()).Value = c.Solution;
-                ws.Cell(row, "H").SetValue<string>(Convert.ToString(c.ClotureDate.Value.ToString("dd/MM/yyyy")));
-                ws.Cell("I" + row.ToString()).Value = c.AddBy;
+                ws.Cell(row, "I").SetValue<string>(Convert.ToString(c.ClotureDate.Value.ToString("dd/MM/yyyy")));
+                ws.Cell("J" + row.ToString()).Value = c.AddBy;
                 row++;
 
             }
-            
+
+             
 
             var saveFileDialog = new SaveFileDialog
             {
@@ -288,7 +288,7 @@ namespace NetworkApp.ViewModels
 
             if (!String.IsNullOrWhiteSpace(saveFileDialog.FileName))
                 workbook.SaveAs(saveFileDialog.FileName);
-            //workbook.SaveAs(@"F:\myapp\Coches.xlsx");
+           
 
             
         }
