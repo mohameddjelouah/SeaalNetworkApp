@@ -22,15 +22,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="48">
-            Test
-        </TextBlock>
-        <TextBox x:Name="Auth" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MinWidth="100" Margin="10"/>
-        <TextBox x:Name="User" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" MinWidth="100" Margin="10"/>
-
-        <Button Grid.Column="1" Grid.Row="3" MinWidth="100" x:Name="getinfo">
+        
             
-        </Button>
     </Grid>
     </Border>
 

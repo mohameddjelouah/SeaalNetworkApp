@@ -42,19 +42,30 @@
                 <TextBox  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" materialDesign:TextFieldAssist.UnderlineBrush="White"    Foreground="White" DockPanel.Dock="Left"  Margin="10 3"  x:Name="search" Width="300" materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Malade......"/>
             </StackPanel>
 
-
+            
             <Button x:Name="AddIncident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
                 <materialDesign:PackIcon Kind="AddCircle" Height="auto" Width="auto" />
+            </Button>
+            <Button  x:Name="Export" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="ExportVariant" Height="auto" Width="auto" />
+            </Button>
+            <Button x:Name="Delete" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="DeleteForeverOutline" Height="auto" Width="auto" />
+            </Button>
+
+            <Button  x:Name="Edit"  DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="SquareEditOutline" Height="auto" Width="auto" />
             </Button>
         </DockPanel>
         
         
-        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"   Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding SelectedIncident}">
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site.Site}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature.Nature}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Origin" Binding="{Binding Path=Origin.Origin}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur.Operateur}"/>
                 <!--<DataGridCheckBoxColumn Header="Cloture d'incident" Binding="{Binding Path=isClotured}"/>-->
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2.5*" Header="Solution" Binding="{Binding Path=Solution}"/>
@@ -62,7 +73,7 @@
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
                
                 <!--edit button-->
-                <DataGridTemplateColumn Width="auto" Header="EDIT">
+                <!--<DataGridTemplateColumn Width="auto" Header="EDIT">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button cal:Message.Attach="Edit(dataincident.SelectedItem)" Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Height="auto">
@@ -70,11 +81,11 @@
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
                 <!--end of edit button-->
 
                 <!--delete button-->
-                <DataGridTemplateColumn Width="auto" Header="DELETE">
+                <!--<DataGridTemplateColumn Width="auto" Header="DELETE">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button cal:Message.Attach="Delete(dataincident.SelectedItem)"  Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Height="auto"  >
@@ -82,7 +93,7 @@
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
                 <!--end of delete button-->
 
             </DataGrid.Columns>

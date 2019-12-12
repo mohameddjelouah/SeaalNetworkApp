@@ -19,35 +19,11 @@ namespace NetworkApp.ViewModels
         {
             _incidentEndPoint = incidentEndPoint;
         }
-        public string Auth
-        {
-            get { return _auth; }
-            set { _auth = value; NotifyOfPropertyChange(() => Auth); }
-        }
-
-        private string _user;
-
-
-        public string User
-        {
-            get { return _user; }
-            set { _user = value; NotifyOfPropertyChange(() => User); }
-        }
+        
 
 
 
-        public async Task  getinfo()
-        {
-            // User = WindowsIdentity.GetCurrent().Name;
-            var incidentbyid = await _incidentEndPoint.GetIncident(2);
-
-            var listofincidents = await _incidentEndPoint.GetAllIncident();
-
-            User = listofincidents.Count().ToString();
-
-           
-            
-        }
+        
 
 
 
