@@ -16,5 +16,5 @@
 	AS
 begin
 	set nocount on;
-	update Incidents set IncidentDate = @IncidentDate,Direction = @Direction,[Site] = @Site,Nature = @Nature,Origin = @Origin,Operateur = @Operateur,Solution = @Solution,ClotureDate = @ClotureDate,AddBy = @AddBy where Id = @Id;
+	update Incidents set IncidentDate = @IncidentDate,Direction = @Direction,[Site] = @Site,Nature = @Nature,Origin = @Origin,Operateur = @Operateur,isClotured=@isClotured,Solution = @Solution,ClotureDate = @ClotureDate,AddBy = @AddBy where Id = @Id;
 end

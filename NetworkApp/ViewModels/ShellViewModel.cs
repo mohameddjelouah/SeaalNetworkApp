@@ -192,6 +192,16 @@ namespace NetworkApp.ViewModels
                
             }
         }
+
+        public void DisplayClotureIncidents()
+        {
+            ResetSelected();
+            isIncidentSelected = true;
+            ExpendIntervention = false;
+            // when i click it give me a new instance of incident datagridview 
+            ActivateItem(IoC.Get<ClotureViewModel>());
+        }
+
         public void DisplayAllInterventions()
         {
             ResetSelected();
@@ -199,6 +209,7 @@ namespace NetworkApp.ViewModels
             ExpendIncident = false;
 
         }
+
 
 
         public void AddInterventions()
@@ -215,7 +226,11 @@ namespace NetworkApp.ViewModels
         {
             ExpendIncident = false;
             ExpendIntervention = false;
+
+
+
         }
+
         public void ResetSelected()
         {
             isDashSelected = false;

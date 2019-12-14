@@ -1,34 +1,48 @@
-﻿using Caliburn.Micro;
-using NetworkApp.Library.Api;
-using NetworkApp.Library.Api.Interfaces;
-using NetworkApp.Library.Models;
-using NetworkApp.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Dynamic;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Caliburn.Micro;
+using NetworkApp.Library.Api.Interfaces;
+using NetworkApp.Library.Models;
 
 namespace NetworkApp.ViewModels
 {
-    public class AddIncidentViewModel : Screen
+    public class EditClotureViewModel : Screen
     {
 
-//**********************************************************************************
+
+        
+        private IncidentModel _incident = new IncidentModel();
+
+        public IncidentModel Incident
+        {
+            get { return _incident; }
+            set
+            {
+                _incident = value;
+
+                NotifyOfPropertyChange(() => Incident);
+
+            }
+        }
+
+
+        //**********************************************************************************
         private AddIncidentModel _data;
 
         public AddIncidentModel Data
         {
             get { return _data; }
-            set {
+            set
+            {
                 _data = value;
                 NotifyOfPropertyChange(() => Data);
             }
         }
- //*************************************************************************************
+        //*************************************************************************************
         private DateTime? _IncidentDate = null;
 
         public DateTime? IncidentDate
@@ -41,29 +55,31 @@ namespace NetworkApp.ViewModels
                 NotifyOfPropertyChange(() => IncidentDate);
             }
         }
-//*******************************************************************************************
+        //*******************************************************************************************
         private BindableCollection<DirectionModel> _directions;
         public BindableCollection<DirectionModel> Directions
         {
             get { return _directions; }
-            set {
+            set
+            {
                 _directions = value;
                 NotifyOfPropertyChange(() => Directions);
 
             }
         }
 
-        
+
 
         private DirectionModel _selectedDirection;
 
         public DirectionModel SelectedDirection
         {
             get { return _selectedDirection; }
-            set {
+            set
+            {
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
-               
+
             }
         }
 
@@ -78,13 +94,15 @@ namespace NetworkApp.ViewModels
 
             }
         }
-//**************************************************************************************************
+        //**************************************************************************************************
         private BindableCollection<NatureModel> _Nature;
 
         public BindableCollection<NatureModel> Nature
         {
             get { return _Nature; }
-            set { _Nature = value;
+            set
+            {
+                _Nature = value;
 
 
                 NotifyOfPropertyChange(() => Nature);
@@ -108,7 +126,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-//*******************************************************************************************************
+        //*******************************************************************************************************
 
         private BindableCollection<OriginModel> _Origin;
 
@@ -129,7 +147,7 @@ namespace NetworkApp.ViewModels
 
         private OriginModel _SelectedOrigin;
 
-        public  OriginModel SelectedOrigin
+        public OriginModel SelectedOrigin
         {
             get { return _SelectedOrigin; }
             set
@@ -140,7 +158,8 @@ namespace NetworkApp.ViewModels
                 {
                     Externe = true;
                 }
-                else {
+                else
+                {
                     Externe = false;
                     SelectedOperateur = null;
                 }
@@ -150,7 +169,7 @@ namespace NetworkApp.ViewModels
 
             }
         }
-//*****************************************************************************************************
+        //*****************************************************************************************************
         private BindableCollection<OperateurModel> _Operateur;
 
         public BindableCollection<OperateurModel> Operateur
@@ -169,7 +188,7 @@ namespace NetworkApp.ViewModels
 
         private OperateurModel _SelectedOperateur;
 
-        public  OperateurModel SelectedOperateur
+        public OperateurModel SelectedOperateur
         {
             get { return _SelectedOperateur; }
             set
@@ -182,67 +201,41 @@ namespace NetworkApp.ViewModels
 
             }
         }
-//**********************************************************************************************************
-
-        private bool _CanSolution = true;
-
-        public bool CanSolution
-        {
-            get { return _CanSolution; }
-            set {
-                
-                _CanSolution = value;
-                NotifyOfPropertyChange(() => CanSolution);
-            }
-        }
-
-        private string _Solution;
-
-        public string Solution
-        {
-            get { return _Solution; }
-            set {
-                _Solution = value;
-                NotifyOfPropertyChange(() => Solution);
-            }
-        }
-
-        private DateTime? _ClotureDate = null;
-
-        public DateTime? ClotureDate
-        {
-            get { return _ClotureDate; }
-            set {
-                
-                _ClotureDate = value;
-                NotifyOfPropertyChange(() => ClotureDate);
-            }
-        }
+        //**********************************************************************************************************
 
 
-//**************************************************************************************************************
 
-        private bool _isCloture = false;
+        //private string _Solution;
 
-        public bool isCloture
-        {
-            get { return _isCloture; }
-            set {
+        //public string Solution
+        //{
+        //    get { return _Solution; }
+        //    set
+        //    {
+        //        _Solution = value;
+        //        NotifyOfPropertyChange(() => Solution);
+        //    }
+        //}
 
-                _isCloture = value;
-                if (_isCloture)
-                {
-                    Solution = null;
-                    ClotureDate = null;
-                }
-                CanSolution = !value;
-                NotifyOfPropertyChange(() => isCloture);
+        //private DateTime? _ClotureDate = null;
 
-            }
-        }
+        //public DateTime? ClotureDate
+        //{
+        //    get { return _ClotureDate; }
+        //    set
+        //    {
+
+        //        _ClotureDate = value;
+        //        NotifyOfPropertyChange(() => ClotureDate);
+        //    }
+        //}
 
 
- //**************************************************************************************************************
+        //**************************************************************************************************************
+
+
+
+
 
         private bool _Externe = false;
 
@@ -257,17 +250,46 @@ namespace NetworkApp.ViewModels
             }
         }
 
- //**************************************************************************************************************
+        //*************************************************************************************************
 
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
+        //************************************************************************************************
+        private bool _isEdit = false;
+
+        public bool isEdit
+        {
+            get { return _isEdit; }
+            set
+            {
+                _isEdit = value;
+                NotifyOfPropertyChange(() => Transition);
+            }
+        }
+
+        //************************************************************************************************
+        private IWindowManager _window;
         private IIncidentDataEndPoint _incidentDataEndPoint;
         private IIncidentEndPoint _incidentEndPoint;
-        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint,IIncidentEndPoint incidentEndPoint)
+
+        public EditClotureViewModel(IIncidentDataEndPoint incidentDataEndPoint, IWindowManager window, IIncidentEndPoint incidentEndPoint)
         {
             _incidentDataEndPoint = incidentDataEndPoint;
             _incidentEndPoint = incidentEndPoint;
+            _window = window;
 
-            
         }
+
 
         protected override async void OnViewLoaded(object view)
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
@@ -276,9 +298,10 @@ namespace NetworkApp.ViewModels
             await LoadData();
 
 
-            
+
 
         }
+
         private async Task LoadData()
         {
 
@@ -287,51 +310,50 @@ namespace NetworkApp.ViewModels
             Nature = new BindableCollection<NatureModel>(Data.Natures);
             Origin = new BindableCollection<OriginModel>(Data.Origins);
             Operateur = new BindableCollection<OperateurModel>(Data.Operateurs);
-             
+
+            IncidentDate = Incident.IncidentDate;
+            SelectedDirection = Directions.SingleOrDefault(x => (x.Id == Incident.Direction.Id));
+            SelectedSite = SelectedDirection.Sites.SingleOrDefault(x => x.Id == Incident.Site.Id);
+            SelectedNature = Nature.SingleOrDefault(x => (x.Id == Incident.Nature.Id));
+            SelectedOrigin = Origin.SingleOrDefault(x => (x.Id == Incident.Origin.Id));
+            SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
+            
+
         }
 
 
-        public bool CanAddIncident
+        public async Task EditIncident()
         {
-            get
+            var Confirme = IoC.Get<DeleteIncidentViewModel>();
+            Transition = true;
+            var result = _window.ShowDialog(Confirme, null, null);
+            Transition = false;
+            if (result.HasValue && result.Value)
             {
+                int Id = Incident.Id;
+                Incident = new IncidentModel()
+                {
+                    Id = Id,
+                    IncidentDate = IncidentDate,
+                    Direction = SelectedDirection,
+                    Site = SelectedSite,
+                    Nature = SelectedNature,
+                    Origin = SelectedOrigin,
+                    Operateur = SelectedOperateur,
+                    AddBy = WindowsIdentity.GetCurrent().Name,
 
-                //bool output = false;
-
-                //if ()
-                //{
-                //    output = true;
-                //}
-                return true;
-
+                };
+                //try catch
+                await _incidentEndPoint.EditIncident(Incident);
+                isEdit = true;
 
             }
 
         }
 
-        public void AddIncident()
+        public void ExitApplication()
         {
-            IncidentModel incident = new IncidentModel()
-            {
-                IncidentDate = IncidentDate,
-                Direction = SelectedDirection,
-                Site = SelectedSite,
-                Nature = SelectedNature,
-                Origin = SelectedOrigin,
-                Operateur = SelectedOperateur,
-                isClotured = CanSolution,
-                Solution = Solution,
-                ClotureDate = ClotureDate,
-                AddBy = WindowsIdentity.GetCurrent().Name
-
-            };
-
-            _incidentEndPoint.AddIncident(incident);
-
+            TryClose(false);
         }
-        //**************************************************************************************************************
-
-
-
     }
 }

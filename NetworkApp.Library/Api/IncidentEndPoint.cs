@@ -17,10 +17,10 @@ namespace NetworkApp.Library.Api
             _apiHelper = apiHelper;
         }
 
-        public async Task<List<IncidentModel>> GetAllIncident()
+        public async Task<List<IncidentModel>> GetAllIncident(bool isCloture)
         {
 
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Incident"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Incident/{isCloture}"))
             {
                 if (response.IsSuccessStatusCode)
                 {

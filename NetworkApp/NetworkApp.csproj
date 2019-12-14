@@ -114,13 +114,19 @@
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\Replace.cs" />
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />
+    <Compile Include="ViewModels\ClotureViewModel.cs" />
     <Compile Include="ViewModels\DashViewModel.cs" />
     <Compile Include="ViewModels\DeleteIncidentViewModel.cs" />
+    <Compile Include="ViewModels\EditClotureViewModel.cs" />
     <Compile Include="ViewModels\EditIncidentViewModel.cs" />
+    <Compile Include="ViewModels\IncidentClotureViewModel.cs" />
     <Compile Include="ViewModels\IncidentViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AddIncidentView.xaml.cs">
       <DependentUpon>AddIncidentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClotureView.xaml.cs">
+      <DependentUpon>ClotureView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashView.xaml.cs">
       <DependentUpon>DashView.xaml</DependentUpon>
@@ -128,8 +134,14 @@
     <Compile Include="Views\DeleteIncidentView.xaml.cs">
       <DependentUpon>DeleteIncidentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditClotureView.xaml.cs">
+      <DependentUpon>EditClotureView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditIncidentView.xaml.cs">
       <DependentUpon>EditIncidentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IncidentClotureView.xaml.cs">
+      <DependentUpon>IncidentClotureView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IncidentView.xaml.cs">
       <DependentUpon>IncidentView.xaml</DependentUpon>
@@ -145,6 +157,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ClotureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,7 +169,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EditClotureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditIncidentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IncidentClotureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

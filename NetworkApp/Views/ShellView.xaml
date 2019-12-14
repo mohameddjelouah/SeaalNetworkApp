@@ -143,7 +143,7 @@
                                     <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" Padding="20 5"/>
                                 </ListViewItem>
                                 <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Cloturer les Incidents" Padding="20 5"/>
+                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" Padding="20 5"/>
                                 </ListViewItem>
 
                                 <ListViewItem>

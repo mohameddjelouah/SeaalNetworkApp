@@ -13,11 +13,11 @@ namespace NetworkApi.Library.DataAccess
 {
     public class IncidentData
     {
-        public async Task<List<PostIncidentModel>>   GetAllIncidents()
+        public async Task<List<PostIncidentModel>>   GetAllIncidents(bool isCloture)
         {
             SqlDataAccess sql = new SqlDataAccess();
-
-            List<IncidentModel> output = await sql.LoadData<IncidentModel, dynamic>("dbo.spGetAllIncidents", new { }, "SeaalNetworkDB");
+            var p = new { isClotured = isCloture };
+            List<IncidentModel> output = await sql.LoadData<IncidentModel, dynamic>("dbo.spGetAllIncidents", p, "SeaalNetworkDB");
             List<PostIncidentModel> listofIncidents = new List<PostIncidentModel>();
             foreach (IncidentModel item in output)
             {

@@ -13,7 +13,7 @@ using Microsoft.Win32;
 
 namespace NetworkApp.ViewModels
 {
-    public class IncidentViewModel : Screen
+    public class ClotureViewModel : Screen
     {
 
         public List<IncidentModel> listofincidents { get; set; }
@@ -23,12 +23,14 @@ namespace NetworkApp.ViewModels
         public IncidentModel SelectedIncident
         {
             get { return _SelectedIncident; }
-            set {
+            set
+            {
                 _SelectedIncident = value;
 
                 NotifyOfPropertyChange(() => SelectedIncident);
                 NotifyOfPropertyChange(() => CanDelete);
                 NotifyOfPropertyChange(() => CanEdit);
+                NotifyOfPropertyChange(() => CanCloture);
             }
         }
 
@@ -59,7 +61,7 @@ namespace NetworkApp.ViewModels
             }
         }
 
-       
+
 
 
         private bool _prog = true;
@@ -74,31 +76,31 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        
+
 
         private BindableCollection<IncidentModel> _dataincident = new BindableCollection<IncidentModel>();
 
-        public BindableCollection<IncidentModel> dataincident 
+        public BindableCollection<IncidentModel> dataincident
         {
             get { return _dataincident; }
-            set {
+            set
+            {
                 _dataincident = value;
                 NotifyOfPropertyChange(() => dataincident);
-                
-            
+
+
             }
         }
 
         private IWindowManager _window;
         private IIncidentEndPoint _incidentEndPoint;
         private IEventAggregator _events;
-        public IncidentViewModel(IIncidentEndPoint incidentEndPoint, IWindowManager window, IEventAggregator events)
+
+        public ClotureViewModel(IIncidentEndPoint incidentEndPoint, IWindowManager window, IEventAggregator events)
         {
             _incidentEndPoint = incidentEndPoint;
             _window = window;
             _events = events;
-
-
         }
 
         protected override async void OnViewLoaded(object view)
@@ -113,13 +115,13 @@ namespace NetworkApp.ViewModels
         }
 
 
-        private async Task  LoadIncidents ()
+        private async Task LoadIncidents()
         {
-            
-            listofincidents = (await _incidentEndPoint.GetAllIncident(true));
-            dataincident =new BindableCollection<IncidentModel>(listofincidents);
-            
-            
+
+            listofincidents = (await _incidentEndPoint.GetAllIncident(false));
+            dataincident = new BindableCollection<IncidentModel>(listofincidents);
+
+
         }
 
         private string _search;
@@ -129,20 +131,18 @@ namespace NetworkApp.ViewModels
             set
             {
                 _search = value.ToLower();
-                
+
                 var list = listofincidents.Where(x =>
                                                     x.IncidentDate.ToString().Contains(_search) ||
-                                                    x.Direction.Direction.ToLower().Contains(_search) || 
-                                                    x.AddBy.ToLower().Contains(_search) || 
+                                                    x.Direction.Direction.ToLower().Contains(_search) ||
+                                                    x.AddBy.ToLower().Contains(_search) ||
                                                     x.Site.Site.ToLower().Contains(_search) ||
                                                     x.Nature.Nature.ToLower().Contains(_search) ||
                                                     x.Origin.Origin.ToLower().Contains(_search) ||
-                                                   (x.Operateur !=null && x.Operateur.Operateur.ToLower().Contains(_search)) ||
-                                                    x.Solution.ToLower().Contains(_search) ||
-                                                    x.ClotureDate.ToString().ToLower().Contains(_search) 
+                                                   (x.Operateur != null && x.Operateur.Operateur.ToLower().Contains(_search))    
                                                 ).ToList();
-               
-              
+
+
                 dataincident = new BindableCollection<IncidentModel>(list);
                 NotifyOfPropertyChange(() => CanExport);
             }
@@ -160,15 +160,17 @@ namespace NetworkApp.ViewModels
                 await _incidentEndPoint.DeleteIncident(SelectedIncident.Id);
                 listofincidents.Remove(SelectedIncident);
                 dataincident.Remove(SelectedIncident);
+                NotifyOfPropertyChange(() => CanExport);
             }
-            NotifyOfPropertyChange(() => CanExport);
+            
         }
 
-        
-        
+
+
         public void Edit()
         {
-            var Edit = IoC.Get<EditIncidentViewModel>();
+            var Edit = IoC.Get<EditClotureViewModel>();
+            
             Edit.Incident = SelectedIncident;
             Transition = true;
             var result = _window.ShowDialog(Edit, null, null);
@@ -217,6 +219,24 @@ namespace NetworkApp.ViewModels
 
         }
 
+        public bool CanCloture
+        {
+            get
+            {
+
+                bool output = false;
+
+                if (SelectedIncident != null)
+                {
+                    output = true;
+                }
+                return output;
+
+
+            }
+
+        }
+
         public bool CanExport
         {
             get
@@ -241,7 +261,7 @@ namespace NetworkApp.ViewModels
             var workbook = new XLWorkbook();
             workbook.AddWorksheet("Incidents");
             var ws = workbook.Worksheet("Incidents");
-            
+
             ws.ColumnWidth = 30;
 
             var solutionrange = ws.Range("D3:H3");
@@ -250,10 +270,10 @@ namespace NetworkApp.ViewModels
             ws.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
             ws.Style.Alignment.WrapText = true;
             ws.Style.Font.FontSize = 13;
-           
+
             ws.Range("A1:J1").Style.Font.SetBold().Font.FontSize = 15;
-            
-            
+
+
             //*****************************************************************************************************
             //*****************************************************************************************************
             ws.Range("G1:H1").Merge();
@@ -268,7 +288,7 @@ namespace NetworkApp.ViewModels
             ws.Cell(1, "G").SetValue<string>("Solution");
             ws.Cell(1, "I").SetValue<string>("Date Cloture");
             ws.Cell(1, "J").SetValue<string>("Ajouter Par");
-           
+
             //*****************************************************************************************************
             //*****************************************************************************************************
 
@@ -276,7 +296,7 @@ namespace NetworkApp.ViewModels
             foreach (var c in dataincident)
             {
                 ws.Range($"G{row}:H{row}").Merge();
-                //Escribrie en Excel en cada celda
+                
                 ws.Cell(row, "A").SetValue<string>(Convert.ToString(c.IncidentDate.Value.ToString("dd/MM/yyyy")));
                 ws.Cell(row, "B").SetValue<string>(c.Direction.Direction);
                 ws.Cell(row, "C").SetValue<string>(c.Site.Site);
@@ -289,19 +309,12 @@ namespace NetworkApp.ViewModels
 
 
 
-                //ws.Cell("B" + row.ToString()).Value = c.Direction.Direction;
-                //ws.Cell("C" + row.ToString()).Value = c.Site.Site;
-                //ws.Cell("D" + row.ToString()).Value = c.Nature.Nature;
-                //ws.Cell("E" + row.ToString()).Value = c.Origin.Origin;
-                //ws.Cell("F" + row.ToString()).Value = c.Operateur?.Operateur;
-                //ws.Cell("G" + row.ToString()).Value = c.Solution;
-                //ws.Cell(row, "I").SetValue<string>(Convert.ToString(c.ClotureDate.Value.ToString("dd/MM/yyyy")));
-                //ws.Cell("J" + row.ToString()).Value = c.AddBy;
+               
                 row++;
 
             }
 
-             
+
 
             var saveFileDialog = new SaveFileDialog
             {
@@ -313,20 +326,34 @@ namespace NetworkApp.ViewModels
 
             if (!String.IsNullOrWhiteSpace(saveFileDialog.FileName))
                 workbook.SaveAs(saveFileDialog.FileName);
-           
 
-            
+
+
         }
 
-      
 
+        public void Cloture()
+        {
+            var Cloture = IoC.Get<IncidentClotureViewModel>();
+
+            Cloture.Incident = SelectedIncident;
+            Transition = true;
+            var result = _window.ShowDialog(Cloture, null, null);
+            Transition = false;
+            if (Cloture.isCloture)
+            {
+
+                //await _incidentEndPoint.DeleteIncident(SelectedIncident.Id);
+                listofincidents.Remove(SelectedIncident);
+                dataincident.Remove(SelectedIncident);
+                NotifyOfPropertyChange(() => CanExport);
+
+            }
+        }
 
         public void AddIncident()
         {
             _events.PublishOnUIThread(new AddIncidentEvent());
         }
-
-
     }
-    }
-
+}

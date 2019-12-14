@@ -18,25 +18,31 @@ namespace NetworkApi.Controllers
 
 
         // GET: api/Incident
-        public async Task<List<PostIncidentModel>>  Get()
+        [HttpGet]
+        [Route("api/Incident/{isCloture}")]
+        public async Task<List<PostIncidentModel>>  Get(bool isCloture)
         {
             IncidentData data = new IncidentData();
 
-            return await data.GetAllIncidents();
+            return await data.GetAllIncidents(isCloture);
         }
 
 
-        // GET: api/Incident/5
-        public async Task<PostIncidentModel>  Get(int id)
-        {
-            IncidentData data = new IncidentData();
+        //// GET: api/Incident/5
+        ////[HttpGet]
+        ////[Route("api/Incident/{Id}")]
+        //public async Task<PostIncidentModel>  Get(int id)
+        //{
+        //    IncidentData data = new IncidentData();
 
-            return await data.GetIncidentById(id);
+        //    return await data.GetIncidentById(id);
 
             
-        }
+        //}
 
         // POST api/Incident
+        [HttpPost]
+        [Route("api/Incident")]
         public async Task Post([FromBody] PostIncidentModel incident)
         {
             
@@ -48,6 +54,8 @@ namespace NetworkApi.Controllers
         }
 
         // DELETE api/Incident/5
+        [HttpDelete]
+        [Route("api/Incident/{id}")]
         public async Task Delete(int id)
         {
             IncidentData data = new IncidentData();
@@ -55,6 +63,8 @@ namespace NetworkApi.Controllers
 
         }
         // PUT api/Incident/5
+        [HttpPut]
+        [Route("api/Incident/{id}")]
         public async Task Put(int id, [FromBody]PostIncidentModel incident)
         {
 

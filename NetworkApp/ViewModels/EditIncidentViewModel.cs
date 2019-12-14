@@ -12,7 +12,7 @@ namespace NetworkApp.ViewModels
 {
     public class EditIncidentViewModel : Screen
     {
-        public IncidentModel checkIncident { get; set; }
+        
         private IncidentModel _incident = new IncidentModel();
 
         public IncidentModel Incident
@@ -270,7 +270,7 @@ namespace NetworkApp.ViewModels
             get { return _isEdit ; }
             set {
                 _isEdit  = value;
-                NotifyOfPropertyChange(() => Transition);
+                NotifyOfPropertyChange(() => isEdit);
             }
         }
 
@@ -315,7 +315,7 @@ namespace NetworkApp.ViewModels
             SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
             Solution = Incident.Solution;
             ClotureDate = Incident.ClotureDate;
-            checkIncident = Incident;
+            
 
         }
 
@@ -328,9 +328,11 @@ namespace NetworkApp.ViewModels
             Transition = false;
             if (result.HasValue && result.Value)
             {
+                int Id = Incident.Id;
+                bool isclotured = Incident.isClotured;
                 Incident = new IncidentModel()
                 {
-                    Id = checkIncident.Id,
+                    Id = Id,
                     IncidentDate = IncidentDate,
                     Direction = SelectedDirection,
                     Site = SelectedSite,
@@ -340,7 +342,7 @@ namespace NetworkApp.ViewModels
                     AddBy = WindowsIdentity.GetCurrent().Name,
                     ClotureDate = ClotureDate,
                     Solution = Solution,
-                    isClotured = checkIncident.isClotured
+                    isClotured = isclotured
 
                 };
                 //try catch
