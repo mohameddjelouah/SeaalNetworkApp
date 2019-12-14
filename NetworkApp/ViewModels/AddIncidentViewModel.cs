@@ -311,10 +311,17 @@ namespace NetworkApp.ViewModels
 
         public void AddIncident()
         {
+
+            SelectedDirectionModel sd = new SelectedDirectionModel()
+            {
+                Id = SelectedDirection.Id,
+                Direction = SelectedDirection.Direction
+            };
             IncidentModel incident = new IncidentModel()
             {
+                
                 IncidentDate = IncidentDate,
-                Direction = SelectedDirection,
+                Direction = sd,
                 Site = SelectedSite,
                 Nature = SelectedNature,
                 Origin = SelectedOrigin,

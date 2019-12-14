@@ -330,11 +330,16 @@ namespace NetworkApp.ViewModels
             {
                 int Id = Incident.Id;
                 bool isclotured = Incident.isClotured;
+                SelectedDirectionModel sd = new SelectedDirectionModel()
+                {
+                    Id = SelectedDirection.Id,
+                    Direction = SelectedDirection.Direction
+                };
                 Incident = new IncidentModel()
                 {
                     Id = Id,
                     IncidentDate = IncidentDate,
-                    Direction = SelectedDirection,
+                    Direction = sd,
                     Site = SelectedSite,
                     Nature = SelectedNature,
                     Origin = SelectedOrigin,

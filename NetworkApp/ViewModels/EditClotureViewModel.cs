@@ -331,11 +331,16 @@ namespace NetworkApp.ViewModels
             if (result.HasValue && result.Value)
             {
                 int Id = Incident.Id;
+                SelectedDirectionModel sd = new SelectedDirectionModel()
+                {
+                    Id = SelectedDirection.Id,
+                    Direction = SelectedDirection.Direction
+                };
                 Incident = new IncidentModel()
                 {
                     Id = Id,
                     IncidentDate = IncidentDate,
-                    Direction = SelectedDirection,
+                    Direction = sd,
                     Site = SelectedSite,
                     Nature = SelectedNature,
                     Origin = SelectedOrigin,

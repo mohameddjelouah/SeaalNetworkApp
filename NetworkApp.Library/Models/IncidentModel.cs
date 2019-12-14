@@ -10,7 +10,7 @@ namespace NetworkApp.Library.Models
     {
         public int Id { get; set; }
         public DateTime? IncidentDate { get; set; }
-        public DirectionModel Direction { get; set; }
+        public SelectedDirectionModel Direction { get; set; }
         public SiteModel Site { get; set; }
         public NatureModel Nature { get; set; }
         public OriginModel Origin { get; set; }

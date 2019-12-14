@@ -60,8 +60,8 @@
     <Compile Include="Models\NatureModel.cs" />
     <Compile Include="Models\OperateurModel.cs" />
     <Compile Include="Models\OriginModel.cs" />
+    <Compile Include="Models\SelectedDirectionModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
-    <Compile Include="Models\UIIncidentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@ namespace NetworkApi.Library.DataAccess
                 {
                     Id = item.Id,
                     IncidentDate = item.IncidentDate,
-                    Direction = JsonConvert.DeserializeObject<DirectionModel>(item.Direction),
+                    Direction = JsonConvert.DeserializeObject<SelectedDirectionModel>(item.Direction),
                     Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
                     Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
                     Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
@@ -120,7 +120,7 @@ namespace NetworkApi.Library.DataAccess
 
                     Id = item.Id,
                     IncidentDate = item.IncidentDate,
-                    Direction = JsonConvert.DeserializeObject<DirectionModel>(item.Direction),
+                    Direction = JsonConvert.DeserializeObject<SelectedDirectionModel>(item.Direction),
                     Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
                     Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
                     Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
