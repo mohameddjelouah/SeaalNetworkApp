@@ -59,7 +59,7 @@
         </DockPanel>
         
         
-        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch"   Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding SelectedIncident}">
+        <DataGrid Grid.Row="1" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding SelectedIncident}">
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>

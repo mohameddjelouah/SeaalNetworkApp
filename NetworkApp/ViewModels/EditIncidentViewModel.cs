@@ -51,6 +51,7 @@ namespace NetworkApp.ViewModels
 
                 _IncidentDate = value;
                 NotifyOfPropertyChange(() => IncidentDate);
+                NotifyOfPropertyChange(() => CanEditIncident);
             }
         }
 //*******************************************************************************************
@@ -77,6 +78,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
             }
         }
@@ -89,6 +91,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedSite = value;
                 NotifyOfPropertyChange(() => SelectedSite);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
             }
         }
@@ -120,6 +123,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedNature);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -163,6 +167,7 @@ namespace NetworkApp.ViewModels
                 }
 
                 NotifyOfPropertyChange(() => SelectedOrigin);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -195,6 +200,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedOperateur);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -212,6 +218,7 @@ namespace NetworkApp.ViewModels
             {
                 _Solution = value;
                 NotifyOfPropertyChange(() => Solution);
+                NotifyOfPropertyChange(() => CanEditIncident);
             }
         }
 
@@ -225,6 +232,7 @@ namespace NetworkApp.ViewModels
 
                 _ClotureDate = value;
                 NotifyOfPropertyChange(() => ClotureDate);
+                NotifyOfPropertyChange(() => CanEditIncident);
             }
         }
 
@@ -319,6 +327,18 @@ namespace NetworkApp.ViewModels
 
         }
 
+        public bool CanEditIncident
+        {
+            get
+            {
+
+
+                return CheckInputs();
+
+
+            }
+
+        } 
 
         public async Task EditIncident()
         {
@@ -356,6 +376,24 @@ namespace NetworkApp.ViewModels
 
             }
             
+        }
+
+
+        public bool CheckInputs()
+        {
+            
+            if (IncidentDate !=null && SelectedDirection != null && SelectedSite != null && SelectedNature != null && SelectedOrigin != null && !string.IsNullOrEmpty(Solution) &&  ClotureDate != null)
+            {
+
+                if ((SelectedOrigin.Origin == "externe" && SelectedOperateur != null) || (SelectedOrigin.Origin == "interne"))
+                {
+                    
+                        return true;
+                    
+                }
+
+            }
+            return false;
         }
 
         public void ExitApplication()

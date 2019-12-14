@@ -48,6 +48,7 @@ namespace NetworkApp.ViewModels
             {
                 _Solution = value;
                 NotifyOfPropertyChange(() => Solution);
+                NotifyOfPropertyChange(() => CanCloturer);
             }
         }
 
@@ -61,6 +62,7 @@ namespace NetworkApp.ViewModels
 
                 _ClotureDate = value;
                 NotifyOfPropertyChange(() => ClotureDate);
+                NotifyOfPropertyChange(() => CanCloturer);
             }
         }
 
@@ -89,6 +91,19 @@ namespace NetworkApp.ViewModels
         }
 
 
+        public bool CanCloturer
+        {
+            get
+            {
+
+
+                return CheckInputs();
+
+
+            }
+
+        }
+
         public async Task Cloturer()
         {
             var Confirme = IoC.Get<DeleteIncidentViewModel>();
@@ -107,6 +122,17 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        public bool CheckInputs()
+        {
+
+            if ( !string.IsNullOrEmpty(Solution) && ClotureDate != null)
+            {
+
+                    return true;
+
+            }
+            return false;
+        }
 
         public void ExitApplication()
         {

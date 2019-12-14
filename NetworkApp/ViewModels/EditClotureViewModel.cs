@@ -53,6 +53,7 @@ namespace NetworkApp.ViewModels
 
                 _IncidentDate = value;
                 NotifyOfPropertyChange(() => IncidentDate);
+                NotifyOfPropertyChange(() => CanEditIncident);
             }
         }
         //*******************************************************************************************
@@ -79,6 +80,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
             }
         }
@@ -91,6 +93,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedSite = value;
                 NotifyOfPropertyChange(() => SelectedSite);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
             }
         }
@@ -122,6 +125,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedNature);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -165,6 +169,7 @@ namespace NetworkApp.ViewModels
                 }
 
                 NotifyOfPropertyChange(() => SelectedOrigin);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -197,6 +202,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedOperateur);
+                NotifyOfPropertyChange(() => CanEditIncident);
 
 
             }
@@ -204,31 +210,6 @@ namespace NetworkApp.ViewModels
         //**********************************************************************************************************
 
 
-
-        //private string _Solution;
-
-        //public string Solution
-        //{
-        //    get { return _Solution; }
-        //    set
-        //    {
-        //        _Solution = value;
-        //        NotifyOfPropertyChange(() => Solution);
-        //    }
-        //}
-
-        //private DateTime? _ClotureDate = null;
-
-        //public DateTime? ClotureDate
-        //{
-        //    get { return _ClotureDate; }
-        //    set
-        //    {
-
-        //        _ClotureDate = value;
-        //        NotifyOfPropertyChange(() => ClotureDate);
-        //    }
-        //}
 
 
         //**************************************************************************************************************
@@ -321,6 +302,18 @@ namespace NetworkApp.ViewModels
 
         }
 
+        public bool CanEditIncident
+        {
+            get
+            {
+
+
+                return CheckInputs();
+
+
+            }
+
+        }
 
         public async Task EditIncident()
         {
@@ -356,6 +349,22 @@ namespace NetworkApp.ViewModels
 
         }
 
+        public bool CheckInputs()
+        {
+
+            if (IncidentDate != null && SelectedDirection != null && SelectedSite != null && SelectedNature != null && SelectedOrigin != null )
+            {
+
+                if ((SelectedOrigin.Origin == "externe" && SelectedOperateur != null) || (SelectedOrigin.Origin == "interne"))
+                {
+
+                    return true;
+
+                }
+
+            }
+            return false;
+        }
         public void ExitApplication()
         {
             TryClose(false);

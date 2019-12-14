@@ -39,6 +39,7 @@ namespace NetworkApp.ViewModels
 
                 _IncidentDate = value;
                 NotifyOfPropertyChange(() => IncidentDate);
+                NotifyOfPropertyChange(() => CanAddIncident);
             }
         }
 //*******************************************************************************************
@@ -63,7 +64,8 @@ namespace NetworkApp.ViewModels
             set {
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
-               
+                NotifyOfPropertyChange(() => CanAddIncident);
+
             }
         }
 
@@ -75,6 +77,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedSite = value;
                 NotifyOfPropertyChange(() => SelectedSite);
+                NotifyOfPropertyChange(() => CanAddIncident);
 
             }
         }
@@ -104,6 +107,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedNature);
+                NotifyOfPropertyChange(() => CanAddIncident);
 
 
             }
@@ -146,6 +150,7 @@ namespace NetworkApp.ViewModels
                 }
 
                 NotifyOfPropertyChange(() => SelectedOrigin);
+                NotifyOfPropertyChange(() => CanAddIncident);
 
 
             }
@@ -178,6 +183,7 @@ namespace NetworkApp.ViewModels
 
 
                 NotifyOfPropertyChange(() => SelectedOperateur);
+                NotifyOfPropertyChange(() => CanAddIncident);
 
 
             }
@@ -193,6 +199,7 @@ namespace NetworkApp.ViewModels
                 
                 _CanSolution = value;
                 NotifyOfPropertyChange(() => CanSolution);
+
             }
         }
 
@@ -204,6 +211,7 @@ namespace NetworkApp.ViewModels
             set {
                 _Solution = value;
                 NotifyOfPropertyChange(() => Solution);
+                NotifyOfPropertyChange(() => CanAddIncident);
             }
         }
 
@@ -216,6 +224,7 @@ namespace NetworkApp.ViewModels
                 
                 _ClotureDate = value;
                 NotifyOfPropertyChange(() => ClotureDate);
+                NotifyOfPropertyChange(() => CanAddIncident);
             }
         }
 
@@ -237,6 +246,7 @@ namespace NetworkApp.ViewModels
                 }
                 CanSolution = !value;
                 NotifyOfPropertyChange(() => isCloture);
+                NotifyOfPropertyChange(() => CanAddIncident);
 
             }
         }
@@ -253,6 +263,7 @@ namespace NetworkApp.ViewModels
             {
                 _Externe = value;
                 NotifyOfPropertyChange(() => Externe);
+                
 
             }
         }
@@ -296,13 +307,8 @@ namespace NetworkApp.ViewModels
             get
             {
 
-                //bool output = false;
-
-                //if ()
-                //{
-                //    output = true;
-                //}
-                return true;
+                
+                return CheckInputs();
 
 
             }
@@ -337,8 +343,27 @@ namespace NetworkApp.ViewModels
 
         }
         //**************************************************************************************************************
+        //**************************************************************************************************************
+        
 
+        public bool CheckInputs()
+        {
+            if (IncidentDate != null && SelectedDirection != null && SelectedSite != null && SelectedNature != null && SelectedOrigin != null)
+            {
+                if ((SelectedOrigin.Origin == "externe" && SelectedOperateur != null) || (SelectedOrigin.Origin == "interne"))
+                {
+                    if (isCloture == true || (isCloture == false && !string.IsNullOrEmpty(Solution) && ClotureDate !=null))
+                    {
+                        return true;
+                    }
+                }
+                
+            }
 
+            return false;
+        }
+
+        //**************************************************************************************************************
 
     }
 }
