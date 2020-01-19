@@ -125,7 +125,11 @@ namespace NetworkApp.ViewModels
         public void Handle(AddIncidentEvent message)
         {
             ActivateItem(IoC.Get<AddIncidentViewModel>());
+            
         }
+
+
+       
 
 
         public void DisplayDashboard()
@@ -207,7 +211,7 @@ namespace NetworkApp.ViewModels
             ResetSelected();
             isInterventionSelected = true;
             ExpendIncident = false;
-
+            ActivateItem(IoC.Get<InterventionViewModel>());
         }
 
 
@@ -217,6 +221,7 @@ namespace NetworkApp.ViewModels
             ResetSelected();
             isInterventionSelected = true;
             ExpendIncident = false;
+            ActivateItem(IoC.Get<AddInterventionViewModel>());
 
         }
 
