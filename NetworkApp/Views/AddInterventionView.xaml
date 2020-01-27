@@ -43,7 +43,7 @@
                         </DockPanel>
                         
                         
-                        <DockPanel Grid.Row="1" Margin="20" >
+                        <DockPanel Grid.Row="2" Margin="20" >
                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Direction :"/>
                              <ComboBox x:Name="Directions" Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedDirection}">
                                       <ComboBox.ItemTemplate> 
@@ -57,7 +57,7 @@
                         </DockPanel>
 
 
-                        <DockPanel Grid.Row="2" Margin="20" >
+                        <DockPanel Grid.Row="4" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Site"/>
                              <ComboBox x:Name="SelectedDirection_Sites"  Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la Site --" SelectedItem="{Binding SelectedSite}">
 
@@ -69,8 +69,17 @@
                             </ComboBox>
                         </DockPanel>
 
-                        <DockPanel Grid.Row="3" Margin="20" >
-                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'incident"/>
+
+
+
+        <Separator Height="5"  Background="Black" Margin="0 20 0 40" Grid.RowSpan="6"  Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
+             
+        <DockPanel Grid.Row="0" Grid.Column="2" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'intervention"/>
                             <ComboBox x:Name="Nature" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --" SelectedItem="{Binding SelectedNature}">
                                  <ComboBox.ItemTemplate>
                                     <DataTemplate >
@@ -83,8 +92,8 @@
                         </DockPanel>
 
 
-                        <DockPanel Grid.Row="4" Margin="20" >
-                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="origin"/>
+                        <DockPanel Grid.Row="2" Grid.Column="2" Margin="20" >
+                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Equipment"/>
                             <ComboBox x:Name="Origin" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedOrigin}">
                                <ComboBox.ItemTemplate>
                                     <DataTemplate >
@@ -96,38 +105,16 @@
 
                         </DockPanel>
 
-                        <DockPanel Visibility="{Binding Path=Externe,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="5" Margin="20" >
-                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Operateur"/>
-                            <ComboBox x:Name="Operateur" materialDesign:HintAssist.Hint="-- Choissier l'operateur --" SelectedItem="{Binding SelectedOperateur}" Width="Auto" MaxWidth="400">
-                               <ComboBox.ItemTemplate>
-                                    <DataTemplate >
-                                        <TextBlock Text="{Binding Operateur}" />
-                                    </DataTemplate >
-                                </ComboBox.ItemTemplate >
-
-                            </ComboBox>
-
-                        </DockPanel>
-
+                        
 
 
                     <!--</Grid>-->
 
 
-                    <Separator Height="5"  Background="Black" Margin="0 20 0 40" Grid.RowSpan="6"  Grid.Column="1" Style="{StaticResource MaterialDesignDarkSeparator}" >
-                        <Separator.LayoutTransform>
-                            <RotateTransform Angle="90" />
-                        </Separator.LayoutTransform>
-                    </Separator>
 
 
-
-
-                   
-
-
-                                    <DockPanel Margin="20,20,20,0" Grid.Row="0" Grid.Column="2" >
-                                        <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Solution : "/>
+                              <DockPanel Margin="20,20,20,0" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" >
+                                        <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Rapport : "/>
                                         <TextBox x:Name="Solution"
                                             IsEnabled="{Binding CanSolution}"
                                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
@@ -135,29 +122,19 @@
                                             MaxHeight="150"
                                             TextWrapping="Wrap"
                                             VerticalScrollBarVisibility="Auto"
-                                            materialDesign:HintAssist.Hint="Solution de l'incident" />
+                                            materialDesign:HintAssist.Hint="Solution de l'incident"
+                                        />
                                
-
-                                    </DockPanel>
-
-                                    <DockPanel Margin="20" Grid.Row="1" Grid.Column="2">
-                                        <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Date de cloture :"/>
-                                        <DatePicker x:Name="ClotureDate" IsEnabled="{Binding CanSolution}" Width="Auto" MaxWidth="400"   materialDesign:HintAssist.Hint="Choissier la Date de Cloturation" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                                    </DockPanel>
-
-                       
-                                        <CheckBox x:Name="isCloture" Margin="90,35,0,35" Grid.Row="2"  Grid.Column="2" IsThreeState="False">
-                                            incident pas encore cloturer
-                                        </CheckBox>
-                                        <Button x:Name="AddIncident" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
-
-                        
+                              </DockPanel>
 
 
 
-                   
-                     
 
-                 </Grid> 
+                             <Button x:Name="AddIncident" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
+
+
+
+
+
+    </Grid> 
 </UserControl>
