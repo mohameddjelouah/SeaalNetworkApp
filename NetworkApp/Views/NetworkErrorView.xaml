@@ -1,0 +1,57 @@
+﻿<Window x:Class="NetworkApp.Views.NetworkErrorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkApp.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         xmlns:cal="http://www.caliburnproject.org" 
+        cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
+        mc:Ignorable="d"
+        Title="NetworkErrorView" Height="180" Width="380" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"  AllowsTransparency="True" Background="Transparent">
+
+
+
+    <Border  CornerRadius="10"  Background="#2f3542"  >
+
+
+
+        <StackPanel>
+
+            <Button HorizontalAlignment="Right" x:Name="ExitApplication" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                <materialDesign:PackIcon Kind="WindowClose" Height="30" Width="30" Foreground="WhiteSmoke"/>
+            </Button>
+            
+            <StackPanel Orientation="Horizontal"  Margin="5 0 5 10">
+                <Image Margin="20 0 0 0" Width="80" Height="80" Source="{StaticResource warning}"/>
+
+                <TextBlock Foreground="WhiteSmoke" VerticalAlignment="Center" FontSize="15" Width="250"  Margin="15 20" TextWrapping="Wrap">
+                                   Un Erreur servenu lors la connexion au serveur
+                </TextBlock>
+            </StackPanel>
+
+            
+
+                <Button x:Name="retry"  Margin="10 0" Width="150" Height="40"   HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ButtonAssist.CornerRadius="5"  VerticalAlignment="Center" Background="#ffa801" BorderBrush="{x:Null}" Foreground="#f1f2f6" >
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Refresh" Margin="0 0 5 0" VerticalAlignment="Center"/>
+                    <TextBlock >
+                        Recommencez
+                    </TextBlock>
+                    
+                </StackPanel>
+                    
+                    
+                </Button>
+
+
+           
+        </StackPanel>
+
+
+
+
+
+    </Border>
+</Window>

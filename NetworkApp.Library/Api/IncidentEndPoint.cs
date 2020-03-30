@@ -62,7 +62,7 @@ namespace NetworkApp.Library.Api
         
         //----------------------------------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------------
-        public async Task AddIncident(IncidentModel incident)
+        public async Task AddIncident(StoreIncidentModel incident)
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync($"api/Incident",incident))
@@ -105,7 +105,7 @@ namespace NetworkApp.Library.Api
 
         //*********************************************************************************************************************
 
-        public async Task EditIncident(IncidentModel incident)
+        public async Task EditIncident(StoreIncidentModel incident)
         {
 
             using (HttpResponseMessage response = await _apiHelper.ApiClient.PutAsJsonAsync($"api/Incident/{incident.Id}", incident))

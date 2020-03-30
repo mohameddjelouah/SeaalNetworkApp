@@ -112,12 +112,41 @@ namespace NetworkApp.ViewModels
             Transition = false;
             if (result.HasValue && result.Value)
             {
+                try
+                {
+                    Incident.Solution = Solution;
+                    Incident.ClotureDate = ClotureDate;
+                    Incident.isClotured = true;
+                    Incident.AddBy = WindowsIdentity.GetCurrent().Name;
+                    StoreIncidentModel storIncident = new StoreIncidentModel()
+                    {
+
+                        Id = Incident.Id,
+                        IncidentDate = Incident.IncidentDate,
+                        Direction = Incident.Direction.Id,
+                        Site = Incident.Site.Id,
+                        Nature = Incident.Nature.Id,
+                        Origin = Incident.Origin.Id,
+                        Operateur = Incident.Operateur?.Id,
+                        Solution = Solution,
+                        ClotureDate = ClotureDate,
+                        isClotured = true,
+                        AddBy = WindowsIdentity.GetCurrent().Name
+
+
+
+
+                    };
+                    await _incidentEndPoint.EditIncident(storIncident);
+                    isCloture = true;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
                 
-                Incident.Solution = Solution;
-                Incident.ClotureDate = ClotureDate;
-                Incident.isClotured = true;
-                await _incidentEndPoint.EditIncident(Incident);
-                isCloture = true;
 
             }
         }

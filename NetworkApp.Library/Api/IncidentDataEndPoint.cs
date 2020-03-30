@@ -17,7 +17,7 @@ namespace NetworkApp.Library.Api
         {
             _apiHelper = apiHelper;
         }
-        public async Task<AddIncidentModel> GetDirections()
+        public async Task<AddIncidentModel> GetIncidentData()
         {
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync($"api/Directions"))
             {

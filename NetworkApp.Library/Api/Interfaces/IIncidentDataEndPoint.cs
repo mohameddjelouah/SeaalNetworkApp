@@ -9,6 +9,6 @@ namespace NetworkApp.Library.Api.Interfaces
 {
     public interface IIncidentDataEndPoint
     {
-        Task<AddIncidentModel> GetDirections();
+        Task<AddIncidentModel> GetIncidentData();
     }
 }

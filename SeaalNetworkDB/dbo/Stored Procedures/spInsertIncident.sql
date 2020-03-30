@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertIncident]
 	@Id int,	
 	@IncidentDate   DATETIME2,
-	@Direction      NVARCHAR(MAX),
-	@Site		    NVARCHAR(MAX),
-	@Nature			NVARCHAR(MAX),
-	@Origin         NVARCHAR(MAX),
-	@Operateur	    NVARCHAR(MAX),
+	@Direction      int,
+	@Site		    int,
+	@Nature			int,
+	@Origin         int,
+	@Operateur	    int,
 	@isClotured		BIT,
 	@Solution		NVARCHAR (MAX),
 	@ClotureDate	DATETIME2,
@@ -15,7 +15,7 @@ begin
 	
 	set nocount on 
 
-	insert into dbo.Incidents(IncidentDate,Direction,[Site],Nature,Origin,Operateur,isClotured,Solution,ClotureDate,AddBy) values(@IncidentDate,@Direction,@Site,@Nature,@Origin,@Operateur,@isClotured,@Solution,@ClotureDate,@AddBy);
+	insert into dbo.Incidents(IncidentDate,DirectionId,SiteId,NatureId,OriginId,OperateurId,isClotured,Solution,ClotureDate,AddBy) values(@IncidentDate,@Direction,@Site,@Nature,@Origin,@Operateur,@isClotured,@Solution,@ClotureDate,@AddBy);
 
 end
 	

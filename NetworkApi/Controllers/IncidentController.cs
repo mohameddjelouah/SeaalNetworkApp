@@ -43,7 +43,7 @@ namespace NetworkApi.Controllers
         // POST api/Incident
         [HttpPost]
         [Route("api/Incident")]
-        public async Task Post([FromBody] PostIncidentModel incident)
+        public async Task Post([FromBody] StoreIncidentModel incident)
         {
             
             IncidentData data = new IncidentData();
@@ -65,7 +65,7 @@ namespace NetworkApi.Controllers
         // PUT api/Incident/5
         [HttpPut]
         [Route("api/Incident/{id}")]
-        public async Task Put(int id, [FromBody]PostIncidentModel incident)
+        public async Task Put(int id, [FromBody]StoreIncidentModel incident)
         {
 
             IncidentData data = new IncidentData();

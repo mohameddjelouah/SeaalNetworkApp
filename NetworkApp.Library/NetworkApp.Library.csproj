@@ -62,6 +62,7 @@
     <Compile Include="Models\OriginModel.cs" />
     <Compile Include="Models\SelectedDirectionModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\StoreIncidentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

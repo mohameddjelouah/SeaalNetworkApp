@@ -309,20 +309,30 @@ namespace NetworkApp.ViewModels
         private async Task LoadData()
         {
 
-            Data = await _incidentDataEndPoint.GetDirections();
-            Directions = new BindableCollection<DirectionModel>(Data.Directions);
-            Nature = new BindableCollection<NatureModel>(Data.Natures);
-            Origin = new BindableCollection<OriginModel>(Data.Origins);
-            Operateur = new BindableCollection<OperateurModel>(Data.Operateurs);
+            try
+            {
+                Data = await _incidentDataEndPoint.GetIncidentData();
+                Directions = new BindableCollection<DirectionModel>(Data.Directions);
+                Nature = new BindableCollection<NatureModel>(Data.Natures);
+                Origin = new BindableCollection<OriginModel>(Data.Origins);
+                Operateur = new BindableCollection<OperateurModel>(Data.Operateurs);
+
+                IncidentDate = Incident.IncidentDate;
+                SelectedDirection = Directions.SingleOrDefault(x => (x.Id == Incident.Direction.Id));
+                SelectedSite = SelectedDirection.Sites.SingleOrDefault(x => x.Id == Incident.Site.Id);
+                SelectedNature = Nature.SingleOrDefault(x => (x.Id == Incident.Nature.Id));
+                SelectedOrigin = Origin.SingleOrDefault(x => (x.Id == Incident.Origin.Id));
+                SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
+                Solution = Incident.Solution;
+                ClotureDate = Incident.ClotureDate;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
             
-            IncidentDate = Incident.IncidentDate;
-            SelectedDirection = Directions.SingleOrDefault(x => (x.Id == Incident.Direction.Id));
-            SelectedSite = SelectedDirection.Sites.SingleOrDefault(x => x.Id == Incident.Site.Id);
-            SelectedNature = Nature.SingleOrDefault(x => (x.Id == Incident.Nature.Id));
-            SelectedOrigin = Origin.SingleOrDefault(x => (x.Id == Incident.Origin.Id));
-            SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
-            Solution = Incident.Solution;
-            ClotureDate = Incident.ClotureDate;
             
 
         }
@@ -348,31 +358,58 @@ namespace NetworkApp.ViewModels
             Transition = false;
             if (result.HasValue && result.Value)
             {
-                int Id = Incident.Id;
-                bool isclotured = Incident.isClotured;
-                SelectedDirectionModel sd = new SelectedDirectionModel()
-                {
-                    Id = SelectedDirection.Id,
-                    Direction = SelectedDirection.Direction
-                };
-                Incident = new IncidentModel()
-                {
-                    Id = Id,
-                    IncidentDate = IncidentDate,
-                    Direction = sd,
-                    Site = SelectedSite,
-                    Nature = SelectedNature,
-                    Origin = SelectedOrigin,
-                    Operateur = SelectedOperateur,
-                    AddBy = WindowsIdentity.GetCurrent().Name,
-                    ClotureDate = ClotureDate,
-                    Solution = Solution,
-                    isClotured = isclotured
 
-                };
-                //try catch
-                     await _incidentEndPoint.EditIncident(Incident);
-                     isEdit = true;
+                try
+                {
+                    int Id = Incident.Id;
+                    bool isclotured = Incident.isClotured;
+                    SelectedDirectionModel sd = new SelectedDirectionModel()
+                    {
+                        Id = SelectedDirection.Id,
+                        Direction = SelectedDirection.Direction
+                    };
+                    Incident = new IncidentModel()
+                    {
+                        Id = Id,
+                        IncidentDate = IncidentDate,
+                        Direction = sd,
+                        Site = SelectedSite,
+                        Nature = SelectedNature,
+                        Origin = SelectedOrigin,
+                        Operateur = SelectedOperateur,
+                        ClotureDate = ClotureDate,
+                        Solution = Solution,
+                        isClotured = isclotured,
+                        AddBy = WindowsIdentity.GetCurrent().Name
+
+                    };
+
+                    StoreIncidentModel storeIncident = new StoreIncidentModel()
+                    {
+                        Id = Id,
+                        IncidentDate = IncidentDate,
+                        Direction = sd.Id,
+                        Site = SelectedSite.Id,
+                        Nature = SelectedNature.Id,
+                        Origin = SelectedOrigin.Id,
+                        Operateur = SelectedOperateur?.Id,
+                        ClotureDate = ClotureDate,
+                        Solution = Solution,
+                        isClotured = isclotured,
+                        AddBy = WindowsIdentity.GetCurrent().Name
+
+
+                    };
+                    
+                    await _incidentEndPoint.EditIncident(storeIncident);
+                    isEdit = true;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
 
             }
             

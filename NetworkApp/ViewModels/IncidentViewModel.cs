@@ -74,7 +74,20 @@ namespace NetworkApp.ViewModels
 
             }
         }
-        
+
+        private bool _dataBaseError = false;
+
+        public bool DataBaseError
+        {
+            get { return _dataBaseError; }
+            set { 
+                _dataBaseError = value;
+                NotifyOfPropertyChange(() => DataBaseError);
+
+            }
+        }
+
+
 
         private BindableCollection<IncidentModel> _dataincident = new BindableCollection<IncidentModel>();
 
@@ -104,11 +117,42 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
+            retry1: try
+            {
+                await LoadIncidents();
+                NotifyOfPropertyChange(() => CanExport);
+                Prog = false;
+                Load = true;
+            }
+            catch (Exception e)
+            {
+                Prog = false;
+               // show a dialog with retry buton or exit the application
 
-            await LoadIncidents();
-            NotifyOfPropertyChange(() => CanExport);
-            Prog = false;
-            Load = true;
+
+                //for example :
+                var Error = IoC.Get<NetworkErrorViewModel>();
+                Transition = true;
+                var result = _window.ShowDialog(Error, null, null);
+                Transition = false;
+                if (result.HasValue && result.Value)
+                {
+                    Prog = true;
+                    goto retry1;
+
+                }
+                else
+                {
+
+                    DataBaseError = true;
+                    // here i have to make a panel for error connextion when i exit application
+                }
+
+
+            }
+
+           
+
 
         }
 
@@ -157,11 +201,22 @@ namespace NetworkApp.ViewModels
             Transition = false;
             if (result.HasValue && result.Value)
             {
-                await _incidentEndPoint.DeleteIncident(SelectedIncident.Id);
-                listofincidents.Remove(SelectedIncident);
-                dataincident.Remove(SelectedIncident);
+
+                try
+                {
+                    await _incidentEndPoint.DeleteIncident(SelectedIncident.Id);
+                    listofincidents.Remove(SelectedIncident);
+                    dataincident.Remove(SelectedIncident);
+                    NotifyOfPropertyChange(() => CanExport);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
             }
-            NotifyOfPropertyChange(() => CanExport);
+            
         }
 
         
@@ -287,16 +342,6 @@ namespace NetworkApp.ViewModels
                 ws.Cell(row, "I").SetValue<string>(Convert.ToString(c.ClotureDate.Value.ToString("dd/MM/yyyy")));
                 ws.Cell(row, "J").SetValue<string>(c.AddBy);
 
-
-
-                //ws.Cell("B" + row.ToString()).Value = c.Direction.Direction;
-                //ws.Cell("C" + row.ToString()).Value = c.Site.Site;
-                //ws.Cell("D" + row.ToString()).Value = c.Nature.Nature;
-                //ws.Cell("E" + row.ToString()).Value = c.Origin.Origin;
-                //ws.Cell("F" + row.ToString()).Value = c.Operateur?.Operateur;
-                //ws.Cell("G" + row.ToString()).Value = c.Solution;
-                //ws.Cell(row, "I").SetValue<string>(Convert.ToString(c.ClotureDate.Value.ToString("dd/MM/yyyy")));
-                //ws.Cell("J" + row.ToString()).Value = c.AddBy;
                 row++;
 
             }

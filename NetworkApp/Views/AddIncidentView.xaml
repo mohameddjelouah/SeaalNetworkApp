@@ -11,24 +11,48 @@
               d:DesignHeight="650" d:DesignWidth="1020">
 
     
-                 <Grid>
+        <Grid>
 
-                    <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-                     
-                    <!--<Grid Grid.Column="0" Margin="25 20 25 20">-->
+        <ProgressBar Grid.ColumnSpan="3"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
+                <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
+
+                <TextBlock DockPanel.Dock="Right"   Foreground="DimGray" VerticalAlignment="Center" FontSize="16"   Margin="10 0 0 0" TextWrapping="Wrap" >
+                                  Errour lors la connexion au serveur !!!!
+                </TextBlock>
+            </DockPanel>
+        <Border  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
+                <Border Background="Black"/>
+        </Border>
+            
+         
+          <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
+
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!--<Grid Grid.Column="0" Margin="25 20 25 20">-->
 
                         <DockPanel Grid.Row="0" Margin="20">
                            <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Date d'Incident :"/>
@@ -152,5 +176,7 @@
                    
                      
 
-                 </Grid> 
+          </Grid> 
+        </Grid> 
+    
 </UserControl>

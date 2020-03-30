@@ -252,7 +252,33 @@ namespace NetworkApp.ViewModels
         }
 
 
- //**************************************************************************************************************
+        //**************************************************************************************************************
+        private bool _form = false;
+
+        public bool Form
+        {
+            get { return _form; }
+            set { 
+                _form = value;
+                NotifyOfPropertyChange(() => Form);
+            }
+        }
+
+        //**************************************************************************************************************
+        private bool _dataBaseError = false;
+
+        public bool DataBaseError
+        {
+            get { return _dataBaseError; }
+            set
+            {
+                _dataBaseError = value;
+                NotifyOfPropertyChange(() => DataBaseError);
+
+            }
+        }
+
+        //**************************************************************************************************************
 
         private bool _Externe = false;
 
@@ -268,32 +294,95 @@ namespace NetworkApp.ViewModels
             }
         }
 
- //**************************************************************************************************************
+        //**************************************************************************************************************
+        private bool _prog = true;
+
+        public bool Prog
+        {
+            get { return _prog; }
+            set
+            {
+                _prog = value;
+                NotifyOfPropertyChange(() => Prog);
+
+            }
+        }
+        //**************************************************************************************************************
+
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
+        //**************************************************************************************************************
 
         private IIncidentDataEndPoint _incidentDataEndPoint;
         private IIncidentEndPoint _incidentEndPoint;
-        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint,IIncidentEndPoint incidentEndPoint)
+        private IWindowManager _window;
+
+        public AddIncidentViewModel(IIncidentDataEndPoint incidentDataEndPoint, IWindowManager window,IIncidentEndPoint incidentEndPoint)
         {
             _incidentDataEndPoint = incidentDataEndPoint;
             _incidentEndPoint = incidentEndPoint;
+            _window = window;
 
-            
         }
 
         protected override async void OnViewLoaded(object view)
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            await LoadData();
-
-
             
+        retry1: try
+            {
+
+                await LoadData();
+                Prog = false;
+                Form = true;
+
+            }
+            catch (Exception e)
+            {
+
+                // show a dialog with retry buton or exit the application
+
+                Prog = false;
+                //for example :
+                var Error = IoC.Get<NetworkErrorViewModel>();
+                Transition = true;
+                var result = _window.ShowDialog(Error, null, null);
+                Transition = false;
+                if (result.HasValue && result.Value)
+                {
+                    Prog = true;
+                    goto retry1;
+
+                }
+                else
+                {
+
+                    DataBaseError = true;
+                    // here i have to make a panel for error connextion when i exit application
+                }
+
+
+            }
+
+
+
 
         }
         private async Task LoadData()
         {
 
-            Data = await _incidentDataEndPoint.GetDirections();
+            Data = await _incidentDataEndPoint.GetIncidentData();
             Directions = new BindableCollection<DirectionModel>(Data.Directions);
             Nature = new BindableCollection<NatureModel>(Data.Natures);
             Origin = new BindableCollection<OriginModel>(Data.Origins);
@@ -318,20 +407,16 @@ namespace NetworkApp.ViewModels
         public void AddIncident()
         {
 
-            SelectedDirectionModel sd = new SelectedDirectionModel()
-            {
-                Id = SelectedDirection.Id,
-                Direction = SelectedDirection.Direction
-            };
-            IncidentModel incident = new IncidentModel()
+            
+            StoreIncidentModel incident = new StoreIncidentModel()
             {
                 
                 IncidentDate = IncidentDate,
-                Direction = sd,
-                Site = SelectedSite,
-                Nature = SelectedNature,
-                Origin = SelectedOrigin,
-                Operateur = SelectedOperateur,
+                Direction = SelectedDirection.Id,
+                Site = SelectedSite.Id,
+                Nature = SelectedNature.Id,
+                Origin = SelectedOrigin.Id,
+                Operateur = SelectedOperateur?.Id,
                 isClotured = CanSolution,
                 Solution = Solution,
                 ClotureDate = ClotureDate,
@@ -339,7 +424,17 @@ namespace NetworkApp.ViewModels
 
             };
 
-            _incidentEndPoint.AddIncident(incident);
+            try
+            {
+                _incidentEndPoint.AddIncident(incident);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+           
 
         }
         //**************************************************************************************************************

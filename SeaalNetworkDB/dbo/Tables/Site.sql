@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Site]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [directionID] INT NOT NULL, 
-    [site] NVARCHAR(MAX) NOT NULL,
-	CONSTRAINT [FK_Site_ToDirection] FOREIGN KEY (directionID) REFERENCES Direction(Id) On DELETE CASCADE
+    [DirectionID] INT NOT NULL, 
+    [Site] NVARCHAR(MAX) NOT NULL,
+	CONSTRAINT [FK_Site_ToDirection] FOREIGN KEY ([DirectionID]) REFERENCES Direction(Id) On DELETE CASCADE
 )

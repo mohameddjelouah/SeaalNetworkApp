@@ -4,11 +4,11 @@
 
 	@Id int ,
 	@IncidentDate DATETIME2,
-	@Direction NVARCHAR (MAX),
-	@Site  NVARCHAR (MAX),
-	@Nature  NVARCHAR (MAX),
-	@Origin  NVARCHAR (MAX),
-	@Operateur  NVARCHAR (MAX),
+	@Direction int,
+	@Site  int,
+	@Nature  int,
+	@Origin  int,
+	@Operateur  int,
 	@isClotured  BIT,
 	@Solution  NVARCHAR (MAX),
 	@ClotureDate  DATETIME2 ,
@@ -16,5 +16,5 @@
 	AS
 begin
 	set nocount on;
-	update Incidents set IncidentDate = @IncidentDate,Direction = @Direction,[Site] = @Site,Nature = @Nature,Origin = @Origin,Operateur = @Operateur,isClotured=@isClotured,Solution = @Solution,ClotureDate = @ClotureDate,AddBy = @AddBy where Id = @Id;
+	update Incidents set IncidentDate = @IncidentDate,DirectionId = @Direction,SiteId = @Site,NatureId = @Nature,OriginId = @Origin,OperateurId = @Operateur,isClotured=@isClotured,Solution = @Solution,ClotureDate = @ClotureDate,AddBy = @AddBy where Id = @Id;
 end

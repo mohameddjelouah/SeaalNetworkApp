@@ -15,29 +15,13 @@ using System.Windows.Shapes;
 namespace NetworkApp.Views
 {
     /// <summary>
-    /// Interaction logic for ShellView.xaml
+    /// Interaction logic for NetworkErrorView.xaml
     /// </summary>
-    public partial class ShellView : Window
+    public partial class NetworkErrorView : Window
     {
-        public ShellView()
+        public NetworkErrorView()
         {
             InitializeComponent();
         }
-
-        
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-           
-            
-        }
-
-        
     }
 }

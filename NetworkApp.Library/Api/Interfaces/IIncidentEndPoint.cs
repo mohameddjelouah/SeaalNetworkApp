@@ -11,9 +11,9 @@ namespace NetworkApp.Library.Api.Interfaces
         Task<IncidentModel> GetIncident(int id);
 
 
-        Task AddIncident(IncidentModel incident);
+        Task AddIncident(StoreIncidentModel incident);
 
-        Task EditIncident(IncidentModel incident);
+        Task EditIncident(StoreIncidentModel incident);
 
         Task DeleteIncident(int id);
     }
