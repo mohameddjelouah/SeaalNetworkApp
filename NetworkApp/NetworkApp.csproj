@@ -121,10 +121,12 @@
     <Compile Include="ViewModels\EditClotureViewModel.cs" />
     <Compile Include="ViewModels\EditIncidentViewModel.cs" />
     <Compile Include="ViewModels\EditInterventionViewModel.cs" />
+    <Compile Include="ViewModels\FaildDialogViewModel.cs" />
     <Compile Include="ViewModels\IncidentClotureViewModel.cs" />
     <Compile Include="ViewModels\IncidentViewModel.cs" />
     <Compile Include="ViewModels\InterventionViewModel.cs" />
     <Compile Include="ViewModels\NetworkErrorViewModel.cs" />
+    <Compile Include="ViewModels\SeccesDialogViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AddIncidentView.xaml.cs">
       <DependentUpon>AddIncidentView.xaml</DependentUpon>
@@ -150,6 +152,9 @@
     <Compile Include="Views\EditInterventionView.xaml.cs">
       <DependentUpon>EditInterventionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FaildDialogView.xaml.cs">
+      <DependentUpon>FaildDialogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\IncidentClotureView.xaml.cs">
       <DependentUpon>IncidentClotureView.xaml</DependentUpon>
     </Compile>
@@ -161,6 +166,9 @@
     </Compile>
     <Compile Include="Views\NetworkErrorView.xaml.cs">
       <DependentUpon>NetworkErrorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeccesDialogView.xaml.cs">
+      <DependentUpon>SeccesDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -201,6 +209,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\FaildDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\IncidentClotureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NetworkErrorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SeccesDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,6 +282,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\putty.exe" />
+    <Resource Include="Assets\seccescheck.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

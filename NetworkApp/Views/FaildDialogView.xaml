@@ -1,0 +1,45 @@
+﻿<Window x:Class="NetworkApp.Views.FaildDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkApp.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="FaildDialogView" Height="125" Width="320" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"  AllowsTransparency="True" Background="Transparent">
+
+
+
+    <Border  CornerRadius="10"  Background="#2f3542"  >
+
+
+
+        <StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal"  Margin="10 5">
+
+
+                <Image  Margin="10 0 0 0" Width="65" Height="65" Source="{StaticResource warning}"/>
+
+                <TextBlock x:Name="Message" Foreground="WhiteSmoke" VerticalAlignment="Center" FontSize="14" Width="190"  Margin="10 0" TextWrapping="Wrap"/>
+
+
+            </StackPanel>
+
+
+
+            <Button x:Name="close" Content="OK"  Width="70" Height="40"   HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ButtonAssist.CornerRadius="5"  VerticalAlignment="Center" Background="#ffa801" BorderBrush="{x:Null}" Foreground="#f1f2f6" />
+
+
+
+
+        </StackPanel>
+
+
+
+
+
+    </Border>
+</Window>

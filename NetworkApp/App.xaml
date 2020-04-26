@@ -21,8 +21,12 @@
             <local1:BooleanToVisibilityConverter x:Key="booleanToVisibiltyConverter"/>
             <BitmapImage x:Key="warning" UriSource="Assets\warning.png"/>
             <BitmapImage x:Key="dataError" UriSource="Assets\database-error.png"/>
-            <Application  x:Key="putty" StartupUri="Assets\putty.exe"/>
+            <BitmapImage x:Key="seccescheck" UriSource="Assets\seccescheck.png"/>
+            
+
+            <!--<Application  x:Key="putty"  StartupUri="Assets\putty.exe"/>-->
         </ResourceDictionary>
+        
       
     </Application.Resources>
 </Application>

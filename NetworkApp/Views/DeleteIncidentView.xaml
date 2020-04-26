@@ -19,19 +19,19 @@
                 <Image Margin="20 0 0 0" Width="80" Height="80" Source="{StaticResource warning}"/>
                
                 <TextBlock Foreground="WhiteSmoke" VerticalAlignment="Center" FontSize="15" Width="250"  Margin="15 20" TextWrapping="Wrap">
-                                   vous etes sur de supprimer l incident
+                                   Vous êtes sûre !!!
                 </TextBlock>
                 </StackPanel>
               
                 <DockPanel     Margin="20 10 20 10">
 
                 <Button Margin="10 0" Width="140" Height="40" cal:Message.Attach="cancele"  HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ButtonAssist.CornerRadius="5"  VerticalAlignment="Center" Background="#20bf6b" BorderBrush="{x:Null}" Foreground="#f1f2f6"  >
-                        annuller
-                    </Button>
+                    Annuler
+                </Button>
 
                 <Button  Margin="10 0" Width="140" Height="40" cal:Message.Attach="delete"  HorizontalAlignment="Right"  Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ButtonAssist.CornerRadius="5"  VerticalAlignment="Center" Background="#ffa801" BorderBrush="{x:Null}" Foreground="#f1f2f6" >
-                        Supprimer
-                    </Button>
+                    Confirmer
+                </Button>
                
                     
             </DockPanel>

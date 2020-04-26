@@ -133,17 +133,22 @@ namespace NetworkApp.ViewModels
                         isClotured = true,
                         AddBy = WindowsIdentity.GetCurrent().Name
 
-
-
-
                     };
                     await _incidentEndPoint.EditIncident(storIncident);
                     isCloture = true;
+                    var secces = IoC.Get<SeccesDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(secces, null, null);
+                    Transition = false;
+                    TryClose();
                 }
                 catch (Exception)
                 {
 
-                    throw;
+                    var faild = IoC.Get<FaildDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(faild, null, null);
+                    Transition = false;
                 }
 
                 

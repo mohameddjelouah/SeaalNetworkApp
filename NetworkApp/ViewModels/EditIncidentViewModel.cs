@@ -337,6 +337,7 @@ namespace NetworkApp.ViewModels
 
         }
 
+        
         public bool CanEditIncident
         {
             get
@@ -348,7 +349,9 @@ namespace NetworkApp.ViewModels
 
             }
 
-        } 
+        }
+
+        
 
         public async Task EditIncident()
         {
@@ -419,6 +422,7 @@ namespace NetworkApp.ViewModels
         public bool CheckInputs()
         {
             
+            
             if (IncidentDate !=null && SelectedDirection != null && SelectedSite != null && SelectedNature != null && SelectedOrigin != null && !string.IsNullOrEmpty(Solution) &&  ClotureDate != null)
             {
 
@@ -431,6 +435,8 @@ namespace NetworkApp.ViewModels
 
             }
             return false;
+            
+            
         }
 
         public void ExitApplication()

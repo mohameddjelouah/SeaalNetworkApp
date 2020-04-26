@@ -37,7 +37,7 @@
 
                     <materialDesign:PackIcon Kind="Refresh" Margin="0 0 5 0" VerticalAlignment="Center"/>
                     <TextBlock >
-                        Recommencez
+                        Reésseyer
                     </TextBlock>
                     
                 </StackPanel>

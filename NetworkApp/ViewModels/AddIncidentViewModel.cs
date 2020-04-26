@@ -140,7 +140,7 @@ namespace NetworkApp.ViewModels
             {
                 _SelectedOrigin = value;
 
-                if (_SelectedOrigin.Origin == "externe")
+                if (_SelectedOrigin?.Origin == "externe")
                 {
                     Externe = true;
                 }
@@ -404,34 +404,56 @@ namespace NetworkApp.ViewModels
 
         }
 
-        public void AddIncident()
+        public async Task AddIncident()
         {
 
             
-            StoreIncidentModel incident = new StoreIncidentModel()
-            {
-                
-                IncidentDate = IncidentDate,
-                Direction = SelectedDirection.Id,
-                Site = SelectedSite.Id,
-                Nature = SelectedNature.Id,
-                Origin = SelectedOrigin.Id,
-                Operateur = SelectedOperateur?.Id,
-                isClotured = CanSolution,
-                Solution = Solution,
-                ClotureDate = ClotureDate,
-                AddBy = WindowsIdentity.GetCurrent().Name
-
-            };
+            
 
             try
             {
-                _incidentEndPoint.AddIncident(incident);
+                StoreIncidentModel incident = new StoreIncidentModel()
+                {
+
+                    IncidentDate = IncidentDate,
+                    Direction = SelectedDirection.Id,
+                    Site = SelectedSite.Id,
+                    Nature = SelectedNature.Id,
+                    Origin = SelectedOrigin.Id,
+                    Operateur = SelectedOperateur?.Id,
+                    isClotured = CanSolution,
+                    Solution = Solution,
+                    ClotureDate = ClotureDate,
+                    AddBy = WindowsIdentity.GetCurrent().Name
+
+                };
+
+               await _incidentEndPoint.AddIncident(incident);
+
+                //secces message box 
+                var secces = IoC.Get<SeccesDialogViewModel>();
+                Transition = true;
+                _window.ShowDialog(secces, null, null);
+                Transition = false;
+
+                // reset all
+                IncidentDate = null;
+                SelectedDirection = null; 
+                SelectedNature = null;
+                SelectedOrigin = null;
+                isCloture = false;
+                Solution = null;
+                ClotureDate = null;
+                
+                
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                var faild = IoC.Get<FaildDialogViewModel>();
+                Transition = true;
+                _window.ShowDialog(faild, null, null);
+                Transition = false;
             }
 
            
