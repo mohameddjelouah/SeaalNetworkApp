@@ -447,7 +447,7 @@ namespace NetworkApp.ViewModels
                 
                 
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
                 var faild = IoC.Get<FaildDialogViewModel>();

@@ -214,7 +214,45 @@ namespace NetworkApp.ViewModels
 
         //**************************************************************************************************************
 
+        //**************************************************************************************************************
+        private bool _form = false;
 
+        public bool Form
+        {
+            get { return _form; }
+            set
+            {
+                _form = value;
+                NotifyOfPropertyChange(() => Form);
+            }
+        }
+        //**************************************************************************************************************
+        private bool _prog = true;
+
+        public bool Prog
+        {
+            get { return _prog; }
+            set
+            {
+                _prog = value;
+                NotifyOfPropertyChange(() => Prog);
+
+            }
+        }
+        //**************************************************************************************************************
+        private bool _dataBaseError = false;
+
+        public bool DataBaseError
+        {
+            get { return _dataBaseError; }
+            set
+            {
+                _dataBaseError = value;
+                NotifyOfPropertyChange(() => DataBaseError);
+
+            }
+        }
+        //**************************************************************************************************************
 
 
 
@@ -276,7 +314,40 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            await LoadData();
+        retry1: try
+            {
+
+                await LoadData();
+                Prog = false;
+                Form = true;
+
+            }
+            catch (Exception e)
+            {
+
+                // show a dialog with retry buton or exit the application
+
+                Prog = false;
+                //for example :
+                var Error = IoC.Get<NetworkErrorViewModel>();
+                Transition = true;
+                var result = _window.ShowDialog(Error, null, null);
+                Transition = false;
+                if (result.HasValue && result.Value)
+                {
+                    Prog = true;
+                    goto retry1;
+
+                }
+                else
+                {
+
+                    DataBaseError = true;
+                    // here i have to make a panel for error connextion when i exit application
+                }
+
+
+            }
 
 
 
@@ -285,8 +356,7 @@ namespace NetworkApp.ViewModels
 
         private async Task LoadData()
         {
-            try
-            {
+           
                 Data = await _incidentDataEndPoint.GetIncidentData();
                 Directions = new BindableCollection<DirectionModel>(Data.Directions);
                 Nature = new BindableCollection<NatureModel>(Data.Natures);
@@ -299,12 +369,7 @@ namespace NetworkApp.ViewModels
                 SelectedNature = Nature.SingleOrDefault(x => (x.Id == Incident.Nature.Id));
                 SelectedOrigin = Origin.SingleOrDefault(x => (x.Id == Incident.Origin.Id));
                 SelectedOperateur = Operateur.SingleOrDefault(x => (x.Id == Incident.Operateur?.Id));
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            
 
             
             
@@ -370,11 +435,21 @@ namespace NetworkApp.ViewModels
                     //try catch
                     await _incidentEndPoint.EditIncident(storeIncident);
                     isEdit = true;
+                    //secces message box 
+                    var secces = IoC.Get<SeccesDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(secces, null, null);
+                    Transition = false;
+                    TryClose();
+
                 }
                 catch (Exception)
                 {
 
-                    throw;
+                    var faild = IoC.Get<FaildDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(faild, null, null);
+                    Transition = false;
                 }
                 
 

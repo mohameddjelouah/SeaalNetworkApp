@@ -204,6 +204,11 @@ namespace NetworkApp.ViewModels
                 try
                 {
                     await _incidentEndPoint.DeleteIncident(SelectedIncident.Id);
+                    var secces = IoC.Get<SeccesDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(secces, null, null);
+                    Transition = false;
+
                     listofincidents.Remove(SelectedIncident);
                     dataincident.Remove(SelectedIncident);
                     NotifyOfPropertyChange(() => CanExport);
@@ -211,7 +216,10 @@ namespace NetworkApp.ViewModels
                 catch (Exception)
                 {
 
-                    throw;
+                    var faild = IoC.Get<FaildDialogViewModel>();
+                    Transition = true;
+                    _window.ShowDialog(faild, null, null);
+                    Transition = false;
                 }
                 
             }
