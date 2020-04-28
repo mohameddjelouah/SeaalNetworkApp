@@ -19,7 +19,7 @@
         </ControlTemplate>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="230"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="240"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
@@ -27,7 +27,7 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="230"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="240"/>
             </DoubleAnimationUsingKeyFrames>
             
         </Storyboard>
@@ -60,7 +60,7 @@
         <!--end of page structure and definitions-->
 
         <!--banner on the top with menu button and exit minimize and maximaze -->
-        <materialDesign:ColorZone  cm:Message.Attach="[Event MouseDoubleClick] = [Action MinMax()]"   Background="#5c6bc0" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
+        <materialDesign:ColorZone  cm:Message.Attach="[Event MouseDoubleClick] = [Action MinMax()]"   Background="#57606f" Padding="5" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" Grid.Row="0" Grid.ColumnSpan="2" >
             <Grid>
                 <!--exit minimize and maximaze -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -117,7 +117,7 @@
   <!--*****************the menu*******************************************-->
 
 
-        <materialDesign:ColorZone  Width="230" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#5c6bc0" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+        <materialDesign:ColorZone  Width="240" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#57606f" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
 
                 <!--start menu-->
             <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
@@ -129,56 +129,138 @@
                     </Grid>
 
                     <Grid DockPanel.Dock="Top">
-                    <ListView materialDesign:ListBoxAssist.IsToggle="False" Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <!--**********************************dashboard**********************-->
                     <ListViewItem  IsSelected="{Binding isDashSelected}">
-                                <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]" Width="210" HorizontalAlignment="Right"  Text="Dashboared" Padding="20 5"/>
+                                <TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />
                     </ListViewItem>
 
+                         <!--**********************************1st expender**********************-->
                     <ListViewItem  IsSelected="{Binding isIncidentSelected}">
 
-                        <Expander Header="Gerer les incident" IsExpanded="{Binding ExpendIncident}" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                            <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" Padding="20 5"/>
-                                </ListViewItem>
-                                <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" Padding="20 5"/>
+                                <Expander Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
+
+                                   
+                                    
+                                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <ListViewItem >
+                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
+                                </ListViewItem >
+                                <ListViewItem >
+                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" />
                                 </ListViewItem>
 
-                                <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" Padding="20 5"/>
+                                <ListViewItem >
+                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" />
                                 </ListViewItem>
 
                             </ListView>
                         </Expander>
                     </ListViewItem>
 
-
+                            <!--**********************************2nd expender**********************-->
                     <ListViewItem IsSelected="{Binding isInterventionSelected}">
-                        <Expander Header="Gerer les intervention" IsExpanded="{Binding ExpendIntervention}" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                            <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" Padding="20 5"/>
-                                </ListViewItem>
+
+
+                                <Expander Header="Gerer les intervention" FontSize="15" IsExpanded="{Binding ExpendIntervention}"  Background="{x:Null}" >
+                                   
+                                    
+                                    
+                                    
+                                    <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListViewItem>
+                                            <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" Padding="20 5"/>
+                                        </ListViewItem>
                                 
 
-                                <ListViewItem>
-                                    <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" Padding="20 5"/>
-                                </ListViewItem>
+                                        <ListViewItem>
+                                            <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" Padding="20 5"/>
+                                        </ListViewItem>
 
-                            </ListView>
-                        </Expander>
+                                    </ListView>
+
+                                    
+                                </Expander>
                     </ListViewItem>
 
+                            <!--**********************************stastique**********************-->
+                    <ListViewItem  IsSelected="{Binding isStatSelected}">
 
-                    <ListViewItem IsSelected="{Binding isStatSelected}">
-                        <TextBlock Cursor="Hand" Width="210" HorizontalAlignment="Right" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="Statistique IP" Padding="20 5"/>
+                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="Statistique IP"/>
                     </ListViewItem>
+                           <!--**********************************menu style**********************-->
+                           
+                            <ListView.ItemContainerStyle>
+                                
+                                
+                                <Style TargetType="ListViewItem">
 
-                    
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#2f3542"/>
+                                        
+                                        <!--<SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>-->
+                                        <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#2f3542"/>
+                                        
+                                        <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#2f3542"/>
+                                        
+                                    </Style.Resources>
 
-                </ListView>
+
+
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                    <Setter Property="Margin" Value="10"></Setter>
+                                    
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Border   MinHeight="52" x:Name="item"  SnapsToDevicePixels="true" >
+
+                                                    <ContentPresenter  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <MultiTrigger>
+                                                        <MultiTrigger.Conditions>
+                                                            <Condition Property="IsMouseOver" Value="True"/>
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="Background" TargetName="item" Value="{StaticResource Item.MouseOver.Background}"/>
+                                                        
+                                                    </MultiTrigger>
+
+                                                    <MultiTrigger>
+                                                        <MultiTrigger.Conditions>
+                                                            <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                                            <Condition Property="IsSelected" Value="True"/>
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedInactive.Background}"/>
+                                                        
+                                                    </MultiTrigger>
+
+                                                    <MultiTrigger>
+                                                        <MultiTrigger.Conditions>
+                                                            <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                                            <Condition Property="IsSelected" Value="True"/>
+                                                        </MultiTrigger.Conditions>
+                                                        <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedActive.Background}"/>
+                                                        
+                                                    </MultiTrigger>
+
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    
+                                    
+                                   
+                                    
+                                   
+                                </Style>
+                                
+                                
+                            </ListView.ItemContainerStyle>
+
+
+
+                        </ListView>
                     </Grid>
 
                     <Grid Margin="5 0" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
