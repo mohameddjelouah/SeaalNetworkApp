@@ -117,7 +117,7 @@
   <!--*****************the menu*******************************************-->
 
 
-        <materialDesign:ColorZone  Width="240" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#57606f" Padding="5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+        <materialDesign:ColorZone  Width="240" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#57606f" Padding="0 5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
 
                 <!--start menu-->
             <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
@@ -129,32 +129,99 @@
                     </Grid>
 
                     <Grid DockPanel.Dock="Top">
-                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      
+                    <ListView   Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <!--**********************************dashboard**********************-->
-                    <ListViewItem  IsSelected="{Binding isDashSelected}">
+                            <ListViewItem  IsSelected="{Binding isDashSelected}">
                                 <TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />
                     </ListViewItem>
-
-                         <!--**********************************1st expender**********************-->
+                           
+                            <!--**********************************1st expender**********************-->
                     <ListViewItem  IsSelected="{Binding isIncidentSelected}">
 
-                                <Expander Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
+                        <Expander Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
 
                                    
-                                    
-                                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListViewItem >
-                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
+                                    <TextBlock  Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
                                 </ListViewItem >
                                 <ListViewItem >
-                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" />
+                                    <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" />
                                 </ListViewItem>
 
                                 <ListViewItem >
-                                    <TextBlock Padding="20 5" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" />
+                                    <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" />
                                 </ListViewItem>
 
-                            </ListView>
+
+
+                                        <ListView.ItemContainerStyle>
+
+
+                                            <Style TargetType="ListViewItem">
+
+                                                <Style.Resources>
+                                                    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="DimGray"/>
+                                                </Style.Resources>
+
+                                                <Setter Property="FontSize" Value="14"></Setter>
+                                                <Setter Property="Margin" Value="0 10 0 5"></Setter>
+
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <Border Height="40" x:Name="item"  SnapsToDevicePixels="true" >
+
+                                                                <ContentPresenter  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="IsMouseOver" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.MouseOver.Background}"/>
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedInactive.Background}"/>
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedActive.Background}"/>
+
+
+                                                                </MultiTrigger>
+
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+
+
+
+
+
+                                            </Style>
+
+
+                                        </ListView.ItemContainerStyle>
+
+
+
+                                    </ListView>
                         </Expander>
                     </ListViewItem>
 
@@ -169,14 +236,76 @@
                                     
                                     <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListViewItem>
-                                            <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" Padding="20 5"/>
+                                            <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" />
                                         </ListViewItem>
                                 
 
                                         <ListViewItem>
-                                            <TextBlock Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" Padding="20 5"/>
+                                            <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" />
                                         </ListViewItem>
 
+                                        <ListView.ItemContainerStyle>
+
+
+                                            <Style TargetType="ListViewItem">
+
+                                                <Style.Resources>
+                                                    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="DimGray"/>
+                                                </Style.Resources>
+
+                                                <Setter Property="FontSize" Value="14"></Setter>
+                                                <Setter Property="Margin" Value="0 10 0 5"></Setter>
+
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <Border Height="40" x:Name="item"  SnapsToDevicePixels="true" >
+
+                                                                <ContentPresenter  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="IsMouseOver" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.MouseOver.Background}"/>
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedInactive.Background}"/>
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedActive.Background}"/>
+
+
+                                                                </MultiTrigger>
+
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+
+
+
+
+
+                                            </Style>
+
+
+                                        </ListView.ItemContainerStyle>
                                     </ListView>
 
                                     
@@ -208,7 +337,10 @@
 
 
                                     <Setter Property="FontSize" Value="15"></Setter>
-                                    <Setter Property="Margin" Value="10"></Setter>
+                                    <Setter Property="Margin" Value="0 10"></Setter>
+                                   
+                                   
+                                    
                                     
                                     <Setter Property="Template">
                                         <Setter.Value>
@@ -241,6 +373,7 @@
                                                             <Condition Property="IsSelected" Value="True"/>
                                                         </MultiTrigger.Conditions>
                                                         <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedActive.Background}"/>
+                                                       
                                                         
                                                     </MultiTrigger>
 
