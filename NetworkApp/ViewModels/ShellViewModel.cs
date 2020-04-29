@@ -98,6 +98,69 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private bool _isDisplayIncidentSelected = false;
+
+        public bool isDisplayIncidentSelected
+        {
+            get { return _isDisplayIncidentSelected; }
+            set { 
+                _isDisplayIncidentSelected = value;
+                NotifyOfPropertyChange(() => isDisplayIncidentSelected);
+
+            }
+        }
+
+        private bool _isClotureIncidentSelected = false;
+
+        public bool isClotureIncidentSelected
+        {
+            get { return _isClotureIncidentSelected; }
+            set { 
+                _isClotureIncidentSelected = value;
+                NotifyOfPropertyChange(() => isClotureIncidentSelected);
+
+            }
+        }
+
+        private bool _isAddIncidentSelected = false;
+
+        public bool isAddIncidentSelected
+        {
+            get { return _isAddIncidentSelected; }
+            set { 
+                _isAddIncidentSelected = value;
+                NotifyOfPropertyChange(() => isAddIncidentSelected);
+
+            }
+        }
+
+
+        private bool _isDisplayInterventionSelected = false;
+
+        public bool isDisplayInterventionSelected
+        {
+            get { return _isDisplayInterventionSelected; }
+            set { 
+                _isDisplayInterventionSelected = value;
+                NotifyOfPropertyChange(() => isDisplayInterventionSelected);
+
+            }
+        }
+
+
+        private bool _isAddInterventionSelected = false;
+
+        public bool isAddInterventionSelected
+        {
+            get { return _isAddInterventionSelected; }
+            set { 
+                _isAddInterventionSelected = value;
+                NotifyOfPropertyChange(() => isAddInterventionSelected);
+
+            }
+        }
+
+
         private bool _expendIncident =false;
 
         public bool ExpendIncident
@@ -136,52 +199,37 @@ namespace NetworkApp.ViewModels
         public void DisplayDashboard()
         {
 
-            SelectItem("Dashboard");
-            //ExpendIntervention = false;
-            //ExpendIncident = false;
-            //// when i click it give me a new instance of dashboared 
+            SelectItem("Dashboard", "ResetAll");
             ActivateItem(IoC.Get<DashViewModel>());
             
 
         }
         public void DisplayAllIncidents()
         {
-            SelectItem("Incident");
-            //ResetSelected();
-            //isIncidentSelected = true;
-            //ExpendIntervention = false;
-            //// when i click it give me a new instance of incident datagridview 
+            SelectItem("Incident", "DisplayIncident");
             ActivateItem(IoC.Get<IncidentViewModel>());
+        }
+
+        public void DisplayClotureIncidents()
+        {
+            SelectItem("Incident", "ClotureIncident");   
+            ActivateItem(IoC.Get<ClotureViewModel>());
         }
 
         public void AddIncidents()
         {
-            SelectItem("Incident");
-            //ResetSelected();
-            //isIncidentSelected = true;
-            //ExpendIntervention = false;
+            SelectItem("Incident", "AddIncident");
             ActivateItem(IoC.Get<AddIncidentViewModel>());
         }
 
 
         
 
-        public void DisplayClotureIncidents()
-        {
-            SelectItem("Incident");
-            //ResetSelected();
-            //isIncidentSelected = true;
-            //ExpendIntervention = false;
-            //// when i click it give me a new instance of incident datagridview 
-            ActivateItem(IoC.Get<ClotureViewModel>());
-        }
+        
 
         public void DisplayAllInterventions()
         {
-            SelectItem("Intervention");
-            //ResetSelected();
-            //isInterventionSelected = true;
-            //ExpendIncident = false;
+            SelectItem("Intervention", "DisplayIntervention");
             ActivateItem(IoC.Get<InterventionViewModel>());
             
         }
@@ -190,10 +238,8 @@ namespace NetworkApp.ViewModels
 
         public void AddInterventions()
         {
-            SelectItem("Intervention");
-            //ResetSelected();
-            //isInterventionSelected = true;
-            //ExpendIncident = false;
+            
+            SelectItem("Intervention", "AddIntervention");
             ActivateItem(IoC.Get<AddInterventionViewModel>());
 
         }
@@ -202,11 +248,7 @@ namespace NetworkApp.ViewModels
 
         public void Stats()
         {
-            SelectItem("Stat");
-            //ExpendIncident = false;
-            //ExpendIntervention = false;
-
-
+            SelectItem("Stat", "ResetAll");
 
         }
 
@@ -224,7 +266,7 @@ namespace NetworkApp.ViewModels
         
         
         
-        public void SelectItem(string name)
+        public void SelectItem(string name,string SubItem)
         {
             switch (name)
             {
@@ -236,6 +278,7 @@ namespace NetworkApp.ViewModels
                     ExpendIncident = false;
                     ExpendIntervention = false;
                     isDashSelected = true;
+                    SelectSubItem(SubItem);
                     break;
 
                 case "Incident":
@@ -245,7 +288,7 @@ namespace NetworkApp.ViewModels
                     isDashSelected = false;
                     ExpendIntervention = false;
                     isIncidentSelected = true;
-                    
+                    SelectSubItem(SubItem);
                     break;
 
                 case "Intervention":
@@ -256,7 +299,7 @@ namespace NetworkApp.ViewModels
                     isIncidentSelected = false;                
                     ExpendIncident = false; 
                     isInterventionSelected = true;
-
+                    SelectSubItem(SubItem);
                     break;
 
                 case "Stat":
@@ -269,12 +312,90 @@ namespace NetworkApp.ViewModels
                     ExpendIncident = false;
                     ExpendIntervention = false;
                     isStatSelected = true;
+                    SelectSubItem(SubItem);
                     break;
 
 
             }
             
             
+
+        }
+
+        public void SelectSubItem(string action)
+        {
+            switch (action)
+            {
+                case "ResetAll":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false;
+                    isAddInterventionSelected = false;
+                    isDisplayInterventionSelected = false;
+
+                    break;
+
+                case "DisplayIncident":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;        
+                    isAddInterventionSelected = false;
+                    isDisplayInterventionSelected = false;
+                    isDisplayIncidentSelected = true;
+
+                    break;
+
+
+                case "ClotureIncident":
+
+                    isAddIncidentSelected = false;           
+                    isDisplayIncidentSelected = false;
+                    isAddInterventionSelected = false;
+                    isDisplayInterventionSelected = false;
+                    isClotureIncidentSelected = true;
+
+                    break;
+
+
+                case "AddIncident":
+
+                    
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false;
+                    isAddInterventionSelected = false;
+                    isDisplayInterventionSelected = false;
+                    isAddIncidentSelected = true;
+
+                    break;
+
+
+
+                case "DisplayIntervention":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false;
+                    isAddInterventionSelected = false;
+                    isDisplayInterventionSelected = true;
+
+                    break;
+
+                case "AddIntervention":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false; 
+                    isDisplayInterventionSelected = false;
+                    isAddInterventionSelected = true;
+
+                    break;
+
+            }
+
+
+
+
 
         }
 

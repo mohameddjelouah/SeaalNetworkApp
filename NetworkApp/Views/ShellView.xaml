@@ -144,14 +144,14 @@
 
                                    
                             <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <ListViewItem >
+                                <ListViewItem IsSelected="{Binding isDisplayIncidentSelected}">
                                     <TextBlock  Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
                                 </ListViewItem >
-                                <ListViewItem >
+                                <ListViewItem IsSelected="{Binding isClotureIncidentSelected}">
                                     <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" />
                                 </ListViewItem>
 
-                                <ListViewItem >
+                                <ListViewItem IsSelected="{Binding isAddIncidentSelected}">
                                     <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" />
                                 </ListViewItem>
 
@@ -236,12 +236,12 @@
                                     
                                     
                                     <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                        <ListViewItem>
+                                        <ListViewItem IsSelected="{Binding isDisplayInterventionSelected}">
                                             <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" />
                                         </ListViewItem>
-                                
 
-                                        <ListViewItem>
+
+                                        <ListViewItem IsSelected="{Binding isAddInterventionSelected}">
                                             <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" />
                                         </ListViewItem>
 
