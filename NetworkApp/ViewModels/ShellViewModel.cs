@@ -132,40 +132,158 @@ namespace NetworkApp.ViewModels
        
 
 
+
         public void DisplayDashboard()
         {
-            // when i click it give me a new instance of dashboared 
-            ActivateItem(IoC.Get<DashViewModel>());
-            ExpendIntervention = false;
-            ExpendIncident = false;
 
+            SelectItem("Dashboard");
+            //ExpendIntervention = false;
+            //ExpendIncident = false;
+            //// when i click it give me a new instance of dashboared 
+            ActivateItem(IoC.Get<DashViewModel>());
+            
 
         }
         public void DisplayAllIncidents()
         {
-
-            ResetSelected();
-            isIncidentSelected = true;
-            ExpendIntervention = false;
-            // when i click it give me a new instance of incident datagridview 
+            SelectItem("Incident");
+            //ResetSelected();
+            //isIncidentSelected = true;
+            //ExpendIntervention = false;
+            //// when i click it give me a new instance of incident datagridview 
             ActivateItem(IoC.Get<IncidentViewModel>());
         }
 
         public void AddIncidents()
         {
-            ResetSelected();
-            isIncidentSelected = true;
-            ExpendIntervention = false;
+            SelectItem("Incident");
+            //ResetSelected();
+            //isIncidentSelected = true;
+            //ExpendIntervention = false;
             ActivateItem(IoC.Get<AddIncidentViewModel>());
         }
 
 
+        
+
+        public void DisplayClotureIncidents()
+        {
+            SelectItem("Incident");
+            //ResetSelected();
+            //isIncidentSelected = true;
+            //ExpendIntervention = false;
+            //// when i click it give me a new instance of incident datagridview 
+            ActivateItem(IoC.Get<ClotureViewModel>());
+        }
+
+        public void DisplayAllInterventions()
+        {
+            SelectItem("Intervention");
+            //ResetSelected();
+            //isInterventionSelected = true;
+            //ExpendIncident = false;
+            ActivateItem(IoC.Get<InterventionViewModel>());
+            
+        }
+
+
+
+        public void AddInterventions()
+        {
+            SelectItem("Intervention");
+            //ResetSelected();
+            //isInterventionSelected = true;
+            //ExpendIncident = false;
+            ActivateItem(IoC.Get<AddInterventionViewModel>());
+
+        }
+
+
+
+        public void Stats()
+        {
+            SelectItem("Stat");
+            //ExpendIncident = false;
+            //ExpendIntervention = false;
+
+
+
+        }
+
+        public void ResetSelected()
+        {
+           
+           
+            isDashSelected = false;
+            isIncidentSelected = false;
+            isInterventionSelected = false;
+            isStatSelected = false;
+           
+        }
+
+        
+        
+        
+        public void SelectItem(string name)
+        {
+            switch (name)
+            {
+                case "Dashboard":
+
+                    isIncidentSelected = false;
+                    isInterventionSelected = false;
+                    isStatSelected = false;
+                    ExpendIncident = false;
+                    ExpendIntervention = false;
+                    isDashSelected = true;
+                    break;
+
+                case "Incident":
+                    
+                    isInterventionSelected = false;
+                    isStatSelected = false;
+                    isDashSelected = false;
+                    ExpendIntervention = false;
+                    isIncidentSelected = true;
+                    
+                    break;
+
+                case "Intervention":
+
+                    
+                    isStatSelected = false;
+                    isDashSelected = false;
+                    isIncidentSelected = false;                
+                    ExpendIncident = false; 
+                    isInterventionSelected = true;
+
+                    break;
+
+                case "Stat":
+
+
+                    
+                    isDashSelected = false;
+                    isIncidentSelected = false;
+                    isInterventionSelected = false;
+                    ExpendIncident = false;
+                    ExpendIntervention = false;
+                    isStatSelected = true;
+                    break;
+
+
+            }
+            
+            
+
+        }
+
         public void ExitApplication()
         {
             TryClose();
-           
+
         }
-         
+
         public void MinApplication()
         {
             App.Current.MainWindow.WindowState = System.Windows.WindowState.Minimized;
@@ -180,7 +298,7 @@ namespace NetworkApp.ViewModels
             {
                 App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
             }
-            
+
         }
         public void MinMax()
         {
@@ -193,57 +311,9 @@ namespace NetworkApp.ViewModels
             {
                 App.Current.MainWindow.WindowState = System.Windows.WindowState.Normal;
                 ResizeApp = false;
-               
+
             }
         }
 
-        public void DisplayClotureIncidents()
-        {
-            ResetSelected();
-            isIncidentSelected = true;
-            ExpendIntervention = false;
-            // when i click it give me a new instance of incident datagridview 
-            ActivateItem(IoC.Get<ClotureViewModel>());
-        }
-
-        public void DisplayAllInterventions()
-        {
-            ResetSelected();
-            isInterventionSelected = true;
-            ExpendIncident = false;
-            ActivateItem(IoC.Get<InterventionViewModel>());
-        }
-
-
-
-        public void AddInterventions()
-        {
-            ResetSelected();
-            isInterventionSelected = true;
-            ExpendIncident = false;
-            ActivateItem(IoC.Get<AddInterventionViewModel>());
-
-        }
-
-
-
-        public void Stats()
-        {
-            ExpendIncident = false;
-            ExpendIntervention = false;
-
-
-
-        }
-
-        public void ResetSelected()
-        {
-            isDashSelected = false;
-            isIncidentSelected = false;
-            isInterventionSelected = false;
-            isStatSelected = false;
-           
-        }
-        
     }
 }

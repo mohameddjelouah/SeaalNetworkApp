@@ -38,6 +38,9 @@ namespace NetworkApp.Views
             
         }
 
-        
+        private void ListView_Unselected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

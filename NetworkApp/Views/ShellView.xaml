@@ -133,13 +133,14 @@
                     <ListView   Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <!--**********************************dashboard**********************-->
                             <ListViewItem  IsSelected="{Binding isDashSelected}">
+                            
                                 <TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />
                             </ListViewItem>
                            
                             <!--**********************************1st expender**********************-->
                     <ListViewItem  IsSelected="{Binding isIncidentSelected}">
 
-                        <Expander Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
+                        <Expander  Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
 
                                    
                             <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -234,7 +235,7 @@
                                     
                                     
                                     
-                                    <ListView Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListViewItem>
                                             <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" />
                                         </ListViewItem>
@@ -280,6 +281,7 @@
                                                                         <Condition Property="IsSelected" Value="True"/>
                                                                     </MultiTrigger.Conditions>
                                                                     <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedInactive.Background}"/>
+                                                                    
 
                                                                 </MultiTrigger>
 
@@ -314,6 +316,7 @@
 
                             <!--**********************************stastique**********************-->
                     <ListViewItem  IsSelected="{Binding isStatSelected}">
+                    
 
                                 <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="Statistique IP"/>
                     </ListViewItem>
@@ -327,7 +330,7 @@
                                     <Style.Resources>
                                         <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#2f3542"/>
                                         
-                                        <!--<SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>-->
+                                       
                                         <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#2f3542"/>
                                         
                                         <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#2f3542"/>
