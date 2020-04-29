@@ -9,6 +9,7 @@
              Background="WhiteSmoke"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" 
+             FontFamily="segoe ui"
              d:DesignHeight="650" d:DesignWidth="1020">
 
 
@@ -50,26 +51,26 @@
             <Border Background="Black"/>
         </Border>
 
-        <DockPanel Grid.ColumnSpan="3" Background="#222f3e" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
+        <DockPanel Height="55" Grid.ColumnSpan="3" Background="#2f3542" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
 
             <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Width="40" Height="40" Margin="10 3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Kind="PersonSearch" Foreground="{Binding ElementName=search, Path=Foreground}" />
-                <TextBox  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" materialDesign:TextFieldAssist.UnderlineBrush="White"    Foreground="White" DockPanel.Dock="Left"  Margin="10 3"  x:Name="search" Width="300" materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Malade......"/>
+                <materialDesign:PackIcon Width="40" Height="40" Margin="10 3 5 3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Kind="FileSearch" Foreground="{Binding ElementName=search, Path=Foreground}" />
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="16" VerticalAlignment="Center"  materialDesign:TextFieldAssist.UnderlineBrush="Gray" BorderBrush="White"    Foreground="White"   Margin="5 3 0 3"  x:Name="search" Width="300"  materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Incident......"/>
             </StackPanel>
 
-            
-            <Button x:Name="AddIncident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
-                <materialDesign:PackIcon Kind="AddCircle" Height="auto" Width="auto" />
+
+            <Button x:Name="AddIncident" Width="45" Height="45" ToolTip="Ajouter un Incident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="AddCircle" Width="40" Height="40" />
             </Button>
-            <Button  x:Name="Export" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
-                <materialDesign:PackIcon Kind="ExportVariant" Height="auto" Width="auto" />
+            <Button  x:Name="Export" Width="45" Height="45" ToolTip="Exporter un fichier excel" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="FileExcel" Width="40" Height="40" />
             </Button>
-            <Button x:Name="Delete" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
-                <materialDesign:PackIcon Kind="DeleteForeverOutline" Height="auto" Width="auto" />
+            <Button x:Name="Delete" Width="45" Height="45" ToolTip="supprimer un Incident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="DeleteForeverOutline" Width="40" Height="40" />
             </Button>
 
-            <Button  x:Name="Edit"  DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignFloatingActionButton}">
-                <materialDesign:PackIcon Kind="SquareEditOutline" Height="auto" Width="auto" />
+            <Button  x:Name="Edit" Width="45" Height="45" ToolTip="Modifier un Incident" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray" Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="SquareEditOutline" Width="40" Height="40" />
             </Button>
         </DockPanel>
 

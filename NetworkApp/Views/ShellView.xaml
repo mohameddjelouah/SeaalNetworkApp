@@ -134,7 +134,7 @@
                         <!--**********************************dashboard**********************-->
                             <ListViewItem  IsSelected="{Binding isDashSelected}">
                                 <TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />
-                    </ListViewItem>
+                            </ListViewItem>
                            
                             <!--**********************************1st expender**********************-->
                     <ListViewItem  IsSelected="{Binding isIncidentSelected}">
@@ -168,7 +168,7 @@
                                                 </Style.Resources>
 
                                                 <Setter Property="FontSize" Value="14"></Setter>
-                                                <Setter Property="Margin" Value="0 10 0 5"></Setter>
+                                                <Setter Property="Margin" Value="0 0 0 2"></Setter>
 
                                                 <Setter Property="Template">
                                                     <Setter.Value>
@@ -256,7 +256,7 @@
                                                 </Style.Resources>
 
                                                 <Setter Property="FontSize" Value="14"></Setter>
-                                                <Setter Property="Margin" Value="0 10 0 5"></Setter>
+                                                <Setter Property="Margin" Value="0 0 0 2"></Setter>
 
                                                 <Setter Property="Template">
                                                     <Setter.Value>
