@@ -49,12 +49,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\APIHelper.cs" />
+    <Compile Include="Api\DashboardEndPoint.cs" />
     <Compile Include="Api\IncidentDataEndPoint.cs" />
     <Compile Include="Api\Interfaces\IAPIHelper.cs" />
+    <Compile Include="Api\Interfaces\IDashboardEndPoint.cs" />
     <Compile Include="Api\Interfaces\IIncidentDataEndPoint.cs" />
     <Compile Include="Api\Interfaces\IIncidentEndPoint.cs" />
     <Compile Include="Api\IncidentEndPoint.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\DashbordModels\IncidentChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="Models\NatureModel.cs" />

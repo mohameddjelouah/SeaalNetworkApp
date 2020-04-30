@@ -7,18 +7,33 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using NetworkApp.Library.Api;
 using NetworkApp.Library.Api.Interfaces;
+using NetworkApp.Library.Models;
 
 namespace NetworkApp.ViewModels
 {
     public class DashViewModel : Screen
     {
-        private string _auth;
-        private IIncidentEndPoint _incidentEndPoint;
+        
+        private IDashboardEndPoint _dashboardEndPoint;
 
-        public DashViewModel(IIncidentEndPoint incidentEndPoint)
+        public DashViewModel(IDashboardEndPoint dashboardEndPoint)
         {
-            _incidentEndPoint = incidentEndPoint;
+            _dashboardEndPoint = dashboardEndPoint;
+
+
+            
+
+
         }
+
+
+
+        public async void test()
+        {
+            DashboardModel dash = await _dashboardEndPoint.GetDashboard();
+        }
+
+
         
 
 

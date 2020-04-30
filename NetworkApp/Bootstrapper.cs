@@ -23,7 +23,9 @@ namespace NetworkApp
         {
             _container.Instance(_container)
                 .PerRequest<IIncidentEndPoint,IncidentEndPoint>()
-                .PerRequest<IIncidentDataEndPoint, IncidentDataEndPoint>();
+                .PerRequest<IIncidentDataEndPoint, IncidentDataEndPoint>()
+                .PerRequest<IDashboardEndPoint,DashboardEndPoint>();
+            
 
             _container
                 .Singleton<IWindowManager, WindowManager>()

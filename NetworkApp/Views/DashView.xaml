@@ -8,23 +8,78 @@
              mc:Ignorable="d"  Background="WhiteSmoke"
              d:DesignHeight="650" d:DesignWidth="1020" >
 
-   
-        <Grid>
+    <!--<Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ProgressBar Grid.ColumnSpan="3"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
+            <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
+
+            <TextBlock DockPanel.Dock="Right"   Foreground="DimGray" VerticalAlignment="Center" FontSize="16"   Margin="10 0 0 0" TextWrapping="Wrap" >
+                                  Errour lors la connexion au serveur !!!!
+            </TextBlock>
+        </DockPanel>
+
+        <Border  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
+            <Border Background="Black"/>
+        </Border>
+
+        <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">-->
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
-            
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="4" FontSize="74" Margin="120 0 0 0"> Coming Soon .............!!!</TextBlock>
+        <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
+        </materialDesign:Card>
+
+        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
+        </materialDesign:Card>
+
+
+
+
+
+        <Button x:Name="test"/>
+
+
+
+
+
+
+
+
+
+
+
     </Grid>
+        
+        
+        
+    <!--</Grid>-->
     
 
 </UserControl>

@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\DashboardData.cs" />
     <Compile Include="DataAccess\IncidentData.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="Models\NatureModel.cs" />
