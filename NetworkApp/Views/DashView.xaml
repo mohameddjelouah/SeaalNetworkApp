@@ -56,17 +56,17 @@
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
 
-        <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+        <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+        <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+        <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
         </materialDesign:Card>
 
@@ -74,7 +74,7 @@
    
                 
                 
-                <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+                <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
 
 
 
@@ -82,13 +82,13 @@
                 
 
                     <DataTemplate x:Key="headerTemplate">
-                        <TextBlock FontSize="20" Foreground="Black"
-                           Margin="5" Text="{Binding}"/>
+                        <TextBlock FontSize="14"  Margin="30 0 0 0" Foreground="Black"
+                            Text="{Binding}"/>
                     </DataTemplate>
 
                     <DataTemplate x:Key="labelTemplate">
-                        <TextBlock FontSize="16" Foreground="Black" 
-                           Margin="5" Text="{Binding Path=LabelContent}"/>
+                        <TextBlock FontSize="12" Foreground="Black" 
+                            Text="{Binding Path=LabelContent}"/>
                     </DataTemplate>
 
                     <Style TargetType="Line" x:Key="AxisStyle">
@@ -99,30 +99,29 @@
                 
             </materialDesign:Card.Resources>
 
-            <chart:SfChart x:Name="AreaChart" AreaBorderThickness="0,1,1,0" 
-                       HorizontalAlignment="Center" Margin="0,0,27,30" Width="733">
+            <chart:SfChart x:Name="AreaChart" AreaBorderThickness="0" Margin="10" 
+                       HorizontalAlignment="Center"  VerticalAlignment="Center">
 
-                <chart:SfChart.Header>
-                    <TextBlock FontSize="24" FontFamily="Segoe UI" Foreground="Black"
-                           Margin="0,0,0,20">Fruit preferences</TextBlock>
-                </chart:SfChart.Header>
+                
 
                 <chart:SfChart.PrimaryAxis>
-                    <chart:CategoryAxis Header="Fruit" ShowTrackBallInfo="True"
-                                        LabelFormat="MMM/yyyy" 
+                    <chart:CategoryAxis  
+                                    LabelFormat="MMMyyyy" 
+                                    PlotOffset="10"
                                     LabelTemplate="{StaticResource labelTemplate}" 
                                     HeaderTemplate="{StaticResource headerTemplate}" 
                                     AxisLineStyle="{StaticResource AxisStyle}"
-                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                                    MajorTickLineStyle="{x:Null}">
                     </chart:CategoryAxis>
                 </chart:SfChart.PrimaryAxis>
 
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis Header="Number of people(in %)" 
-                                     HeaderTemplate="{StaticResource headerTemplate}" Minimum="0" 
-                                     Maximum="40"  LabelTemplate="{StaticResource labelTemplate}" 
+                                    PlotOffset="10"
+                                     HeaderTemplate="{StaticResource headerTemplate}" 
+                                     LabelTemplate="{StaticResource labelTemplate}" 
                                      AxisLineStyle="{StaticResource AxisStyle}"
-                                     MajorTickLineStyle="{StaticResource AxisStyle}">
+                                     MajorTickLineStyle="{x:Null}">
                     </chart:NumericalAxis>
                 </chart:SfChart.SecondaryAxis>
 
@@ -144,14 +143,14 @@
                             <chart:ChartAdornmentInfo.LabelTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <Ellipse Height="27" Width="27" 
+                                        <Ellipse Height="20" Width="20" 
                                              Stroke="#FF1BA1E2" Fill="White" 
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{Binding}" Foreground="Black" 
+                                        <TextBlock Text="{Binding}" Foreground="DimGray" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center" 
-                                               FontFamily="Segoe UI"  FontSize="12"/>
+                                               FontFamily="Segoe UI"  FontSize="10.5"/>
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartAdornmentInfo.LabelTemplate>
