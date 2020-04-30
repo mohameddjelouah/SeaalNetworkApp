@@ -4,6 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkApp.Views"
+             
+             xmlns:chart="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
+        
+              
+        
+    
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"  Background="WhiteSmoke"
              d:DesignHeight="650" d:DesignWidth="1020" >
@@ -32,7 +40,11 @@
         <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">-->
             
             <Grid>
-                <Grid.ColumnDefinitions>
+
+
+        
+                
+        <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -41,7 +53,6 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
 
@@ -59,11 +70,110 @@
             <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
         </materialDesign:Card>
 
+<!--/////////////////////chart for incident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\--> 
+   
+                
+                
+                <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
 
 
 
+            <materialDesign:Card.Resources>
+                
 
-        <Button x:Name="test"/>
+                    <DataTemplate x:Key="headerTemplate">
+                        <TextBlock FontSize="20" Foreground="Black"
+                           Margin="5" Text="{Binding}"/>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="labelTemplate">
+                        <TextBlock FontSize="16" Foreground="Black" 
+                           Margin="5" Text="{Binding Path=LabelContent}"/>
+                    </DataTemplate>
+
+                    <Style TargetType="Line" x:Key="AxisStyle">
+                        <Setter Property="Stroke" Value="DarkGray"  />
+                        <Setter Property="StrokeThickness" Value="1"/>
+                    </Style>
+
+                
+            </materialDesign:Card.Resources>
+
+            <chart:SfChart x:Name="AreaChart" AreaBorderThickness="0,1,1,0" 
+                       HorizontalAlignment="Center" Margin="0,0,27,30" Width="733">
+
+                <chart:SfChart.Header>
+                    <TextBlock FontSize="24" FontFamily="Segoe UI" Foreground="Black"
+                           Margin="0,0,0,20">Fruit preferences</TextBlock>
+                </chart:SfChart.Header>
+
+                <chart:SfChart.PrimaryAxis>
+                    <chart:CategoryAxis Header="Fruit" ShowTrackBallInfo="True"
+                                        LabelFormat="MMM/yyyy" 
+                                    LabelTemplate="{StaticResource labelTemplate}" 
+                                    HeaderTemplate="{StaticResource headerTemplate}" 
+                                    AxisLineStyle="{StaticResource AxisStyle}"
+                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                    </chart:CategoryAxis>
+                </chart:SfChart.PrimaryAxis>
+
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis Header="Number of people(in %)" 
+                                     HeaderTemplate="{StaticResource headerTemplate}" Minimum="0" 
+                                     Maximum="40"  LabelTemplate="{StaticResource labelTemplate}" 
+                                     AxisLineStyle="{StaticResource AxisStyle}"
+                                     MajorTickLineStyle="{StaticResource AxisStyle}">
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
+
+                <chart:AreaSeries x:Name="AreaSeries" EnableAnimation="True"
+                              XBindingPath="IncidentsDate" 
+                              Label="Favourite Fruits"
+                              YBindingPath="IncidentCount" 
+                              ItemsSource="{Binding IncidentChart}" 
+                              ShowTooltip="True" 
+                              StrokeThickness="2"
+                              Stroke="#FF1BA1E2"
+                              Interior="#781BA1E2">
+
+                    <chart:AreaSeries.AdornmentsInfo>
+                        <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              ShowLabel="True">
+                            <chart:ChartAdornmentInfo.LabelTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Ellipse Height="27" Width="27" 
+                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding}" Foreground="Black" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontFamily="Segoe UI"  FontSize="12"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </chart:ChartAdornmentInfo.LabelTemplate>
+                        </chart:ChartAdornmentInfo>
+                    </chart:AreaSeries.AdornmentsInfo>
+                </chart:AreaSeries>
+
+            </chart:SfChart>
+
+        </materialDesign:Card>
+
+        
+
+        <!--/////////////////////end of chart for incident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+
+        <!--<materialDesign:Card Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
+            
+        </materialDesign:Card>-->
+
+
+        <!--<Button x:Name="test"/>-->
 
 
 
