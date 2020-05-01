@@ -284,6 +284,10 @@
     <Resource Include="Assets\database-error.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\site.png" />
+    <Resource Include="Assets\incidentchart.png" />
+    <Resource Include="Assets\InterventionChart.png" />
+    <Resource Include="Assets\intervention.png" />
     <Content Include="Assets\putty.exe" />
     <Resource Include="Assets\seccescheck.png" />
   </ItemGroup>

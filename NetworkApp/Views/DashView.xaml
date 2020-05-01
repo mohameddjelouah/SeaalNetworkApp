@@ -13,8 +13,12 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d"  Background="WhiteSmoke"
+             mc:Ignorable="d"  Background="WhiteSmoke" FontFamily="century gothic" Foreground="#576574"
              d:DesignHeight="650" d:DesignWidth="1020" >
+
+
+
+
 
     <!--<Grid>
 
@@ -38,87 +42,468 @@
         </Border>
 
         <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">-->
-            
-            <Grid>
+
+    <Grid>
 
 
-        
-                
+
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/> 
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
-            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
-        </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
-            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
-        </materialDesign:Card>
-        <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
-            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
-        </materialDesign:Card>
-        <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
-            <Separator Style="{StaticResource MaterialDesignDarkSeparator}"/>
-        </materialDesign:Card>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
 
-<!--/////////////////////chart for incident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\--> 
-   
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--<Separator Style="{StaticResource MaterialDesignDarkSeparator}">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </Separator.LayoutTransform>
+            </Separator>-->
+            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                    </StackPanel>
+
+
+                    <Separator  Grid.Row="2" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </materialDesign:Card>
+
+
+            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                    </StackPanel>
+
+
+                    <Separator  Grid.Row="2" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                    </StackPanel>
+
+
+                    <Separator  Grid.Row="2" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                    </StackPanel>
+
+
+                    <Separator  Grid.Row="2" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </materialDesign:Card>
+
+
+
+
+            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                   
+                    
+                    <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                    </StackPanel>
+                   
+                    
+                    <Separator  Grid.Row="2" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                        <Separator.LayoutTransform>
+                            <RotateTransform Angle="90" />
+                        </Separator.LayoutTransform>
+                    </Separator>
+
+
+                    <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="0"></TextBlock>
+                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(0%)"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
+                    </StackPanel>
+                </Grid>
+                
+            </materialDesign:Card>
+<!--**************************************start intervention*********************************-->
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+                
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
                 
                 
-                <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+                
+                
+            </materialDesign:Card>
+
+        </Grid>
+
+       <!--***********************second Row**********************************************-->
+        <!--/////////////////////chart for incident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+
+
+        <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
 
 
 
             <materialDesign:Card.Resources>
-                
 
-                    <DataTemplate x:Key="headerTemplate">
-                        <TextBlock FontSize="14"  Margin="30 0 0 0" Foreground="Black"
-                            Text="{Binding}"/>
-                    </DataTemplate>
-
-                    <DataTemplate x:Key="labelTemplate">
-                        <TextBlock FontSize="12" Foreground="Black" 
+                <DataTemplate x:Key="labelTemplate">
+                    <TextBlock FontSize="12" Width="30" TextWrapping="Wrap"  
                             Text="{Binding Path=LabelContent}"/>
-                    </DataTemplate>
+                </DataTemplate>
 
-                    <Style TargetType="Line" x:Key="AxisStyle">
-                        <Setter Property="Stroke" Value="DarkGray"  />
-                        <Setter Property="StrokeThickness" Value="1"/>
-                    </Style>
+                <Style TargetType="Line" x:Key="AxisStyle">
+                    <Setter Property="Stroke" Value="#576574"  />
+                    <Setter Property="StrokeThickness" Value="1"/>
+                </Style>
 
-                
+
             </materialDesign:Card.Resources>
 
             <chart:SfChart x:Name="AreaChart" AreaBorderThickness="0" Margin="10" 
                        HorizontalAlignment="Center"  VerticalAlignment="Center">
 
-                
+                <chart:SfChart.Header>
+                    <TextBlock FontSize="16" 
+                           Margin="0,0,0,5">Nombre d'incidents</TextBlock>
+                </chart:SfChart.Header>
 
                 <chart:SfChart.PrimaryAxis>
                     <chart:CategoryAxis  
-                                    LabelFormat="MMMyyyy" 
-                                    PlotOffset="10"
-                                    LabelTemplate="{StaticResource labelTemplate}" 
-                                    HeaderTemplate="{StaticResource headerTemplate}" 
+                                    LabelFormat="MMM yyyy" 
+                                    LabelPlacement="OnTicks"              
+                                    MajorGridLineStyle="{x:Null}"    
+                                    EdgeLabelsDrawingMode="Fit"
+                                    LabelTemplate="{StaticResource labelTemplate}"          
                                     AxisLineStyle="{StaticResource AxisStyle}"
-                                    MajorTickLineStyle="{x:Null}">
+                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+
                     </chart:CategoryAxis>
                 </chart:SfChart.PrimaryAxis>
 
                 <chart:SfChart.SecondaryAxis>
-                    <chart:NumericalAxis Header="Number of people(in %)" 
-                                    PlotOffset="10"
-                                     HeaderTemplate="{StaticResource headerTemplate}" 
+                    <chart:NumericalAxis 
+                                     PlotOffset="10"                                    
                                      LabelTemplate="{StaticResource labelTemplate}" 
                                      AxisLineStyle="{StaticResource AxisStyle}"
                                      MajorTickLineStyle="{x:Null}">
@@ -127,7 +512,7 @@
 
                 <chart:AreaSeries x:Name="AreaSeries" EnableAnimation="True"
                               XBindingPath="IncidentsDate" 
-                              Label="Favourite Fruits"
+                              Label="Nombre d'incident"
                               YBindingPath="IncidentCount" 
                               ItemsSource="{Binding IncidentChart}" 
                               ShowTooltip="True" 
@@ -147,10 +532,10 @@
                                              Stroke="#FF1BA1E2" Fill="White" 
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{Binding}" Foreground="DimGray" 
+                                        <TextBlock Text="{Binding}" Foreground="#576574" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center" 
-                                               FontFamily="Segoe UI"  FontSize="10.5"/>
+                                               FontSize="10.5"/>
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartAdornmentInfo.LabelTemplate>
@@ -162,14 +547,81 @@
 
         </materialDesign:Card>
 
-        
+
 
         <!--/////////////////////end of chart for incident\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
 
-        <!--<materialDesign:Card Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" Padding="32">
-            
-        </materialDesign:Card>-->
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"    >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+            </materialDesign:Card>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <materialDesign:Card Grid.Row="0"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+
+
+
+
+
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart2}"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="24" Text="2"></TextBlock>
+                            </StackPanel>
+                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Intervention Hier"></TextBlock>
+                        </StackPanel>
+                        <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                        <StackPanel Grid.Row="2"   VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
+                                <TextBlock TextWrapping="Wrap" FontSize="24" Text="4"></TextBlock>
+                            </StackPanel>
+                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Incident Hier"></TextBlock>
+                        </StackPanel>
+                       
+                    </Grid>
+                    
+                    
+                    
+                    
+                    
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Row="1"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+
+                    <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
+                            <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource Site}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="24"  Text="64"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Site Enregestré"></TextBlock>
+                    </StackPanel>
+
+                </materialDesign:Card>
+            </Grid>
+
+        </Grid>
 
 
         <!--<Button x:Name="test"/>-->
@@ -185,10 +637,10 @@
 
 
     </Grid>
-        
-        
-        
+
+
+
     <!--</Grid>-->
-    
+
 
 </UserControl>

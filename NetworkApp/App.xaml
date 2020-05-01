@@ -22,6 +22,10 @@
             <BitmapImage x:Key="warning" UriSource="Assets\warning.png"/>
             <BitmapImage x:Key="dataError" UriSource="Assets\database-error.png"/>
             <BitmapImage x:Key="seccescheck" UriSource="Assets\seccescheck.png"/>
+            <BitmapImage x:Key="IncidentChart" UriSource="Assets\incidentchart.png"/>
+            <BitmapImage x:Key="IntervantionChart" UriSource="Assets\InterventionChart.png"/>
+            <BitmapImage x:Key="IntervantionChart2" UriSource="Assets\intervention.png"/>
+            <BitmapImage x:Key="Site" UriSource="Assets\site.png"/>
             
 
             <!--<Application  x:Key="putty"  StartupUri="Assets\putty.exe"/>-->
