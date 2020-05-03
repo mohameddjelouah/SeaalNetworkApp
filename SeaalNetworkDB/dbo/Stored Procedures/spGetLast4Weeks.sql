@@ -31,7 +31,7 @@ order by weekdebut,weekend
 --*****************this is the concat of weekend and week debut into one colomn
 --AS
 --begin
---SELECT CONCAT(Weekdebut,' ',Weekend) as weeks , Count(IncidentDate)as IncidentCount
+--SELECT CONCAT(Weekdebut,' ',Weekend) as Weekdebut , Count(IncidentDate)as _4WeeksCount
 --  FROM (
 --        (
 --        select CAST( DATEADD(WEEK,-1,GETDATE()) as date) weekdebut , CAST( DATEADD(WEEK,0,GETDATE()) as date) weekend 

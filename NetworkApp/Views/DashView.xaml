@@ -100,7 +100,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="352"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident Total"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Total"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -112,7 +112,7 @@
                             <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(80%)"></TextBlock>
                         </StackPanel>
 
-                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="14" Margin="0 0 10 0" HorizontalAlignment="Right" Text="Cloturer"></TextBlock>
                     </StackPanel>
 
 
@@ -157,7 +157,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="89"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2020"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2020"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -213,7 +213,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="231"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident En 2019"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2019"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -248,12 +248,14 @@
                 </Grid>
 
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="0" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
 
 
 
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -264,7 +266,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="137"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Intervention Total"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Total"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
@@ -272,7 +274,16 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="41"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Intervention En 2020"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention En 2020"></TextBlock>
+                    </StackPanel>
+
+                    <Separator Grid.Row="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
+                    <StackPanel Grid.Row="4" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="96"></TextBlock>
+                        </StackPanel>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention En 2019"></TextBlock>
                     </StackPanel>
 
                 </Grid>
@@ -302,7 +313,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="17"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident Ce Mois"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Ce Mois"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                    
@@ -358,7 +369,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="26"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Incident Dernier Mois"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Dernier Mois"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -408,7 +419,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="12"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Intervention Ce Mois"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Ce Mois"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
@@ -416,43 +427,14 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="32"  Text="16"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Intervention Dernier Mois"></TextBlock>
+                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Dernier Mois"></TextBlock>
                     </StackPanel>
 
                 </Grid>
                 
                 
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="1" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
-
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
-                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="96"></TextBlock>
-                        </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="Intervention En 2019"></TextBlock>
-                    </StackPanel>
-                    <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
-                    <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
-                        <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="N/A"></TextBlock>
-                        </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Center" Margin="20 0 0 0"  Text="N/A"></TextBlock>
-                    </StackPanel>
-
-                </Grid>
-                
-                
-            </materialDesign:Card>
+           
 
         </Grid>
 
@@ -559,30 +541,24 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
 
             <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
 
-
-
-
-
-
-
-
-
-
-
-
                 <materialDesign:Card.Resources>
 
-                    <DataTemplate x:Key="labelTemplate">
-                        <TextBlock FontSize="12" Width="30" TextWrapping="Wrap"  
+                    <DataTemplate x:Key="labelTemplateX">
+                        <TextBlock FontSize="12" Width="50" TextWrapping="Wrap"  
                             Text="{Binding Path=LabelContent}"/>
                     </DataTemplate>
 
+                    <DataTemplate x:Key="labelTemplateY">
+                        <TextBlock FontSize="12" Width="30" TextWrapping="Wrap"  
+                            Text="{Binding Path=LabelContent}"/>
+                    </DataTemplate>
+                    
                     <Style TargetType="Line" x:Key="AxisStyle">
                         <Setter Property="Stroke" Value="#576574"  />
                         <Setter Property="StrokeThickness" Value="1"/>
@@ -591,7 +567,7 @@
 
                 </materialDesign:Card.Resources>
 
-                <chart:SfChart x:Name="SplineAreaChart2" AreaBorderThickness="0" Margin="10" 
+                <chart:SfChart  x:Name="SplineAreaChart2" AreaBorderThickness="0" Margin="10" 
                        HorizontalAlignment="Center"  VerticalAlignment="Center">
 
                     <chart:SfChart.Header>
@@ -599,19 +575,23 @@
                            Margin="0,0,0,5">Nombre d'incidents</TextBlock>
                     </chart:SfChart.Header>
 
-                    <chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.PrimaryAxis >
+                        
                         <chart:CategoryAxis  
                             
                             
-                                    LabelFormat="MMM dd" 
-                                    LabelPlacement="BetweenTicks"              
+                                       
+                                    LabelPlacement="OnTicks"
+                            
                                     MajorGridLineStyle="{x:Null}"    
                                     EdgeLabelsDrawingMode="Fit"
-                                    LabelTemplate="{StaticResource labelTemplate}"          
+                                    LabelTemplate="{StaticResource labelTemplateX}" 
+                            
                                     AxisLineStyle="{StaticResource AxisStyle}"
-                                    MajorTickLineStyle="{StaticResource AxisStyle}">
+                                    MajorTickLineStyle="{x:Null}">
 
                         </chart:CategoryAxis>
+                        
                     </chart:SfChart.PrimaryAxis>
 
                     <chart:SfChart.SecondaryAxis>
@@ -619,22 +599,26 @@
                                      RangePadding="None"
                                      Minimum="0"
                                      PlotOffset="10"                                    
-                                     LabelTemplate="{StaticResource labelTemplate}" 
+                                     LabelTemplate="{StaticResource labelTemplateY}" 
                                      AxisLineStyle="{StaticResource AxisStyle}"
                                      MajorTickLineStyle="{x:Null}">
                         </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
 
-                    <chart:ColumnSeries  x:Name="SplineAreaSeries2" EnableAnimation="True"
-                              XBindingPath="Weekdebut" 
-                              Label="Nombre d'incident"
+                    <chart:ColumnSeries   x:Name="SplineAreaSeries2" EnableAnimation="True"
+                              
                               YBindingPath="_4WeeksCount" 
+                              
+                              XBindingPath="Join"
+                              Label="Nombre d'incident"
+                              
+                              
                               ItemsSource="{Binding Last4WeeksChart}" 
                               ShowTooltip="True" 
                               StrokeThickness="2"
                               Stroke="#FF1BA1E2"
                               Interior="#781BA1E2">
-
+                        
                         <chart:ColumnSeries.AdornmentsInfo>
                             <chart:ChartAdornmentInfo AdornmentsPosition="Top"  
                                               HorizontalAlignment="Center" 
@@ -690,12 +674,12 @@
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
+                        <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 5 0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
                                 <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart2}"/>
                                 <TextBlock TextWrapping="Wrap" FontSize="24" Text="2"></TextBlock>
                             </StackPanel>
-                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Intervention Hier"></TextBlock>
+                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Intervention Hier"></TextBlock>
                         </StackPanel>
                         <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                         <StackPanel Grid.Row="2"   VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
@@ -703,7 +687,7 @@
                                 <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                                 <TextBlock TextWrapping="Wrap" FontSize="24" Text="4"></TextBlock>
                             </StackPanel>
-                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Incident Hier"></TextBlock>
+                            <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Incident Hier"></TextBlock>
                         </StackPanel>
                        
                     </Grid>
@@ -721,7 +705,7 @@
                             <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource Site}"/>
                             <TextBlock TextWrapping="Wrap" FontSize="24"  Text="64"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center" Margin="10 0 0 0" Text="Site Enregestré"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Site Enregestré"></TextBlock>
                     </StackPanel>
 
                 </materialDesign:Card>

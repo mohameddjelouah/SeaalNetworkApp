@@ -63,7 +63,7 @@ namespace NetworkApp.ViewModels
             IncidentChart = new ObservableCollection<IncidentChartModel>(dash.IncidentChart);
             Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(dash.Last4WeeksChart);
             
-
+           
         }
 
         

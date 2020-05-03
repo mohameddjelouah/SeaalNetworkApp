@@ -8,8 +8,9 @@ namespace NetworkApi.Library.Models.DashboardModels
 {
     public class Last4WeeksChartModel
     {
-        public DateTime? Weekdebut { get; set; }
-        public DateTime? Weekend { get; set; }
+       
+        public DateTime Weekdebut { get; set; }
+        public DateTime Weekend { get; set; }
         public int _4WeeksCount { get; set; }
     }
 }
