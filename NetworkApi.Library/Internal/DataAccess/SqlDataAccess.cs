@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dapper.Mapper;
 using NetworkApi.Library.Models;
+using NetworkApi.Library.Models.DashboardModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -121,6 +122,40 @@ namespace NetworkApi.Library.Internal.DataAccess
             }
         }
 
+
+
+        //-----------------------------------------Load Dashboard Data------------------------------------------------------\\
+        public async Task<DashboardModel> LoadDashboard(string storedProcedure, string connectionStringName)
+        {
+            string connectionString = GetConnectionString(connectionStringName);
+
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                DashboardModel dm = new DashboardModel();
+
+
+                using (var rows = (await connection.QueryMultipleAsync(storedProcedure, commandType: CommandType.StoredProcedure)))
+                {
+                    
+                       
+                    dm.IncidentTotal = (await rows.ReadAsync<IncidentTotalModel>()).FirstOrDefault();
+                    dm.IncidentThisYear = (await rows.ReadAsync<IncidentThisYearModel>()).FirstOrDefault();
+                    dm.IncidentThisMonth = (await rows.ReadAsync<IncidentThisMonthModel>()).FirstOrDefault();
+                    dm.IncidentLastYear = (await rows.ReadAsync<IncidentLastYearModel>()).FirstOrDefault();
+                    dm.IncidentLastMonth = (await rows.ReadAsync<IncidentLastMonthModel>()).FirstOrDefault();
+                    dm.IncidentYesterday = (await rows.ReadAsync<int>()).FirstOrDefault();
+                    dm.Sites = (await rows.ReadAsync<int>()).FirstOrDefault();
+
+                    
+                }
+                return dm;
+
+
+            }
+        }
+
+        //-------------------------------------------------------------------------------------------------------------------\\
+        //-------------------------------------------------------------------------------------------------------------------\\
 
 
         // save data in the data base

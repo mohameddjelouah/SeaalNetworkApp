@@ -57,6 +57,11 @@
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardModels\IncidentChartModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentLastMonthModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentLastYearModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentThisMonthModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentThisYearModel.cs" />
+    <Compile Include="Models\DashboardModels\IncidentTotalModel.cs" />
     <Compile Include="Models\DashboardModels\Last4WeeksChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />

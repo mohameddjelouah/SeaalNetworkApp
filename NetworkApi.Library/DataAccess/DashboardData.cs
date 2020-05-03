@@ -18,13 +18,13 @@ namespace NetworkApi.Library.DataAccess
             
             List<IncidentChartModel> IncidentDashboard = await sql.LoadData<IncidentChartModel,dynamic>("dbo.spGetIncidentCountLastYear", new { }, "SeaalNetworkDB");
             List<Last4WeeksChartModel> Last4Weeks = await sql.LoadData<Last4WeeksChartModel, dynamic>("dbo.spGetLast4Weeks", new { }, "SeaalNetworkDB");
-            DashboardModel dashboard = new DashboardModel()
-            {
-                IncidentChart = IncidentDashboard,
-                Last4WeeksChart = Last4Weeks
-                
-            };
-            return dashboard;
+            DashboardModel Dashboard = await sql.LoadDashboard("dbo.spGetDashboardData", "SeaalNetworkDB");
+
+            Dashboard.IncidentChart = IncidentDashboard;
+            Dashboard.Last4WeeksChart = Last4Weeks;
+
+
+            return Dashboard;
 
 
 

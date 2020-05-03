@@ -38,7 +38,17 @@ namespace NetworkApp.ViewModels
         }
 
 
-        //public ObservableCollection<Model> Fruits { get; set; }
+        private DashboardModel _dash;
+
+        public DashboardModel Dash
+        {
+            get { return _dash; }
+            set {
+                _dash = value;
+                NotifyOfPropertyChange(() => Dash);
+            }
+        }
+
 
 
 
@@ -59,9 +69,13 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         {
 
-            DashboardModel dash = await _dashboardEndPoint.GetDashboard();
-            IncidentChart = new ObservableCollection<IncidentChartModel>(dash.IncidentChart);
-            Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(dash.Last4WeeksChart);
+            Dash = await _dashboardEndPoint.GetDashboard();
+            
+            
+            
+            //d.IncidentTotal.IncidentTotal
+            IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
+            Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
             
            
         }
