@@ -11,8 +11,8 @@ namespace NetworkApp.Library.Models.DashbordModels
         public int IncidentTotal { get; set; }
         public int IncidentTotalClotorer { get; set; }
         public int IncidentTotalNonClotorer { get; set; }
-        public string Cloture { get { return "("+(IncidentTotalClotorer *100.0 / IncidentTotal).ToString()+"%)"; } }
-        public string NonCloture { get { return "("+(IncidentTotalNonClotorer * 100.0 / IncidentTotal).ToString() + "%)"; } }
+        public string Cloture { get { return "("+(Math.Round(IncidentTotalClotorer *100.0 / IncidentTotal)).ToString()+"%)"; } }
+        public string NonCloture { get { return "("+(Math.Round(IncidentTotalNonClotorer * 100.0 / IncidentTotal)).ToString() + "%)"; } }
         
     }
 }

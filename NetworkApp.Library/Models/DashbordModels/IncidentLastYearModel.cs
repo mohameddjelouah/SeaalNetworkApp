@@ -11,5 +11,7 @@ namespace NetworkApp.Library.Models.DashbordModels
         public int IncidentLastYear { get; set; }
         public int IncidentLastYearCloturer { get; set; }
         public int IncidentLastYearNonCloturer { get; set; }
+        public string Cloture { get { return "(" + (Math.Round(IncidentLastYearCloturer * 100.0 / IncidentLastYear)).ToString() + "%)"; } }
+        public string NonCloture { get { return "(" + (Math.Round(IncidentLastYearNonCloturer * 100.0 / IncidentLastYear)).ToString() + "%)"; } }
     }
 }

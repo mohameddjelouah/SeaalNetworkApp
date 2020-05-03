@@ -155,7 +155,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="89"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisYear_IncidentThisYear" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
                         <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2020"></TextBlock>
                     </StackPanel>
@@ -165,8 +165,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="64"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(73%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisYear_IncidentThisYearCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisYear_Cloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" ></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
@@ -183,8 +183,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="25"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(17%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisYear_IncidentThisYearNonCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisYear_NonCloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" ></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
@@ -211,7 +211,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="231"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastYear_IncidentLastYear" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
                         <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2019"></TextBlock>
                     </StackPanel>
@@ -221,8 +221,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="230"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(99%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastYear_IncidentLastYearCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastYear_Cloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18"></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
@@ -239,8 +239,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="1"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(1%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastYear_IncidentLastYearNonCloturer"  TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastYear_NonCloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" ></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
@@ -311,7 +311,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="17"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisMonth_IncidentThisMonth" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
                         <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Ce Mois"></TextBlock>
                     </StackPanel>
@@ -321,8 +321,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="10"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(65%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisMonth_IncidentThisMonthCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisMonth_Cloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18"></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
@@ -339,8 +339,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="7"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(35%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisMonth_IncidentThisMonthNonCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentThisMonth_NonCloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18"></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
@@ -348,7 +348,7 @@
                 </Grid>
                 
             </materialDesign:Card>
-<!--**************************************start intervention*********************************-->
+
             <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
 
 
@@ -367,7 +367,7 @@
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="26"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastMonth_IncidentLastMonth" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
                         <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Dernier Mois"></TextBlock>
                     </StackPanel>
@@ -377,8 +377,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="24"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(97%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastMonth_IncidentLastMonthCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastMonth_Cloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18"></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="Cloturer"></TextBlock>
@@ -395,8 +395,8 @@
                     <StackPanel Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
 
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock TextWrapping="Wrap" FontSize="18" Text="2"></TextBlock>
-                            <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18" Text="(3%)"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastMonth_IncidentLastMonthNonCloturer" TextWrapping="Wrap" FontSize="18"></TextBlock>
+                            <TextBlock x:Name="Dash_IncidentLastMonth_NonCloture" Margin="5 0 0 0" TextWrapping="Wrap" FontSize="18"></TextBlock>
                         </StackPanel>
 
                         <TextBlock TextWrapping="Wrap" FontSize="14" Margin="10 0 0 0" HorizontalAlignment="Center" Text="No Cloturer"></TextBlock>
@@ -685,7 +685,7 @@
                         <StackPanel Grid.Row="2"   VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin=" 5 0 0 0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
                                 <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
-                                <TextBlock TextWrapping="Wrap" FontSize="24" Text="4"></TextBlock>
+                                <TextBlock x:Name="Dash_IncidentYesterday" TextWrapping="Wrap" FontSize="24"></TextBlock>
                             </StackPanel>
                             <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Incident Hier"></TextBlock>
                         </StackPanel>
@@ -703,7 +703,7 @@
                     <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
                             <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource Site}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="24"  Text="64"></TextBlock>
+                            <TextBlock x:Name="Dash_Sites" TextWrapping="Wrap" FontSize="24" ></TextBlock>
                         </StackPanel>
                         <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Site Enregestré"></TextBlock>
                     </StackPanel>
