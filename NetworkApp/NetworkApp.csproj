@@ -288,6 +288,8 @@
     <Resource Include="Assets\incidentchart.png" />
     <Resource Include="Assets\InterventionChart.png" />
     <Resource Include="Assets\intervention.png" />
+    <Resource Include="Assets\intervention2.png" />
+    <Resource Include="Assets\intervention3.png" />
     <Content Include="Assets\putty.exe" />
     <Resource Include="Assets\seccescheck.png" />
   </ItemGroup>

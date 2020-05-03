@@ -59,6 +59,7 @@
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashbordModels\IncidentChartModel.cs" />
+    <Compile Include="Models\DashbordModels\Last4WeeksChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="Models\NatureModel.cs" />

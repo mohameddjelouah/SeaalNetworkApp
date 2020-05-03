@@ -10,5 +10,6 @@ namespace NetworkApp.Library.Models
     public class DashboardModel
     {
         public List<IncidentChartModel> IncidentChart { get; set; }
+        public List<Last4WeeksChartModel> Last4WeeksChart { get; set; }
     }
 }

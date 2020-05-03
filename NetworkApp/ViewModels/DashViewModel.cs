@@ -26,13 +26,14 @@ namespace NetworkApp.ViewModels
             }
         }
 
-        private ObservableCollection<Model> _fruits;
+        private ObservableCollection<Last4WeeksChartModel> _last4WeeksChart;
 
-        public ObservableCollection<Model> Fruits
+        public ObservableCollection<Last4WeeksChartModel> Last4WeeksChart
         {
-            get { return _fruits; }
-            set { _fruits = value;
-                NotifyOfPropertyChange(() => Fruits);
+            get { return _last4WeeksChart; }
+            set { 
+                _last4WeeksChart = value;
+                NotifyOfPropertyChange(() => Last4WeeksChart);
             }
         }
 
@@ -58,25 +59,14 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         {
 
-
-            IncidentChart = new ObservableCollection<IncidentChartModel>((await _dashboardEndPoint.GetDashboard()).IncidentChart);
-
-            this.Fruits = new ObservableCollection<Model>();
-
-            Fruits.Add(new Model() { FruitName = "Apple", People = 27 });
-            Fruits.Add(new Model() { FruitName = "Orange", People = 33 });
-            Fruits.Add(new Model() { FruitName = "Grapes", People = 15 });
-            Fruits.Add(new Model() { FruitName = "Banana", People = 5 });
-            Fruits.Add(new Model() { FruitName = "Blueberry", People = 20 });
+            DashboardModel dash = await _dashboardEndPoint.GetDashboard();
+            IncidentChart = new ObservableCollection<IncidentChartModel>(dash.IncidentChart);
+            Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(dash.Last4WeeksChart);
+            
 
         }
 
-        public class Model
-        {
-            public double People { get; set; }
-
-            public string FruitName { get; set; }
-        }
+        
 
 
 

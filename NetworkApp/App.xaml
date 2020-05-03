@@ -25,6 +25,8 @@
             <BitmapImage x:Key="IncidentChart" UriSource="Assets\incidentchart.png"/>
             <BitmapImage x:Key="IntervantionChart" UriSource="Assets\InterventionChart.png"/>
             <BitmapImage x:Key="IntervantionChart2" UriSource="Assets\intervention.png"/>
+            <BitmapImage x:Key="IntervantionChart3" UriSource="Assets\intervention2.png"/>
+            <BitmapImage x:Key="IntervantionChart4" UriSource="Assets\intervention3.png"/>
             <BitmapImage x:Key="Site" UriSource="Assets\site.png"/>
             
 
