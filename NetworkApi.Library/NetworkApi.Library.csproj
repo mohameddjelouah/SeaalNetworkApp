@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\DashboardData.cs" />
     <Compile Include="DataAccess\IncidentData.cs" />
+    <Compile Include="DataAccess\InterventionData.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardModels\IncidentChartModel.cs" />
@@ -64,7 +65,11 @@
     <Compile Include="Models\DashboardModels\IncidentTotalModel.cs" />
     <Compile Include="Models\DashboardModels\Last4WeeksChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
-    <Compile Include="Models\IncidentModel.cs" />
+    <Compile Include="Models\InterventionModels\ActionModel.cs" />
+    <Compile Include="Models\InterventionModels\EquipementModel.cs" />
+    <Compile Include="Models\InterventionModels\IdentificationModel.cs" />
+    <Compile Include="Models\InterventionModels\InterventionModel.cs" />
+    <Compile Include="Models\InterventionModels\StoreInterventionModel.cs" />
     <Compile Include="Models\NatureModel.cs" />
     <Compile Include="Models\OperateurModel.cs" />
     <Compile Include="Models\OriginModel.cs" />

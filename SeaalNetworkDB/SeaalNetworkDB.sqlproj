@@ -81,6 +81,10 @@
     <Build Include="dbo\Stored Procedures\spGetIncidentCountLastYear.sql" />
     <Build Include="dbo\Stored Procedures\spGetLast4Weeks.sql" />
     <Build Include="dbo\Stored Procedures\spGetDashboardData.sql" />
+    <Build Include="dbo\Tables\Intervention.sql" />
+    <Build Include="dbo\Tables\Identification.sql" />
+    <Build Include="dbo\Tables\Equipement.sql" />
+    <Build Include="dbo\Tables\Action.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

@@ -2,6 +2,7 @@
 using Dapper.Mapper;
 using NetworkApi.Library.Models;
 using NetworkApi.Library.Models.DashboardModels;
+using NetworkApi.Library.Models.InterventionModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -73,7 +74,39 @@ namespace NetworkApi.Library.Internal.DataAccess
         }
 
 
+        public async Task<List<InterventionModel>> LoadAllInterventions(string storedProcedure,  string connectionStringName)
+        {
+            string connectionString = GetConnectionString(connectionStringName);
 
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                var rows = (await connection.QueryAsync<InterventionModel, SelectedDirectionModel, SiteModel, IdentificationModel, EquipementModel, ActionModel, InterventionModel>(storedProcedure,
+
+
+                    (intervention, direction, site, identification, equipement, action) => {
+                        intervention.Direction = direction;
+                        intervention.Site = site;
+                        intervention.Identification = identification;
+                        intervention.Equipement = equipement;
+                        intervention.Action = action;
+                        return intervention;
+                    }
+
+
+
+
+
+                    ,  commandType: CommandType.StoredProcedure, splitOn: "Id")).ToList();
+
+
+
+
+
+
+
+                return rows;
+            }
+        }
 
 
 

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Equipement]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Equipement] NVARCHAR(MAX) NOT NULL
+)

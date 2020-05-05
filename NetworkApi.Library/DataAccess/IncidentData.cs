@@ -78,32 +78,32 @@ namespace NetworkApi.Library.DataAccess
 
 
 
-        public async Task<PostIncidentModel>  GetIncidentById(int id)
-        {
-            SqlDataAccess sql = new SqlDataAccess();
-            var p = new { Id = id };
-            var item = (await  sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB")).FirstOrDefault();
+        //public async Task<PostIncidentModel>  GetIncidentById(int id)
+        //{
+        //    SqlDataAccess sql = new SqlDataAccess();
+        //    var p = new { Id = id };
+        //    var item = (await  sql.LoadData<IncidentModel,dynamic>("dbo.spGetIncidentById", p, "SeaalNetworkDB")).FirstOrDefault();
 
-            PostIncidentModel incident = new PostIncidentModel() 
+        //    PostIncidentModel incident = new PostIncidentModel() 
            
-                {
+        //        {
 
-                    Id = item.Id,
-                    IncidentDate = item.IncidentDate,
-                    Direction = JsonConvert.DeserializeObject<SelectedDirectionModel>(item.Direction),
-                    Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
-                    Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
-                    Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
-                    Operateur = JsonConvert.DeserializeObject<OperateurModel>(item.Operateur),
-                    isClotured = item.isClotured,
-                    Solution = item.Solution,
-                    ClotureDate = item.ClotureDate,
-                    AddBy = item.AddBy
+        //            Id = item.Id,
+        //            IncidentDate = item.IncidentDate,
+        //            Direction = JsonConvert.DeserializeObject<SelectedDirectionModel>(item.Direction),
+        //            Site = JsonConvert.DeserializeObject<SiteModel>(item.Site),
+        //            Nature = JsonConvert.DeserializeObject<NatureModel>(item.Nature),
+        //            Origin = JsonConvert.DeserializeObject<OriginModel>(item.Origin),
+        //            Operateur = JsonConvert.DeserializeObject<OperateurModel>(item.Operateur),
+        //            isClotured = item.isClotured,
+        //            Solution = item.Solution,
+        //            ClotureDate = item.ClotureDate,
+        //            AddBy = item.AddBy
 
-                };
+        //        };
 
-            return incident;
-        }
+        //    return incident;
+        //}
 
         //add incident to the database
 
