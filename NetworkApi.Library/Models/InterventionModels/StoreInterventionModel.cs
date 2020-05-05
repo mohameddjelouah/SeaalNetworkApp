@@ -15,5 +15,6 @@ namespace NetworkApi.Library.Models.InterventionModels
         public int EquipemenetId { get; set; }
         public int ActionId { get; set; }
         public string Rapport { get; set; }
+        public string AddBy { get; set; }
     }
 }

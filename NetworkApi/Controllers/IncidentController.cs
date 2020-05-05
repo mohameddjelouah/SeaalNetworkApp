@@ -1,10 +1,12 @@
 ﻿using NetworkApi.Library.DataAccess;
 using NetworkApi.Library.Models;
+using NetworkApi.Library.Models.InterventionModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -23,34 +25,15 @@ namespace NetworkApi.Controllers
         public async Task<List<PostIncidentModel>>  Get(bool isCloture)
         {
             IncidentData data = new IncidentData();
-
             return await data.GetAllIncidents(isCloture);
         }
-
-
-        //// GET: api/Incident/5
-        ////[HttpGet]
-        ////[Route("api/Incident/{Id}")]
-        //public async Task<PostIncidentModel>  Get(int id)
-        //{
-        //    IncidentData data = new IncidentData();
-
-        //    return await data.GetIncidentById(id);
-
-            
-        //}
-
         // POST api/Incident
         [HttpPost]
         [Route("api/Incident")]
         public async Task Post([FromBody] StoreIncidentModel incident)
-        {
-            
+        {           
             IncidentData data = new IncidentData();
-
-            await data.AddIncident(incident);
-
-
+            await data.AddIncident(incident);          
         }
 
         // DELETE api/Incident/5

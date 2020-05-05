@@ -18,9 +18,7 @@ namespace NetworkApi.Library.DataAccess
         public async Task<List<InterventionModel>> GatAllInterventions()
         {
             SqlDataAccess sql = new SqlDataAccess();
-
             List<InterventionModel> listofInterventions = await sql.LoadAllInterventions("dbo.spGetAllInterventions", "SeaalNetworkDB");
-
             return listofInterventions;
         }
 
@@ -44,7 +42,34 @@ namespace NetworkApi.Library.DataAccess
 
         }
 
+        public async Task<List<DirectionModel>> GetAllDirections()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var Directions = await sql.LoadDirections("dbo.spGettAllDirections", "SeaalNetworkDB");
+            return Directions;
+        }
 
-        
+
+        public async Task<List<IdentificationModel>> GetIdentifications()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var Identification = await sql.LoadData<IdentificationModel, dynamic>("dbo.spGetIdentifications", new { }, "SeaalNetworkDB");
+            return Identification;
+        }
+
+        public async Task<List<EquipementModel>> GetEquipements()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var Equipement = await sql.LoadData<EquipementModel, dynamic>("dbo.spGetEquipements", new { }, "SeaalNetworkDB");
+            return Equipement;
+        }
+
+        public async Task<List<ActionModel>> GetActions()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var Action = await sql.LoadData<ActionModel, dynamic>("dbo.spGetActions", new { }, "SeaalNetworkDB");
+            return Action;
+        }
+
     }
 }
