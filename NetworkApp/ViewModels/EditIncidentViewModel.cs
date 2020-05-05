@@ -448,7 +448,7 @@ namespace NetworkApp.ViewModels
                         ClotureDate = ClotureDate,
                         Solution = Solution,
                         isClotured = isclotured,
-                        AddBy = WindowsIdentity.GetCurrent().Name
+                        AddBy = System.Environment.UserName
 
                     };
 
@@ -464,7 +464,7 @@ namespace NetworkApp.ViewModels
                         ClotureDate = ClotureDate,
                         Solution = Solution,
                         isClotured = isclotured,
-                        AddBy = WindowsIdentity.GetCurrent().Name
+                        AddBy = System.Environment.UserName
 
 
                     };

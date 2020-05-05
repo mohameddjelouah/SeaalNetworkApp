@@ -424,7 +424,7 @@ namespace NetworkApp.ViewModels
                     isClotured = CanSolution,
                     Solution = Solution,
                     ClotureDate = ClotureDate,
-                    AddBy = WindowsIdentity.GetCurrent().Name
+                    AddBy = System.Environment.UserName
 
                 };
 

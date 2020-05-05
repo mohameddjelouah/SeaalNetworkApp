@@ -415,7 +415,7 @@ namespace NetworkApp.ViewModels
                         Nature = SelectedNature,
                         Origin = SelectedOrigin,
                         Operateur = SelectedOperateur,
-                        AddBy = WindowsIdentity.GetCurrent().Name,
+                        AddBy = System.Environment.UserName,
 
                     };
 
@@ -429,7 +429,7 @@ namespace NetworkApp.ViewModels
                         Nature = SelectedNature.Id,
                         Origin = SelectedOrigin.Id,
                         Operateur = SelectedOperateur?.Id,
-                        AddBy = WindowsIdentity.GetCurrent().Name
+                        AddBy = System.Environment.UserName
 
                     };
                     //try catch

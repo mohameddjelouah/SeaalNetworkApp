@@ -117,7 +117,7 @@ namespace NetworkApp.ViewModels
                     Incident.Solution = Solution;
                     Incident.ClotureDate = ClotureDate;
                     Incident.isClotured = true;
-                    Incident.AddBy = WindowsIdentity.GetCurrent().Name;
+                    Incident.AddBy = System.Environment.UserName;
                     StoreIncidentModel storIncident = new StoreIncidentModel()
                     {
 
@@ -131,7 +131,7 @@ namespace NetworkApp.ViewModels
                         Solution = Solution,
                         ClotureDate = ClotureDate,
                         isClotured = true,
-                        AddBy = WindowsIdentity.GetCurrent().Name
+                        AddBy = System.Environment.UserName
 
                     };
                     await _incidentEndPoint.EditIncident(storIncident);
