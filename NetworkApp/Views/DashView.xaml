@@ -100,7 +100,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock x:Name="Dash_IncidentTotal_IncidentTotal" TextWrapping="Wrap" FontSize="32"  ></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Total"></TextBlock>
+                        <TextBlock x:Name="Dash_IncidentTotal_IncidentTotalText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -157,7 +157,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock x:Name="Dash_IncidentThisYear_IncidentThisYear" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2020"></TextBlock>
+                        <TextBlock x:Name="Dash_IncidentThisYear_IncidentThisYearText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -213,7 +213,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock x:Name="Dash_IncidentLastYear_IncidentLastYear" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident En 2019"></TextBlock>
+                        <TextBlock x:Name="Dash_IncidentLastYear_IncidentLastYearText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
@@ -313,7 +313,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock x:Name="Dash_IncidentThisMonth_IncidentThisMonth" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Ce Mois"></TextBlock>
+                        <TextBlock x:Name="Dash_IncidentThisMonth_IncidentThisMonthText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                    
@@ -369,7 +369,7 @@
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IncidentChart}"/>
                             <TextBlock x:Name="Dash_IncidentLastMonth_IncidentLastMonth" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Incident Dernier Mois"></TextBlock>
+                        <TextBlock x:Name="Dash_IncidentLastMonth_IncidentLastMonthText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
 
