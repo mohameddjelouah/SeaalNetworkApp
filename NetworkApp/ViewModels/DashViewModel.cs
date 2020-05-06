@@ -69,13 +69,21 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         {
 
-            Dash = await _dashboardEndPoint.GetDashboard();
+            try
+            {
+                Dash = await _dashboardEndPoint.GetDashboard();
+
+                //d.IncidentTotal.IncidentTotal
+                IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
+                Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
+
+            }
+            catch (Exception)
+            {
+
+                
+            }
             
-            
-            
-            //d.IncidentTotal.IncidentTotal
-            IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
-            Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
             
            
         }

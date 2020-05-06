@@ -9,18 +9,39 @@
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" Background="WhiteSmoke" FontSize="15"
               d:DesignHeight="650" d:DesignWidth="1020">
-   
-    
-    
-    
-    
-    
-    
-    
-    
-         <Grid>
 
-                    <Grid.RowDefinitions>
+
+
+
+
+
+
+
+
+    <Grid>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ProgressBar Grid.ColumnSpan="3"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
+            <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
+
+            <TextBlock DockPanel.Dock="Right"   Foreground="DimGray" VerticalAlignment="Center" FontSize="16"   Margin="10 0 0 0" TextWrapping="Wrap" >
+                                  Errour lors la connexion au serveur !!!!
+            </TextBlock>
+        </DockPanel>
+        <Border  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
+            <Border Background="Black"/>
+        </Border>
+
+
+        <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
+            <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -144,11 +165,12 @@
 
 
 
-                             <Button x:Name="AddIntervention" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
+                             <Button  x:Name="AddIntervention" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
 
 
 
 
 
+    </Grid> 
     </Grid> 
 </UserControl>

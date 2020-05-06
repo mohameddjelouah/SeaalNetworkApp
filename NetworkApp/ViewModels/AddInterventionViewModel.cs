@@ -33,7 +33,7 @@ namespace NetworkApp.ViewModels
             set {
                 _interventionDate = value;
                 NotifyOfPropertyChange(() => InterventionDate);
-            
+                NotifyOfPropertyChange(() => CanAddIntervention);
             }
         }
 
@@ -60,7 +60,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
-               // NotifyOfPropertyChange(() => CanAddIncident);
+                NotifyOfPropertyChange(() => CanAddIntervention);
 
             }
         }
@@ -73,7 +73,7 @@ namespace NetworkApp.ViewModels
             {
                 _selectedSite = value;
                 NotifyOfPropertyChange(() => SelectedSite);
-               // NotifyOfPropertyChange(() => CanAddIncident);
+                NotifyOfPropertyChange(() => CanAddIntervention);
 
             }
         }
@@ -129,6 +129,7 @@ namespace NetworkApp.ViewModels
             set {
                 _selectedIdentification = value;
                 NotifyOfPropertyChange(() => SelectedIdentification);
+                NotifyOfPropertyChange(() => CanAddIntervention);
             }
         }
 
@@ -140,6 +141,7 @@ namespace NetworkApp.ViewModels
             set { 
                 _selectedEquipement = value;
                 NotifyOfPropertyChange(() => SelectedEquipement);
+                NotifyOfPropertyChange(() => CanAddIntervention);
             }
         }
 
@@ -152,6 +154,7 @@ namespace NetworkApp.ViewModels
             set {
                 _selectedAction = value;
                 NotifyOfPropertyChange(() => SelectedAction);
+                NotifyOfPropertyChange(() => CanAddIntervention);
             }
         }
 
@@ -163,10 +166,66 @@ namespace NetworkApp.ViewModels
             set { 
                 _rapport = value;
                 NotifyOfPropertyChange(() => Rapport);
+                NotifyOfPropertyChange(() => CanAddIntervention);
             }
         }
 
+        //**************************************************************************************************************
+        private bool _prog = true;
 
+        public bool Prog
+        {
+            get { return _prog; }
+            set
+            {
+                _prog = value;
+                NotifyOfPropertyChange(() => Prog);
+
+            }
+        }
+        //**************************************************************************************************************
+
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
+        //**************************************************************************************************************
+        //**************************************************************************************************************
+        private bool _form = false;
+
+        public bool Form
+        {
+            get { return _form; }
+            set
+            {
+                _form = value;
+                NotifyOfPropertyChange(() => Form);
+            }
+        }
+
+        //**************************************************************************************************************
+        private bool _dataBaseError = false;
+
+        public bool DataBaseError
+        {
+            get { return _dataBaseError; }
+            set
+            {
+                _dataBaseError = value;
+                NotifyOfPropertyChange(() => DataBaseError);
+
+            }
+        }
+
+        //**************************************************************************************************************
 
         private IInterventionDataEndPoint _interventionDataEndPoint;
         private IInterventionEndPoint _interventionEndPoint;
@@ -185,7 +244,40 @@ namespace NetworkApp.ViewModels
         { // if loading incuident doesnt work we caatch an exception that stop progress bar and display a message with failure
             base.OnViewLoaded(view);
 
-            await LoadData();
+        retry1: try
+            {
+
+                await LoadData();
+                Prog = false;
+                Form = true;
+
+            }
+            catch (Exception e)
+            {
+
+                // show a dialog with retry buton or exit the application
+
+                Prog = false;
+                //for example :
+                var Error = IoC.Get<NetworkErrorViewModel>();
+                Transition = true;
+                var result = _window.ShowDialog(Error, null, null);
+                Transition = false;
+                if (result.HasValue && result.Value)
+                {
+                    Prog = true;
+                    goto retry1;
+
+                }
+                else
+                {
+
+                    DataBaseError = true;
+                    // here i have to make a panel for error connextion when i exit application
+                }
+
+
+            }
         }
 
 
@@ -202,23 +294,70 @@ namespace NetworkApp.ViewModels
         }
 
 
+
+
+        public bool CanAddIntervention
+        {
+            get
+            {
+
+
+                return CheckInputs();
+
+
+            }
+
+        }
+
         public async Task AddIntervention()
         {
-
-            StoreInterventionModel intervention = new StoreInterventionModel()
+            try
             {
-                InterventionDate = InterventionDate,
-                DirectionId = SelectedDirection.Id,
-                SiteId = SelectedSite.Id,
-                IdentificationId = SelectedIdentification.Id,
-                EquipemenetId = SelectedEquipement.Id,
-                ActionId = SelectedAction.Id,
-                Rapport = Rapport,
-                AddBy = System.Environment.UserName
-            };
+                StoreInterventionModel intervention = new StoreInterventionModel()
+                {
+                    InterventionDate = InterventionDate,
+                    DirectionId = SelectedDirection.Id,
+                    SiteId = SelectedSite.Id,
+                    IdentificationId = SelectedIdentification.Id,
+                    EquipemenetId = SelectedEquipement.Id,
+                    ActionId = SelectedAction.Id,
+                    Rapport = Rapport,
+                    AddBy = System.Environment.UserName
+                };
 
-            await _interventionEndPoint.AddIntervention(intervention);
+                await _interventionEndPoint.AddIntervention(intervention);
 
+                var secces = IoC.Get<SeccesDialogViewModel>();
+                Transition = true;
+                _window.ShowDialog(secces, null, null);
+                Transition = false;
+                InterventionDate = null;
+                SelectedDirection = null;
+                SelectedIdentification = null;
+                SelectedEquipement = null;
+                SelectedAction = null;
+                Rapport = null;
+            }
+            catch (Exception)
+            {
+
+                var faild = IoC.Get<FaildDialogViewModel>();
+                Transition = true;
+                _window.ShowDialog(faild, null, null);
+                Transition = false;
+            }
+            
+        }
+
+        public bool CheckInputs()
+        {
+
+
+            if (InterventionDate != null && SelectedDirection != null && SelectedSite != null && SelectedIdentification != null && SelectedEquipement != null && SelectedAction != null && !string.IsNullOrEmpty(Rapport))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
