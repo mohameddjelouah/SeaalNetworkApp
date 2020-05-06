@@ -78,12 +78,12 @@
             </Separator.LayoutTransform>
         </Separator>
              
-        <DockPanel Grid.Row="0" Grid.Column="2" Margin="20" >
+                        <DockPanel Grid.Row="0" Grid.Column="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Nature d'intervention"/>
-                            <ComboBox x:Name="Identification" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --" SelectedItem="{Binding SelectedNature}">
+                            <ComboBox x:Name="Identifications" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier la Nature --" SelectedItem="{Binding SelectedIdentification}">
                                  <ComboBox.ItemTemplate>
                                     <DataTemplate >
-                                        <TextBlock Text="{Binding Nature}" />
+                                        <TextBlock Text="{Binding Identification}" />
                                     </DataTemplate >
                                 </ComboBox.ItemTemplate >
 
@@ -94,10 +94,10 @@
 
                         <DockPanel Grid.Row="1" Grid.Column="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="Equipment"/>
-                            <ComboBox x:Name="Equipment" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedOrigin}">
+                            <ComboBox x:Name="Equipements" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedEquipement}">
                                <ComboBox.ItemTemplate>
                                     <DataTemplate >
-                                        <TextBlock Text="{Binding Origin}" />
+                                        <TextBlock Text="{Binding Equipement}" />
                                     </DataTemplate >
                                 </ComboBox.ItemTemplate >
 
@@ -108,10 +108,10 @@
 
                         <DockPanel Grid.Row="2" Grid.Column="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18" Content="L'Action"/>
-                            <ComboBox x:Name="Action" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedOrigin}">
+                            <ComboBox x:Name="Actions" Width="Auto" MaxWidth="400" materialDesign:HintAssist.Hint="-- Choissier l'origin --" SelectedItem="{Binding SelectedAction}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate >
-                                        <TextBlock Text="{Binding Origin}" />
+                                        <TextBlock Text="{Binding Action}" />
                                     </DataTemplate >
                                 </ComboBox.ItemTemplate >
 
@@ -130,13 +130,13 @@
                               <DockPanel Margin="20,20,20,0" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" >
                                         <Label Margin="15" Width="150" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Center" Content="Rapport : "/>
                                         <TextBox x:Name="Rapport"
-                                            IsEnabled="{Binding CanSolution}"
+                                            
                                             Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                                             Height="Auto"
                                             MaxHeight="150"
                                             TextWrapping="Wrap"
                                             VerticalScrollBarVisibility="Auto"
-                                            materialDesign:HintAssist.Hint="Solution de l'incident"
+                                            materialDesign:HintAssist.Hint="Rapport d'intervention"
                                         />
                                
                               </DockPanel>

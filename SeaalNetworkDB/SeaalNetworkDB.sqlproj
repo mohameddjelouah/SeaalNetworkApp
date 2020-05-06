@@ -87,6 +87,9 @@
     <Build Include="dbo\Tables\Action.sql" />
     <Build Include="dbo\Stored Procedures\spInsertIntervention.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllInterventions.sql" />
+    <Build Include="dbo\Stored Procedures\spGetIdentifications.sql" />
+    <Build Include="dbo\Stored Procedures\spGetEquipements.sql" />
+    <Build Include="dbo\Stored Procedures\spGetActions.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

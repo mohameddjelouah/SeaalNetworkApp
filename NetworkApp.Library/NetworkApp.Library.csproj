@@ -56,6 +56,10 @@
     <Compile Include="Api\Interfaces\IIncidentDataEndPoint.cs" />
     <Compile Include="Api\Interfaces\IIncidentEndPoint.cs" />
     <Compile Include="Api\IncidentEndPoint.cs" />
+    <Compile Include="Api\Interfaces\IInterventionDataEndPoint.cs" />
+    <Compile Include="Api\Interfaces\IInterventionEndPoint.cs" />
+    <Compile Include="Api\InterventionDataEndPoint.cs" />
+    <Compile Include="Api\InterventionEndPoint.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashbordModels\IncidentChartModel.cs" />
@@ -67,6 +71,12 @@
     <Compile Include="Models\DashbordModels\Last4WeeksChartModel.cs" />
     <Compile Include="Models\DirectionModel.cs" />
     <Compile Include="Models\IncidentModel.cs" />
+    <Compile Include="Models\InterventionModels\ActionModel.cs" />
+    <Compile Include="Models\InterventionModels\AddInterventionModel.cs" />
+    <Compile Include="Models\InterventionModels\EquipementModel.cs" />
+    <Compile Include="Models\InterventionModels\IdentificationModel.cs" />
+    <Compile Include="Models\InterventionModels\InterventionModel.cs" />
+    <Compile Include="Models\InterventionModels\StoreInterventionModel.cs" />
     <Compile Include="Models\NatureModel.cs" />
     <Compile Include="Models\OperateurModel.cs" />
     <Compile Include="Models\OriginModel.cs" />
