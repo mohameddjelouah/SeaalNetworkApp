@@ -17,6 +17,7 @@ namespace NetworkApi.Library.DataAccess
             SqlDataAccess  sql = new SqlDataAccess();
             DashboardModel Dashboard = await sql.LoadDashboard("dbo.spGetDashboardData", "SeaalNetworkDB");
                            Dashboard.IncidentChart = await sql.LoadData<IncidentChartModel, dynamic>("dbo.spGetIncidentCountLastYear", new { }, "SeaalNetworkDB");
+                           Dashboard.InterventionChart = await sql.LoadData<InterventionChartModel, dynamic>("dbo.spGetInterventionCountLastYear", new { }, "SeaalNetworkDB");
                            Dashboard.Last4WeeksChart = await sql.LoadData<Last4WeeksChartModel, dynamic>("dbo.spGetIncidentForLast4Weeks", new { }, "SeaalNetworkDB");
                            Dashboard.Last4WeeksInterventionChart = await sql.LoadData<Last4WeeksInterventionChartModel, dynamic>("dbo.spGetInterventionForLast4Weeks", new { }, "SeaalNetworkDB");
                     return Dashboard;

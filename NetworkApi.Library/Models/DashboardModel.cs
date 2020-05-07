@@ -10,6 +10,7 @@ namespace NetworkApi.Library.Models
     public class DashboardModel
     {
         public List<IncidentChartModel> IncidentChart { get; set; }
+        public List<InterventionChartModel> InterventionChart { get; set; }
         public List<Last4WeeksChartModel> Last4WeeksChart { get; set; }
         public List<Last4WeeksInterventionChartModel> Last4WeeksInterventionChart { get; set; }
         public IncidentTotalModel IncidentTotal { get; set; }

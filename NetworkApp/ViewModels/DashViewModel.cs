@@ -26,6 +26,20 @@ namespace NetworkApp.ViewModels
             }
         }
 
+
+        private ObservableCollection<InterventionChartModel> _interventionChart;
+
+        public ObservableCollection<InterventionChartModel> InterventionChart
+        {
+            get { return _interventionChart; }
+            set
+            {
+                _interventionChart = value;
+                NotifyOfPropertyChange(() => InterventionChart);
+            }
+        }
+
+
         private ObservableCollection<Last4WeeksChartModel> _last4WeeksIncidentChart;
 
         public ObservableCollection<Last4WeeksChartModel> Last4WeeksIncidentChart
@@ -89,6 +103,7 @@ namespace NetworkApp.ViewModels
                
                 
                 IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
+                InterventionChart = new ObservableCollection<InterventionChartModel>(Dash.InterventionChart);
                 Last4WeeksIncidentChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
                 Last4WeeksInterventionChart = new ObservableCollection<Last4WeeksInterventionChartModel>(Dash.Last4WeeksInterventionChart);
 

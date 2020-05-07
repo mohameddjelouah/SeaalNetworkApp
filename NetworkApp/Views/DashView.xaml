@@ -80,7 +80,7 @@
                     <RotateTransform Angle="90" />
                 </Separator.LayoutTransform>
             </Separator>-->
-            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
                 <Grid>
@@ -137,7 +137,7 @@
             </materialDesign:Card>
 
 
-            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
                 <Grid>
@@ -192,7 +192,7 @@
                 </Grid>
 
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="0" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
 
@@ -248,7 +248,7 @@
                 </Grid>
 
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
 
@@ -293,7 +293,7 @@
 
 
 
-            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
                 <Grid>
@@ -349,7 +349,7 @@
                 
             </materialDesign:Card>
 
-            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
                 <Grid>
@@ -404,7 +404,7 @@
                 </Grid>
                 
             </materialDesign:Card>
-            <materialDesign:Card Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+            <materialDesign:Card Grid.Row="1" Grid.Column="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
                 <Grid>
@@ -443,7 +443,7 @@
 
 
 
-        <materialDesign:Card Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2" >
+        <materialDesign:Card  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
 
 
 
@@ -466,8 +466,8 @@
                        HorizontalAlignment="Center"  VerticalAlignment="Center">
 
                 <chart:SfChart.Header>
-                    <TextBlock FontSize="16" 
-                           Margin="0,0,0,20">Nombre d'incidents</TextBlock>
+                    <TextBlock FontSize="14" 
+                           Margin="0,0,0,10">Derniers 12 Mois (Incident et Intervention)</TextBlock>
                 </chart:SfChart.Header>
 
                 <chart:SfChart.PrimaryAxis>
@@ -495,18 +495,31 @@
                                      MajorTickLineStyle="{x:Null}">
                     </chart:NumericalAxis>
                 </chart:SfChart.SecondaryAxis>
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend Background="WhiteSmoke" FontSize="12" ></chart:ChartLegend>
+                </chart:SfChart.Legend>
 
-                <chart:SplineAreaSeries  x:Name="SplineAreaSeries" EnableAnimation="True"
+                <chart:StackingAreaSeries Palette="Custom" x:Name="SplineAreaSeries" EnableAnimation="True"
                               XBindingPath="IncidentsDate" 
-                              Label="Nombre d'incident"
+                              Label="Incident"
                               YBindingPath="IncidentCount" 
                               ItemsSource="{Binding IncidentChart}" 
                               ShowTooltip="True" 
                               StrokeThickness="2"
-                              Stroke="#FF1BA1E2"
-                              Interior="#781BA1E2">
+                              >
 
-                    <chart:SplineAreaSeries.AdornmentsInfo>
+
+                    <chart:StackingAreaSeries.ColorModel>
+                        <chart:ChartColorModel>
+                            <chart:ChartColorModel.CustomBrushes>
+
+                                <SolidColorBrush Color="#7f8fa6" Opacity="0.8"/>
+
+                            </chart:ChartColorModel.CustomBrushes>
+                        </chart:ChartColorModel>
+                    </chart:StackingAreaSeries.ColorModel>
+
+                    <chart:StackingAreaSeries.AdornmentsInfo>
                         <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
                                               HorizontalAlignment="Center" 
                                               VerticalAlignment="Center" 
@@ -515,19 +528,68 @@
                                 <DataTemplate>
                                     <Grid>
                                         <Ellipse Height="20" Width="20" 
-                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             Stroke="DimGray" Fill="WhiteSmoke" 
+                                                    
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{Binding}" Foreground="#576574" 
+                                        <TextBlock Text="{Binding}" Foreground="DimGray" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center" 
                                                FontSize="10.5"/>
+                                        
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartAdornmentInfo.LabelTemplate>
                         </chart:ChartAdornmentInfo>
-                    </chart:SplineAreaSeries.AdornmentsInfo>
-                </chart:SplineAreaSeries>
+                    </chart:StackingAreaSeries.AdornmentsInfo>
+                </chart:StackingAreaSeries>
+
+
+                <chart:StackingAreaSeries Palette="Custom" x:Name="SplineAreaSeries5" EnableAnimation="True"
+                              XBindingPath="InterventionsDate" 
+                              Label="Intervention"
+                              YBindingPath="InterventiontCount" 
+                              ItemsSource="{Binding InterventionChart}" 
+                              ShowTooltip="True" 
+                              StrokeThickness="2"
+                              >
+
+
+                    <chart:StackingAreaSeries.ColorModel>
+                        <chart:ChartColorModel>
+                            <chart:ChartColorModel.CustomBrushes>
+
+                                <SolidColorBrush Color="#576574" Opacity="0.8"/>
+
+                            </chart:ChartColorModel.CustomBrushes>
+                        </chart:ChartColorModel>
+                    </chart:StackingAreaSeries.ColorModel>
+
+
+                    <chart:StackingAreaSeries.AdornmentsInfo>
+                        <chart:ChartAdornmentInfo AdornmentsPosition="Bottom"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                              ShowLabel="True">
+                            <chart:ChartAdornmentInfo.LabelTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Ellipse Height="20" Width="20" 
+                                             Stroke="DimGray" Fill="WhiteSmoke" 
+                                                    
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding}" Foreground="DimGray" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontSize="10.5"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </chart:ChartAdornmentInfo.LabelTemplate>
+                        </chart:ChartAdornmentInfo>
+                    </chart:StackingAreaSeries.AdornmentsInfo>
+                </chart:StackingAreaSeries>
 
             </chart:SfChart>
 
@@ -547,7 +609,7 @@
 
             </Grid.ColumnDefinitions>
 
-            <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+            <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1"  >
 
                 <materialDesign:Card.Resources>
 
@@ -573,8 +635,8 @@
                        HorizontalAlignment="Center"  VerticalAlignment="Center">
 
                     <chart:SfChart.Header>
-                        <TextBlock FontSize="16" 
-                           Margin="0,0,0,20">Nombre d'incidents</TextBlock>
+                        <TextBlock FontSize="14" 
+                           Margin="0,0,0,10">Derniers 4 semain (Incident et Intervention)</TextBlock>
                     </chart:SfChart.Header>
 
                     <chart:SfChart.PrimaryAxis >
@@ -614,7 +676,7 @@
                     </chart:SfChart.Legend>
 
 
-                    <chart:ColumnSeries Palette="AutumnBrights" x:Name="SplineAreaSeries2" EnableAnimation="True"
+                    <chart:ColumnSeries Palette="Custom" x:Name="SplineAreaSeries2" EnableAnimation="True"
                               
                               YBindingPath="_4WeeksIncidentCount" 
                               
@@ -629,6 +691,18 @@
                        
                     <!--Stroke="#FF1BA1E2"
                               Interior="#781BA1E2"-->
+
+                        <chart:ColumnSeries.ColorModel>
+                            <chart:ChartColorModel>
+                                <chart:ChartColorModel.CustomBrushes>
+
+                                    <SolidColorBrush Color="#7f8fa6" Opacity="0.8"/>
+
+                                </chart:ChartColorModel.CustomBrushes>
+                            </chart:ChartColorModel>
+                        </chart:ColumnSeries.ColorModel>
+                        
+                        
                         <chart:ColumnSeries.AdornmentsInfo>
                             <chart:ChartAdornmentInfo AdornmentsPosition="Top"  
                                               HorizontalAlignment="Center" 
@@ -639,10 +713,11 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Ellipse Height="20" Width="20" 
-                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             Stroke="DimGray" Fill="WhiteSmoke" 
+                                                    
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
-                                            <TextBlock Text="{Binding}" Foreground="#576574" 
+                                            <TextBlock Text="{Binding}" Foreground="DimGray" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center" 
                                                FontSize="10.5"/>
@@ -696,7 +771,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Ellipse Height="20" Width="20" 
-                                             Stroke="#576574" Fill="LightGray" 
+                                             Stroke="DimGray" Fill="WhiteSmoke" 
                                                     
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
@@ -729,7 +804,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <materialDesign:Card Grid.Row="0"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+                <materialDesign:Card Grid.Row="0"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1"  >
 
 
 
@@ -767,7 +842,7 @@
                     
                 </materialDesign:Card>
 
-                <materialDesign:Card Grid.Row="1"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth2"  >
+                <materialDesign:Card Grid.Row="1"  Margin="5" VerticalAlignment="Stretch"  materialDesign:ShadowAssist.ShadowDepth="Depth1"  >
 
                     <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">

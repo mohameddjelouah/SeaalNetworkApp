@@ -438,14 +438,14 @@ namespace NetworkApp.ViewModels
 
                 // reset all
                 IncidentDate = null;
-                SelectedDirection = null; 
+                SelectedDirection = null;
                 SelectedNature = null;
                 SelectedOrigin = null;
                 isCloture = false;
                 Solution = null;
                 ClotureDate = null;
-                
-                
+
+
             }
             catch (Exception)
             {

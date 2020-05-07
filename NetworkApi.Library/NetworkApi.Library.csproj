@@ -63,6 +63,7 @@
     <Compile Include="Models\DashboardModels\IncidentThisMonthModel.cs" />
     <Compile Include="Models\DashboardModels\IncidentThisYearModel.cs" />
     <Compile Include="Models\DashboardModels\IncidentTotalModel.cs" />
+    <Compile Include="Models\DashboardModels\InterventionChartModel.cs" />
     <Compile Include="Models\DashboardModels\InterventionDataModel.cs" />
     <Compile Include="Models\DashboardModels\Last4WeeksChartModel.cs" />
     <Compile Include="Models\DashboardModels\Last4WeeksInterventionChartModel.cs" />

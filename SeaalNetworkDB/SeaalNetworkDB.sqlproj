@@ -91,6 +91,7 @@
     <Build Include="dbo\Stored Procedures\spGetEquipements.sql" />
     <Build Include="dbo\Stored Procedures\spGetActions.sql" />
     <Build Include="dbo\Stored Procedures\spGetInterventionForLast4Weeks.sql" />
+    <Build Include="dbo\Stored Procedures\spGetInterventionCountLastYear.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

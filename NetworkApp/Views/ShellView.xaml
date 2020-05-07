@@ -19,7 +19,7 @@
         </ControlTemplate>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="240"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="210"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
            
@@ -27,7 +27,7 @@
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="240"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="210"/>
             </DoubleAnimationUsingKeyFrames>
             
         </Storyboard>
@@ -117,7 +117,7 @@
   <!--*****************the menu*******************************************-->
 
 
-        <materialDesign:ColorZone  Width="240" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#57606f" Padding="0 5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
+        <materialDesign:ColorZone  Width="210" materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom,Right" VerticalAlignment="Stretch" x:Name="GridMenu" Grid.Row="1" Grid.Column="0"   Background="#57606f" Padding="0 5" RenderTransformOrigin="0.5,0.5"  Mode="PrimaryMid"  >
 
                 <!--start menu-->
             <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
@@ -133,16 +133,29 @@
                     <ListView   Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <!--**********************************dashboard**********************-->
                             <ListViewItem  IsSelected="{Binding isDashSelected}">
-                            
-                                <TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />
+
+                                <TextBlock  Padding="22 15"  Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="ViewDashboard" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                        <TextBlock VerticalAlignment="Center" Text="Dashboard"/>
+                                    </StackPanel>
+                                    
+                                </TextBlock>
+                                
+                                <!--<TextBlock  Padding="22 15" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayDashboard()]"    Text="Dashboared" />-->
                             </ListViewItem>
                            
                             <!--**********************************1st expender**********************-->
                     <ListViewItem  IsSelected="{Binding isIncidentSelected}">
 
-                        <Expander  Header="Gerer les incidents" FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
+                        <Expander FontSize="15"  IsExpanded="{Binding ExpendIncident}" Background="{x:Null}">
 
-                                   
+                                    <Expander.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="LanDisconnect" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                            <TextBlock VerticalAlignment="Center" Text="Incidents"/>
+                                        </StackPanel>
+                                    </Expander.Header>  
                             <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <ListViewItem IsSelected="{Binding isDisplayIncidentSelected}">
                                     <TextBlock  Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
@@ -230,11 +243,16 @@
                     <ListViewItem IsSelected="{Binding isInterventionSelected}">
 
 
-                                <Expander Header="Gerer les intervention" FontSize="15" IsExpanded="{Binding ExpendIntervention}"  Background="{x:Null}" >
-                                   
-                                    
-                                    
-                                    
+                                <Expander  FontSize="15" IsExpanded="{Binding ExpendIntervention}"  Background="{x:Null}" >
+
+                                    <Expander.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="DesktopMacDashboard" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                            <TextBlock VerticalAlignment="Center"  Text="Interventions"/>
+                                        </StackPanel>
+                                    </Expander.Header>
+
+
                                     <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListViewItem IsSelected="{Binding isDisplayInterventionSelected}">
                                             <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" />
@@ -318,7 +336,7 @@
                     <ListViewItem  IsSelected="{Binding isStatSelected}">
                     
 
-                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="Statistique IP"/>
+                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="dd   List des Site"/>
                     </ListViewItem>
                            <!--**********************************menu style**********************-->
                            
