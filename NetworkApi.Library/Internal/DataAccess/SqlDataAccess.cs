@@ -175,8 +175,15 @@ namespace NetworkApi.Library.Internal.DataAccess
                     dm.IncidentThisYear = (await rows.ReadAsync<IncidentThisYearModel>()).FirstOrDefault();
                     dm.IncidentThisMonth = (await rows.ReadAsync<IncidentThisMonthModel>()).FirstOrDefault();
                     dm.IncidentLastYear = (await rows.ReadAsync<IncidentLastYearModel>()).FirstOrDefault();
-                    dm.IncidentLastMonth = (await rows.ReadAsync<IncidentLastMonthModel>()).FirstOrDefault();
+                    dm.IncidentLastMonth = (await rows.ReadAsync<IncidentLastMonthModel>()).FirstOrDefault();   
                     dm.IncidentYesterday = (await rows.ReadAsync<int>()).FirstOrDefault();
+
+                    //intervention goes here
+                    dm.InterventionData = (await rows.ReadAsync<InterventionDataModel>()).FirstOrDefault();
+
+
+
+
                     dm.Sites = (await rows.ReadAsync<int>()).FirstOrDefault();
 
                     

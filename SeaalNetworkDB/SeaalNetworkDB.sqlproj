@@ -79,7 +79,7 @@
     <Build Include="dbo\Stored Procedures\spGetOrigin.sql" />
     <Build Include="dbo\Stored Procedures\spEditIncident.sql" />
     <Build Include="dbo\Stored Procedures\spGetIncidentCountLastYear.sql" />
-    <Build Include="dbo\Stored Procedures\spGetLast4Weeks.sql" />
+    <Build Include="dbo\Stored Procedures\spGetIncidentForLast4Weeks.sql" />
     <Build Include="dbo\Stored Procedures\spGetDashboardData.sql" />
     <Build Include="dbo\Tables\Intervention.sql" />
     <Build Include="dbo\Tables\Identification.sql" />
@@ -90,6 +90,7 @@
     <Build Include="dbo\Stored Procedures\spGetIdentifications.sql" />
     <Build Include="dbo\Stored Procedures\spGetEquipements.sql" />
     <Build Include="dbo\Stored Procedures\spGetActions.sql" />
+    <Build Include="dbo\Stored Procedures\spGetInterventionForLast4Weeks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

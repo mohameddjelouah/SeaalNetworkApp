@@ -311,6 +311,8 @@ namespace NetworkApp.ViewModels
 
         public async Task AddIntervention()
         {
+            
+            
             try
             {
                 StoreInterventionModel intervention = new StoreInterventionModel()
@@ -326,7 +328,7 @@ namespace NetworkApp.ViewModels
                 };
 
                 await _interventionEndPoint.AddIntervention(intervention);
-
+                
                 var secces = IoC.Get<SeccesDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(secces, null, null);
@@ -340,7 +342,7 @@ namespace NetworkApp.ViewModels
             }
             catch (Exception)
             {
-
+                
                 var faild = IoC.Get<FaildDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(faild, null, null);

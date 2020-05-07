@@ -264,26 +264,26 @@
                     <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="137"></TextBlock>
+                            <TextBlock x:Name="Dash_InterventionData_InterventionTotal" TextWrapping="Wrap" FontSize="32" ></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Total"></TextBlock>
+                        <TextBlock x:Name="Dash_InterventionData_InterventionTotalText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0" ></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="41"></TextBlock>
+                            <TextBlock x:Name="Dash_InterventionData_InterventionThisYear" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention En 2020"></TextBlock>
+                        <TextBlock x:Name="Dash_InterventionData_InterventionThisYearText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
 
                     <Separator Grid.Row="3" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                     <StackPanel Grid.Row="4" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="96"></TextBlock>
+                            <TextBlock x:Name="Dash_InterventionData_InterventionLastYear" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention En 2019"></TextBlock>
+                        <TextBlock x:Name="Dash_InterventionData_InterventionLastYearText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
 
                 </Grid>
@@ -417,17 +417,17 @@
                     <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="12"></TextBlock>
+                            <TextBlock x:Name="Dash_InterventionData_InterventionThisMonth" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Ce Mois"></TextBlock>
+                        <TextBlock x:Name="Dash_InterventionData_InterventionThisMonthText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
                     <Separator Grid.Row="1" Background="LightGray" Margin="30 0" Height="auto" Style="{StaticResource MaterialDesignSeparator}"/>
                     <StackPanel Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 0 0">
                         <StackPanel Margin="10 0 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Image Width="40" Height="40" Margin="0 0 5 0" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart3}"/>
-                            <TextBlock TextWrapping="Wrap" FontSize="32"  Text="16"></TextBlock>
+                            <TextBlock x:Name="Dash_InterventionData_InterventionLastMonth" TextWrapping="Wrap" FontSize="32"></TextBlock>
                         </StackPanel>
-                        <TextBlock TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"  Text="Intervention Dernier Mois"></TextBlock>
+                        <TextBlock x:Name="Dash_InterventionData_InterventionLastMonthText" TextWrapping="Wrap"  FontSize="18" HorizontalAlignment="Right" Margin="0 0 20 0"></TextBlock>
                     </StackPanel>
 
                 </Grid>
@@ -467,7 +467,7 @@
 
                 <chart:SfChart.Header>
                     <TextBlock FontSize="16" 
-                           Margin="0,0,0,5">Nombre d'incidents</TextBlock>
+                           Margin="0,0,0,20">Nombre d'incidents</TextBlock>
                 </chart:SfChart.Header>
 
                 <chart:SfChart.PrimaryAxis>
@@ -485,9 +485,11 @@
 
                 <chart:SfChart.SecondaryAxis>
                     <chart:NumericalAxis 
-                                     RangePadding="None"
+                                     
                                      Minimum="0"
-                                     PlotOffset="10"                                    
+                                     PlotOffset="10"  
+                                     EdgeLabelsDrawingMode="Fit"
+                                     EdgeLabelsVisibilityMode="Visible"
                                      LabelTemplate="{StaticResource labelTemplate}" 
                                      AxisLineStyle="{StaticResource AxisStyle}"
                                      MajorTickLineStyle="{x:Null}">
@@ -572,11 +574,11 @@
 
                     <chart:SfChart.Header>
                         <TextBlock FontSize="16" 
-                           Margin="0,0,0,5">Nombre d'incidents</TextBlock>
+                           Margin="0,0,0,20">Nombre d'incidents</TextBlock>
                     </chart:SfChart.Header>
 
                     <chart:SfChart.PrimaryAxis >
-                        
+
                         <chart:CategoryAxis  
                             
                             
@@ -591,33 +593,99 @@
                                     MajorTickLineStyle="{x:Null}">
 
                         </chart:CategoryAxis>
-                        
+
                     </chart:SfChart.PrimaryAxis>
 
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis 
-                                     RangePadding="None"
                                      Minimum="0"
-                                     PlotOffset="10"                                    
+                                     PlotOffset="10"      
+                                    EdgeLabelsDrawingMode="Fit"
+                                     EdgeLabelsVisibilityMode="Visible"
                                      LabelTemplate="{StaticResource labelTemplateY}" 
                                      AxisLineStyle="{StaticResource AxisStyle}"
                                      MajorTickLineStyle="{x:Null}">
                         </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
+                    
+                    
+                    <chart:SfChart.Legend>
+                        <chart:ChartLegend Background="WhiteSmoke" FontSize="12" ></chart:ChartLegend>
+                    </chart:SfChart.Legend>
 
-                    <chart:ColumnSeries   x:Name="SplineAreaSeries2" EnableAnimation="True"
+
+                    <chart:ColumnSeries Palette="AutumnBrights" x:Name="SplineAreaSeries2" EnableAnimation="True"
                               
-                              YBindingPath="_4WeeksCount" 
+                              YBindingPath="_4WeeksIncidentCount" 
                               
                               XBindingPath="Join"
-                              Label="Nombre d'incident"
+                              Label="Incident"
                               
                               
-                              ItemsSource="{Binding Last4WeeksChart}" 
+                              ItemsSource="{Binding Last4WeeksIncidentChart}" 
                               ShowTooltip="True" 
                               StrokeThickness="2"
-                              Stroke="#FF1BA1E2"
-                              Interior="#781BA1E2">
+                              >
+                       
+                    <!--Stroke="#FF1BA1E2"
+                              Interior="#781BA1E2"-->
+                        <chart:ColumnSeries.AdornmentsInfo>
+                            <chart:ChartAdornmentInfo AdornmentsPosition="Top"  
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" 
+                                                      
+                                              ShowLabel="True">
+                                <chart:ChartAdornmentInfo.LabelTemplate >
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Ellipse Height="20" Width="20" 
+                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             StrokeThickness="2" 
+                                             HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{Binding}" Foreground="#576574" 
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               FontSize="10.5"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </chart:ChartAdornmentInfo.LabelTemplate>
+                            </chart:ChartAdornmentInfo>
+                        </chart:ColumnSeries.AdornmentsInfo>
+                    </chart:ColumnSeries>
+
+
+
+                    <chart:ColumnSeries Palette="Custom"  x:Name="SplineAreaSeries3" EnableAnimation="True"
+                              
+                              YBindingPath="_4WeeksInterventionCount" 
+                              
+                              XBindingPath="Join"
+                              Label="Intervention"
+                              
+                              
+                              ItemsSource="{Binding Last4WeeksInterventionChart}" 
+                              ShowTooltip="True" 
+                              StrokeThickness="2"
+                              >
+                        
+                        
+                        
+                        
+                        
+                        
+                        <chart:ColumnSeries.ColorModel>
+                            <chart:ChartColorModel>
+                                <chart:ChartColorModel.CustomBrushes>
+
+                                    <SolidColorBrush Color="#576574" Opacity="0.8"/>
+                                    
+                                </chart:ChartColorModel.CustomBrushes>
+                            </chart:ChartColorModel>
+                        </chart:ColumnSeries.ColorModel>
+                        
+                        
+                        
+                        
                         
                         <chart:ColumnSeries.AdornmentsInfo>
                             <chart:ChartAdornmentInfo AdornmentsPosition="Top"  
@@ -628,10 +696,11 @@
                                     <DataTemplate>
                                         <Grid>
                                             <Ellipse Height="20" Width="20" 
-                                             Stroke="#FF1BA1E2" Fill="White" 
+                                             Stroke="#576574" Fill="LightGray" 
+                                                    
                                              StrokeThickness="2" 
                                              HorizontalAlignment="Center"/>
-                                            <TextBlock Text="{Binding}" Foreground="#576574" 
+                                            <TextBlock Text="{Binding}" Foreground="DimGray" 
                                                HorizontalAlignment="Center" 
                                                VerticalAlignment="Center" 
                                                FontSize="10.5"/>
@@ -677,7 +746,7 @@
                         <StackPanel Grid.Row="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Center" Margin="5 0 5 0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0 0 0">
                                 <Image Width="30" Margin="0 0 5 0" Height="30" RenderOptions.BitmapScalingMode="HighQuality" Source="{StaticResource IntervantionChart2}"/>
-                                <TextBlock TextWrapping="Wrap" FontSize="24" Text="2"></TextBlock>
+                                <TextBlock x:Name="Dash_InterventionData_InterventionYesterday" TextWrapping="Wrap" FontSize="24"></TextBlock>
                             </StackPanel>
                             <TextBlock TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0" Text="Intervention Hier"></TextBlock>
                         </StackPanel>

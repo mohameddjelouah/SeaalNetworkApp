@@ -121,10 +121,10 @@ from
 
                     where 
                    
-                    MONTH(Incidents.IncidentDate) = MONTH(GETDATE()) -1 and YEAR(Incidents.IncidentDate)  = YEAR(GETDATE()) and MONTH(GETDATE()) <> 1
+                    (MONTH(Incidents.IncidentDate) = MONTH(GETDATE()) -1 and YEAR(Incidents.IncidentDate)  = YEAR(GETDATE()) and MONTH(GETDATE()) <> 1)
                     or
 
-                    MONTH(Incidents.IncidentDate) = MONTH(GETDATE()) -1 and YEAR(Incidents.IncidentDate)  = YEAR(GETDATE())-1 and MONTH(GETDATE()) = 1
+                    (MONTH(Incidents.IncidentDate) = MONTH(GETDATE()) -1 and YEAR(Incidents.IncidentDate)  = YEAR(GETDATE())-1 and MONTH(GETDATE()) = 1)
 
                    
                     
@@ -148,6 +148,51 @@ from
                     where Incidents.IncidentDate = DATEFROMPARTS(YEAR(getdate()),month(getdate()),day(GETDATE()) -1)
                 
    ;
+
+   --************intervention section 
+
+select InterventionTotal,InterventionThisYear,InterventionThisMonth,InterventionLastYear,InterventionLastMonth,InterventionYesterday
+   from
+
+    (    select COUNT(Intervention.InterventionDate) InterventionTotal
+        from dbo.Intervention
+    ) InterventionTotal
+    
+    ,
+    
+    (   select COUNT(Intervention.InterventionDate) InterventionThisYear
+        from dbo.Intervention
+        where YEAR (InterventionDate) = YEAR(GETDATE())
+    ) InterventionThisYear
+    
+    ,
+    
+    (   select COUNT(Intervention.InterventionDate) InterventionThisMonth
+        from dbo.Intervention
+        where MONTH (InterventionDate) = MONTH(GETDATE()) and YEAR(InterventionDate)  = YEAR(GETDATE())
+    ) InterventionThisMonth
+    ,
+
+    (   select COUNT(Intervention.InterventionDate) InterventionLastYear
+        from dbo.Intervention
+        where YEAR (InterventionDate) = YEAR(GETDATE()) -1
+    )InterventionLastYear
+    ,
+
+    (   select COUNT(Intervention.InterventionDate) InterventionLastMonth
+        from dbo.Intervention
+        where 
+            (MONTH(InterventionDate) = MONTH(GETDATE()) -1 and YEAR(InterventionDate)  = YEAR(GETDATE()) and MONTH(GETDATE()) <> 1)
+        or
+            (MONTH(InterventionDate) = MONTH(GETDATE()) -1 and YEAR(InterventionDate)  = YEAR(GETDATE())-1 and MONTH(GETDATE()) = 1)
+    ) InterventionLastMonth
+    ,
+
+    (   select COUNT(Intervention.InterventionDate) InterventionYesterday
+        from dbo.Intervention
+        where InterventionDate = DATEFROMPARTS(YEAR(getdate()),month(getdate()),day(GETDATE()) -1)
+    ) InterventionYesterday
+    --************end of intervention section 
   select  COUNT(*) Sites 
   from dbo.Site
 

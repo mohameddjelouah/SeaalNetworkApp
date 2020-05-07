@@ -26,14 +26,27 @@ namespace NetworkApp.ViewModels
             }
         }
 
-        private ObservableCollection<Last4WeeksChartModel> _last4WeeksChart;
+        private ObservableCollection<Last4WeeksChartModel> _last4WeeksIncidentChart;
 
-        public ObservableCollection<Last4WeeksChartModel> Last4WeeksChart
+        public ObservableCollection<Last4WeeksChartModel> Last4WeeksIncidentChart
         {
-            get { return _last4WeeksChart; }
-            set { 
-                _last4WeeksChart = value;
-                NotifyOfPropertyChange(() => Last4WeeksChart);
+            get { return _last4WeeksIncidentChart; }
+            set {
+                _last4WeeksIncidentChart = value;
+                NotifyOfPropertyChange(() => Last4WeeksIncidentChart);
+            }
+        }
+
+
+        private ObservableCollection<Last4WeeksInterventionChartModel> _last4WeeksInterventionChart;
+
+        public ObservableCollection<Last4WeeksInterventionChartModel> Last4WeeksInterventionChart
+        {
+            get { return _last4WeeksInterventionChart; }
+            set
+            {
+                _last4WeeksInterventionChart = value;
+                NotifyOfPropertyChange(() => Last4WeeksInterventionChart);
             }
         }
 
@@ -73,9 +86,11 @@ namespace NetworkApp.ViewModels
             {
                 Dash = await _dashboardEndPoint.GetDashboard();
 
-                //d.IncidentTotal.IncidentTotal
+               
+                
                 IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
-                Last4WeeksChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
+                Last4WeeksIncidentChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
+                Last4WeeksInterventionChart = new ObservableCollection<Last4WeeksInterventionChartModel>(Dash.Last4WeeksInterventionChart);
 
             }
             catch (Exception)

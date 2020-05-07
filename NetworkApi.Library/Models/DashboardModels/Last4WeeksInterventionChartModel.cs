@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace NetworkApi.Library.Models.DashboardModels
 {
-    public class Last4WeeksChartModel
+    public class Last4WeeksInterventionChartModel
     {
-       
         public DateTime? Weekdebut { get; set; }
         public DateTime? Weekend { get; set; }
-        public int _4WeeksIncidentCount { get; set; }
-        
+        public int _4WeeksInterventionCount { get; set; }
     }
 }
