@@ -20,7 +20,7 @@
 
 
 
-    <!--<Grid>
+    <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -41,9 +41,9 @@
             <Border Background="Black"/>
         </Border>
 
-        <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">-->
+        <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
 
-    <Grid>
+    
 
 
 
@@ -874,7 +874,7 @@
 
 
 
-    <!--</Grid>-->
+    </Grid>
 
 
 </UserControl>

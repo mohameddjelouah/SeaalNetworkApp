@@ -9,6 +9,7 @@
              Background="WhiteSmoke"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" 
+             FontFamily="segoe ui"
              d:DesignHeight="650" d:DesignWidth="1020">
     <Grid>
         <Button />

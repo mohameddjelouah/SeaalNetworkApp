@@ -76,18 +76,70 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        //**************************************************************************************************************
+        private bool _form = false;
 
+        public bool Form
+        {
+            get { return _form; }
+            set
+            {
+                _form = value;
+                NotifyOfPropertyChange(() => Form);
+            }
+        }
 
+        //**************************************************************************************************************
+        private bool _dataBaseError = false;
+
+        public bool DataBaseError
+        {
+            get { return _dataBaseError; }
+            set
+            {
+                _dataBaseError = value;
+                NotifyOfPropertyChange(() => DataBaseError);
+
+            }
+        }
+
+        //**************************************************************************************************************
+
+        //**************************************************************************************************************
+        private bool _prog = true;
+
+        public bool Prog
+        {
+            get { return _prog; }
+            set
+            {
+                _prog = value;
+                NotifyOfPropertyChange(() => Prog);
+
+            }
+        }
+        //**************************************************************************************************************
+
+        private bool _transition = false;
+
+        public bool Transition
+        {
+            get { return _transition; }
+            set
+            {
+                _transition = value;
+                NotifyOfPropertyChange(() => Transition);
+
+            }
+        }
+        //**************************************************************************************************************
 
         private IDashboardEndPoint _dashboardEndPoint;
-
-        public DashViewModel(IDashboardEndPoint dashboardEndPoint)
+        private IWindowManager _window;
+        public DashViewModel(IDashboardEndPoint dashboardEndPoint, IWindowManager window)
         {
             _dashboardEndPoint = dashboardEndPoint;
-
-            
-
-
+            _window = window;
 
         }
 
@@ -96,29 +148,65 @@ namespace NetworkApp.ViewModels
         protected override async void OnViewLoaded(object view)
         {
 
-            try
-            {
-                Dash = await _dashboardEndPoint.GetDashboard();
-
-               
-                
-                IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
-                InterventionChart = new ObservableCollection<InterventionChartModel>(Dash.InterventionChart);
-                Last4WeeksIncidentChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
-                Last4WeeksInterventionChart = new ObservableCollection<Last4WeeksInterventionChartModel>(Dash.Last4WeeksInterventionChart);
-
-            }
-            catch (Exception)
+        retry1: try
             {
 
-                
+                await LoadData();
+                Prog = false;
+                Form = true;
+
             }
-            
-            
-           
+            catch (Exception e)
+            {
+
+                // show a dialog with retry buton or exit the application
+
+                Prog = false;
+                //for example :
+                var Error = IoC.Get<NetworkErrorViewModel>();
+                Transition = true;
+                var result = _window.ShowDialog(Error, null, null);
+                Transition = false;
+                if (result.HasValue && result.Value)
+                {
+                    Prog = true;
+                    goto retry1;
+
+                }
+                else
+                {
+
+                    DataBaseError = true;
+                    // here i have to make a panel for error connextion when i exit application
+                }
+
+
+            }
+
+
+
         }
 
-        
+        public async Task LoadData()
+        {
+
+
+
+
+            Dash = await _dashboardEndPoint.GetDashboard();
+
+
+
+            IncidentChart = new ObservableCollection<IncidentChartModel>(Dash.IncidentChart);
+            InterventionChart = new ObservableCollection<InterventionChartModel>(Dash.InterventionChart);
+            Last4WeeksIncidentChart = new ObservableCollection<Last4WeeksChartModel>(Dash.Last4WeeksChart);
+            Last4WeeksInterventionChart = new ObservableCollection<Last4WeeksInterventionChartModel>(Dash.Last4WeeksInterventionChart);
+
+
+
+
+
+        }
 
 
 

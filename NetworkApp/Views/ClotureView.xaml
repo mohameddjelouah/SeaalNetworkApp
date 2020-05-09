@@ -16,6 +16,7 @@
     <UserControl.Resources>
         <Style x:Key="wrapp" TargetType="TextBlock">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
 
 
@@ -74,7 +75,37 @@
         </DockPanel>
 
 
-        <DataGrid Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" HorizontalAlignment="Stretch"   Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding SelectedIncident}">
+        <DataGrid Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" HorizontalAlignment="Stretch"   Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectedItem="{Binding SelectedIncident}">
+            <DataGrid.Resources>
+                <Style  BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}" TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="0 6"/>
+
+                </Style>
+                <Style  BasedOn="{StaticResource MaterialDesignDataGridCell}" TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Background" Value="#2f3542"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style BasedOn="{StaticResource MaterialDesignDataGridRow}" TargetType="DataGridRow">
+                    <Style.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+
+                            <Setter Property="Background" Value="#2f3542"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>

@@ -157,15 +157,32 @@
                                         </StackPanel>
                                     </Expander.Header>  
                             <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                             
                                 <ListViewItem IsSelected="{Binding isDisplayIncidentSelected}">
-                                    <TextBlock  Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]" Text="Afficher les Incidents" />
+                                            <TextBlock  Padding="15 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllIncidents()]"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="ViewList" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"  Text="Afficher les Incidents"/>  
+                                                </StackPanel>
+                                            </TextBlock>
                                 </ListViewItem >
+                             
                                 <ListViewItem IsSelected="{Binding isClotureIncidentSelected}">
-                                    <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" Text="Cloturer les Incidents" />
+                                            <TextBlock Padding="15 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayClotureIncidents()]" >
+                                                <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="FileDocumentBoxCheckOutline" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"   Text="Cloturer les Incidents"/>  
+                                                </StackPanel>
+                                            </TextBlock>
                                 </ListViewItem>
 
                                 <ListViewItem IsSelected="{Binding isAddIncidentSelected}">
-                                    <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]" Text="Ajouter les Incidents" />
+                                            <TextBlock Padding="15 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddIncidents()]"  >
+                                                 <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="Plus" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"   Text="Ajouter les Incidents"/>  
+                                                </StackPanel>
+                                            </TextBlock>
                                 </ListViewItem>
 
 
@@ -247,20 +264,30 @@
 
                                     <Expander.Header>
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="DesktopMacDashboard" Height="auto" Width="auto" Margin="0 0 5 0" />
-                                            <TextBlock VerticalAlignment="Center"  Text="Interventions"/>
+                                            <materialDesign:PackIcon Kind="Wrench" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                            <TextBlock  VerticalAlignment="Center"  Text="Interventions"/>
                                         </StackPanel>
                                     </Expander.Header>
 
 
                                     <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                         <ListViewItem IsSelected="{Binding isDisplayInterventionSelected}">
-                                            <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" Text="Afficher les Interventions" />
+                                            <TextBlock  Padding="15 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action DisplayAllInterventions()]" >
+                                                <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="ViewList" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"  Text="Afficher les Interventions"/>  
+                                                </StackPanel>
+                                            </TextBlock>
                                         </ListViewItem>
 
 
                                         <ListViewItem IsSelected="{Binding isAddInterventionSelected}">
-                                            <TextBlock Padding="30 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" Text="Ajouter les Interventions" />
+                                            <TextBlock Padding="15 10"  Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddInterventions()]" >
+                                                 <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="Plus" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"  Text="Ajouter les Interventions"/>  
+                                                </StackPanel>
+                                            </TextBlock>
                                         </ListViewItem>
 
                                         <ListView.ItemContainerStyle>
@@ -334,9 +361,14 @@
 
                             <!--**********************************stastique**********************-->
                     <ListViewItem  IsSelected="{Binding isStatSelected}">
-                    
 
-                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" Text="dd   List des Site"/>
+
+                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Home" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                        <TextBlock VerticalAlignment="Center" Text="Liste Des Sites"/>
+                                    </StackPanel>
+                                </TextBlock>
                     </ListViewItem>
                            <!--**********************************menu style**********************-->
                            
