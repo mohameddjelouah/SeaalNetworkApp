@@ -9,6 +9,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:cal="http://www.caliburnproject.org"
              Background="WhiteSmoke"
+             FontFamily="segoe ui"
              d:DesignHeight="650" d:DesignWidth="1020">
 
 
@@ -107,7 +108,7 @@
             </DataGrid.Resources>
             
             <DataGrid.Columns>
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat='dd/MM/yyyy'}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site.Site}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature.Nature}"/>

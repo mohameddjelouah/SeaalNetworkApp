@@ -65,7 +65,10 @@ namespace NetworkApp.ViewModels
                 _selectedDirection = value;
                 NotifyOfPropertyChange(() => SelectedDirection);
                 NotifyOfPropertyChange(() => CanAddIncident);
-
+                if (SelectedDirection != null)
+                {
+                    EnableSite = true;
+                }
             }
         }
 
@@ -81,7 +84,21 @@ namespace NetworkApp.ViewModels
 
             }
         }
-//**************************************************************************************************
+
+
+
+        private bool _enableSite = false;
+
+        public bool EnableSite
+        {
+            get { return _enableSite; }
+            set {
+                _enableSite = value;
+                NotifyOfPropertyChange(() => EnableSite);
+            }
+        }
+
+        //**************************************************************************************************
         private BindableCollection<NatureModel> _Nature;
 
         public BindableCollection<NatureModel> Nature
@@ -444,6 +461,7 @@ namespace NetworkApp.ViewModels
                 isCloture = false;
                 Solution = null;
                 ClotureDate = null;
+                EnableSite = false;
 
 
             }
@@ -469,7 +487,7 @@ namespace NetworkApp.ViewModels
             {
                 if ((SelectedOrigin.Origin == "externe" && SelectedOperateur != null) || (SelectedOrigin.Origin == "interne"))
                 {
-                    if (isCloture == true || (isCloture == false && !string.IsNullOrEmpty(Solution) && ClotureDate !=null))
+                    if (isCloture == true || (isCloture == false &&  !string.IsNullOrWhiteSpace(Solution) && ClotureDate !=null))
                     {
                         return true;
                     }

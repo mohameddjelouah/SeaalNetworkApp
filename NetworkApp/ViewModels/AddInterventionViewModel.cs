@@ -62,6 +62,11 @@ namespace NetworkApp.ViewModels
                 NotifyOfPropertyChange(() => SelectedDirection);
                 NotifyOfPropertyChange(() => CanAddIntervention);
 
+                if (SelectedDirection != null)
+                {
+                    EnableSite = true;
+                }
+
             }
         }
 
@@ -78,7 +83,17 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        private bool _enableSite = false;
 
+        public bool EnableSite
+        {
+            get { return _enableSite; }
+            set
+            {
+                _enableSite = value;
+                NotifyOfPropertyChange(() => EnableSite);
+            }
+        }
 
         private BindableCollection<IdentificationModel> _identifications;
         public BindableCollection<IdentificationModel> Identifications
@@ -339,6 +354,7 @@ namespace NetworkApp.ViewModels
                 SelectedEquipement = null;
                 SelectedAction = null;
                 Rapport = null;
+                EnableSite = false;
             }
             catch (Exception)
             {
@@ -355,7 +371,7 @@ namespace NetworkApp.ViewModels
         {
 
 
-            if (InterventionDate != null && SelectedDirection != null && SelectedSite != null && SelectedIdentification != null && SelectedEquipement != null && SelectedAction != null && !string.IsNullOrEmpty(Rapport))
+            if (InterventionDate != null && SelectedDirection != null && SelectedSite != null && SelectedIdentification != null && SelectedEquipement != null && SelectedAction != null && !string.IsNullOrWhiteSpace(Rapport))
             {
                 return true;
             }

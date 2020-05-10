@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using ClosedXML.Excel;
 using Microsoft.Win32;
 
+
 namespace NetworkApp.ViewModels
 {
     public class IncidentViewModel : Screen
@@ -175,7 +176,7 @@ namespace NetworkApp.ViewModels
                 _search = value.ToLower();
                 
                 var list = listofincidents.Where(x =>
-                                                    x.IncidentDate.ToString().Contains(_search) ||
+                                                    x.IncidentDate.Value.ToString("d/MMMM/yyyy;dd/MMMM/yyyy;d/MM/yyyy;dd/MM/yyyy;;d/M/yyyy;dd/M/yyyy").Contains(_search) ||
                                                     x.Direction.Direction.ToLower().Contains(_search) || 
                                                     x.AddBy.ToLower().Contains(_search) || 
                                                     x.Site.Site.ToLower().Contains(_search) ||
@@ -183,7 +184,7 @@ namespace NetworkApp.ViewModels
                                                     x.Origin.Origin.ToLower().Contains(_search) ||
                                                    (x.Operateur !=null && x.Operateur.Operateur.ToLower().Contains(_search)) ||
                                                     x.Solution.ToLower().Contains(_search) ||
-                                                    x.ClotureDate.ToString().ToLower().Contains(_search) 
+                                                    x.ClotureDate.Value.ToString("d/MMMM/yyyy;dd/MMMM/yyyy;d/MM/yyyy;dd/MM/yyyy;;d/M/yyyy;dd/M/yyyy").Contains(_search)
                                                 ).ToList();
                
               

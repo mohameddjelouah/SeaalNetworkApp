@@ -11,5 +11,7 @@ namespace NetworkApp.Library.Api.Interfaces
     {
         Task<List<InterventionModel>> GetAllIntervention();
         Task AddIntervention(StoreInterventionModel intervention);
+        Task DeleteIntervention(int id);
+        Task EditIntervention(StoreInterventionModel intervention);
     }
 }

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NetworkApp.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
              xmlns:cal="http://www.caliburnproject.org"
              Background="WhiteSmoke"
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
@@ -18,6 +19,12 @@
         <Style x:Key="wrapp" TargetType="TextBlock">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            
+            <!--<Setter Property="Focusable" Value="True" />
+            <Setter Property="FocusManager.FocusedElement" Value="{Binding Search}" />-->
+            <!--<Setter Property="FocusVisualStyle" Value=" " />-->
+            
+            
         </Style>
        
 
@@ -108,15 +115,15 @@
             </DataGrid.Resources>
             
             <DataGrid.Columns>
-                
-                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat=d}"/>
+
+                <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Date d'incident" Binding="{Binding Path=IncidentDate ,StringFormat='dd/MM/yyyy'}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site.Site}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature.Nature}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Origin" Binding="{Binding Path=Origin.Origin}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur.Operateur}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2*" Header="Solution" Binding="{Binding Path=Solution}"/>
-                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat=d}"/>
+                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat='dd/MM/yyyy'}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
                
              

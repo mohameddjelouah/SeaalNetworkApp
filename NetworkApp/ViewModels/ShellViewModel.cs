@@ -9,7 +9,7 @@ using NetworkApp.EventModels;
 
 namespace NetworkApp.ViewModels
 {
-    public class ShellViewModel : Conductor<object>, IHandle<AddIncidentEvent>
+    public class ShellViewModel : Conductor<object>, IHandle<AddIncidentEvent>,IHandle<AddInterventionEvent>
     {
         private bool _resizeApp;
 
@@ -191,8 +191,12 @@ namespace NetworkApp.ViewModels
             
         }
 
+        public void Handle(AddInterventionEvent message)
+        {
+            ActivateItem(IoC.Get<AddInterventionViewModel>());
 
-       
+        }
+
 
 
 

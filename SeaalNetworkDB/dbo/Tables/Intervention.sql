@@ -8,5 +8,5 @@
     [EquipemenetId] INT NOT NULL, 
     [ActionId] INT NOT NULL, 
     [Rapport] NVARCHAR(MAX) NOT NULL, 
-    [AddBy] NCHAR(200) NOT NULL,
+    [AddBy] NVARCHAR(MAX) NOT NULL,
 )

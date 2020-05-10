@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[spInsertIntervention]
 	
 
-		
+	@Id int,
 	@InterventionDate   DATETIME2,
 	@DirectionId      int,
 	@SiteId		    int,

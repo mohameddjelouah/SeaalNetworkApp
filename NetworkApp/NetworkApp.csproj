@@ -116,6 +116,7 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="EventModels\AddIncidentEvent.cs" />
+    <Compile Include="EventModels\AddInterventionEvent.cs" />
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\Replace.cs" />
     <Compile Include="ViewModels\AddIncidentViewModel.cs" />

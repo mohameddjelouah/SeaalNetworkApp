@@ -8,6 +8,7 @@ namespace NetworkApp.Library.Models.InterventionModels
 {
     public class StoreInterventionModel
     {
+        public int Id { get; set; }
         public DateTime? InterventionDate { get; set; }
         public int DirectionId { get; set; }
         public int SiteId { get; set; }

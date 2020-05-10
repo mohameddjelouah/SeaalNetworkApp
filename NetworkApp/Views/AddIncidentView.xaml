@@ -76,7 +76,7 @@
 
                         <DockPanel Grid.Row="2" Margin="20" >
                             <Label HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="15" Width="150" FontSize="18"  Content="Site"/>
-                             <ComboBox x:Name="SelectedDirection_Sites"  Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la Site --" SelectedItem="{Binding SelectedSite}">
+                             <ComboBox x:Name="SelectedDirection_Sites"  Width="Auto" MaxWidth="400"  materialDesign:HintAssist.Hint="-- Choissier la Site --" IsEnabled="{Binding EnableSite}" SelectedItem="{Binding SelectedSite}">
 
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate >

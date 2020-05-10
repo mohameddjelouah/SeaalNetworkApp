@@ -10,8 +10,111 @@
              cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
              mc:Ignorable="d" 
              FontFamily="segoe ui"
-             d:DesignHeight="650" d:DesignWidth="1020">
+             d:DesignHeight="650" d:DesignWidth="1070">
+
+
+    <UserControl.Resources>
+        <Style x:Key="wrapp" TargetType="TextBlock">
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+
+    </UserControl.Resources>
+
     <Grid>
-        <Button />
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ProgressBar Grid.ColumnSpan="3" Grid.RowSpan="2"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <DockPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
+            <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
+
+            <TextBlock DockPanel.Dock="Right"   Foreground="DimGray" VerticalAlignment="Center" FontSize="16"   Margin="10 0 0 0" TextWrapping="Wrap" >
+                              Errour lors la connexion au serveur !!!!
+            </TextBlock>
+        </DockPanel>
+        <Border  Grid.ColumnSpan="3" Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5">
+            <Border Background="Black"/>
+        </Border>
+
+        <DockPanel Height="55" Grid.ColumnSpan="3" Background="#2f3542" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
+
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Width="40" Height="40" Margin="10 3 5 3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Kind="FileSearch" Foreground="{Binding ElementName=search, Path=Foreground}" />
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="16" VerticalAlignment="Center"  materialDesign:TextFieldAssist.UnderlineBrush="Gray" BorderBrush="White"    Foreground="White"   Margin="5 3 0 3"  x:Name="search" Width="300"  materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Intervention......"/>
+            </StackPanel>
+
+
+
+            <Button x:Name="AddIntervention" Width="45" Height="45" ToolTip="Ajouter un Intervention" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="AddCircle" Width="40" Height="40" />
+            </Button>
+            <Button  x:Name="Export" Width="45" Height="45" ToolTip="Exporter un fichier excel" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="FileExcel" Width="40" Height="40" />
+            </Button>
+            <Button x:Name="Delete" Width="45" Height="45" ToolTip="supprimer un Intervention" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray"  Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="DeleteForeverOutline" Width="40" Height="40" />
+            </Button>
+
+            <Button  x:Name="Edit" Width="45" Height="45" ToolTip="Modifier un Intervention" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0 0 20 0" Background="DimGray" BorderBrush="Gray" Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon Kind="SquareEditOutline" Width="40" Height="40" />
+            </Button>
+        </DockPanel>
+
+
+        <DataGrid Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" HorizontalAlignment="Stretch"   Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataintervention" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectedItem="{Binding SelectedIntervention}">
+            <DataGrid.Resources>
+                <Style  BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}" TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="0 6"/>
+
+                </Style>
+                <Style  BasedOn="{StaticResource MaterialDesignDataGridCell}" TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Background" Value="#2f3542"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style BasedOn="{StaticResource MaterialDesignDataGridRow}" TargetType="DataGridRow">
+                    <Style.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+
+                            <Setter Property="Background" Value="#2f3542"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Date d'intervention" Binding="{Binding Path=InterventionDate ,StringFormat='dd/MM/yyyy'}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Site" Binding="{Binding Path=Site.Site}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Identification" Binding="{Binding Path=Identification.Identification}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Equipement" Binding="{Binding Path=Equipement.Equipement}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Action" Binding="{Binding Path=Action.Action}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="2*" ElementStyle="{StaticResource wrapp }" Header="Rapport" Binding="{Binding Path=Rapport}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }"  Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
+    
+    
 </UserControl>
