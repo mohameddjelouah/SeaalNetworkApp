@@ -236,22 +236,22 @@ namespace NetworkApp.ViewModels
         }
 
 
-        //public void Edit()
-        //{
-        //    var Edit = IoC.Get<EditIncidentViewModel>();
-        //    Edit.Incident = SelectedIncident;
-        //    Transition = true;
-        //    var result = _window.ShowDialog(Edit, null, null);
-        //    Transition = false;
-        //    if (Edit.isEdit)
-        //    {
+        public void Edit()
+        {
+            var Edit = IoC.Get<EditInterventionViewModel>();
+            //Edit.Incident = SelectedIncident;
+            Transition = true;
+            var result = _window.ShowDialog(Edit, null, null);
+            Transition = false;
+            //if (Edit.isEdit)
+            //{
 
-        //        Replace.ReplaceItem(listofincidents, SelectedIncident, Edit.Incident);
-        //        dataincident = new BindableCollection<IncidentModel>(listofincidents);
+            //    Replace.ReplaceItem(listofincidents, SelectedIncident, Edit.Incident);
+            //    dataincident = new BindableCollection<IncidentModel>(listofincidents);
 
-        //    }
+            //}
 
-        //}
+        }
 
 
 

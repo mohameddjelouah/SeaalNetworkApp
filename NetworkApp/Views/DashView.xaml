@@ -28,7 +28,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ProgressBar Grid.ColumnSpan="3"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <ProgressBar Grid.ColumnSpan="3" Foreground="#57606f"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
         <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
             <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
 
@@ -37,9 +37,8 @@
             </TextBlock>
         </DockPanel>
 
-        <Border  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
-            <Border Background="Black"/>
-        </Border>
+        <Border  Grid.ColumnSpan="3"  Background="Black"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5"/>
+
 
         <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
 

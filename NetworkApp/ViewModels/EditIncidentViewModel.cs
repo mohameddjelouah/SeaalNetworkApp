@@ -262,6 +262,21 @@ namespace NetworkApp.ViewModels
 
             }
         }
+
+        //**************************************************************************************************************
+        private bool _addProg = false;
+
+        public bool AddProg
+        {
+            get { return _addProg; }
+            set
+            {
+                _addProg = value;
+                NotifyOfPropertyChange(() => AddProg);
+
+            }
+        }
+        //**************************************************************************************************************
         //**************************************************************************************************************
         private bool _dataBaseError = false;
 
@@ -420,13 +435,14 @@ namespace NetworkApp.ViewModels
 
         public async Task EditIncident()
         {
+           
             var Confirme = IoC.Get<DeleteIncidentViewModel>();
             Transition = true;
             var result = _window.ShowDialog(Confirme, null, null);
             Transition = false;
             if (result.HasValue && result.Value)
             {
-
+                AddProg = true;
                 try
                 {
                     int Id = Incident.Id;
@@ -471,6 +487,7 @@ namespace NetworkApp.ViewModels
                     
                     await _incidentEndPoint.EditIncident(storeIncident);
                     isEdit = true;
+                    AddProg = false;
                     var secces = IoC.Get<SeccesDialogViewModel>();
                     Transition = true;
                     _window.ShowDialog(secces, null, null);
@@ -479,7 +496,7 @@ namespace NetworkApp.ViewModels
                 }
                 catch (Exception)
                 {
-
+                    AddProg = false;
                     var faild = IoC.Get<FaildDialogViewModel>();
                     Transition = true;
                     _window.ShowDialog(faild, null, null);

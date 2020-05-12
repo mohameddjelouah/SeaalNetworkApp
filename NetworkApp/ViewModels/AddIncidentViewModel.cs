@@ -326,6 +326,21 @@ namespace NetworkApp.ViewModels
         }
         //**************************************************************************************************************
 
+        //**************************************************************************************************************
+        private bool _addProg = false;
+
+        public bool AddProg
+        {
+            get { return _addProg; }
+            set
+            {
+                _addProg = value;
+                NotifyOfPropertyChange(() => AddProg);
+
+            }
+        }
+        //**************************************************************************************************************
+
         private bool _transition = false;
 
         public bool Transition
@@ -424,8 +439,10 @@ namespace NetworkApp.ViewModels
         public async Task AddIncident()
         {
 
+            AddProg = true;
             
-            
+
+           
 
             try
             {
@@ -448,6 +465,7 @@ namespace NetworkApp.ViewModels
                await _incidentEndPoint.AddIncident(incident);
 
                 //secces message box 
+                AddProg = false;
                 var secces = IoC.Get<SeccesDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(secces, null, null);
@@ -467,7 +485,7 @@ namespace NetworkApp.ViewModels
             }
             catch (Exception)
             {
-
+                AddProg = false;
                 var faild = IoC.Get<FaildDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(faild, null, null);

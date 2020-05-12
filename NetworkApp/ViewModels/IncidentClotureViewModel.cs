@@ -79,6 +79,20 @@ namespace NetworkApp.ViewModels
             }
         }
 
+        //**************************************************************************************************************
+        private bool _addProg = false;
+
+        public bool AddProg
+        {
+            get { return _addProg; }
+            set
+            {
+                _addProg = value;
+                NotifyOfPropertyChange(() => AddProg);
+
+            }
+        }
+        //**************************************************************************************************************
         private IWindowManager _window;
         
         private IIncidentEndPoint _incidentEndPoint;
@@ -110,8 +124,13 @@ namespace NetworkApp.ViewModels
             Transition = true;
             var result = _window.ShowDialog(Confirme, null, null);
             Transition = false;
+
+           
+
             if (result.HasValue && result.Value)
             {
+                AddProg = true;
+               
                 try
                 {
                     Incident.Solution = Solution;
@@ -136,6 +155,7 @@ namespace NetworkApp.ViewModels
                     };
                     await _incidentEndPoint.EditIncident(storIncident);
                     isCloture = true;
+                    AddProg = false;
                     var secces = IoC.Get<SeccesDialogViewModel>();
                     Transition = true;
                     _window.ShowDialog(secces, null, null);
@@ -144,7 +164,7 @@ namespace NetworkApp.ViewModels
                 }
                 catch (Exception)
                 {
-
+                    AddProg = false;
                     var faild = IoC.Get<FaildDialogViewModel>();
                     Transition = true;
                     _window.ShowDialog(faild, null, null);

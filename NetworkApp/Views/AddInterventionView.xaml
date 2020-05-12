@@ -27,7 +27,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ProgressBar Grid.ColumnSpan="3"  Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <ProgressBar Grid.ColumnSpan="3" Foreground="#57606f" Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
         <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
             <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
 
@@ -35,9 +35,7 @@
                                   Errour lors la connexion au serveur !!!!
             </TextBlock>
         </DockPanel>
-        <Border  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5">
-            <Border Background="Black"/>
-        </Border>
+        <Border  Grid.ColumnSpan="3" Background="Black"  Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5"/>
 
 
         <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
@@ -165,12 +163,13 @@
 
 
 
-                             <Button  x:Name="AddIntervention" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />
+                             <!--<Button  x:Name="AddIntervention" Content="Ajouter" FontSize="22" Margin="0 20 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60"   />-->
+            <Button x:Name="AddIntervention" Content="Ajouter" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="28" Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" Width="Auto" MinWidth="180" MaxWidth="220" Height="Auto" MinHeight="50" MaxHeight="60" />
+            <ProgressBar HorizontalAlignment="Right"  Margin="0 0 250 0" Foreground="DimGray" Grid.Row="6" Grid.Column="2"  Width="50" Height="50"   VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Visibility="{Binding Path=AddProg,Converter={StaticResource booleanToVisibiltyConverter}}"/>
 
 
 
 
-
-    </Grid> 
+        </Grid> 
     </Grid> 
 </UserControl>

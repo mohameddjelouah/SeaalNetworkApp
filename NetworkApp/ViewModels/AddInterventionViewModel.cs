@@ -198,6 +198,22 @@ namespace NetworkApp.ViewModels
 
             }
         }
+
+
+        //**************************************************************************************************************
+        private bool _addProg = false;
+
+        public bool AddProg
+        {
+            get { return _addProg; }
+            set
+            {
+                _addProg = value;
+                NotifyOfPropertyChange(() => AddProg);
+
+            }
+        }
+        //**************************************************************************************************************
         //**************************************************************************************************************
 
         private bool _transition = false;
@@ -326,8 +342,8 @@ namespace NetworkApp.ViewModels
 
         public async Task AddIntervention()
         {
-            
-            
+            AddProg = true;
+
             try
             {
                 StoreInterventionModel intervention = new StoreInterventionModel()
@@ -343,7 +359,7 @@ namespace NetworkApp.ViewModels
                 };
 
                 await _interventionEndPoint.AddIntervention(intervention);
-                
+                AddProg = false;
                 var secces = IoC.Get<SeccesDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(secces, null, null);
@@ -358,7 +374,7 @@ namespace NetworkApp.ViewModels
             }
             catch (Exception)
             {
-                
+                AddProg = false;
                 var faild = IoC.Get<FaildDialogViewModel>();
                 Transition = true;
                 _window.ShowDialog(faild, null, null);

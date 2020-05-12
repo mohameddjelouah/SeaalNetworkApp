@@ -42,8 +42,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-       
-        <ProgressBar Grid.RowSpan="2" Grid.ColumnSpan="3" Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+
+        <ProgressBar Grid.RowSpan="2" Foreground="#57606f" Grid.ColumnSpan="3" Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
 
         <DockPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
             <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
@@ -55,15 +55,13 @@
 
 
 
-        <Border Grid.ColumnSpan="3"  Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5">
-            <Border Background="Black"/>
-        </Border>
+        <Border Grid.ColumnSpan="3" Background="Black" Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.RowSpan="2" Panel.ZIndex="10" Opacity="0.5"/>
 
         <DockPanel Height="55" Grid.ColumnSpan="3" Background="#2f3542" Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}" Grid.Row="0">
 
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Width="40" Height="40" Margin="10 3 5 3" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Kind="FileSearch" Foreground="{Binding ElementName=search, Path=Foreground}" />
-                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="16" VerticalAlignment="Center"  materialDesign:TextFieldAssist.UnderlineBrush="Gray" BorderBrush="White"    Foreground="White"   Margin="5 3 0 3"  x:Name="search" Width="300"  materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Incident......"/>
+                <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="16" VerticalAlignment="Center"  materialDesign:TextFieldAssist.UnderlineBrush="Gray" BorderBrush="White" CaretBrush="WhiteSmoke"   Foreground="WhiteSmoke"   Margin="5 3 0 3"  x:Name="search" Width="300"  materialDesign:HintAssist.Foreground="White"  materialDesign:HintAssist.Hint="Chercher un Incident......"/>
             </StackPanel>
 
 
@@ -88,7 +86,7 @@
                 <Style  BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}" TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                     <Setter Property="Padding" Value="0 6"/>
-
+ 
                 </Style>
                 <Style  BasedOn="{StaticResource MaterialDesignDataGridCell}" TargetType="DataGridCell">
                     <Style.Triggers>
