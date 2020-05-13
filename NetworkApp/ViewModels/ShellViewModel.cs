@@ -84,16 +84,16 @@ namespace NetworkApp.ViewModels
             }
         }
 
-        private bool _isStatSelected = false;
+        private bool _isListDesSiteSelected = false;
 
-        public bool isStatSelected
+        public bool isListDesSiteSelected
         {
-            get { return _isStatSelected; }
+            get { return _isListDesSiteSelected; }
             set
             {
-                
-                _isStatSelected = value;
-                NotifyOfPropertyChange(() => isStatSelected);
+
+                _isListDesSiteSelected = value;
+                NotifyOfPropertyChange(() => isListDesSiteSelected);
 
             }
         }
@@ -250,9 +250,11 @@ namespace NetworkApp.ViewModels
 
 
 
-        public void Stats()
+        public void ListDesSite()
         {
-            SelectItem("Stat", "ResetAll");
+            SelectItem("ListDesSite", "ResetAll");
+            ActivateItem(IoC.Get<ListDesSiteViewModel>());
+
 
         }
 
@@ -263,7 +265,7 @@ namespace NetworkApp.ViewModels
             isDashSelected = false;
             isIncidentSelected = false;
             isInterventionSelected = false;
-            isStatSelected = false;
+            isListDesSiteSelected = false;
            
         }
 
@@ -278,7 +280,7 @@ namespace NetworkApp.ViewModels
 
                     isIncidentSelected = false;
                     isInterventionSelected = false;
-                    isStatSelected = false;
+                    isListDesSiteSelected = false;
                     ExpendIncident = false;
                     ExpendIntervention = false;
                     isDashSelected = true;
@@ -288,7 +290,7 @@ namespace NetworkApp.ViewModels
                 case "Incident":
                     
                     isInterventionSelected = false;
-                    isStatSelected = false;
+                    isListDesSiteSelected = false;
                     isDashSelected = false;
                     ExpendIntervention = false;
                     isIncidentSelected = true;
@@ -297,8 +299,8 @@ namespace NetworkApp.ViewModels
 
                 case "Intervention":
 
-                    
-                    isStatSelected = false;
+
+                    isListDesSiteSelected = false;
                     isDashSelected = false;
                     isIncidentSelected = false;                
                     ExpendIncident = false; 
@@ -306,7 +308,7 @@ namespace NetworkApp.ViewModels
                     SelectSubItem(SubItem);
                     break;
 
-                case "Stat":
+                case "ListDesSite":
 
 
                     
@@ -315,7 +317,7 @@ namespace NetworkApp.ViewModels
                     isInterventionSelected = false;
                     ExpendIncident = false;
                     ExpendIntervention = false;
-                    isStatSelected = true;
+                    isListDesSiteSelected = true;
                     SelectSubItem(SubItem);
                     break;
 

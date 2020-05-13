@@ -360,10 +360,10 @@
                     </ListViewItem>
 
                             <!--**********************************stastique**********************-->
-                    <ListViewItem  IsSelected="{Binding isStatSelected}">
+                    <ListViewItem  IsSelected="{Binding isListDesSiteSelected}">
 
 
-                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action Stats()]" >
+                                <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action ListDesSite()]" >
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Home" Height="auto" Width="auto" Margin="0 0 5 0" />
                                         <TextBlock VerticalAlignment="Center" Text="Liste Des Sites"/>

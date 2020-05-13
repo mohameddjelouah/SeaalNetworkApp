@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="NetworkApp.Views.ListDesSiteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetworkApp.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             Background="WhiteSmoke"
+             cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
+             mc:Ignorable="d" 
+             FontFamily="segoe ui"
+             d:DesignHeight="650" d:DesignWidth="1070">
+
+
+  
+    <Grid>
+
+
+        <DataGrid Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled"  Visibility="{Binding Path=Load,Converter={StaticResource booleanToVisibiltyConverter}}"  x:Name="dataincident" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectedItem="{Binding SelectedIncident}">
+           
+
+            <DataGrid.Columns>
+
+                
+                <materialDesign:MaterialDataGridTextColumn Width="*"  Header="Direction" Binding="{Binding Path=Direction.Direction}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  Header="Site" Binding="{Binding Path=Site.Site}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  Header="@reseaux" Binding="{Binding Path=Nature.Nature}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"  Header="mask" Binding="{Binding Path=Origin.Origin}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="*"   Header="dhcp" Binding="{Binding Path=Operateur.Operateur}"/>
+                <materialDesign:MaterialDataGridTextColumn  Width="*" Header="nombre de voisin" Binding="{Binding Path=ClotureDate,StringFormat='dd/MM/yyyy'}"/>
+                <materialDesign:MaterialDataGridTextColumn  Width="*" Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

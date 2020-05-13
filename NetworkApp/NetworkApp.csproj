@@ -119,62 +119,66 @@
     <Compile Include="EventModels\AddInterventionEvent.cs" />
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helper\Replace.cs" />
-    <Compile Include="ViewModels\AddIncidentViewModel.cs" />
-    <Compile Include="ViewModels\AddInterventionViewModel.cs" />
-    <Compile Include="ViewModels\ClotureViewModel.cs" />
-    <Compile Include="ViewModels\DashViewModel.cs" />
-    <Compile Include="ViewModels\DeleteIncidentViewModel.cs" />
-    <Compile Include="ViewModels\EditClotureViewModel.cs" />
-    <Compile Include="ViewModels\EditIncidentViewModel.cs" />
-    <Compile Include="ViewModels\EditInterventionViewModel.cs" />
-    <Compile Include="ViewModels\FaildDialogViewModel.cs" />
-    <Compile Include="ViewModels\IncidentClotureViewModel.cs" />
-    <Compile Include="ViewModels\IncidentViewModel.cs" />
-    <Compile Include="ViewModels\InterventionViewModel.cs" />
-    <Compile Include="ViewModels\NetworkErrorViewModel.cs" />
-    <Compile Include="ViewModels\SeccesDialogViewModel.cs" />
+    <Compile Include="ViewModels\Incident\AddIncidentViewModel.cs" />
+    <Compile Include="ViewModels\Intervention\AddInterventionViewModel.cs" />
+    <Compile Include="ViewModels\Incident\ClotureViewModel.cs" />
+    <Compile Include="ViewModels\Dashboard\DashViewModel.cs" />
+    <Compile Include="ViewModels\Dialoges\DeleteIncidentViewModel.cs" />
+    <Compile Include="ViewModels\Incident\EditClotureViewModel.cs" />
+    <Compile Include="ViewModels\Incident\EditIncidentViewModel.cs" />
+    <Compile Include="ViewModels\Intervention\EditInterventionViewModel.cs" />
+    <Compile Include="ViewModels\Dialoges\FaildDialogViewModel.cs" />
+    <Compile Include="ViewModels\Incident\IncidentClotureViewModel.cs" />
+    <Compile Include="ViewModels\Incident\IncidentViewModel.cs" />
+    <Compile Include="ViewModels\Intervention\InterventionViewModel.cs" />
+    <Compile Include="ViewModels\ListDesSite\ListDesSiteViewModel.cs" />
+    <Compile Include="ViewModels\Dialoges\NetworkErrorViewModel.cs" />
+    <Compile Include="ViewModels\Dialoges\SeccesDialogViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\AddIncidentView.xaml.cs">
+    <Compile Include="Views\Incidents\AddIncidentView.xaml.cs">
       <DependentUpon>AddIncidentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddInterventionView.xaml.cs">
+    <Compile Include="Views\Intervention\AddInterventionView.xaml.cs">
       <DependentUpon>AddInterventionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClotureView.xaml.cs">
+    <Compile Include="Views\Incidents\ClotureView.xaml.cs">
       <DependentUpon>ClotureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DashView.xaml.cs">
+    <Compile Include="Views\Dashboard\DashView.xaml.cs">
       <DependentUpon>DashView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DeleteIncidentView.xaml.cs">
+    <Compile Include="Views\Dialoges\DeleteIncidentView.xaml.cs">
       <DependentUpon>DeleteIncidentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditClotureView.xaml.cs">
+    <Compile Include="Views\Incidents\EditClotureView.xaml.cs">
       <DependentUpon>EditClotureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditIncidentView.xaml.cs">
+    <Compile Include="Views\Incidents\EditIncidentView.xaml.cs">
       <DependentUpon>EditIncidentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditInterventionView.xaml.cs">
+    <Compile Include="Views\Intervention\EditInterventionView.xaml.cs">
       <DependentUpon>EditInterventionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FaildDialogView.xaml.cs">
+    <Compile Include="Views\Dialoges\FaildDialogView.xaml.cs">
       <DependentUpon>FaildDialogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IncidentClotureView.xaml.cs">
+    <Compile Include="Views\Incidents\IncidentClotureView.xaml.cs">
       <DependentUpon>IncidentClotureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IncidentView.xaml.cs">
+    <Compile Include="Views\Incidents\IncidentView.xaml.cs">
       <DependentUpon>IncidentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InterventionView.xaml.cs">
+    <Compile Include="Views\Intervention\InterventionView.xaml.cs">
       <DependentUpon>InterventionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NetworkErrorView.xaml.cs">
+    <Compile Include="Views\Dialoges\NetworkErrorView.xaml.cs">
       <DependentUpon>NetworkErrorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SeccesDialogView.xaml.cs">
+    <Compile Include="Views\Dialoges\SeccesDialogView.xaml.cs">
       <DependentUpon>SeccesDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListDesSite\ListDesSiteView.xaml.cs">
+      <DependentUpon>ListDesSiteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -183,59 +187,63 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AddIncidentView.xaml">
+    <Page Include="Views\Incidents\AddIncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddInterventionView.xaml">
+    <Page Include="Views\Intervention\AddInterventionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClotureView.xaml">
+    <Page Include="Views\Incidents\ClotureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DashView.xaml">
+    <Page Include="Views\Dashboard\DashView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DeleteIncidentView.xaml">
+    <Page Include="Views\Dialoges\DeleteIncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditClotureView.xaml">
+    <Page Include="Views\Incidents\EditClotureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditIncidentView.xaml">
+    <Page Include="Views\Incidents\EditIncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditInterventionView.xaml">
+    <Page Include="Views\Intervention\EditInterventionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FaildDialogView.xaml">
+    <Page Include="Views\Dialoges\FaildDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IncidentClotureView.xaml">
+    <Page Include="Views\Incidents\IncidentClotureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IncidentView.xaml">
+    <Page Include="Views\Incidents\IncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InterventionView.xaml">
+    <Page Include="Views\Intervention\InterventionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NetworkErrorView.xaml">
+    <Page Include="Views\Dialoges\NetworkErrorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SeccesDialogView.xaml">
+    <Page Include="Views\Dialoges\SeccesDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListDesSite\ListDesSiteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApi.Library", "Netwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkApp.Library", "NetworkApp.Library\NetworkApp.Library.csproj", "{97636FAC-3BD3-4097-B94F-09C00A9F7AA2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{20EC94CD-7DB2-4512-BECC-2FD61B951616}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WpfApplication", "WpfApplication", "{66A3DA07-2EFB-443E-8A04-EE248BE6CBB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{56450DE5-94BB-427A-AD1D-D1FE95068A45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +50,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14E1680C-F0F5-4E40-B600-74B86EF3410C} = {20EC94CD-7DB2-4512-BECC-2FD61B951616}
+		{C11D11A8-2758-44A5-A28F-93C1CEF90728} = {56450DE5-94BB-427A-AD1D-D1FE95068A45}
+		{9E0445D2-24C4-461D-9CF4-032C5623BABC} = {66A3DA07-2EFB-443E-8A04-EE248BE6CBB0}
+		{7E6AB4A8-CB53-4212-82F2-ED3D94B615EA} = {20EC94CD-7DB2-4512-BECC-2FD61B951616}
+		{97636FAC-3BD3-4097-B94F-09C00A9F7AA2} = {66A3DA07-2EFB-443E-8A04-EE248BE6CBB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09AEA2F0-B97D-4B23-8546-120A8E6397F8}
