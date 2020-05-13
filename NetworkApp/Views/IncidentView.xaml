@@ -19,6 +19,7 @@
         <Style x:Key="wrapp" TargetType="TextBlock">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             
             <!--<Setter Property="Focusable" Value="True" />
             <Setter Property="FocusManager.FocusedElement" Value="{Binding Search}" />-->
@@ -120,7 +121,7 @@
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Nature" Binding="{Binding Path=Nature.Nature}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*" ElementStyle="{StaticResource wrapp }" Header="Origin" Binding="{Binding Path=Origin.Origin}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Operateur" Binding="{Binding Path=Operateur.Operateur}"/>
-                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2*" Header="Solution" Binding="{Binding Path=Solution}"/>
+                <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="2.1*" Header="Solution" Binding="{Binding Path=Solution}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Cloturer le:" Binding="{Binding Path=ClotureDate,StringFormat='dd/MM/yyyy'}"/>
                 <materialDesign:MaterialDataGridTextColumn ElementStyle="{StaticResource wrapp }" Width="*" Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
                

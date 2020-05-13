@@ -17,6 +17,7 @@
         <Style x:Key="wrapp" TargetType="TextBlock">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
 
@@ -107,7 +108,7 @@
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Identification" Binding="{Binding Path=Identification.Identification}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Equipement" Binding="{Binding Path=Equipement.Equipement}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }" Header="Action" Binding="{Binding Path=Action.Action}"/>
-                <materialDesign:MaterialDataGridTextColumn Width="2*" ElementStyle="{StaticResource wrapp }" Header="Rapport" Binding="{Binding Path=Rapport}"/>
+                <materialDesign:MaterialDataGridTextColumn Width="2.1*" ElementStyle="{StaticResource wrapp }" Header="Rapport" Binding="{Binding Path=Rapport}"/>
                 <materialDesign:MaterialDataGridTextColumn Width="*"  ElementStyle="{StaticResource wrapp }"  Header="Ajouter par:" Binding="{Binding Path=AddBy}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -2,6 +2,7 @@
 using ClosedXML.Excel;
 using Microsoft.Win32;
 using NetworkApp.EventModels;
+using NetworkApp.Helper;
 using NetworkApp.Library.Api.Interfaces;
 using NetworkApp.Library.Models.InterventionModels;
 using System;
@@ -239,17 +240,17 @@ namespace NetworkApp.ViewModels
         public void Edit()
         {
             var Edit = IoC.Get<EditInterventionViewModel>();
-            //Edit.Incident = SelectedIncident;
+            Edit.Intervention = SelectedIntervention;
             Transition = true;
             var result = _window.ShowDialog(Edit, null, null);
             Transition = false;
-            //if (Edit.isEdit)
-            //{
+            if (Edit.isEdit)
+            {
 
-            //    Replace.ReplaceItem(listofincidents, SelectedIncident, Edit.Incident);
-            //    dataincident = new BindableCollection<IncidentModel>(listofincidents);
+                Replace.ReplaceItem(listofintervention, SelectedIntervention, Edit.Intervention);
+                dataintervention = new BindableCollection<InterventionModel>(listofintervention);
 
-            //}
+            }
 
         }
 
