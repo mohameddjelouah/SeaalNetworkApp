@@ -187,12 +187,14 @@ namespace NetworkApp.ViewModels
 
         public void Handle(AddIncidentEvent message)
         {
+            SelectItem("Incident", "AddIncident");
             ActivateItem(IoC.Get<AddIncidentViewModel>());
             
         }
 
         public void Handle(AddInterventionEvent message)
         {
+            SelectItem("Intervention", "AddIntervention");
             ActivateItem(IoC.Get<AddInterventionViewModel>());
 
         }
