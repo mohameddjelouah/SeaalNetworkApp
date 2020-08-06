@@ -359,8 +359,111 @@
                                 </Expander>
                     </ListViewItem>
 
-                            <!--**********************************stastique**********************-->
-                    <ListViewItem  IsSelected="{Binding isListDesSiteSelected}">
+                            <!--**********************************List des sites**********************-->
+
+                            <ListViewItem IsSelected="{Binding isListDesSiteSelected}">
+
+
+                                <Expander  FontSize="15" IsExpanded="{Binding ExpendListDesSite}"  Background="{x:Null}" >
+
+                                    <Expander.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Home" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                            <TextBlock  VerticalAlignment="Center"  Text="Liste Des Sites"/>
+                                        </StackPanel>
+                                    </Expander.Header>
+
+
+                                    <ListView  Template="{StaticResource NoScroll}"  Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ListViewItem IsSelected="{Binding isDisplayListDesSiteSelected}">
+                                            <TextBlock  Padding="15 10" Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action ListDesSite()]" >
+                                                <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="ViewList" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"  Text="Afficher List Des Sites"/>  
+                                                </StackPanel>
+                                            </TextBlock>
+                                        </ListViewItem>
+
+
+                                        <ListViewItem IsSelected="{Binding isAddSiteSelected}">
+                                            <TextBlock Padding="15 10"  Cursor="Hand" cm:Message.Attach="[Event MouseLeftButtonDown] = [Action AddSite()]" >
+                                                 <StackPanel Orientation="Horizontal">
+                                                  <materialDesign:PackIcon Kind="Plus" Height="auto" Width="auto" Margin="0 0 5 0" />
+                                                  <TextBlock VerticalAlignment="Center"  Text="Ajouter Un Site"/>  
+                                                </StackPanel>
+                                            </TextBlock>
+                                        </ListViewItem>
+
+                                        <ListView.ItemContainerStyle>
+
+
+                                            <Style TargetType="ListViewItem">
+
+                                                <Style.Resources>
+                                                    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="DimGray"/>
+                                                    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="DimGray"/>
+                                                </Style.Resources>
+
+                                                <Setter Property="FontSize" Value="14"></Setter>
+                                                <Setter Property="Margin" Value="0 0 0 2"></Setter>
+
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <Border Height="40" x:Name="item"  SnapsToDevicePixels="true" >
+
+                                                                <ContentPresenter  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="IsMouseOver" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.MouseOver.Background}"/>
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedInactive.Background}"/>
+
+
+                                                                </MultiTrigger>
+
+                                                                <MultiTrigger>
+                                                                    <MultiTrigger.Conditions>
+                                                                        <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                                                        <Condition Property="IsSelected" Value="True"/>
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Background" TargetName="item" Value="{StaticResource Item.SelectedActive.Background}"/>
+
+
+                                                                </MultiTrigger>
+
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+
+
+
+
+
+                                            </Style>
+
+
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+
+
+                                </Expander>
+                            </ListViewItem>
+
+                            <!--<ListViewItem  IsSelected="{Binding isListDesSiteSelected}">
 
 
                                 <TextBlock Padding="22 15" Cursor="Hand"  cm:Message.Attach="[Event MouseLeftButtonDown] = [Action ListDesSite()]" >
@@ -369,7 +472,7 @@
                                         <TextBlock VerticalAlignment="Center" Text="Liste Des Sites"/>
                                     </StackPanel>
                                 </TextBlock>
-                    </ListViewItem>
+                    </ListViewItem>-->
                            <!--**********************************menu style**********************-->
                            
                             <ListView.ItemContainerStyle>

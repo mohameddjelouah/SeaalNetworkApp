@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Dhcp]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Localisation] NVARCHAR(MAX) NOT NULL
+)

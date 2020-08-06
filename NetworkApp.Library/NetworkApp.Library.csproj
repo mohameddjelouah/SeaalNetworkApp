@@ -58,8 +58,12 @@
     <Compile Include="Api\IncidentEndPoint.cs" />
     <Compile Include="Api\Interfaces\IInterventionDataEndPoint.cs" />
     <Compile Include="Api\Interfaces\IInterventionEndPoint.cs" />
+    <Compile Include="Api\Interfaces\ISiteDataEndPoint.cs" />
+    <Compile Include="Api\Interfaces\ISiteEndPoint.cs" />
     <Compile Include="Api\InterventionDataEndPoint.cs" />
     <Compile Include="Api\InterventionEndPoint.cs" />
+    <Compile Include="Api\SiteDataEndPoint.cs" />
+    <Compile Include="Api\SiteEndPoint.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashbordModels\IncidentChartModel.cs" />
@@ -80,6 +84,14 @@
     <Compile Include="Models\InterventionModels\IdentificationModel.cs" />
     <Compile Include="Models\InterventionModels\InterventionModel.cs" />
     <Compile Include="Models\InterventionModels\StoreInterventionModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\AddSiteDataModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\DhcpModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteDetail.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreSiteDetail.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteEquipementModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\FullSiteModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteOperateurModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreFullSiteModel.cs" />
     <Compile Include="Models\NatureModel.cs" />
     <Compile Include="Models\OperateurModel.cs" />
     <Compile Include="Models\OriginModel.cs" />
@@ -92,5 +104,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

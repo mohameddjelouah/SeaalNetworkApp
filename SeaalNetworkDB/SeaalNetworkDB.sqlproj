@@ -61,6 +61,7 @@
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="PublishLocations" />
+    <Folder Include="dbo\Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Incidents.sql" />
@@ -94,6 +95,17 @@
     <Build Include="dbo\Stored Procedures\spGetInterventionCountLastYear.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteIntervention.sql" />
     <Build Include="dbo\Stored Procedures\spEditIntervention.sql" />
+    <Build Include="dbo\Tables\Dhcp.sql" />
+    <Build Include="dbo\Stored Procedures\spGetDhcp.sql" />
+    <Build Include="dbo\Tables\FullSite.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSiteDetail.sql" />
+    <Build Include="dbo\Tables\SiteEquipements.sql" />
+    <Build Include="dbo\Tables\SiteOperateurs.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSiteOperateurs.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSiteEquipements.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllSitesDetail.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllSiteEquipement.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllSiteOrerateur.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SeaalNetworkDB.publish.xml" />

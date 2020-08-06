@@ -160,6 +160,7 @@ namespace NetworkApp.ViewModels
             }
         }
 
+       
 
         private bool _expendIncident =false;
 
@@ -184,6 +185,48 @@ namespace NetworkApp.ViewModels
             }
         }
 
+
+
+        private bool _expendListDesSite = false;
+
+        public bool ExpendListDesSite
+        {
+            get { return _expendListDesSite; }
+            set { 
+                _expendListDesSite = value;
+                NotifyOfPropertyChange(() => ExpendListDesSite);
+            
+            }
+        }
+
+
+        private bool _isDisplayListDesSiteSelected = false;
+
+        public bool isDisplayListDesSiteSelected
+        {
+            get { return _isDisplayListDesSiteSelected; }
+            set
+            {
+                _isDisplayListDesSiteSelected = value;
+                NotifyOfPropertyChange(() => isDisplayListDesSiteSelected);
+
+            }
+        }
+
+
+
+        private bool _isAddSiteSelected = false;
+
+        public bool isAddSiteSelected
+        {
+            get { return _isAddSiteSelected; }
+            set
+            {
+                _isAddSiteSelected = value;
+                NotifyOfPropertyChange(() => isAddSiteSelected);
+
+            }
+        }
 
         public void Handle(AddIncidentEvent message)
         {
@@ -254,11 +297,18 @@ namespace NetworkApp.ViewModels
 
         public void ListDesSite()
         {
-            SelectItem("ListDesSite", "ResetAll");
+            SelectItem("ListDesSite", "DisplayListDesSite");
             ActivateItem(IoC.Get<ListDesSiteViewModel>());
 
 
         }
+
+        public void AddSite()
+        {
+            SelectItem("ListDesSite", "DisplayAddSite");
+            ActivateItem(IoC.Get<AddSiteViewModel>());
+        }
+
 
         public void ResetSelected()
         {
@@ -285,6 +335,7 @@ namespace NetworkApp.ViewModels
                     isListDesSiteSelected = false;
                     ExpendIncident = false;
                     ExpendIntervention = false;
+                    ExpendListDesSite = false;
                     isDashSelected = true;
                     SelectSubItem(SubItem);
                     break;
@@ -295,6 +346,7 @@ namespace NetworkApp.ViewModels
                     isListDesSiteSelected = false;
                     isDashSelected = false;
                     ExpendIntervention = false;
+                    ExpendListDesSite = false;
                     isIncidentSelected = true;
                     SelectSubItem(SubItem);
                     break;
@@ -305,10 +357,13 @@ namespace NetworkApp.ViewModels
                     isListDesSiteSelected = false;
                     isDashSelected = false;
                     isIncidentSelected = false;                
-                    ExpendIncident = false; 
+                    ExpendIncident = false;
+                    ExpendListDesSite = false;
                     isInterventionSelected = true;
                     SelectSubItem(SubItem);
                     break;
+
+               
 
                 case "ListDesSite":
 
@@ -341,6 +396,8 @@ namespace NetworkApp.ViewModels
                     isDisplayIncidentSelected = false;
                     isAddInterventionSelected = false;
                     isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
 
                     break;
 
@@ -350,6 +407,8 @@ namespace NetworkApp.ViewModels
                     isClotureIncidentSelected = false;        
                     isAddInterventionSelected = false;
                     isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
                     isDisplayIncidentSelected = true;
 
                     break;
@@ -361,6 +420,8 @@ namespace NetworkApp.ViewModels
                     isDisplayIncidentSelected = false;
                     isAddInterventionSelected = false;
                     isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
                     isClotureIncidentSelected = true;
 
                     break;
@@ -373,6 +434,8 @@ namespace NetworkApp.ViewModels
                     isDisplayIncidentSelected = false;
                     isAddInterventionSelected = false;
                     isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
                     isAddIncidentSelected = true;
 
                     break;
@@ -385,6 +448,8 @@ namespace NetworkApp.ViewModels
                     isClotureIncidentSelected = false;
                     isDisplayIncidentSelected = false;
                     isAddInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
                     isDisplayInterventionSelected = true;
 
                     break;
@@ -395,10 +460,35 @@ namespace NetworkApp.ViewModels
                     isClotureIncidentSelected = false;
                     isDisplayIncidentSelected = false; 
                     isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddSiteSelected = false;
                     isAddInterventionSelected = true;
 
                     break;
 
+                case "DisplayListDesSite":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false;
+                    isDisplayInterventionSelected = false;
+                    isAddSiteSelected = false;
+                    isAddInterventionSelected = false;
+                    isDisplayListDesSiteSelected = true;
+
+                    break;
+
+                case "DisplayAddSite":
+
+                    isAddIncidentSelected = false;
+                    isClotureIncidentSelected = false;
+                    isDisplayIncidentSelected = false;
+                    isDisplayInterventionSelected = false;
+                    isDisplayListDesSiteSelected = false;
+                    isAddInterventionSelected = false;
+                    isAddSiteSelected = true;
+
+                    break;
             }
 
 

@@ -315,7 +315,7 @@ namespace NetworkApp.ViewModels
 
         public async Task LoadData()
         {
-            var p = await _interventionDataEndPoint.GetInterventionData();
+           
 
             Data = await _interventionDataEndPoint.GetInterventionData();
             Directions = new BindableCollection<DirectionModel>(Data.Directions);

@@ -118,7 +118,10 @@
     <Compile Include="EventModels\AddIncidentEvent.cs" />
     <Compile Include="EventModels\AddInterventionEvent.cs" />
     <Compile Include="Helper\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Helper\Putty.cs" />
     <Compile Include="Helper\Replace.cs" />
+    <Compile Include="ViewModels\Dialoges\ExitEquipementsDialogeViewModel.cs" />
+    <Compile Include="ViewModels\ListDesSite\AddSiteViewModel.cs" />
     <Compile Include="ViewModels\Incident\AddIncidentViewModel.cs" />
     <Compile Include="ViewModels\Intervention\AddInterventionViewModel.cs" />
     <Compile Include="ViewModels\Incident\ClotureViewModel.cs" />
@@ -134,7 +137,14 @@
     <Compile Include="ViewModels\ListDesSite\ListDesSiteViewModel.cs" />
     <Compile Include="ViewModels\Dialoges\NetworkErrorViewModel.cs" />
     <Compile Include="ViewModels\Dialoges\SeccesDialogViewModel.cs" />
+    <Compile Include="ViewModels\ListDesSite\NetworkDevicesViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\Dialoges\ExitEquipementsDialogeView.xaml.cs">
+      <DependentUpon>ExitEquipementsDialogeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListDesSite\AddSiteView.xaml.cs">
+      <DependentUpon>AddSiteView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Incidents\AddIncidentView.xaml.cs">
       <DependentUpon>AddIncidentView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +190,9 @@
     <Compile Include="Views\ListDesSite\ListDesSiteView.xaml.cs">
       <DependentUpon>ListDesSiteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ListDesSite\NetworkDevicesView.xaml.cs">
+      <DependentUpon>NetworkDevicesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -187,6 +200,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Dialoges\ExitEquipementsDialogeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListDesSite\AddSiteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Incidents\AddIncidentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,6 +268,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ListDesSite\NetworkDevicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,6 +320,7 @@
     <Resource Include="Assets\database-error.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Helper\putty.exe" />
     <Resource Include="Assets\site.png" />
     <Resource Include="Assets\incidentchart.png" />
     <Resource Include="Assets\InterventionChart.png" />

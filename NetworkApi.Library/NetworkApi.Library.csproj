@@ -32,18 +32,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.Contrib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Contrib.2.0.35\lib\net461\Dapper.Contrib.dll</HintPath>
     </Reference>
     <Reference Include="Dapper.Mapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.Mapper.2.0.0\lib\net451\Dapper.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper.SimpleCRUD, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.SimpleCRUD.2.2.0.1\lib\netstandard2.0\Dapper.SimpleCRUD.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +68,7 @@
     <Compile Include="DataAccess\DashboardData.cs" />
     <Compile Include="DataAccess\IncidentData.cs" />
     <Compile Include="DataAccess\InterventionData.cs" />
+    <Compile Include="DataAccess\ListDeSiteData.cs" />
     <Compile Include="Models\AddIncidentModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DashboardModels\IncidentChartModel.cs" />
@@ -74,6 +88,16 @@
     <Compile Include="Models\InterventionModels\IdentificationModel.cs" />
     <Compile Include="Models\InterventionModels\InterventionModel.cs" />
     <Compile Include="Models\InterventionModels\StoreInterventionModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\AddSiteDataModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\DhcpModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\FullSiteModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteDetail.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteEquipementModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\SiteOperateurModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreFullSiteModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreSiteDetail.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreSiteEquipementModel.cs" />
+    <Compile Include="Models\ListDesSiteModels\StoreSiteOperateurModel.cs" />
     <Compile Include="Models\NatureModel.cs" />
     <Compile Include="Models\OperateurModel.cs" />
     <Compile Include="Models\OriginModel.cs" />

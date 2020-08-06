@@ -1,0 +1,327 @@
+﻿<UserControl x:Class="NetworkApp.Views.AddSiteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetworkApp.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             cal:Message.Attach="[Gesture F3] = [FindNextGestureKey]"
+             mc:Ignorable="d" Background="WhiteSmoke" FontSize="15"
+             d:DesignHeight="650" d:DesignWidth="1020">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ProgressBar Grid.ColumnSpan="3" Foreground="#57606f" Width="200" Height="200" Visibility="{Binding Path=Prog,Converter={StaticResource booleanToVisibiltyConverter}}"  VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" />
+        <DockPanel Grid.Column="1"  VerticalAlignment="Center" Visibility="{Binding Path=DataBaseError,Converter={StaticResource booleanToVisibiltyConverter}}"   >
+            <Image DockPanel.Dock="Left" VerticalAlignment="Center" Width="100" Height="100" Source="{StaticResource dataError}"/>
+
+            <TextBlock DockPanel.Dock="Right"   Foreground="DimGray" VerticalAlignment="Center" FontSize="16"   Margin="10 0 0 0" TextWrapping="Wrap" >
+                                  Errour lors la connexion au serveur !!!!
+            </TextBlock>
+        </DockPanel>
+        <Border Background="Black"  Grid.ColumnSpan="3"   Visibility="{Binding Path=Transition,Converter={StaticResource booleanToVisibiltyConverter}}"  Panel.ZIndex="10" Opacity="0.5"/>
+
+
+
+        <Grid Grid.ColumnSpan="3"  Visibility="{Binding Path=Form,Converter={StaticResource booleanToVisibiltyConverter}}">
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.75*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+              
+                <Label Grid.Row="0"  VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Direction :"/>
+                    <ComboBox  Grid.Row="1" x:Name="Directions" Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0"  materialDesign:HintAssist.Hint="-- Choissier la direction --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedDirection}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Direction}" />
+                            </DataTemplate >
+                        </ComboBox.ItemTemplate >
+
+                </ComboBox>
+
+
+
+
+
+                    <Label Grid.Row="2"  VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Site :"/>
+                    <ComboBox Grid.Row="3" x:Name="SelectedDirection_Sites"  Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0"  materialDesign:HintAssist.Hint="-- Choissier la Site --" IsEnabled="{Binding EnableSite}" SelectedItem="{Binding SelectedSite}">
+
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Site}" />
+                            </DataTemplate >
+                        </ComboBox.ItemTemplate >
+                    </ComboBox>
+
+
+
+
+                    <Label Grid.Row="4" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Address Réseau :"/>
+                    <StackPanel VerticalAlignment="Center" Margin="20 0" Grid.Row="5">
+                        <TextBox  x:Name="Address" Background="WhiteSmoke" VerticalAlignment="Center" />
+                        <TextBlock  Text="Exemple : 10.98.0.0" FontSize="12" Margin="0 5 0 0"/>
+                    </StackPanel>
+
+
+
+
+
+
+
+                    <Label Grid.Row="6" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Mask Sous Réseau :"/>
+                    <StackPanel VerticalAlignment="Center" Margin="20 0" Grid.Row="7">
+                        <TextBox Grid.Row="7" x:Name="Mask" Background="WhiteSmoke" VerticalAlignment="Center" />
+                        <TextBlock  Text="Exemple : 255.255.255.0" FontSize="12" Margin="0 5 0 0"/>
+                    </StackPanel>
+
+                 
+                    <Label Grid.Row="8" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="DHCP :"/>
+                    <ComboBox Grid.Row="9" x:Name="Dhcp" Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0" materialDesign:HintAssist.Hint="-- Choissier Dhcp Server --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedDhcpServer}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate >
+                                <TextBlock Text="{Binding Localisation}" />
+                            </DataTemplate >
+                        </ComboBox.ItemTemplate >
+
+                    </ComboBox>
+
+                
+
+
+            </Grid>
+            </materialDesign:Card>
+
+
+
+
+         
+
+
+
+
+
+
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Operateurs :"/>
+                        <ComboBox Grid.Column="0" Grid.Row="1" x:Name="Operateur" Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0" materialDesign:HintAssist.Hint="-- Choissier L'Operateur --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedOperateur}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Operateur}" />
+                                </DataTemplate >
+                            </ComboBox.ItemTemplate >
+
+                        </ComboBox>
+                       
+                        <Button x:Name="AddOperateur" Grid.Column="0" Grid.Row="2" Content="Ajouter" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="15" Height="30" Width="120"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+
+                        <Separator  Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                            <Separator.LayoutTransform>
+                                <RotateTransform Angle="90" />
+                            </Separator.LayoutTransform>
+                        </Separator>
+
+
+
+
+                        <ListBox x:Name="OperateurList" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="20 10" BorderThickness="1"  VerticalAlignment="Stretch" SelectedItem="{Binding SelectedOperateurObject}" BorderBrush="Black" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Display}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                            <ListBox.Resources>
+                                <Style TargetType="ListBox"  BasedOn="{StaticResource {x:Type ListBox}}">
+                                    <Style.Triggers>
+                                        <DataTrigger    Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Items.Count}"  Value="0" >
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <Border BorderThickness="1" BorderBrush="Black">
+                                                            <TextBlock Margin="10 0 0 0">No items to display</TextBlock>
+                                                        </Border>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.Resources>
+                        </ListBox>
+                        <Button x:Name="DeleteOperateur" Grid.Column="2" Grid.Row="2" Content="Supprimer" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="15" Height="30" Width="120"   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    </Grid>
+                </materialDesign:Card>
+
+
+
+                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid >
+
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+
+
+
+                        <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Equipement :"/>
+                        <ComboBox x:Name="Equipement" Grid.Column="0" Grid.Row="1" Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0" materialDesign:HintAssist.Hint="-- Choissier L'Equipement --" materialDesign:HintAssist.FloatingScale="3.5" SelectedItem="{Binding SelectedEquipement}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate >
+                                    <TextBlock Text="{Binding Equipement}" />
+                                </DataTemplate >
+                            </ComboBox.ItemTemplate >
+
+                        </ComboBox>
+
+
+
+                        <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Nom D'Equipement :"/>
+
+                        <TextBox x:Name="EquipementName" Grid.Column="0"  Grid.Row="3" Background="WhiteSmoke" VerticalAlignment="Center" Margin="20 0" materialDesign:HintAssist.Hint="nom de l equipement" />
+
+
+                        <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Bottom" Margin="20 0" FontSize="20"  Content="Address IP :"/>
+
+                        <StackPanel Grid.Column="0"  Grid.Row="5" Margin="20 0">
+                            <TextBox x:Name="EquipementIp" Background="WhiteSmoke" VerticalAlignment="Center"  materialDesign:HintAssist.Hint="nom de l equipement" />
+                            <TextBlock Text="Exemple : 10.98.0.0" FontSize="12" Margin="0 5 0 0"/>
+                        </StackPanel>
+                       
+
+                        <Button x:Name="AddEquipement" Grid.Column="0" Grid.Row="6" Content="Ajouter" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="15" Height="30" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+
+                        <Separator  Grid.Row="0" Grid.RowSpan="7" Grid.Column="1" Height="auto"  Margin="0 10" Background="DimGray"  VerticalAlignment="Stretch" Style="{StaticResource MaterialDesignSeparator}" BorderBrush="{x:Null}" >
+                            <Separator.LayoutTransform>
+                                <RotateTransform Angle="90" />
+                            </Separator.LayoutTransform>
+                        </Separator>
+
+                        <ListBox x:Name="EquipementList"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="6" Margin="20 10" BorderThickness="1"  VerticalAlignment="Stretch" SelectedItem="{Binding SelectedEquipementObject}"  BorderBrush="Black" >
+                            
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                   
+                                        <TextBlock Text="{Binding Display}"/>
+                                    
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                                    <ListBox.Resources>
+                                        <Style TargetType="ListBox"  BasedOn="{StaticResource {x:Type ListBox}}">
+                                            <Style.Triggers>
+                                                <DataTrigger    Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Items.Count}"  Value="0" >
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                        <Border BorderThickness="1" BorderBrush="Black">
+                                                            <TextBlock Margin="10 0 0 0">No items to display</TextBlock>
+                                                        </Border>
+                                                                
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.Resources>
+                        </ListBox>
+                        <Button x:Name="DeleteSelectedEquipement" Grid.Column="2" Grid.Row="6" Content="Supprimer" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="15" Height="30" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+
+                    </Grid>
+                </materialDesign:Card>
+
+                <Grid Grid.Row="2">
+
+
+                    <Button x:Name="AddSite" Content="Ajouter" Foreground="WhiteSmoke" Background="#57606f" BorderThickness="0" FontSize="26" Height="45" Width="200"  Margin="5 10" HorizontalAlignment="Right"/>
+                    <ProgressBar HorizontalAlignment="Right"  Margin="0 0 250 0" Foreground="DimGray" Grid.Row="6" Grid.Column="2"  Width="50" Height="50"   VerticalAlignment="Center" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Visibility="{Binding Path=AddProg,Converter={StaticResource booleanToVisibiltyConverter}}"/>
+
+                </Grid>
+
+
+            </Grid>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+        </Grid>
+    </Grid>
+</UserControl>
